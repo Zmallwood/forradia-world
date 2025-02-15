@@ -3,8 +3,8 @@ tunnels:
   web-server:
     addr: 80
     proto: http
-    hostname: forradia-world.ngrok-free.app
+    hostname: ${WEB_SERVER_HOST}
   socket-server:
     addr: 8080
     proto: http
-    hostname: forradia-world-ws.ngrok-free.app
+    hostname: ${SOCKET_SERVER_HOST}

@@ -1,4 +1,5 @@
 #!/usr/bin/sh
+
 env_file=".env"
 
 if [ -f "$env_file" ]
@@ -12,8 +13,10 @@ if [ -z "$NGROK_AUTHTOKEN" ]; then
     echo "WARNING: NGROK_AUTHTOKEN is not defined"
 fi
 
+envsubst < ngrok.yml.template > ngrok.yml
+
 nohup ngrok start --all --config ./ngrok.yml &
-echo "Ngrok started. Client is accessible on https://forradia-world.ngrok-free.app"
+echo "Ngrok started. Client is accessible on: https://$WEB_SERVER_HOST"
 sudo ./server/build/forradia-world
-echo "Exiting Ngrok..."
+echo "Exiting ngrok..."
 pkill ngrok
