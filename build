@@ -1,0 +1,4 @@
+#!/usr/bin/sh
+cd server
+cmake . --preset conan-release
+cmake --build . --preset conan-release

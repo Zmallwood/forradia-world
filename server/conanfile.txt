@@ -1,0 +1,7 @@
+[requires]
+cpp-httplib/0.18.3
+websocketpp/0.8.2
+
+[generators]
+CMakeToolchain
+CMakeDeps

@@ -1,0 +1,10 @@
+version: "3"
+tunnels:
+  web-server:
+    addr: 80
+    proto: http
+    hostname: forradia-world.ngrok-free.app
+  socket-server:
+    addr: 8080
+    proto: http
+    hostname: forradia-world-ws.ngrok-free.app
