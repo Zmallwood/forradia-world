@@ -1,2 +1,5 @@
 # forradia-world
-Web game developed in C++
+
+cp template.env .env
+
+Set NGROK_AUTHTOKEN to your own token.
