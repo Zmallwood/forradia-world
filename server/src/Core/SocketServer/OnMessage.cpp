@@ -27,11 +27,12 @@ namespace FW
                   << " and message: " << msg->get_payload()
                   << std::endl;
 
-        // check for a special command to instruct the server to stop listening so
+        // Check for a special command to instruct the server to stop listening so
         // it can be cleanly exited.
         if (msg->get_payload() == "stop-listening")
         {
             s->stop_listening();
+
             return;
         }
 

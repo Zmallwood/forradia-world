@@ -32,23 +32,23 @@ namespace FW
 
         try
         {
-            // Set logging settings
+            // Set logging settings.
             m_server.set_access_channels(websocketpp::log::alevel::all);
             m_server.clear_access_channels(websocketpp::log::alevel::frame_payload);
 
-            // Initialize Asio
+            // Initialize Asio.
             m_server.init_asio();
 
-            // Register our message handler
+            // Register our message handler.
             m_server.set_message_handler(bind(&OnMessage, &m_server, _1, _2));
 
-            // Listen on port 8080
+            // Listen on port 8080.
             m_server.listen(8080);
 
-            // Start the server accept loop
+            // Start the server accept loop.
             m_server.start_accept();
 
-            // Start the ASIO io_service run loop
+            // Start the ASIO io_service run loop.
             m_server.run();
         }
         catch (websocketpp::exception const& e)

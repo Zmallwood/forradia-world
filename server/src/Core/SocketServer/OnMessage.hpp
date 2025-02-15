@@ -23,9 +23,9 @@ namespace FW
 {
     typedef websocketpp::server<websocketpp::config::asio> server;
 
-    // pull out the type of messages sent by our config
+    // Pull out the type of messages sent by our config.
     typedef server::message_ptr message_ptr;
 
-    // Define a callback to handle incoming messages
+    // Define a callback to handle incoming messages.
     void OnMessage(server* s, websocketpp::connection_hdl hdl, message_ptr msg);
 }
