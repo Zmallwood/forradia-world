@@ -37,10 +37,6 @@ target_precompile_headers(forradia-world
         <websocketpp/server.hpp>
 
         src/Common/Singleton.hpp
-
-#        src/Theme1.Core.Common/Layout.hpp
-#        src/Theme1.Core.Common/MathLib.hpp
-#        src/Theme1.Core.Common/Utils.hpp
 )
 
 
