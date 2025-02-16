@@ -23,16 +23,18 @@ namespace FW
 {
     class SceneManager;
     class FPSCounter;
+    class Graphics;
 
     class Engine
     {
       public:
-        Engine();
+        Engine(std::shared_ptr<Graphics> graphics);
 
-        void ProcessFrame(server* server, websocketpp::connection_hdl handle);
+        void ProcessFrame();
 
       private:
         std::shared_ptr<SceneManager> m_sceneManager;
         std::shared_ptr<FPSCounter> m_fpsCounter;
+        std::shared_ptr<Graphics> m_graphics;
     };
 }

@@ -18,17 +18,18 @@
  */
 
 #include "client.h"
-#include "client-game-session.h"
+#include "engine.h"
+#include "graphics.h"
 
 namespace FW
 {
-    Client::Client()
-        : m_clientGameSession(std::make_shared<ClientGameSession>())
+    Client::Client(server* server, websocketpp::connection_hdl handle)
+        : m_engine(std::make_shared<Engine>(std::make_shared<Graphics>(server, handle)))
     {
     }
 
-    void Client::ProcessFrame(server* server, websocketpp::connection_hdl handle)
+    void Client::ProcessFrame()
     {
-        m_clientGameSession->ProcessFrame(server, handle);
+        m_engine->ProcessFrame();
     }
 }

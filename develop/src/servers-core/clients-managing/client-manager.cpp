@@ -22,9 +22,9 @@
 
 namespace FW
 {
-    void ClientManager::AddClient(connection_hdl handle)
+    void ClientManager::AddClient(server* server, connection_hdl handle)
     {
-        auto newClient = std::make_shared<Client>();
+        auto newClient = std::make_shared<Client>(server, handle);
 
         if (auto sharedPtr = handle.lock())
         {

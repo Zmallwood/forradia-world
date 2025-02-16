@@ -26,7 +26,7 @@ namespace FW
     class ClientManager
     {
       public:
-        void AddClient(connection_hdl handle);
+        void AddClient(server* server, connection_hdl handle);
         std::shared_ptr<Client> GetClient(connection_hdl handle) const;
 
       private:

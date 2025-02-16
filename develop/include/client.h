@@ -21,16 +21,16 @@
 
 namespace FW
 {
-    class ClientGameSession;
+    class Engine;
 
     class Client
     {
       public:
-        Client();
+        Client(server* server, websocketpp::connection_hdl handle);
 
-        void ProcessFrame(server* server, websocketpp::connection_hdl handle);
+        void ProcessFrame();
 
       private:
-        std::shared_ptr<ClientGameSession> m_clientGameSession;
+        std::shared_ptr<Engine> m_engine;
     };
 }

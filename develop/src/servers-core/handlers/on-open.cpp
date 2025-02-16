@@ -26,6 +26,6 @@ namespace FW
     {
         std::cout << GetCurrentTime() << ": A new client has connected.\n";
 
-        _<ClientManager>().AddClient(handle);
+        _<ClientManager>().AddClient(server, handle);
     }
 }

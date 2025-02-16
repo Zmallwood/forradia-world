@@ -20,17 +20,22 @@
 #include "engine.h"
 #include "fps-counter.h"
 #include "scene-manager.h"
+#include "graphics.h"
 
 namespace FW
 {
-    Engine::Engine()
+    Engine::Engine(std::shared_ptr<Graphics> graphics)
         : m_fpsCounter(std::make_shared<FPSCounter>())
         , m_sceneManager(std::make_shared<SceneManager>())
+        , m_graphics(graphics)
     {
     }
 
-    void Engine::ProcessFrame(server* server, websocketpp::connection_hdl handle)
+    void Engine::ProcessFrame()
     {
+        auto server = m_graphics->GetServer();
+        auto handle = m_graphics->GetHandle();
+
         m_sceneManager->UpdateCurrentScene();
         m_fpsCounter->Update();
 

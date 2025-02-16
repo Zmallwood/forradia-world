@@ -42,7 +42,7 @@ namespace FW
 
                 if (client)
                 {
-                    client->ProcessFrame(server, handle);
+                    client->ProcessFrame();
                 }
             }
         }

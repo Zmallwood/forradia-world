@@ -17,18 +17,13 @@
  * limitations under the License.
  */
 
-#include "client-game-session.h"
-#include "engine.h"
+#include "graphics.h"
 
 namespace FW
 {
-    ClientGameSession::ClientGameSession()
-        : m_engine(std::make_shared<Engine>())
+    Graphics::Graphics(server* server, websocketpp::connection_hdl handle)
+        : m_server(server)
+        , m_handle(handle)
     {
-    }
-
-    void ClientGameSession::ProcessFrame(server* server, websocketpp::connection_hdl handle)
-    {
-        m_engine->ProcessFrame(server, handle);
     }
 }
