@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-#include "WebServer.hpp"
+#include "web-server.h"
 
 namespace FW
 {

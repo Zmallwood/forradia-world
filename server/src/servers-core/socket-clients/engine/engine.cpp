@@ -17,18 +17,25 @@
  * limitations under the License.
  */
 
-#include "TimeUtils.hpp"
+#include "engine.h"
+#include "fps-counter.h"
 
 namespace FW
 {
-    int GetTicks()
+    Engine::Engine()
+        : m_fpsCounter(std::make_shared<FPSCounter>())
     {
-        static auto start = std::chrono::high_resolution_clock::now();
+    }
 
-        auto end = std::chrono::high_resolution_clock::now();
+    void Engine::ProcessFrame(server* server, websocketpp::connection_hdl handle)
+    {
+        m_fpsCounter->Update();
 
-        std::chrono::duration<double, std::milli> elapsed = end - start;
+        server->send(handle, "clear;0;150;255;", websocketpp::frame::opcode::TEXT);
+        server->send(handle, "draw_image;DefaultSceneBackground;0.0;0.0;1.0;1.0;", websocketpp::frame::opcode::TEXT);
 
-        return elapsed.count();
+        m_fpsCounter->Render(server, handle);
+
+        server->send(handle, "present", websocketpp::frame::opcode::TEXT);
     }
 }

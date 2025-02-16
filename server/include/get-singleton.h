@@ -17,25 +17,15 @@
  * limitations under the License.
  */
 
-#include "Engine.hpp"
-#include "fps-counter/FPSCounter.hpp"
+#pragma once
 
 namespace FW
 {
-    Engine::Engine()
-        : m_fpsCounter(std::make_shared<FPSCounter>())
+    template <class T>
+    T& GetSingleton()
     {
-    }
+        static T instance;
 
-    void Engine::ProcessFrame(server* server, websocketpp::connection_hdl handle)
-    {
-        m_fpsCounter->Update();
-
-        server->send(handle, "clear;0;150;255;", websocketpp::frame::opcode::TEXT);
-        server->send(handle, "draw_image;DefaultSceneBackground;0.0;0.0;1.0;1.0;", websocketpp::frame::opcode::TEXT);
-
-        m_fpsCounter->Render(server, handle);
-
-        server->send(handle, "present", websocketpp::frame::opcode::TEXT);
+        return instance;
     }
 }

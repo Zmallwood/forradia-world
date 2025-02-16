@@ -17,17 +17,35 @@
  * limitations under the License.
  */
 
-#pragma once
-
-#include "GetSingleton.hpp"
+#include "client-manager.h"
+#include "client.h"
 
 namespace FW
 {
-    template <class T>
-    T& GetSingleton()
+    void ClientManager::AddClient(connection_hdl handle)
     {
-        static T instance;
+        auto newClient = std::make_shared<Client>();
 
-        return instance;
+        if (auto sharedPtr = handle.lock())
+        {
+            auto rawPtr = sharedPtr.get();
+
+            m_clients.insert({ rawPtr, newClient });
+        }
+    }
+
+    std::shared_ptr<Client> ClientManager::GetClient(connection_hdl handle) const
+    {
+        if (auto sharedPtr = handle.lock())
+        {
+            auto rawPtr = sharedPtr.get();
+
+            if (m_clients.contains(rawPtr))
+            {
+                return m_clients.at(rawPtr);
+            }
+        }
+
+        return nullptr;
     }
 }

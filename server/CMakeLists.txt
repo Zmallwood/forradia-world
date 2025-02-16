@@ -13,7 +13,7 @@ add_executable(forradia-world ${SRC_FILES})
 target_link_libraries(forradia-world httplib::httplib websocketpp::websocketpp
 )
 
-target_include_directories(forradia-world PUBLIC "src" ${httplib_INCLUDE_DIR})
+target_include_directories(forradia-world PUBLIC "include" ${httplib_INCLUDE_DIR})
 
 target_precompile_headers(forradia-world
     PRIVATE
@@ -37,9 +37,9 @@ target_precompile_headers(forradia-world
         <websocketpp/config/asio_no_tls.hpp>
         <websocketpp/server.hpp>
 
-        src/common/GetSingleton.hpp
-        src/common/Aliases.hpp
-        src/common/TimeUtils.hpp
+        include/get-singleton.h
+        include/aliases.h
+        include/time-utils.h
 )
 
 

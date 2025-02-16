@@ -17,15 +17,18 @@
  * limitations under the License.
  */
 
-#include "OnOpen.hpp"
-#include "servers-core/socket-server/clients/ClientManager.hpp"
+#include "client-game-session.h"
+#include "engine.h"
 
 namespace FW
 {
-    void OnOpen(server* server, websocketpp::connection_hdl handle)
+    ClientGameSession::ClientGameSession()
+        : m_engine(std::make_shared<Engine>())
     {
-        std::cout << "A new client has connected.\n";
+    }
 
-        _<ClientManager>().AddClient(handle);
+    void ClientGameSession::ProcessFrame(server* server, websocketpp::connection_hdl handle)
+    {
+        m_engine->ProcessFrame(server, handle);
     }
 }

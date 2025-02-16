@@ -17,9 +17,9 @@
  * limitations under the License.
  */
 
-#include "SocketServer.hpp"
-#include "handlers/OnMessage.hpp"
-#include "handlers/OnOpen.hpp"
+#include "socket-server.h"
+#include "on-message.h"
+#include "on-open.h"
 
 namespace FW
 {

@@ -17,13 +17,15 @@
  * limitations under the License.
  */
 
-#include "game-server.h"
+#include "on-open.h"
+#include "client-manager.h"
 
-int main(int arc, char** argv)
+namespace FW
 {
-    using namespace FW;
+    void OnOpen(server* server, websocketpp::connection_hdl handle)
+    {
+        std::cout << "A new client has connected.\n";
 
-    _<GameServer>().Start();
-
-    return 0;
+        _<ClientManager>().AddClient(handle);
+    }
 }

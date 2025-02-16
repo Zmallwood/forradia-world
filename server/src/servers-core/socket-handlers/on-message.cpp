@@ -17,9 +17,9 @@
  * limitations under the License.
  */
 
-#include "OnMessage.hpp"
-#include "servers-core/socket-server/clients/Client.hpp"
-#include "servers-core/socket-server/clients/ClientManager.hpp"
+#include "on-message.h"
+#include "client.h"
+#include "client-manager.h"
 
 namespace FW
 {

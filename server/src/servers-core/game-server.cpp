@@ -17,18 +17,41 @@
  * limitations under the License.
  */
 
-#include "ClientGameSession.hpp"
-#include "engine/Engine.hpp"
+#include "game-server.h"
+#include "socket-server.h"
+#include "web-server.h"
 
 namespace FW
 {
-    ClientGameSession::ClientGameSession()
-        : m_engine(std::make_shared<Engine>())
+    volatile sig_atomic_t flag = 0;
+
+    void SigIntHandler(int signum)
     {
+        flag = 1;
     }
 
-    void ClientGameSession::ProcessFrame(server* server, websocketpp::connection_hdl handle)
+    void GameServer::Start() const
     {
-        m_engine->ProcessFrame(server, handle);
+        std::thread tWebServer([]
+            { _<WebServer>().Start(); });
+
+        std::thread tSocketServer([]
+            { _<SocketServer>().Start(); });
+
+        signal(SIGINT, SigIntHandler);
+
+        while (!flag)
+        {
+            std::cout << "Server started.\n";
+            pause();
+        }
+
+        _<WebServer>().Stop();
+        _<SocketServer>().Stop();
+
+        tSocketServer.join();
+        tWebServer.join();
+
+        std::cout << "Game server exited gracefully.\n";
     }
 }

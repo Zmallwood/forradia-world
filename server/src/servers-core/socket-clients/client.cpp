@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-#include "Client.hpp"
-#include "client-game-session/ClientGameSession.hpp"
+#include "client.h"
+#include "client-game-session.h"
 
 namespace FW
 {
