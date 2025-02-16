@@ -23,20 +23,11 @@ namespace FW
 {
     WebServer::WebServer()
     {
-        std::ifstream htmlFile;
-        htmlFile.open("server/html/index.html");
+        std::ifstream t("server/html/index.html");
+        std::string str((std::istreambuf_iterator<char>(t)),
+            std::istreambuf_iterator<char>());
 
-        if (!htmlFile)
-        {
-            std::cerr << "Unable to open html file";
-            exit(1);
-        }
-
-        std::stringstream strStream;
-        strStream << htmlFile.rdbuf();
-        m_html = strStream.str();
-
-        htmlFile.close();
+        m_html = str;
     }
 
     void WebServer::Start()

@@ -27,7 +27,6 @@ target_precompile_headers(forradia-world
         <functional>
         <string>
         <fstream>
-        <sstream>
         <thread>
         <csignal>
         <unistd.h>
