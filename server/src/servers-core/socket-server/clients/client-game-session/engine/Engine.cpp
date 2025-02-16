@@ -17,17 +17,12 @@
  * limitations under the License.
  */
 
-#include "ClientGameSession.hpp"
-#include "engine/Engine.hpp"
+#include "Engine.hpp"
 
 namespace FW
 {
-    ClientGameSession::ClientGameSession()
-        : m_engine(std::make_shared<Engine>())
+    void Engine::ProcessFrame()
     {
-    }
 
-    void ClientGameSession::ProcessFrame()
-    {
     }
 }

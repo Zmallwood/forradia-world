@@ -19,8 +19,6 @@
 
 #pragma once
 
-typedef websocketpp::lib::weak_ptr<void> connection_hdl;
-
 namespace FW
 {
     class Client;

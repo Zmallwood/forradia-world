@@ -21,8 +21,6 @@
 
 namespace FW
 {
-    typedef websocketpp::server<websocketpp::config::asio> server;
-
     class SocketServer
     {
       public:

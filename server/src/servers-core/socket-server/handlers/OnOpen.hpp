@@ -21,7 +21,5 @@
 
 namespace FW
 {
-    typedef websocketpp::server<websocketpp::config::asio> server;
-
     void OnOpen(server* server, websocketpp::connection_hdl handle);
 }

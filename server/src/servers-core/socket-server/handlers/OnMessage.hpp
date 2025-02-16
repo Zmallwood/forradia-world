@@ -21,9 +21,5 @@
 
 namespace FW
 {
-    typedef websocketpp::server<websocketpp::config::asio> server;
-
-    typedef server::message_ptr message_ptr;
-
     void OnMessage(server* server, websocketpp::connection_hdl handle, message_ptr message);
 }
