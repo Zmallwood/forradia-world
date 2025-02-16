@@ -1,6 +1,6 @@
 var image_names = [
-    "GroundGrass",
-    "DefaultSceneBackground"
+    "ground-grass",
+    "default-scene-background"
 ];
 
 
