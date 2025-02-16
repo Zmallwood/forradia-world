@@ -32,6 +32,7 @@ target_precompile_headers(forradia-world
         <csignal>
         <unistd.h>
         <chrono>
+        <cstdlib>
 
         <httplib.h>
         <websocketpp/config/asio_no_tls.hpp>

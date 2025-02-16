@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+
+ENV=dev
+sudo ./server/build/forradia-world
+echo "Develop version started. Client is accessible on: http://localhost"

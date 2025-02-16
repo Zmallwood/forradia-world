@@ -31,7 +31,7 @@ for (const imageName of imageNames)
 }
 
 
-var connect = function (port)
+function connect()
 {
     const canvas = document.getElementById("canvas_buffer_1");
     const ctx = canvas.getContext("2d");
@@ -41,7 +41,8 @@ var connect = function (port)
     ctx.font = "38px serif";
 
     let drawCommands = [];
-    const ws = new WebSocket("https://forradia-world-ws.ngrok-free.app:" + port);
+    const port = 443;
+    const ws = new WebSocket("wss://forradia-world-ws.ngrok-free.app:" + port);
 
     ws.onopen = function()
     {
@@ -93,7 +94,7 @@ var connect = function (port)
 
 function init()
 {
-    connect(443);
+    connect();
 };
 
 window.init = init;
