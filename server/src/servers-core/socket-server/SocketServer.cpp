@@ -18,8 +18,8 @@
  */
 
 #include "SocketServer.hpp"
-#include "OnMessage.hpp"
-#include "OnOpen.hpp"
+#include "handlers/OnMessage.hpp"
+#include "handlers/OnOpen.hpp"
 
 namespace FW
 {

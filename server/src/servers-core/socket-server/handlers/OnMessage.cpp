@@ -18,7 +18,7 @@
  */
 
 #include "OnMessage.hpp"
-#include "clients/ClientManager.hpp"
+#include "servers-core/socket-server/clients/ClientManager.hpp"
 
 namespace FW
 {

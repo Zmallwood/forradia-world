@@ -1,5 +1,5 @@
 #!/usr/bin/sh
 
 cd server
-cmake . --preset conan-release
-cmake --build . --preset conan-release
+cmake -G "Ninja" . --preset conan-release
+cmake --build . --preset conan-release --parallel 4
