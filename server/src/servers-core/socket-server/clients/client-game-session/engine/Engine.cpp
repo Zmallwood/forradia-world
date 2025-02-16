@@ -27,9 +27,15 @@ namespace FW
     {
     }
 
-    void Engine::ProcessFrame(server* server)
+    void Engine::ProcessFrame(server* server, websocketpp::connection_hdl handle)
     {
         m_fpsCounter->Update();
-        m_fpsCounter->Render(server);
+
+        server->send(handle, "clear;0;150;255;", websocketpp::frame::opcode::TEXT);
+        server->send(handle, "draw_image;GroundGrass;0.0;0.0;0.5;0.5;", websocketpp::frame::opcode::TEXT);
+
+        m_fpsCounter->Render(server, handle);
+
+        server->send(handle, "present", websocketpp::frame::opcode::TEXT);
     }
 }

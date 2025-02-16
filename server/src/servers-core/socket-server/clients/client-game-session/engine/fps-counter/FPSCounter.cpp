@@ -23,11 +23,20 @@ namespace FW
 {
     void FPSCounter::Update()
     {
+        auto now = GetTicks();
 
+        if (now > m_ticksLastUpdate + 1000)
+        {
+            m_fps = m_framesCount;
+            m_framesCount = 0;
+            m_ticksLastUpdate = now;
+        }
+
+        m_framesCount++;
     }
 
-    void FPSCounter::Render(server* server) const
+    void FPSCounter::Render(server* server, websocketpp::connection_hdl handle) const
     {
-
+        server->send(handle, "draw_text;FPS: " + std::to_string(m_fps) + ";0.5;0.5;", websocketpp::frame::opcode::TEXT);
     }
 }

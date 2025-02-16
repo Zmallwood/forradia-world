@@ -27,8 +27,8 @@ namespace FW
     {
     }
 
-    void Client::ProcessFrame(server* server)
+    void Client::ProcessFrame(server* server, websocketpp::connection_hdl handle)
     {
-        m_clientGameSession->ProcessFrame(server);
+        m_clientGameSession->ProcessFrame(server, handle);
     }
 }

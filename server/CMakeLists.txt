@@ -39,7 +39,7 @@ target_precompile_headers(forradia-world
 
         src/common/GetSingleton.hpp
         src/common/Aliases.hpp
-        src/common/TimeUtils
+        src/common/TimeUtils.hpp
 )
 
 

@@ -42,15 +42,11 @@ namespace FW
         {
             if (message_text == "frame_finished")
             {
-                server->send(handle, "clear;0;150;255;", message->get_opcode());
-                server->send(handle, "draw_image;GroundGrass;0.0;0.0;0.5;0.5;", message->get_opcode());
-                server->send(handle, "present", message->get_opcode());
-
                 auto client = _<ClientManager>().GetClient(handle);
 
                 if (client)
                 {
-                    client->ProcessFrame(server);
+                    client->ProcessFrame(server, handle);
                 }
             }
         }

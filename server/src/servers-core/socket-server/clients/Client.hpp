@@ -28,7 +28,7 @@ namespace FW
       public:
         Client();
 
-        void ProcessFrame(server* server);
+        void ProcessFrame(server* server, websocketpp::connection_hdl handle);
 
       private:
         std::shared_ptr<ClientGameSession> m_clientGameSession;

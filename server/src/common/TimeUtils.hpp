@@ -21,5 +21,5 @@
 
 namespace FW
 {
-
+    int GetTicks();
 }

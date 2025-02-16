@@ -28,7 +28,7 @@ namespace FW
       public:
         Engine();
 
-        void ProcessFrame(server* server);
+        void ProcessFrame(server* server, websocketpp::connection_hdl handle);
 
       private:
         std::shared_ptr<FPSCounter> m_fpsCounter;
