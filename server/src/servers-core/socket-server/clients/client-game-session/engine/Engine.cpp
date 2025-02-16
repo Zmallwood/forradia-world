@@ -32,7 +32,7 @@ namespace FW
         m_fpsCounter->Update();
 
         server->send(handle, "clear;0;150;255;", websocketpp::frame::opcode::TEXT);
-        server->send(handle, "draw_image;GroundGrass;0.0;0.0;0.5;0.5;", websocketpp::frame::opcode::TEXT);
+        server->send(handle, "draw_image;DefaultSceneBackground;0.0;0.0;1.0;1.0;", websocketpp::frame::opcode::TEXT);
 
         m_fpsCounter->Render(server, handle);
 
