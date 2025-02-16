@@ -22,4 +22,6 @@
 namespace FW
 {
     int GetTicks();
+
+    std::string GetCurrentTime();
 }

@@ -24,7 +24,7 @@ namespace FW
 {
     void OnOpen(server* server, websocketpp::connection_hdl handle)
     {
-        std::cout << "A new client has connected.\n";
+        std::cout << GetCurrentTime() << ": A new client has connected.\n";
 
         _<ClientManager>().AddClient(handle);
     }
