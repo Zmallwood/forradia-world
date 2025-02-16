@@ -17,22 +17,9 @@
  * limitations under the License.
  */
 
-#pragma once
+#include "i-scene.h"
 
 namespace FW
 {
-    class SceneManager;
-    class FPSCounter;
 
-    class Engine
-    {
-      public:
-        Engine();
-
-        void ProcessFrame(server* server, websocketpp::connection_hdl handle);
-
-      private:
-        std::shared_ptr<SceneManager> m_sceneManager;
-        std::shared_ptr<FPSCounter> m_fpsCounter;
-    };
 }
