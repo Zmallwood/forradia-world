@@ -25,7 +25,7 @@ namespace FW
     {
     }
 
-    void IntroScene::RenderDerived() const
+    void IntroScene::RenderDerived(std::shared_ptr<Graphics> graphics) const
     {
     }
 }

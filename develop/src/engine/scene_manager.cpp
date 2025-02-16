@@ -44,11 +44,11 @@ namespace FW
         }
     }
 
-    void SceneManager::RenderCurrentScene() const
+    void SceneManager::RenderCurrentScene(std::shared_ptr<Graphics> graphics) const
     {
         if (m_scenes.contains(m_currentScene))
         {
-            m_scenes.at(m_currentScene)->Render();
+            m_scenes.at(m_currentScene)->Render(graphics);
         }
     }
 

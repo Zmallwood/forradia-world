@@ -22,6 +22,7 @@
 namespace FW
 {
     class IScene;
+    class Graphics;
 
     class SceneManager
     {
@@ -29,7 +30,7 @@ namespace FW
         SceneManager();
 
         void UpdateCurrentScene();
-        void RenderCurrentScene() const;
+        void RenderCurrentScene(std::shared_ptr<Graphics> graphics) const;
         void ChangeScene(std::string_view sceneName);
 
       private:

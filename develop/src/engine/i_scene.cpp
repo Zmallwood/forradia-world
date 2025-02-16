@@ -26,8 +26,8 @@ namespace FW
         UpdateDerived();
     }
 
-    void IScene::Render() const
+    void IScene::Render(std::shared_ptr<Graphics> graphics) const
     {
-        RenderDerived();
+        RenderDerived(graphics);
     }
 }
