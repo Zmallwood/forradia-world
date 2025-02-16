@@ -24,7 +24,6 @@ namespace FW
     class WebServer
     {
       public:
-        WebServer();
         void Start();
         void Stop();
 
@@ -35,6 +34,5 @@ namespace FW
         const std::string k_hostName {"localhost"};
 
         httplib::Server m_server;
-        std::string m_html;
     };
 }

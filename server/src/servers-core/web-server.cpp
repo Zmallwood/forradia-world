@@ -22,15 +22,6 @@
 
 namespace FW
 {
-    WebServer::WebServer()
-    {
-        std::ifstream t("server/html/index.html");
-        std::string str((std::istreambuf_iterator<char>(t)),
-            std::istreambuf_iterator<char>());
-
-        m_html = str;
-    }
-
     void WebServer::Start()
     {
         std::cout << "Starting web server.\n";
@@ -54,8 +45,13 @@ namespace FW
         auto lastSlash = fullPathStr.find_last_of("/");
         auto appBasePath = fullPathStr.substr(0, lastSlash + 1);
 
-        m_server.Get("/", [this](const Request& req, Response& res)
-            { res.set_content(m_html, "text/html"); });
+        m_server.Get("/", [this, appBasePath](const Request& req, Response& res)
+            {
+                std::ifstream t(appBasePath + "../html/index.html");
+                std::string str((std::istreambuf_iterator<char>(t)),
+                                std::istreambuf_iterator<char>());
+
+                res.set_content(str, "text/html"); });
 
         m_server.Get("/js/(.*)", [this, appBasePath](const Request& req, Response& res)
             {
