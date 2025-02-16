@@ -17,13 +17,13 @@
  * limitations under the License.
  */
 
-#include "game-server.h"
+#include "main-server.h"
 
 int main(int arc, char** argv)
 {
     using namespace FW;
 
-    _<GameServer>().Start();
+    _<MainServer>().Start();
 
     return 0;
 }

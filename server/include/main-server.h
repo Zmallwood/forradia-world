@@ -21,7 +21,7 @@
 
 namespace FW
 {
-    class GameServer
+    class MainServer
     {
       public:
         void Start() const;

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-#include "game-server.h"
+#include "main-server.h"
 #include "socket-server.h"
 #include "web-server.h"
 
@@ -30,7 +30,7 @@ namespace FW
         flag = 1;
     }
 
-    void GameServer::Start() const
+    void MainServer::Start() const
     {
         std::thread tWebServer([]
             { _<WebServer>().Start(); });

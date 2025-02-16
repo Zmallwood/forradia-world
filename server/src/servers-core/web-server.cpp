@@ -63,7 +63,7 @@ namespace FW
         m_server.Get("/js/(.*)", [this](const Request& req, Response& res)
             {
                 auto filename = req.matches[1].str();
-                std::ifstream t("server/html/JS/" + filename);
+                std::ifstream t("server/html/js/" + filename);
                 std::string str((std::istreambuf_iterator<char>(t)),
                     std::istreambuf_iterator<char>());
 
@@ -72,7 +72,7 @@ namespace FW
         m_server.Get("/img/(.*)", [this](const Request& req, Response& res)
             {
                 auto filename = req.matches[1].str();
-                std::ifstream t("server/html/Resources/Images/" + filename);
+                std::ifstream t("server/html/resources/images/" + filename);
                 std::string str((std::istreambuf_iterator<char>(t)),
                     std::istreambuf_iterator<char>());
 
