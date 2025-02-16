@@ -92,7 +92,7 @@ namespace FW
         {
             std::cout << "Running in production mode.\n";
 
-            outFile << "export const wsConnString = 'wss://forradia-world-ws.ngrok-free.app:443';";
+            outFile << "export const wsConnString = 'wss://forradia-world-ws.ngrok.io:443';";
         }
 
         outFile.close();
