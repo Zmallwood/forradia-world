@@ -36,4 +36,14 @@ namespace FW
     {
         m_server->send(m_handle, "Present", websocketpp::frame::opcode::TEXT);
     }
+
+    void Graphics::DrawImage(std::string_view imageName, float x, float y, float w, float h) const
+    {
+        m_server->send(m_handle, "DrawImage;" + std::string(imageName) + ";" + std::to_string(x) + ";" + std::to_string(y) + ";" + std::to_string(w) + ";" + std::to_string(h) + ";", websocketpp::frame::opcode::TEXT);
+    }
+
+    void Graphics::DrawText(std::string_view text, float x, float y) const
+    {
+        m_server->send(m_handle, "DrawText;" + std::string(text) + ";" + std::to_string(x) + ";" + std::to_string(y) + ";", websocketpp::frame::opcode::TEXT);
+    }
 }

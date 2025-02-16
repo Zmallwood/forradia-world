@@ -21,11 +21,13 @@
 
 namespace FW
 {
+    class Graphics;
+
     class FPSCounter
     {
       public:
         void Update();
-        void Render(WSPPServer* server, ConnectionHandle handle) const;
+        void Render(std::shared_ptr<Graphics> graphics) const;
 
       private:
         int m_fps { 0 };

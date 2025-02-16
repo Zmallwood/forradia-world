@@ -34,19 +34,16 @@ namespace FW
 
     void Engine::ProcessFrame()
     {
-        auto server = m_graphics->GetServer();
-        auto handle = m_graphics->GetHandle();
-
         m_sceneManager->UpdateCurrentScene();
         m_fpsCounter->Update();
 
         m_graphics->ClearCanvas();
 
-        server->send(handle, "DrawImage;default-scene-background;0.0;0.0;1.0;1.0;", websocketpp::frame::opcode::TEXT);
-        server->send(handle, "DrawImage;forradia-world-logo;0.3;0.1;0.4;0.4;", websocketpp::frame::opcode::TEXT);
+        m_graphics->DrawImage("default-scene-background", 0.0f, 0.0f, 1.0f, 1.0f);
+        m_graphics->DrawImage("forradia-world-logo", 0.3f, 0.1f, 0.4f, 0.4f);
 
         m_sceneManager->RenderCurrentScene();
-        m_fpsCounter->Render(server, handle);
+        m_fpsCounter->Render(m_graphics);
 
         m_graphics->PresentCanvas();
     }
