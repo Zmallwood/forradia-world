@@ -24,13 +24,22 @@ namespace FW
     class Graphics
     {
       public:
-        Graphics(WSPPServer* server, ConnectionHandle handle);
+        Graphics(
+            WSPPServer* server,
+            ConnectionHandle handle);
         
         void ClearCanvas() const;
         void PresentCanvas() const;
-        void DrawImage(std::string_view imageName, float x, float y, float w,
-                       float h) const;
-        void DrawText(std::string_view text, float x, float y) const;
+        void DrawImage(
+            std::string_view imageName,
+            float x,
+            float y,
+            float w,
+            float h) const;
+        void DrawText(
+            std::string_view text,
+            float x,
+            float y) const;
         
         auto GetServer() const
         {

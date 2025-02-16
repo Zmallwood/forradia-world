@@ -24,21 +24,15 @@
 
 namespace FW
 {
-    void OnSocketMessage(WSPPServer* server, ConnectionHandle handle,
-                         MessagePtr message)
+    void OnSocketMessage(
+        WSPPServer* server, ConnectionHandle handle,
+        MessagePtr message)
     {
-        auto& message_text = message->get_payload();
-        
-        if (message_text == "stop-listening")
-        {
-            server->stop_listening();
-            
-            return;
-        }
+        auto& messageText = message->get_payload();
         
         try
         {
-            if (message_text == "frame_finished")
+            if (messageText == "frame_finished")
             {
                 auto socketClient =
                     _<SocketClientsManager>().GetSocketClient(handle);
@@ -51,8 +45,7 @@ namespace FW
         }
         catch (websocketpp::exception const& e)
         {
-            std::cout << "Echo failed because: "
-                      << "(" << e.what() << ")" << std::endl;
+            std::cout << std::format("Echo failed because: {}\n", e.what());
         }
     }
 }

@@ -62,7 +62,7 @@ namespace FW
         }
         catch (...)
         {
-            std::cout << "other exception" << std::endl;
+            std::cout << "Other exception.\n";
         }
     }
     

@@ -24,7 +24,9 @@
 
 namespace FW
 {
-    SocketClient::SocketClient(WSPPServer* server, ConnectionHandle handle)
+    SocketClient::SocketClient(
+        WSPPServer* server,
+        ConnectionHandle handle)
         : m_engine(std::make_shared<Engine>(
                        std::make_shared<Graphics>(
                            server,

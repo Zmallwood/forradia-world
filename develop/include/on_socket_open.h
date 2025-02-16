@@ -21,5 +21,7 @@
 
 namespace FW
 {
-    void OnSocketOpen(WSPPServer* server, ConnectionHandle handle);
+    void OnSocketOpen(
+        WSPPServer* server,
+        ConnectionHandle handle);
 }

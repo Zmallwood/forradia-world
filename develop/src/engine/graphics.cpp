@@ -21,7 +21,9 @@
 
 namespace FW
 {
-    Graphics::Graphics(WSPPServer* server, ConnectionHandle handle)
+    Graphics::Graphics(
+        WSPPServer* server,
+        ConnectionHandle handle)
         : m_server(server)
         , m_handle(handle)
     {}
@@ -38,9 +40,12 @@ namespace FW
         m_server->send(m_handle, "Present", websocketpp::frame::opcode::TEXT);
     }
     
-    void Graphics::DrawImage(std::string_view imageName, float x, float y,
-                             float w,
-                             float h) const
+    void Graphics::DrawImage(
+        std::string_view imageName,
+        float x,
+        float y,
+        float w,
+        float h) const
     {
         m_server->send(
             m_handle,
@@ -48,10 +53,13 @@ namespace FW
             websocketpp::frame::opcode::TEXT);
     }
     
-    void Graphics::DrawText(std::string_view text, float x, float y) const
+    void Graphics::DrawText(
+        std::string_view text,
+        float x,
+        float y) const
     {
         m_server->send(
-              m_handle,
+            m_handle,
             std::format("DrawText;{};{};{};", text, x, y),
             websocketpp::frame::opcode::TEXT);
     }

@@ -26,7 +26,9 @@ namespace FW
     class SocketClient
     {
       public:
-        SocketClient(WSPPServer* server, ConnectionHandle handle);
+        SocketClient(
+            WSPPServer* server,
+            ConnectionHandle handle);
         
         void ProcessFrame();
         

@@ -60,8 +60,9 @@ namespace FW
         m_currentScene = Hash(sceneName);
     }
     
-    void SceneManager::AddScene(std::string_view sceneName,
-                                std::shared_ptr<IScene> scene)
+    void SceneManager::AddScene(
+        std::string_view sceneName,
+        std::shared_ptr<IScene> scene)
     {
         m_scenes.insert({ Hash(sceneName), scene });
     }

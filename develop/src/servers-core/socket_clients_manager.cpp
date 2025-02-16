@@ -23,10 +23,13 @@
 
 namespace FW
 {
-    void SocketClientsManager::AddSocketClient(WSPPServer* server,
-                                               ConnectionHandle handle)
+    void SocketClientsManager::AddSocketClient(
+        WSPPServer* server,
+        ConnectionHandle handle)
     {
-        auto newSocketClient = std::make_shared<SocketClient>(server, handle);
+        auto newSocketClient = std::make_shared<SocketClient>(
+            server,
+            handle);
         
         if (auto sharedPtr = handle.lock())
         {
