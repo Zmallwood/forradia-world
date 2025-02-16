@@ -10,7 +10,7 @@
       crossorigin="anonymous">
     </script>
 
-    <script type="text/javascript" src="/js/main.js"></script>
+    <script type="module" src="/js/main.js"></script>
 
     <style>
       html,
@@ -23,12 +23,9 @@
 
   </head>
 
-  <body>
+  <body onload="init()">
     <canvas id="canvas_buffer_1" style="border: 1px solid black"> </canvas>
   </body>
 
 </html>
 
-<script type="text/javascript">
-  init();
-</script>
