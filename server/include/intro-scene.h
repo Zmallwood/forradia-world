@@ -16,3 +16,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+#pragma once
+
+#include "i-scene.h"
+
+namespace FW
+{
+    class IntroScene : public IScene
+    {
+      protected:
+    };
+}
