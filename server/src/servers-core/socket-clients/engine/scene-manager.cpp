@@ -31,14 +31,24 @@ namespace FW
         AddScene("main-menu-scene", std::make_shared<MainMenuScene>());
         AddScene("world-generation-scene", std::make_shared<WorldGenerationScene>());
         AddScene("main-scene", std::make_shared<MainScene>());
+
+        ChangeScene("intro-scene");
     }
 
     void SceneManager::UpdateCurrentScene()
     {
+        if (m_scenes.contains(m_currentScene))
+        {
+            m_scenes.at(m_currentScene)->Update();
+        }
     }
 
     void SceneManager::RenderCurrentScene() const
     {
+        if (m_scenes.contains(m_currentScene))
+        {
+            m_scenes.at(m_currentScene)->Render();
+        }
     }
 
     void SceneManager::ChangeScene(std::string_view sceneName)
