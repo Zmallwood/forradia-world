@@ -19,14 +19,7 @@
 
 #pragma once
 
-#include "i-scene.h"
-
 namespace FW
 {
-    class MainMenuScene : public IScene
-    {
-      protected:
-        void UpdateDerived() override;
-        void RenderDerived() const override;
-    };
+    void OnSocketMessage(server* server, websocketpp::connection_hdl handle, message_ptr message);
 }

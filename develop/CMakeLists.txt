@@ -38,9 +38,9 @@ target_precompile_headers(forradia-world
         <websocketpp/config/asio_no_tls.hpp>
         <websocketpp/server.hpp>
 
-        include/get-singleton.h
+        include/get_singleton.h
         include/aliases.h
-        include/time-utils.h
+        include/time_utils.h
         include/hash.h
 )
 

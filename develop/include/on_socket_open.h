@@ -19,14 +19,7 @@
 
 #pragma once
 
-#include "i-scene.h"
-
 namespace FW
 {
-    class WorldGenerationScene : public IScene
-    {
-      protected:
-        void UpdateDerived() override;
-        void RenderDerived() const override;
-    };
+    void OnSocketOpen(server* server, websocketpp::connection_hdl handle);
 }

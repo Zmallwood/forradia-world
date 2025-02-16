@@ -17,17 +17,17 @@
  * limitations under the License.
  */
 
-#include "main-scene.h"
+#include "i_scene.h"
 
 namespace FW
 {
-    void MainScene::UpdateDerived()
+    void IScene::Update()
     {
-
+        UpdateDerived();
     }
 
-    void MainScene::RenderDerived() const
+    void IScene::Render() const
     {
-
+        RenderDerived();
     }
 }

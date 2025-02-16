@@ -17,10 +17,10 @@
  * limitations under the License.
  */
 
-#include "socket-server.h"
-#include "on-message.h"
-#include "on-open.h"
-#include "app-properties.h"
+#include "socket_server.h"
+#include "on_socket_message.h"
+#include "on_socket_open.h"
+#include "app_properties.h"
 
 namespace FW
 {
@@ -40,8 +40,8 @@ namespace FW
 
             m_server.init_asio();
 
-            m_server.set_open_handler(bind(&OnOpen, &m_server, _1));
-            m_server.set_message_handler(bind(&OnMessage, &m_server, _1, _2));
+            m_server.set_open_handler(bind(&OnSocketOpen, &m_server, _1));
+            m_server.set_message_handler(bind(&OnSocketMessage, &m_server, _1, _2));
 
             m_server.listen(_<AppProperties>().GetSocketsPort());
 

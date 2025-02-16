@@ -17,16 +17,16 @@
  * limitations under the License.
  */
 
-#include "intro-scene.h"
+#include "main_menu_scene.h"
 
 namespace FW
 {
-    void IntroScene::UpdateDerived()
+    void MainMenuScene::UpdateDerived()
     {
 
     }
 
-    void IntroScene::RenderDerived() const
+    void MainMenuScene::RenderDerived() const
     {
 
     }

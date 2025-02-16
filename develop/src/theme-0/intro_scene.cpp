@@ -17,15 +17,17 @@
  * limitations under the License.
  */
 
-#include "on-open.h"
-#include "client-manager.h"
+#include "intro_scene.h"
 
 namespace FW
 {
-    void OnOpen(server* server, websocketpp::connection_hdl handle)
+    void IntroScene::UpdateDerived()
     {
-        std::cout << GetCurrentTime() << ": A new client has connected.\n";
 
-        _<ClientManager>().AddClient(server, handle);
+    }
+
+    void IntroScene::RenderDerived() const
+    {
+
     }
 }

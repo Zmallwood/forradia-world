@@ -17,13 +17,13 @@
  * limitations under the License.
  */
 
-#include "on-message.h"
+#include "on_socket_message.h"
 #include "client.h"
-#include "client-manager.h"
+#include "client_manager.h"
 
 namespace FW
 {
-    void OnMessage(server* server, websocketpp::connection_hdl handle, message_ptr message)
+    void OnSocketMessage(server* server, websocketpp::connection_hdl handle, message_ptr message)
     {
         auto& message_text = message->get_payload();
 

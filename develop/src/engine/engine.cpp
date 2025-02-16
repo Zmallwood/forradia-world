@@ -18,8 +18,8 @@
  */
 
 #include "engine.h"
-#include "fps-counter.h"
-#include "scene-manager.h"
+#include "fps_counter.h"
+#include "scene_manager.h"
 #include "graphics.h"
 
 namespace FW

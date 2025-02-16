@@ -17,17 +17,16 @@
  * limitations under the License.
  */
 
-#include "main-menu-scene.h"
+#pragma once
+
+#include "i_scene.h"
 
 namespace FW
 {
-    void MainMenuScene::UpdateDerived()
+    class WorldGenerationScene : public IScene
     {
-
-    }
-
-    void MainMenuScene::RenderDerived() const
-    {
-
-    }
+      protected:
+        void UpdateDerived() override;
+        void RenderDerived() const override;
+    };
 }

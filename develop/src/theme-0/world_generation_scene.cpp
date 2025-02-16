@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-#include "world-generation-scene.h"
+#include "world_generation_scene.h"
 
 namespace FW
 {

@@ -19,11 +19,11 @@
 
 #pragma once
 
-#include "i-scene.h"
+#include "i_scene.h"
 
 namespace FW
 {
-    class MainScene : public IScene
+    class MainMenuScene : public IScene
     {
       protected:
         void UpdateDerived() override;

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-#include "fps-counter.h"
+#include "fps_counter.h"
 
 namespace FW
 {

@@ -17,9 +17,15 @@
  * limitations under the License.
  */
 
-#pragma once
+#include "on_socket_open.h"
+#include "client_manager.h"
 
 namespace FW
 {
-    void OnOpen(server* server, websocketpp::connection_hdl handle);
+    void OnSocketOpen(server* server, websocketpp::connection_hdl handle)
+    {
+        std::cout << GetCurrentTime() << ": A new client has connected.\n";
+
+        _<ClientManager>().AddClient(server, handle);
+    }
 }

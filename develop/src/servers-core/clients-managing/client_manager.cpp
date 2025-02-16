@@ -17,29 +17,35 @@
  * limitations under the License.
  */
 
-#include "time-utils.h"
+#include "client_manager.h"
+#include "client.h"
 
 namespace FW
 {
-    int GetTicks()
+    void ClientManager::AddClient(server* server, connection_hdl handle)
     {
-        static auto start = std::chrono::high_resolution_clock::now();
+        auto newClient = std::make_shared<Client>(server, handle);
 
-        auto end = std::chrono::high_resolution_clock::now();
+        if (auto sharedPtr = handle.lock())
+        {
+            auto rawPtr = sharedPtr.get();
 
-        std::chrono::duration<double, std::milli> elapsed = end - start;
-
-        return elapsed.count();
+            m_clients.insert({ rawPtr, newClient });
+        }
     }
 
-    std::string GetCurrentTime()
+    std::shared_ptr<Client> ClientManager::GetClient(connection_hdl handle) const
     {
-        auto now = std::chrono::system_clock::now();
-        std::time_t now_c = std::chrono::system_clock::to_time_t(now);
+        if (auto sharedPtr = handle.lock())
+        {
+            auto rawPtr = sharedPtr.get();
 
-        std::stringstream ss;
-        ss << std::put_time(std::localtime(&now_c), "%F %T");
+            if (m_clients.contains(rawPtr))
+            {
+                return m_clients.at(rawPtr);
+            }
+        }
 
-        return ss.str();
+        return nullptr;
     }
 }
