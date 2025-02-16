@@ -20,7 +20,7 @@
 // This array currently need to list names of all images
 // (without extension) that will be used in the client.
 
-export const image_names = [
+export const imageNames = [
     "ground-grass",
     "default-scene-background"
 ];

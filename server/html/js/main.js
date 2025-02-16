@@ -17,35 +17,30 @@
  * limitations under the License.
  */
 
-import {image_names} from './image_names.js';
-import {process_message} from './process_message.js';
+import {imageNames} from './imageNames.js';
+import {ProcessMessage} from './ProcessMessage.js';
 
 var images = {};
 
-for (const image_name of image_names)
+for (const imageName of imageNames)
 {
     var image = new Image();
 
-    image.src = "./img/" + image_name + ".png";
-    images[image_name] = image;
+    image.src = "./img/" + imageName + ".png";
+    images[imageName] = image;
 }
 
 
 var connect = function (port)
 {
-    var current_buffer = 1;
-
     const canvas = document.getElementById("canvas_buffer_1");
-
     const ctx = canvas.getContext("2d");
 
     ctx.canvas.width = window.innerWidth;
     ctx.canvas.height = window.innerHeight;
-
     ctx.font = "38px serif";
 
-    var draw_commands = [];
-
+    var drawCommands = [];
     var ws = new WebSocket("https://forradia-world-ws.ngrok-free.app:" + port);
 
     ws.onopen = function ()
@@ -55,7 +50,7 @@ var connect = function (port)
 
     ws.onmessage = function (evt)
     {
-        process_message(ws, evt, ctx, draw_commands);
+        ProcessMessage(ws, evt, ctx, drawCommands);
     };
 
     ws.onclose = function ()
@@ -75,12 +70,12 @@ var connect = function (port)
         ws.send("key_release;" + e.keyCode);
     }
 
-    var draw_frame = function ()
+    var DrawFrame = function ()
     {
-        requestAnimationFrame(draw_frame);
+        requestAnimationFrame(DrawFrame);
         ctx.save();
 
-        for (let cmd of draw_commands)
+        for (let cmd of drawCommands)
         {
             eval(cmd);
         }
@@ -93,7 +88,7 @@ var connect = function (port)
         }
     };
 
-    draw_frame();
+    DrawFrame();
 };
 
 var init = function ()

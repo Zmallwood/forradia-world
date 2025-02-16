@@ -17,13 +17,13 @@
  * limitations under the License.
  */
 
-var new_draw_commands = [];
+var newDrawCommands = [];
 
-export function process_message(
+export function ProcessMessage(
     ws,
     evt,
     ctx,
-    draw_commands)
+    drawCommands)
 {
     var msg = evt.data;
     var parts = msg.split(";");
@@ -31,60 +31,60 @@ export function process_message(
     switch (parts[0])
     {
         case "clear":
-
+        {
             var r = parts[1];
             var g = parts[2];
             var b = parts[3];
 
-            new_draw_commands.push(
+            newDrawCommands.push(
                 "ctx.fillStyle = 'rgb(" + r + "," + g + "," + b + ")';",
             );
 
-            new_draw_commands.push(
+            newDrawCommands.push(
                 "ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);",
             );
 
             break;
-
+        }
         case "draw_image":
-
-            var image_name = parts[1];
+        {
+            var imageName = parts[1];
 
             var x = parts[2];
             var y = parts[3];
             var w = parts[4];
             var h = parts[5];
 
-            var xpx = x * ctx.canvas.width;
-            var ypx = y * ctx.canvas.height;
-            var wpx = w * ctx.canvas.width;
-            var hpx = h * ctx.canvas.height;
+            var xPx = x * ctx.canvas.width;
+            var yPx = y * ctx.canvas.height;
+            var wPx = w * ctx.canvas.width;
+            var hPx = h * ctx.canvas.height;
 
-            new_draw_commands.push(
+            newDrawCommands.push(
                 "ctx.drawImage(images['" +
-                image_name +
+                imageName +
                 "'], " +
-                xpx +
+                xPx +
                 "," +
-                ypx +
+                yPx +
                 "," +
-                wpx +
+                wPx +
                 "," +
-                hpx +
+                hPx +
                 ");",
             );
 
-        break;
-
+            break;
+        }
         case "draw_text":
-
+        {
             var text = parts[1];
 
             var x = parts[2];
             var y = parts[3];
 
-            var xpx = x * ctx.canvas.width;
-            var ypx = y * ctx.canvas.height;
+            var xPx = x * ctx.canvas.width;
+            var yPx = y * ctx.canvas.height;
 
             if (parts.length >= 7)
             {
@@ -92,65 +92,58 @@ export function process_message(
                 var g = parts[5];
                 var b = parts[6];
 
-                new_draw_commands.push(
-                "ctx.fillStyle = 'rgb(" + r + "," + g + "," + b + ")';",
+                newDrawCommands.push(
+                    "ctx.fillStyle = 'rgb(" + r + "," + g + "," + b + ")';",
                 );
             }
             else
             {
-                new_draw_commands.push("ctx.fillStyle = 'rgb(0,0,0)';");
+                newDrawCommands.push("ctx.fillStyle = 'rgb(0,0,0)';");
             }
 
             let metrics = ctx.measureText(text);
 
-            let text_height =
+            let textHeight =
                 metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
 
-            var x_offset = 0;
+            var xOffset = 0;
 
             if (parts.length >= 8)
             {
-                var center_align = parts[7];
+                var centerAlign = parts[7];
 
-                if (center_align == true)
+                if (centerAlign == true)
                 {
-                    var text_width = ctx.measureText(text).width;
-                    x_offset = -text_width / 2;
+                    var textWidth = ctx.measureText(text).width;
+                    xOffset = -textWidth / 2;
                 }
             }
-            var y_offset = text_height;
+            var yOffset = textHeight;
 
-            new_draw_commands.push(
+            newDrawCommands.push(
                 "ctx.fillText('" +
                 text +
                 "'," +
-                (xpx + x_offset) +
+                (xPx + xOffset) +
                 "," +
-                (ypx + y_offset) +
+                (yPx + yOffset) +
                 ");",
             );
 
-        break;
-
+            break;
+        }
         case "present":
+        {
+            drawCommands.length = 0;
 
-            draw_commands.length = 0;
-
-            for (let entry of new_draw_commands)
+            for (let entry of newDrawCommands)
             {
-                draw_commands.push(entry);
+                drawCommands.push(entry);
             }
 
-            new_draw_commands.length = 0;
+            newDrawCommands.length = 0;
 
             break;
-
-        case "redirect":
-
-            ws.close();
-            var port = parts[1];
-            connect(port);
-
-            break;
+        }
     }
 };
