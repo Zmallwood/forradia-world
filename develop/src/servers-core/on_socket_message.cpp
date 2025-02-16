@@ -18,6 +18,7 @@
  */
 
 #include "on_socket_message.h"
+
 #include "socket_client.h"
 #include "socket_clients_manager.h"
 

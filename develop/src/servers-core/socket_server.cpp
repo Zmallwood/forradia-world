@@ -18,9 +18,10 @@
  */
 
 #include "socket_server.h"
+
+#include "app_properties.h"
 #include "on_socket_message.h"
 #include "on_socket_open.h"
-#include "app_properties.h"
 
 namespace FW
 {

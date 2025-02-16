@@ -18,6 +18,7 @@
  */
 
 #include "socket_clients_manager.h"
+
 #include "socket_client.h"
 
 namespace FW

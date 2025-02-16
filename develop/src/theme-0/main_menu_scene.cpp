@@ -23,11 +23,9 @@ namespace FW
 {
     void MainMenuScene::UpdateDerived()
     {
-
     }
 
     void MainMenuScene::RenderDerived() const
     {
-
     }
 }

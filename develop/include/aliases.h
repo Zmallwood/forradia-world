@@ -19,7 +19,7 @@
 
 namespace FW
 {
-    template<class T>
+    template <class T>
     auto _ = GetSingleton<T>;
 
     typedef websocketpp::server<websocketpp::config::asio> server;
