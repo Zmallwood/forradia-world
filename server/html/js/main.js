@@ -92,9 +92,9 @@ function Connect()
     DrawFrame();
 };
 
-function init()
+function Init()
 {
     Connect();
 };
 
-window.init = init;
+window.Init = Init;
