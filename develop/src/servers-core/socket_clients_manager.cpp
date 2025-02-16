@@ -17,39 +17,35 @@
  * limitations under the License.
  */
 
-#include "on_socket_message.h"
-#include "socket_client.h"
 #include "socket_clients_manager.h"
+#include "socket_client.h"
 
 namespace FW
 {
-    void OnSocketMessage(server* server, websocketpp::connection_hdl handle, message_ptr message)
+    void SocketClientsManager::AddSocketClient(server* server, connection_hdl handle)
     {
-        auto& message_text = message->get_payload();
+        auto newSocketClient = std::make_shared<SocketClient>(server, handle);
 
-        if (message_text == "stop-listening")
+        if (auto sharedPtr = handle.lock())
         {
-            server->stop_listening();
+            auto rawPtr = sharedPtr.get();
 
-            return;
+            m_clients.insert({ rawPtr, newSocketClient });
         }
+    }
 
-        try
+    std::shared_ptr<SocketClient> SocketClientsManager::GetSocketClient(connection_hdl handle) const
+    {
+        if (auto sharedPtr = handle.lock())
         {
-            if (message_text == "frame_finished")
-            {
-                auto socketClient = _<SocketClientsManager>().GetSocketClient(handle);
+            auto rawPtr = sharedPtr.get();
 
-                if (socketClient)
-                {
-                    socketClient->ProcessFrame();
-                }
+            if (m_clients.contains(rawPtr))
+            {
+                return m_clients.at(rawPtr);
             }
         }
-        catch (websocketpp::exception const& e)
-        {
-            std::cout << "Echo failed because: "
-                      << "(" << e.what() << ")" << std::endl;
-        }
+
+        return nullptr;
     }
 }

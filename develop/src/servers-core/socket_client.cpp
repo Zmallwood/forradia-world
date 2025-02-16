@@ -17,35 +17,19 @@
  * limitations under the License.
  */
 
-#include "client_manager.h"
-#include "client.h"
+#include "socket_client.h"
+#include "engine.h"
+#include "graphics.h"
 
 namespace FW
 {
-    void ClientManager::AddClient(server* server, connection_hdl handle)
+    SocketClient::SocketClient(server* server, websocketpp::connection_hdl handle)
+        : m_engine(std::make_shared<Engine>(std::make_shared<Graphics>(server, handle)))
     {
-        auto newClient = std::make_shared<Client>(server, handle);
-
-        if (auto sharedPtr = handle.lock())
-        {
-            auto rawPtr = sharedPtr.get();
-
-            m_clients.insert({ rawPtr, newClient });
-        }
     }
 
-    std::shared_ptr<Client> ClientManager::GetClient(connection_hdl handle) const
+    void SocketClient::ProcessFrame()
     {
-        if (auto sharedPtr = handle.lock())
-        {
-            auto rawPtr = sharedPtr.get();
-
-            if (m_clients.contains(rawPtr))
-            {
-                return m_clients.at(rawPtr);
-            }
-        }
-
-        return nullptr;
+        m_engine->ProcessFrame();
     }
 }

@@ -17,19 +17,19 @@
  * limitations under the License.
  */
 
-#include "client.h"
-#include "engine.h"
-#include "graphics.h"
+#pragma once
 
 namespace FW
 {
-    Client::Client(server* server, websocketpp::connection_hdl handle)
-        : m_engine(std::make_shared<Engine>(std::make_shared<Graphics>(server, handle)))
-    {
-    }
+    class SocketClient;
 
-    void Client::ProcessFrame()
+    class SocketClientsManager
     {
-        m_engine->ProcessFrame();
-    }
+      public:
+        void AddSocketClient(server* server, connection_hdl handle);
+        std::shared_ptr<SocketClient> GetSocketClient(connection_hdl handle) const;
+
+      private:
+        std::map<void*, std::shared_ptr<SocketClient>> m_clients;
+    };
 }

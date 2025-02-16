@@ -23,10 +23,10 @@ namespace FW
 {
     class Engine;
 
-    class Client
+    class SocketClient
     {
       public:
-        Client(server* server, websocketpp::connection_hdl handle);
+        SocketClient(server* server, websocketpp::connection_hdl handle);
 
         void ProcessFrame();
 

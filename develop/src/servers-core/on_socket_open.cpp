@@ -18,7 +18,7 @@
  */
 
 #include "on_socket_open.h"
-#include "client_manager.h"
+#include "socket_clients_manager.h"
 
 namespace FW
 {
@@ -26,6 +26,6 @@ namespace FW
     {
         std::cout << GetCurrentTime() << ": A new client has connected.\n";
 
-        _<ClientManager>().AddClient(server, handle);
+        _<SocketClientsManager>().AddSocketClient(server, handle);
     }
 }
