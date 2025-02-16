@@ -32,6 +32,8 @@ namespace FW
 
     void MainServer::Start() const
     {
+        GenerateWSConnString();
+
         std::thread tWebServer([]
             { _<WebServer>().Start(); });
 
@@ -53,5 +55,45 @@ namespace FW
         tWebServer.join();
 
         std::cout << "Game server exited gracefully.\n";
+    }
+
+    void MainServer::GenerateWSConnString() const
+    {
+        std::fstream outFile;
+
+        // The following code is Linux specific to obtain directory of the application file,
+        // instead of using the directory from where it was run.
+        char buffer[PATH_MAX];
+        ssize_t len = readlink("/proc/self/exe", buffer, sizeof(buffer) - 1);
+        if (len != -1)
+        {
+            buffer[len] = '\0';
+            auto fullPathStr = std::string(buffer);
+            auto lastSlash = fullPathStr.find_last_of("/");
+            auto appBasePath = fullPathStr.substr(0, lastSlash + 1);
+            outFile.open(appBasePath + "../html/js/wsConnString.generated.js", std::fstream::out | std::fstream::trunc);
+        }
+
+        if (!outFile)
+        {
+            std::cout << "Error opening file for writing the WS connection string.\n";
+        }
+
+        auto fw_env = std::getenv("FW_ENV");
+
+        if (fw_env != nullptr && std::string(fw_env) == "dev")
+        {
+            std::cout << "Running in development mode.\n";
+
+            outFile << "export const wsConnString = 'ws://localhost:8080';";
+        }
+        else
+        {
+            std::cout << "Running in production mode.\n";
+
+            outFile << "export const wsConnString = 'wss://forradia-world-ws.ngrok-free.app:443';";
+        }
+
+        outFile.close();
     }
 }

@@ -1,1 +1,1 @@
-export const wsConnString = "wss://forradia-world-ws.ngrok-free.app:443";
+export const wsConnString = 'ws://localhost:8080';
