@@ -33,7 +33,7 @@ namespace FW
         try
         {
             // Set logging settings.
-            m_server.set_access_channels(websocketpp::log::alevel::all);
+            m_server.set_access_channels(websocketpp::log::alevel::none);
             m_server.clear_access_channels(websocketpp::log::alevel::frame_payload);
 
             // Initialize Asio.

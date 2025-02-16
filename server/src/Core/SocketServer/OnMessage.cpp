@@ -23,9 +23,9 @@ namespace FW
 {
     void OnMessage(server* s, websocketpp::connection_hdl hdl, message_ptr msg)
     {
-        std::cout << "OnMessage called with hdl: " << hdl.lock().get()
-                  << " and message: " << msg->get_payload()
-                  << std::endl;
+        // std::cout << "OnMessage called with hdl: " << hdl.lock().get()
+        //           << " and message: " << msg->get_payload()
+        //           << std::endl;
 
         // Check for a special command to instruct the server to stop listening so
         // it can be cleanly exited.
@@ -38,7 +38,7 @@ namespace FW
 
         try
         {
-            s->send(hdl, msg->get_payload(), msg->get_opcode());
+            //s->send(hdl, msg->get_payload(), msg->get_opcode());
             s->send(hdl, "clear;0;150;255;", msg->get_opcode());
             s->send(hdl, "draw_image;GroundGrass;0.0;0.0;0.5;0.5;", msg->get_opcode());
             s->send(hdl, "present", msg->get_opcode());
