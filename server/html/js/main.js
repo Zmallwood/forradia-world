@@ -31,7 +31,7 @@ for (const imageName of imageNames)
 }
 
 
-function connect()
+function Connect()
 {
     const canvas = document.getElementById("canvas_buffer_1");
     const ctx = canvas.getContext("2d");
@@ -94,7 +94,7 @@ function connect()
 
 function init()
 {
-    connect();
+    Connect();
 };
 
 window.init = init;
