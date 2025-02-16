@@ -36,7 +36,8 @@ target_precompile_headers(forradia-world
         <websocketpp/config/asio_no_tls.hpp>
         <websocketpp/server.hpp>
 
-        src/common/Singleton.hpp
+        src/common/GetSingleton.hpp
+        src/common/Aliases.hpp
 )
 
 

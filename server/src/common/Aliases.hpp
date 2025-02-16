@@ -17,15 +17,8 @@
  * limitations under the License.
  */
 
-#pragma once
-
 namespace FW
 {
-    template <class T>
-    T& _()
-    {
-        static T instance;
-
-        return instance;
-    }
+    template<class T>
+    auto _ = GetSingleton<T>;
 }
