@@ -38,7 +38,7 @@ https://github.com/yourusername/AdventureLand.git`
 
 * Enter the web client.
 * Create an account, login, create a character and enter the world.
-* Move around and interact with the world with the mouse.
+* Move around, interact with the world, and attack with the mouse.
 * Build a settlement, develop your character, find allies, and be aware of enemies.
 
 ## Contributing
