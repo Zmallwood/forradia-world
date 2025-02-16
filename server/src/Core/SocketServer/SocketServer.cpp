@@ -36,13 +36,10 @@ namespace FW
             m_server.set_access_channels(websocketpp::log::alevel::none);
             m_server.clear_access_channels(websocketpp::log::alevel::frame_payload);
 
-            // Initialize Asio.
             m_server.init_asio();
 
-            // Register our message handler.
             m_server.set_message_handler(bind(&OnMessage, &m_server, _1, _2));
 
-            // Listen on port 8080.
             m_server.listen(8080);
 
             // Start the server accept loop.
