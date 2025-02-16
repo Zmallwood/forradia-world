@@ -31,7 +31,7 @@ namespace FW
         
       protected:
         virtual void UpdateDerived()
-        { }
+        {}
         virtual void RenderDerived(std::shared_ptr<Graphics> graphics) const
         { }
     };

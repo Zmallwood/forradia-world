@@ -20,7 +20,8 @@
 #include "app_properties.h"
 #include "main_server.h"
 
-int main(int arc, char** argv)
+int main(int arc,
+         char** argv)
 {
     using namespace FW;
     

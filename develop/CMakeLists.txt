@@ -33,6 +33,7 @@ target_precompile_headers(forradia-world
         <chrono>
         <cstdlib>
         <sstream>
+        <format>
 
         <httplib.h>
         <websocketpp/config/asio_no_tls.hpp>
