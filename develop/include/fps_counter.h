@@ -25,7 +25,7 @@ namespace FW
     {
       public:
         void Update();
-        void Render(server* server, websocketpp::connection_hdl handle) const;
+        void Render(WSPPServer* server, ConnectionHandle handle) const;
 
       private:
         int m_fps { 0 };

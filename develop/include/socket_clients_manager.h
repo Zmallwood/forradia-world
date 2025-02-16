@@ -26,8 +26,8 @@ namespace FW
     class SocketClientsManager
     {
       public:
-        void AddSocketClient(server* server, connection_hdl handle);
-        std::shared_ptr<SocketClient> GetSocketClient(connection_hdl handle) const;
+        void AddSocketClient(WSPPServer* server, ConnectionHandle handle);
+        std::shared_ptr<SocketClient> GetSocketClient(ConnectionHandle handle) const;
 
       private:
         std::map<void*, std::shared_ptr<SocketClient>> m_clients;

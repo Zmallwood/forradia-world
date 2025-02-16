@@ -28,6 +28,6 @@ namespace FW
         void Stop();
 
       private:
-        server m_server;
+        WSPPServer m_server;
     };
 }

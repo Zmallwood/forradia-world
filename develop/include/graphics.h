@@ -24,7 +24,7 @@ namespace FW
     class Graphics
     {
       public:
-        Graphics(server* server, websocketpp::connection_hdl handle);
+        Graphics(WSPPServer* server, ConnectionHandle handle);
 
         void ClearCanvas() const;
         void PresentCanvas() const;
@@ -40,7 +40,7 @@ namespace FW
         }
 
       private:
-        server* m_server { nullptr };
-        websocketpp::connection_hdl m_handle;
+        WSPPServer* m_server { nullptr };
+        ConnectionHandle m_handle;
     };
 }

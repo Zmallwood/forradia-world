@@ -21,5 +21,5 @@
 
 namespace FW
 {
-    void OnSocketMessage(server* server, websocketpp::connection_hdl handle, message_ptr message);
+    void OnSocketMessage(WSPPServer* server, ConnectionHandle handle, MessagePtr message);
 }

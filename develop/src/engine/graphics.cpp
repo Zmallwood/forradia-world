@@ -21,7 +21,7 @@
 
 namespace FW
 {
-    Graphics::Graphics(server* server, websocketpp::connection_hdl handle)
+    Graphics::Graphics(WSPPServer* server, ConnectionHandle handle)
         : m_server(server)
         , m_handle(handle)
     {

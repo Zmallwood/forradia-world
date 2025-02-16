@@ -23,7 +23,7 @@
 
 namespace FW
 {
-    void SocketClientsManager::AddSocketClient(server* server, connection_hdl handle)
+    void SocketClientsManager::AddSocketClient(WSPPServer* server, ConnectionHandle handle)
     {
         auto newSocketClient = std::make_shared<SocketClient>(server, handle);
 
@@ -35,7 +35,7 @@ namespace FW
         }
     }
 
-    std::shared_ptr<SocketClient> SocketClientsManager::GetSocketClient(connection_hdl handle) const
+    std::shared_ptr<SocketClient> SocketClientsManager::GetSocketClient(ConnectionHandle handle) const
     {
         if (auto sharedPtr = handle.lock())
         {

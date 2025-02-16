@@ -22,9 +22,9 @@ namespace FW
     template <class T>
     auto _ = GetSingleton<T>;
 
-    typedef websocketpp::server<websocketpp::config::asio> server;
+    typedef websocketpp::server<websocketpp::config::asio> WSPPServer;
 
-    typedef server::message_ptr message_ptr;
+    typedef WSPPServer::message_ptr MessagePtr;
 
-    typedef websocketpp::lib::weak_ptr<void> connection_hdl;
+    typedef websocketpp::lib::weak_ptr<void> ConnectionHandle;
 }
