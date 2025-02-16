@@ -19,6 +19,7 @@
 
 import {imageNames} from './imageNames.js';
 import {ProcessMessage} from './ProcessMessage.js';
+import {wsConnString} from './wsConnString.generated.js';
 
 var images = {};
 
@@ -41,8 +42,8 @@ function Connect()
     ctx.font = "38px serif";
 
     let drawCommands = [];
-    const port = 443;
-    const ws = new WebSocket("wss://forradia-world-ws.ngrok-free.app:" + port);
+
+    const ws = new WebSocket(wsConnString);
 
     ws.onopen = function()
     {

@@ -1,5 +1,8 @@
 #!/usr/bin/sh
 
 ENV=dev
-sudo ./server/build/forradia-world
+echo "Ngrok started. Client is accessible on: https://$WEB_SERVER_HOST"
+nohup ngrok http 80 &
 echo "Develop version started. Client is accessible on: http://localhost"
+sudo ./server/build/forradia-world
+pkill ngrok
