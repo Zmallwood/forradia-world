@@ -17,35 +17,13 @@
  * limitations under the License.
  */
 
-#include "ClientManager.hpp"
-#include "Client.hpp"
+#pragma once
 
 namespace FW
 {
-    void ClientManager::AddClient(connection_hdl handle)
+    class ClientGameSession
     {
-        auto newClient = std::make_shared<Client>();
-
-        if (auto sharedPtr = handle.lock())
-        {
-            auto rawPtr = sharedPtr.get();
-
-            m_clients.insert({ rawPtr, newClient });
-        }
-    }
-
-    std::shared_ptr<Client> ClientManager::GetClient(connection_hdl handle) const
-    {
-        if (auto sharedPtr = handle.lock())
-        {
-            auto rawPtr = sharedPtr.get();
-
-            if (m_clients.contains(rawPtr))
-            {
-                return m_clients.at(rawPtr);
-            }
-        }
-
-        return nullptr;
-    }
+    public:
+        void ProcessFrame();
+    };
 }

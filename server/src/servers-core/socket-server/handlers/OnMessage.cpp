@@ -18,6 +18,7 @@
  */
 
 #include "OnMessage.hpp"
+#include "servers-core/socket-server/clients/Client.hpp"
 #include "servers-core/socket-server/clients/ClientManager.hpp"
 
 namespace FW
@@ -45,7 +46,12 @@ namespace FW
                 server->send(handle, "draw_image;GroundGrass;0.0;0.0;0.5;0.5;", message->get_opcode());
                 server->send(handle, "present", message->get_opcode());
 
-                auto client = _<ClientManager>().GetClient(&handle);
+                auto client = _<ClientManager>().GetClient(handle);
+
+                if (client)
+                {
+                    client->ProcessFrame();
+                }
             }
         }
         catch (websocketpp::exception const& e)

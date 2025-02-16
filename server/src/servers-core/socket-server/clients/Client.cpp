@@ -18,8 +18,17 @@
  */
 
 #include "Client.hpp"
+#include "client-game-session/ClientGameSession.hpp"
 
 namespace FW
 {
+    Client::Client()
+        : m_clientGameSession(std::make_shared<ClientGameSession>())
+    {
+    }
 
+    void Client::ProcessFrame()
+    {
+        m_clientGameSession->ProcessFrame();
+    }
 }

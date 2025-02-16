@@ -21,8 +21,16 @@
 
 namespace FW
 {
+    class ClientGameSession;
+
     class Client
     {
       public:
+        Client();
+
+        void ProcessFrame();
+
+      private:
+        std::shared_ptr<ClientGameSession> m_clientGameSession;
     };
 }

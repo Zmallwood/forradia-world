@@ -28,10 +28,10 @@ namespace FW
     class ClientManager
     {
       public:
-        void AddClient(connection_hdl* handle);
-        std::shared_ptr<Client> GetClient(connection_hdl* handle) const;
+        void AddClient(connection_hdl handle);
+        std::shared_ptr<Client> GetClient(connection_hdl handle) const;
 
       private:
-        std::map<connection_hdl*, std::shared_ptr<Client>> m_clients;
+        std::map<void*, std::shared_ptr<Client>> m_clients;
     };
 }
