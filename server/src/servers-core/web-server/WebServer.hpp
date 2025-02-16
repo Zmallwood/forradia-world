@@ -32,9 +32,10 @@ namespace FW
         void SetupEndpoints();
         void StartListen();
 
-        httplib::Server m_server;
-        std::string m_html;
         const std::string k_hostName {"localhost"};
         const int k_port {80};
+
+        httplib::Server m_server;
+        std::string m_html;
     };
 }
