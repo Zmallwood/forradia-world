@@ -25,16 +25,16 @@ export function ProcessMessage(
     ctx,
     drawCommands)
 {
-    var msg = evt.data;
-    var parts = msg.split(";");
+    const msg = evt.data;
+    const parts = msg.split(";");
 
     switch (parts[0])
     {
         case "clear":
         {
-            var r = parts[1];
-            var g = parts[2];
-            var b = parts[3];
+            const r = parts[1];
+            const g = parts[2];
+            const b = parts[3];
 
             newDrawCommands.push(
                 "ctx.fillStyle = 'rgb(" + r + "," + g + "," + b + ")';",
@@ -48,17 +48,17 @@ export function ProcessMessage(
         }
         case "draw_image":
         {
-            var imageName = parts[1];
+            const imageName = parts[1];
 
-            var x = parts[2];
-            var y = parts[3];
-            var w = parts[4];
-            var h = parts[5];
+            const x = parts[2];
+            const y = parts[3];
+            const w = parts[4];
+            const h = parts[5];
 
-            var xPx = x * ctx.canvas.width;
-            var yPx = y * ctx.canvas.height;
-            var wPx = w * ctx.canvas.width;
-            var hPx = h * ctx.canvas.height;
+            const xPx = x * ctx.canvas.width;
+            const yPx = y * ctx.canvas.height;
+            const wPx = w * ctx.canvas.width;
+            const hPx = h * ctx.canvas.height;
 
             newDrawCommands.push(
                 "ctx.drawImage(images['" +
@@ -78,19 +78,19 @@ export function ProcessMessage(
         }
         case "draw_text":
         {
-            var text = parts[1];
+            const text = parts[1];
 
-            var x = parts[2];
-            var y = parts[3];
+            const x = parts[2];
+            const y = parts[3];
 
-            var xPx = x * ctx.canvas.width;
-            var yPx = y * ctx.canvas.height;
+            const xPx = x * ctx.canvas.width;
+            const yPx = y * ctx.canvas.height;
 
             if (parts.length >= 7)
             {
-                var r = parts[4];
-                var g = parts[5];
-                var b = parts[6];
+                const r = parts[4];
+                const g = parts[5];
+                const b = parts[6];
 
                 newDrawCommands.push(
                     "ctx.fillStyle = 'rgb(" + r + "," + g + "," + b + ")';",
@@ -101,24 +101,24 @@ export function ProcessMessage(
                 newDrawCommands.push("ctx.fillStyle = 'rgb(0,0,0)';");
             }
 
-            let metrics = ctx.measureText(text);
+            const metrics = ctx.measureText(text);
 
-            let textHeight =
+            const textHeight =
                 metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
 
-            var xOffset = 0;
+            let xOffset = 0;
 
             if (parts.length >= 8)
             {
-                var centerAlign = parts[7];
+                const centerAlign = parts[7];
 
                 if (centerAlign == true)
                 {
-                    var textWidth = ctx.measureText(text).width;
+                    const textWidth = ctx.measureText(text).width;
                     xOffset = -textWidth / 2;
                 }
             }
-            var yOffset = textHeight;
+            const yOffset = textHeight;
 
             newDrawCommands.push(
                 "ctx.fillText('" +
@@ -136,7 +136,7 @@ export function ProcessMessage(
         {
             drawCommands.length = 0;
 
-            for (let entry of newDrawCommands)
+            for (const entry of newDrawCommands)
             {
                 drawCommands.push(entry);
             }

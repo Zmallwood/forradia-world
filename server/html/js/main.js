@@ -24,7 +24,7 @@ var images = {};
 
 for (const imageName of imageNames)
 {
-    var image = new Image();
+    let image = new Image();
 
     image.src = "./img/" + imageName + ".png";
     images[imageName] = image;
@@ -40,42 +40,42 @@ var connect = function (port)
     ctx.canvas.height = window.innerHeight;
     ctx.font = "38px serif";
 
-    var drawCommands = [];
-    var ws = new WebSocket("https://forradia-world-ws.ngrok-free.app:" + port);
+    let drawCommands = [];
+    const ws = new WebSocket("https://forradia-world-ws.ngrok-free.app:" + port);
 
-    ws.onopen = function ()
+    ws.onopen = function()
     {
         ws.send("canvas_size;" + ctx.canvas.width + ";" + ctx.canvas.height); // send a message
     };
 
-    ws.onmessage = function (evt)
+    ws.onmessage = function(evt)
     {
         ProcessMessage(ws, evt, ctx, drawCommands);
     };
 
-    ws.onclose = function ()
+    ws.onclose = function()
     {
         console.log("Connection closed.");
     };
 
-    document.onkeydown = function (e)
+    document.onkeydown = function(e)
     {
         e = e || window.event;
         ws.send("key_press;" + e.keyCode);
     };
 
-    document.onkeyup = function (e)
+    document.onkeyup = function(e)
     {
         e = e || window.event;
         ws.send("key_release;" + e.keyCode);
     }
 
-    var DrawFrame = function ()
+    function DrawFrame()
     {
         requestAnimationFrame(DrawFrame);
         ctx.save();
 
-        for (let cmd of drawCommands)
+        for (const cmd of drawCommands)
         {
             eval(cmd);
         }
@@ -91,7 +91,7 @@ var connect = function (port)
     DrawFrame();
 };
 
-var init = function ()
+function init()
 {
     connect(443);
 };
