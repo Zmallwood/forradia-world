@@ -30,12 +30,14 @@ namespace FW
     {
         AddScene("intro-scene", std::make_shared<IntroScene>());
         AddScene("main-menu-scene", std::make_shared<MainMenuScene>());
-        AddScene("world-generation-scene", std::make_shared<WorldGenerationScene>());
+        AddScene(
+            "world-generation-scene",
+            std::make_shared<WorldGenerationScene>());
         AddScene("main-scene", std::make_shared<MainScene>());
-
+        
         ChangeScene("intro-scene");
     }
-
+    
     void SceneManager::UpdateCurrentScene()
     {
         if (m_scenes.contains(m_currentScene))
@@ -43,21 +45,23 @@ namespace FW
             m_scenes.at(m_currentScene)->Update();
         }
     }
-
-    void SceneManager::RenderCurrentScene(std::shared_ptr<Graphics> graphics) const
+    
+    void SceneManager::RenderCurrentScene(
+        std::shared_ptr<Graphics> graphics) const
     {
         if (m_scenes.contains(m_currentScene))
         {
             m_scenes.at(m_currentScene)->Render(graphics);
         }
     }
-
+    
     void SceneManager::ChangeScene(std::string_view sceneName)
     {
         m_currentScene = Hash(sceneName);
     }
-
-    void SceneManager::AddScene(std::string_view sceneName, std::shared_ptr<IScene> scene)
+    
+    void SceneManager::AddScene(std::string_view sceneName,
+                                std::shared_ptr<IScene> scene)
     {
         m_scenes.insert({ Hash(sceneName), scene });
     }

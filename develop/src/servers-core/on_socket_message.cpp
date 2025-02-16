@@ -24,23 +24,25 @@
 
 namespace FW
 {
-    void OnSocketMessage(WSPPServer* server, ConnectionHandle handle, MessagePtr message)
+    void OnSocketMessage(WSPPServer* server, ConnectionHandle handle,
+                         MessagePtr message)
     {
         auto& message_text = message->get_payload();
-
+        
         if (message_text == "stop-listening")
         {
             server->stop_listening();
-
+            
             return;
         }
-
+        
         try
         {
             if (message_text == "frame_finished")
             {
-                auto socketClient = _<SocketClientsManager>().GetSocketClient(handle);
-
+                auto socketClient =
+                    _<SocketClientsManager>().GetSocketClient(handle);
+                
                 if (socketClient)
                 {
                     socketClient->ProcessFrame();

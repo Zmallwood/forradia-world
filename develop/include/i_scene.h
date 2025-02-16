@@ -22,15 +22,17 @@
 namespace FW
 {
     class Graphics;
-
+    
     class IScene
     {
       public:
         void Update();
         void Render(std::shared_ptr<Graphics> graphics) const;
-
+        
       protected:
-        virtual void UpdateDerived() { }
-        virtual void RenderDerived(std::shared_ptr<Graphics> graphics) const { }
+        virtual void UpdateDerived()
+        { }
+        virtual void RenderDerived(std::shared_ptr<Graphics> graphics) const
+        { }
     };
 }

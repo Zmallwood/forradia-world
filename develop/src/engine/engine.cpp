@@ -29,14 +29,13 @@ namespace FW
         : m_fpsCounter(std::make_shared<FPSCounter>())
         , m_sceneManager(std::make_shared<SceneManager>())
         , m_graphics(graphics)
-    {
-    }
-
+    {}
+    
     void Engine::ProcessFrame()
     {
         m_sceneManager->UpdateCurrentScene();
         m_fpsCounter->Update();
-
+        
         m_graphics->ClearCanvas();
         m_sceneManager->RenderCurrentScene(m_graphics);
         m_fpsCounter->Render(m_graphics);

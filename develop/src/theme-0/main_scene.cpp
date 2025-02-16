@@ -23,10 +23,8 @@
 namespace FW
 {
     void MainScene::UpdateDerived()
-    {
-    }
-
+    {}
+    
     void MainScene::RenderDerived(std::shared_ptr<Graphics> graphics) const
-    {
-    }
+    {}
 }

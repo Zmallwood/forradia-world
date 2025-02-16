@@ -25,7 +25,7 @@ namespace FW
     T& GetSingleton()
     {
         static T instance;
-
+        
         return instance;
     }
 }

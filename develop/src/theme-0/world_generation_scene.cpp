@@ -23,10 +23,9 @@
 namespace FW
 {
     void WorldGenerationScene::UpdateDerived()
-    {
-    }
-
-    void WorldGenerationScene::RenderDerived(std::shared_ptr<Graphics> graphics) const
-    {
-    }
+    {}
+    
+    void WorldGenerationScene::RenderDerived(
+        std::shared_ptr<Graphics> graphics) const
+    {}
 }

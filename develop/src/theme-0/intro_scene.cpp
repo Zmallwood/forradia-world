@@ -23,9 +23,8 @@
 namespace FW
 {
     void IntroScene::UpdateDerived()
-    {
-    }
-
+    {}
+    
     void IntroScene::RenderDerived(std::shared_ptr<Graphics> graphics) const
     {
         graphics->DrawImage("default-scene-background", 0.0f, 0.0f, 1.0f, 1.0f);

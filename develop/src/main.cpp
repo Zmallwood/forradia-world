@@ -23,10 +23,10 @@
 int main(int arc, char** argv)
 {
     using namespace FW;
-
+    
     _<AppProperties>().SetAppPath(argv[0]);
-
+    
     _<MainServer>().Start();
-
+    
     return 0;
 }

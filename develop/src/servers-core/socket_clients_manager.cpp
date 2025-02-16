@@ -23,30 +23,32 @@
 
 namespace FW
 {
-    void SocketClientsManager::AddSocketClient(WSPPServer* server, ConnectionHandle handle)
+    void SocketClientsManager::AddSocketClient(WSPPServer* server,
+                                               ConnectionHandle handle)
     {
         auto newSocketClient = std::make_shared<SocketClient>(server, handle);
-
+        
         if (auto sharedPtr = handle.lock())
         {
             auto rawPtr = sharedPtr.get();
-
+            
             m_clients.insert({ rawPtr, newSocketClient });
         }
     }
-
-    std::shared_ptr<SocketClient> SocketClientsManager::GetSocketClient(ConnectionHandle handle) const
+    
+    std::shared_ptr<SocketClient> SocketClientsManager::GetSocketClient(
+        ConnectionHandle handle) const
     {
         if (auto sharedPtr = handle.lock())
         {
             auto rawPtr = sharedPtr.get();
-
+            
             if (m_clients.contains(rawPtr))
             {
                 return m_clients.at(rawPtr);
             }
         }
-
+        
         return nullptr;
     }
 }

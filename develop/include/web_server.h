@@ -26,13 +26,14 @@ namespace FW
       public:
         void Start();
         void Stop();
-
+        
       private:
         void SetupEndpoints();
         void StartListen();
-
-        const std::string k_hostName { "localhost" };
-
+        
+        const std::string k_hostName
+        { "localhost" };
+        
         httplib::Server m_server;
     };
 }

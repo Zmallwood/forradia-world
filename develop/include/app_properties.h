@@ -28,35 +28,37 @@ namespace FW
         {
             return m_http_port;
         }
-
+        
         void SetHTTPPort(int value)
         {
             m_http_port = value;
         }
-
+        
         void SetSocketsPort(int value)
         {
             m_sockets_port = value;
         }
-
+        
         auto GetSocketsPort() const
         {
             return m_sockets_port;
         }
-
+        
         std::string_view GetAppPath() const
         {
             return m_appPath;
         }
-
+        
         void SetAppPath(std::string_view value)
         {
             m_appPath = value.data();
         }
-
+        
       private:
-        int m_http_port { 80 };
-        int m_sockets_port { 8080 };
+        int m_http_port
+        { 80 };
+        int m_sockets_port
+        { 8080 };
         std::string m_appPath;
     };
 }

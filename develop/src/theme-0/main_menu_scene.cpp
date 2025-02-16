@@ -23,10 +23,9 @@
 namespace FW
 {
     void MainMenuScene::UpdateDerived()
-    {
-    }
-
-    void MainMenuScene::RenderDerived(std::shared_ptr<Graphics> graphics) const
-    {
-    }
+    {}
+    
+    void MainMenuScene::RenderDerived(
+        std::shared_ptr<Graphics> graphics) const
+    {}
 }

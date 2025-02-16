@@ -25,7 +25,7 @@ namespace FW
     {
       public:
         void Start() const;
-
+        
       private:
         void GenerateWSConnString() const;
     };

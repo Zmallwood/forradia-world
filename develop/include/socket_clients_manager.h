@@ -22,13 +22,14 @@
 namespace FW
 {
     class SocketClient;
-
+    
     class SocketClientsManager
     {
       public:
         void AddSocketClient(WSPPServer* server, ConnectionHandle handle);
-        std::shared_ptr<SocketClient> GetSocketClient(ConnectionHandle handle) const;
-
+        std::shared_ptr<SocketClient> GetSocketClient(
+            ConnectionHandle handle) const;
+        
       private:
         std::map<void*, std::shared_ptr<SocketClient>> m_clients;
     };

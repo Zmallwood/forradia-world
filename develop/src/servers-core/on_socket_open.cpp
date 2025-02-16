@@ -26,7 +26,7 @@ namespace FW
     void OnSocketOpen(WSPPServer* server, ConnectionHandle handle)
     {
         std::cout << GetCurrentTime() << ": A new client has connected.\n";
-
+        
         _<SocketClientsManager>().AddSocketClient(server, handle);
     }
 }

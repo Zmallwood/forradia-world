@@ -25,17 +25,17 @@ namespace FW
     void FPSCounter::Update()
     {
         auto now = GetTicks();
-
+        
         if (now > m_ticksLastUpdate + 1000)
         {
             m_fps = m_framesCount;
             m_framesCount = 0;
             m_ticksLastUpdate = now;
         }
-
+        
         m_framesCount++;
     }
-
+    
     void FPSCounter::Render(std::shared_ptr<Graphics> graphics) const
     {
         graphics->DrawText("Fps: " + std::to_string(m_fps), 0.85, 0.05);

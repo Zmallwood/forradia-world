@@ -22,16 +22,19 @@
 namespace FW
 {
     class Graphics;
-
+    
     class FPSCounter
     {
       public:
         void Update();
         void Render(std::shared_ptr<Graphics> graphics) const;
-
+        
       private:
-        int m_fps { 0 };
-        int m_framesCount { 0 };
-        int m_ticksLastUpdate { 0 };
+        int m_fps
+        { 0 };
+        int m_framesCount
+        { 0 };
+        int m_ticksLastUpdate
+        { 0 };
     };
 }

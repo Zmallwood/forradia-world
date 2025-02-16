@@ -1,0 +1,4 @@
+DIR="$(dirname "$0")"
+
+find $DIR/src -type f -name "*.cpp" | xargs uncrustify -c $DIR/uncrustify.cfg --no-backup;
+find $DIR/include -type f -name "*.h" | xargs uncrustify -c $DIR/uncrustify.cfg --no-backup;

@@ -22,14 +22,14 @@
 namespace FW
 {
     class Engine;
-
+    
     class SocketClient
     {
       public:
         SocketClient(WSPPServer* server, ConnectionHandle handle);
-
+        
         void ProcessFrame();
-
+        
       private:
         std::shared_ptr<Engine> m_engine;
     };

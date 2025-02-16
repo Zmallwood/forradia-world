@@ -28,27 +28,31 @@ namespace FW
     using websocketpp::lib::bind;
     using websocketpp::lib::placeholders::_1;
     using websocketpp::lib::placeholders::_2;
-
+    
     void SocketServer::Start()
     {
         std::cout << "Starting socket server.\n";
-
+        
         try
         {
             // Set logging settings.
             m_server.set_access_channels(websocketpp::log::alevel::none);
-            m_server.clear_access_channels(websocketpp::log::alevel::frame_payload);
-
+            m_server.clear_access_channels(
+                websocketpp::log::alevel::frame_payload);
+            
             m_server.init_asio();
-
+            
             m_server.set_open_handler(bind(&OnSocketOpen, &m_server, _1));
-            m_server.set_message_handler(bind(&OnSocketMessage, &m_server, _1, _2));
-
+            m_server.set_message_handler(
+                bind(
+                    &OnSocketMessage, &m_server, _1,
+                    _2));
+            
             m_server.listen(_<AppProperties>().GetSocketsPort());
-
+            
             // Start the server accept loop.
             m_server.start_accept();
-
+            
             // Start the ASIO io_service run loop.
             m_server.run();
         }
@@ -61,7 +65,7 @@ namespace FW
             std::cout << "other exception" << std::endl;
         }
     }
-
+    
     void SocketServer::Stop()
     {
         m_server.stop();

@@ -21,10 +21,10 @@ namespace FW
 {
     template <class T>
     auto _ = GetSingleton<T>;
-
+    
     using WSPPServer = websocketpp::server<websocketpp::config::asio>;
-
+    
     using MessagePtr = WSPPServer::message_ptr;
-
+    
     using ConnectionHandle = websocketpp::lib::weak_ptr<void>;
 }

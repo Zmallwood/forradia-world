@@ -24,14 +24,14 @@ namespace FW
     class SceneManager;
     class FPSCounter;
     class Graphics;
-
+    
     class Engine
     {
       public:
         Engine(std::shared_ptr<Graphics> graphics);
-
+        
         void ProcessFrame();
-
+        
       private:
         std::shared_ptr<SceneManager> m_sceneManager;
         std::shared_ptr<FPSCounter> m_fpsCounter;

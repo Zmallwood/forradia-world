@@ -21,5 +21,6 @@
 
 namespace FW
 {
-    void OnSocketMessage(WSPPServer* server, ConnectionHandle handle, MessagePtr message);
+    void OnSocketMessage(WSPPServer* server, ConnectionHandle handle,
+                         MessagePtr message);
 }

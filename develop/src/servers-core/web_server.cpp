@@ -26,56 +26,66 @@ namespace FW
     void WebServer::Start()
     {
         std::cout << "Starting web server.\n";
-
+        
         SetupEndpoints();
-
+        
         StartListen();
     }
-
+    
     void WebServer::Stop()
     {
         m_server.stop();
     }
-
+    
     void WebServer::SetupEndpoints()
     {
         using namespace httplib;
-
+        
         auto appPath = std::string(_<AppProperties>().GetAppPath());
         auto fullPathStr = std::string(appPath);
         auto lastSlash = fullPathStr.find_last_of("/");
         auto appBasePath = fullPathStr.substr(0, lastSlash + 1);
-
-        m_server.Get("/", [this, appBasePath](const Request& req, Response& res)
-            {
+        
+        m_server.Get(
+            "/", [this, appBasePath](const Request& req, Response& res){
                 std::ifstream t(appBasePath + "../html/index.html");
-                std::string str((std::istreambuf_iterator<char>(t)),
-                                std::istreambuf_iterator<char>());
-
-                res.set_content(str, "text/html"); });
-
-        m_server.Get("/js/(.*)", [this, appBasePath](const Request& req, Response& res)
-            {
+                std::string str(
+                    (std::istreambuf_iterator<char>(t)),
+                    std::istreambuf_iterator<char>());
+                
+                res.set_content(str, "text/html");
+            });
+        
+        m_server.Get(
+            "/js/(.*)", [this, appBasePath](const Request& req, Response& res){
                 auto filename = req.matches[1].str();
                 std::ifstream t(appBasePath + "../html/js/" + filename);
-                std::string str((std::istreambuf_iterator<char>(t)),
+                std::string str(
+                    (std::istreambuf_iterator<char>(t)),
                     std::istreambuf_iterator<char>());
-
-                res.set_content(str, "application/javascript"); });
-
-        m_server.Get("/img/(.*)", [this, appBasePath](const Request& req, Response& res)
-            {
+                
+                res.set_content(str, "application/javascript");
+            });
+        
+        m_server.Get(
+            "/img/(.*)", [this, appBasePath](const Request& req, Response& res){
                 auto filename = req.matches[1].str();
-                std::ifstream t(appBasePath + "../html/resources/images/" + filename);
-                std::string str((std::istreambuf_iterator<char>(t)),
+                std::ifstream t(
+                    appBasePath + "../html/resources/images/" +
+                    filename);
+                std::string str(
+                    (std::istreambuf_iterator<char>(t)),
                     std::istreambuf_iterator<char>());
-
-                res.set_content(str, "image/png"); });
-
-        m_server.Get("/stop", [&](const Request& req, Response& res)
-            { m_server.stop(); });
+                
+                res.set_content(str, "image/png");
+            });
+        
+        m_server.Get(
+            "/stop", [&](const Request& req, Response& res){
+                m_server.stop();
+            });
     }
-
+    
     void WebServer::StartListen()
     {
         m_server.listen(k_hostName, _<AppProperties>().GetHTTPPort());
