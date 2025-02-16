@@ -18,8 +18,8 @@ envsubst < ngrok.yml.template > ngrok.yml
 nohup ngrok start --all --config ./ngrok.yml &
 echo "Ngrok started. Client is accessible on: https://$WEB_SERVER_HOST"
 mkdir -p ./published/build/
-cp -r ./server/build/forradia-world ./published/build/
-cp -r ./server/html/ ./published/
+cp -r ./develop/build/forradia-world ./published/build/
+cp -r ./develop/html/ ./published/
 sudo ./published/build/forradia-world
 echo "Exiting ngrok..."
 pkill ngrok
