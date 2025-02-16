@@ -34,13 +34,13 @@ namespace FW
         m_sceneManager->UpdateCurrentScene();
         m_fpsCounter->Update();
 
-        server->send(handle, "clear;0;150;255;", websocketpp::frame::opcode::TEXT);
-        server->send(handle, "draw_image;default-scene-background;0.0;0.0;1.0;1.0;", websocketpp::frame::opcode::TEXT);
-        server->send(handle, "draw_image;forradia-world-logo;0.3;0.1;0.4;0.4;", websocketpp::frame::opcode::TEXT);
+        server->send(handle, "Clear;0;150;255;", websocketpp::frame::opcode::TEXT);
+        server->send(handle, "DrawImage;default-scene-background;0.0;0.0;1.0;1.0;", websocketpp::frame::opcode::TEXT);
+        server->send(handle, "DrawImage;forradia-world-logo;0.3;0.1;0.4;0.4;", websocketpp::frame::opcode::TEXT);
 
         m_sceneManager->RenderCurrentScene();
         m_fpsCounter->Render(server, handle);
 
-        server->send(handle, "present", websocketpp::frame::opcode::TEXT);
+        server->send(handle, "Present", websocketpp::frame::opcode::TEXT);
     }
 }

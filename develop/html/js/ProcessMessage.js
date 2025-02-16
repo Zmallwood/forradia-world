@@ -30,7 +30,7 @@ export function ProcessMessage(
 
     switch (parts[0])
     {
-        case "clear":
+        case "Clear":
         {
             const r = parts[1];
             const g = parts[2];
@@ -46,7 +46,7 @@ export function ProcessMessage(
 
             break;
         }
-        case "draw_image":
+        case "DrawImage":
         {
             const imageName = parts[1];
 
@@ -76,7 +76,7 @@ export function ProcessMessage(
 
             break;
         }
-        case "draw_text":
+        case "DrawText":
         {
             const text = parts[1];
 
@@ -132,7 +132,7 @@ export function ProcessMessage(
 
             break;
         }
-        case "present":
+        case "Present":
         {
             drawCommands.length = 0;
 
