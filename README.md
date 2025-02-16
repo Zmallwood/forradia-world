@@ -1,6 +1,6 @@
 # Forradia World
 
-Forradia World is a 2D online role playing game with extraordinarily harsh game mechanics.
+Forradia World is a multiplayer RPG game for browser with extraordinarily harsh game mechanics.
 
 <!-- ![Gameplay screenshot](screenshots/gameplay.png) -->
 
