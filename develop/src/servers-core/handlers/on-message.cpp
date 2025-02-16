@@ -25,10 +25,6 @@ namespace FW
 {
     void OnMessage(server* server, websocketpp::connection_hdl handle, message_ptr message)
     {
-        // std::cout << "OnMessage called with hdl: " << hdl.lock().get()
-        //           << " and message: " << msg->get_payload()
-        //           << std::endl;
-
         auto& message_text = message->get_payload();
 
         if (message_text == "stop-listening")
