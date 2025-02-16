@@ -21,5 +21,13 @@
 
 namespace FW
 {
+    void WorldGenerationScene::UpdateDerived()
+    {
 
+    }
+
+    void WorldGenerationScene::RenderDerived() const
+    {
+
+    }
 }

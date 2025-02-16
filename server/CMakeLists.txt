@@ -40,6 +40,7 @@ target_precompile_headers(forradia-world
         include/get-singleton.h
         include/aliases.h
         include/time-utils.h
+        include/hash.h
 )
 
 

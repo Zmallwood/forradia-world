@@ -17,16 +17,22 @@
  * limitations under the License.
  */
 
-#pragma once
-
-#include "i-scene.h"
+#include "hash.h"
 
 namespace FW
 {
-    class MainScene : public IScene
+    int Hash(std::string_view text)
     {
-      protected:
-        void UpdateDerived() override;
-        void RenderDerived() const override;
-    };
+        unsigned long hash { 5381 }; // Initialize hash to a prime value.
+
+        // Iterate through each character of the input string.
+        for (size_t i { 0 }; i < text.size(); ++i)
+        {
+            // Update the hash using a common hash function (djb2).
+            hash = 33 * hash + (unsigned char)text[i];
+        }
+
+        // Return the computed hash as an integer.
+        return static_cast<int>(hash);
+    }
 }

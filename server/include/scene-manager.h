@@ -21,10 +21,21 @@
 
 namespace FW
 {
+    class IScene;
+
     class SceneManager
     {
       public:
+        SceneManager();
+
         void UpdateCurrentScene();
         void RenderCurrentScene() const;
+        void ChangeScene(std::string_view sceneName);
+
+      private:
+        void AddScene(std::string_view sceneName, std::shared_ptr<IScene> scene);
+
+        int m_currentScene { 0 };
+        std::map<int, std::shared_ptr<IScene>> m_scenes;
     };
 }

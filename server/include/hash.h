@@ -19,14 +19,7 @@
 
 #pragma once
 
-#include "i-scene.h"
-
 namespace FW
 {
-    class MainScene : public IScene
-    {
-      protected:
-        void UpdateDerived() override;
-        void RenderDerived() const override;
-    };
+    int Hash(std::string_view text);
 }

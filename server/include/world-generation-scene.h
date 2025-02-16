@@ -26,5 +26,7 @@ namespace FW
     class WorldGenerationScene : public IScene
     {
       protected:
+        void UpdateDerived() override;
+        void RenderDerived() const override;
     };
 }

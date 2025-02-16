@@ -18,14 +18,36 @@
  */
 
 #include "scene-manager.h"
+#include "intro-scene.h"
+#include "main-menu-scene.h"
+#include "main-scene.h"
+#include "world-generation-scene.h"
 
 namespace FW
 {
+    SceneManager::SceneManager()
+    {
+        AddScene("intro-scene", std::make_shared<IntroScene>());
+        AddScene("main-menu-scene", std::make_shared<MainMenuScene>());
+        AddScene("world-generation-scene", std::make_shared<WorldGenerationScene>());
+        AddScene("main-scene", std::make_shared<MainScene>());
+    }
+
     void SceneManager::UpdateCurrentScene()
     {
     }
 
     void SceneManager::RenderCurrentScene() const
     {
+    }
+
+    void SceneManager::ChangeScene(std::string_view sceneName)
+    {
+        m_currentScene = Hash(sceneName);
+    }
+
+    void SceneManager::AddScene(std::string_view sceneName, std::shared_ptr<IScene> scene)
+    {
+        m_scenes.insert({ Hash(sceneName), scene });
     }
 }
