@@ -22,5 +22,6 @@
 
 export const imageNames = [
     "ground-grass",
-    "default-scene-background"
+    "default-scene-background",
+    "forradia-world-logo"
 ];

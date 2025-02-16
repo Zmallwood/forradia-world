@@ -37,6 +37,6 @@ namespace FW
 
     void FPSCounter::Render(server* server, websocketpp::connection_hdl handle) const
     {
-        server->send(handle, "draw_text;FPS: " + std::to_string(m_fps) + ";0.9;0.05;", websocketpp::frame::opcode::TEXT);
+        server->send(handle, "draw_text;FPS: " + std::to_string(m_fps) + ";0.85;0.05;", websocketpp::frame::opcode::TEXT);
     }
 }
