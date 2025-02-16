@@ -28,7 +28,7 @@ namespace FW
       public:
         ClientGameSession();
 
-        void ProcessFrame();
+        void ProcessFrame(server* server);
 
       private:
         std::shared_ptr<Engine> m_engine;

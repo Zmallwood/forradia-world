@@ -27,8 +27,8 @@ namespace FW
     {
     }
 
-    void Client::ProcessFrame()
+    void Client::ProcessFrame(server* server)
     {
-        m_clientGameSession->ProcessFrame();
+        m_clientGameSession->ProcessFrame(server);
     }
 }

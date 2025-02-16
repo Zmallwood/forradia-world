@@ -18,11 +18,18 @@
  */
 
 #include "Engine.hpp"
+#include "fps-counter/FPSCounter.hpp"
 
 namespace FW
 {
-    void Engine::ProcessFrame()
+    Engine::Engine()
+        : m_fpsCounter(std::make_shared<FPSCounter>())
     {
+    }
 
+    void Engine::ProcessFrame(server* server)
+    {
+        m_fpsCounter->Update();
+        m_fpsCounter->Render(server);
     }
 }

@@ -17,18 +17,19 @@
  * limitations under the License.
  */
 
-#include "ClientGameSession.hpp"
-#include "engine/Engine.hpp"
+#pragma once
 
 namespace FW
 {
-    ClientGameSession::ClientGameSession()
-        : m_engine(std::make_shared<Engine>())
+    class FPSCounter
     {
-    }
+      public:
+        void Update();
+        void Render(server* server) const;
 
-    void ClientGameSession::ProcessFrame(server* server)
-    {
-        m_engine->ProcessFrame(server);
-    }
+      private:
+        int m_fps { 0 };
+        int m_framesCount { 0 };
+        int m_ticksLastUpdate { 0 };
+    };
 }

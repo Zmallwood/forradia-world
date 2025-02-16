@@ -50,7 +50,7 @@ namespace FW
 
                 if (client)
                 {
-                    client->ProcessFrame();
+                    client->ProcessFrame(server);
                 }
             }
         }

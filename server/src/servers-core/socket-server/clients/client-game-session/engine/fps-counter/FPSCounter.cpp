@@ -17,18 +17,17 @@
  * limitations under the License.
  */
 
-#include "ClientGameSession.hpp"
-#include "engine/Engine.hpp"
+#include "FPSCounter.hpp"
 
 namespace FW
 {
-    ClientGameSession::ClientGameSession()
-        : m_engine(std::make_shared<Engine>())
+    void FPSCounter::Update()
     {
+
     }
 
-    void ClientGameSession::ProcessFrame(server* server)
+    void FPSCounter::Render(server* server) const
     {
-        m_engine->ProcessFrame(server);
+
     }
 }

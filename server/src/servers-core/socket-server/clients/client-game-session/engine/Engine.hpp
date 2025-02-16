@@ -21,9 +21,16 @@
 
 namespace FW
 {
+    class FPSCounter;
+
     class Engine
     {
       public:
-        void ProcessFrame();
+        Engine();
+
+        void ProcessFrame(server* server);
+
+      private:
+        std::shared_ptr<FPSCounter> m_fpsCounter;
     };
 }
