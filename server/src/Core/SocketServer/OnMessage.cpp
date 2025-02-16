@@ -18,30 +18,35 @@
  */
 
 #include "OnMessage.hpp"
+#include "Clients/ClientManager.hpp"
 
 namespace FW
 {
-    void OnMessage(server* s, websocketpp::connection_hdl hdl, message_ptr msg)
+    void OnMessage(server* server, websocketpp::connection_hdl handle, message_ptr message)
     {
         // std::cout << "OnMessage called with hdl: " << hdl.lock().get()
         //           << " and message: " << msg->get_payload()
         //           << std::endl;
 
-        // Check for a special command to instruct the server to stop listening so
-        // it can be cleanly exited.
-        if (msg->get_payload() == "stop-listening")
+        auto& message_text = message->get_payload();
+
+        if (message_text == "stop-listening")
         {
-            s->stop_listening();
+            server->stop_listening();
 
             return;
         }
 
         try
         {
-            //s->send(hdl, msg->get_payload(), msg->get_opcode());
-            s->send(hdl, "clear;0;150;255;", msg->get_opcode());
-            s->send(hdl, "draw_image;GroundGrass;0.0;0.0;0.5;0.5;", msg->get_opcode());
-            s->send(hdl, "present", msg->get_opcode());
+            if (message_text == "frame_finished")
+            {
+                server->send(handle, "clear;0;150;255;", message->get_opcode());
+                server->send(handle, "draw_image;GroundGrass;0.0;0.0;0.5;0.5;", message->get_opcode());
+                server->send(handle, "present", message->get_opcode());
+
+                auto client = _<ClientManager>().GetClient(&handle);
+            }
         }
         catch (websocketpp::exception const& e)
         {

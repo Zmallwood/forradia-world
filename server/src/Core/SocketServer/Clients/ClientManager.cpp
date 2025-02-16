@@ -18,8 +18,23 @@
  */
 
 #include "ClientManager.hpp"
+#include "Client.hpp"
 
 namespace FW
 {
+    void ClientManager::AddClient(connection_hdl* handle)
+    {
+        auto newClient = std::make_shared<Client>();
+        m_clients.insert({ handle, newClient });
+    }
 
+    std::shared_ptr<Client> ClientManager::GetClient(connection_hdl* handle) const
+    {
+        if (m_clients.contains(handle))
+        {
+            return m_clients.at(handle);
+        }
+
+        return nullptr;
+    }
 }

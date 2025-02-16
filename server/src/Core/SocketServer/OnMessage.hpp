@@ -27,5 +27,5 @@ namespace FW
     typedef server::message_ptr message_ptr;
 
     // Define a callback to handle incoming messages.
-    void OnMessage(server* s, websocketpp::connection_hdl hdl, message_ptr msg);
+    void OnMessage(server* server, websocketpp::connection_hdl handle, message_ptr message);
 }

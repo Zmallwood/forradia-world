@@ -109,51 +109,51 @@ for (const image_name of image_names) {
 
 
 var connect = function (port) {
-var current_buffer = 1;
-const canvas = document.getElementById("canvas_buffer_1");
-const ctx = canvas.getContext("2d");
-ctx.canvas.width = window.innerWidth;
-ctx.canvas.height = window.innerHeight;
+    var current_buffer = 1;
+    const canvas = document.getElementById("canvas_buffer_1");
+    const ctx = canvas.getContext("2d");
+    ctx.canvas.width = window.innerWidth;
+    ctx.canvas.height = window.innerHeight;
 
-ctx.font = "38px serif";
+    ctx.font = "38px serif";
 
-var draw_commands = [];
+    var draw_commands = [];
 
-var ws = new WebSocket("https://forradia-world-ws.ngrok-free.app:" + port);
-ws.onopen = function () {
-    console.log("socket connection opened properly");
-    ws.send("canvas_size;" + ctx.canvas.width + ";" + ctx.canvas.height); // send a message
-};
+    var ws = new WebSocket("https://forradia-world-ws.ngrok-free.app:" + port);
+    ws.onopen = function () {
+        console.log("socket connection opened properly");
+        ws.send("canvas_size;" + ctx.canvas.width + ";" + ctx.canvas.height); // send a message
+    };
 
-ws.onmessage = function (evt) {
-    process_message(ws, evt, ctx, draw_commands);
-};
+    ws.onmessage = function (evt) {
+        process_message(ws, evt, ctx, draw_commands);
+    };
 
-ws.onclose = function () {
-    console.log("Connection closed...");
-};
+    ws.onclose = function () {
+        console.log("Connection closed...");
+    };
 
-document.onkeydown = function (e) {
-    e = e || window.event;
-    ws.send("key_press;" + e.keyCode);
-};
+    document.onkeydown = function (e) {
+        e = e || window.event;
+        ws.send("key_press;" + e.keyCode);
+    };
 
-document.onkeyup = function (e) {
-    e = e || window.event;
-    ws.send("key_release;" + e.keyCode);
-}
-
-var draw_frame = function () {
-    requestAnimationFrame(draw_frame);
-    ctx.save();
-    for (cmd of draw_commands) {
-    eval(cmd);
+    document.onkeyup = function (e) {
+        e = e || window.event;
+        ws.send("key_release;" + e.keyCode);
     }
-    ctx.restore();
-    ws.send("frame_finished");
-};
 
-draw_frame();
+    var draw_frame = function () {
+        requestAnimationFrame(draw_frame);
+        ctx.save();
+        for (cmd of draw_commands) {
+        eval(cmd);
+        }
+        ctx.restore();
+        ws.send("frame_finished");
+    };
+
+    draw_frame();
 };
 
 var init = function () {

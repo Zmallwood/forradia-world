@@ -18,11 +18,13 @@
  */
 
 #include "OnOpen.hpp"
+#include "Clients/ClientManager.hpp"
 
 namespace FW
 {
-    void OnOpen(server* s, websocketpp::connection_hdl hdl)
+    void OnOpen(server* server, websocketpp::connection_hdl handle)
     {
-        std::cout << "A client has connected.\n";
+        std::cout << "A new client has connected.\n";
+        _<ClientManager>().AddClient(&handle);
     }
 }
