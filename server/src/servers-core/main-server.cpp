@@ -18,6 +18,7 @@
  */
 
 #include "main-server.h"
+#include "app-properties.h"
 #include "socket-server.h"
 #include "web-server.h"
 
@@ -61,18 +62,16 @@ namespace FW
     {
         std::fstream outFile;
 
-        // The following code is Linux specific to obtain directory of the application file,
-        // instead of using the directory from where it was run.
-        char buffer[PATH_MAX];
-        ssize_t len = readlink("/proc/self/exe", buffer, sizeof(buffer) - 1);
-        if (len != -1)
-        {
-            buffer[len] = '\0';
-            auto fullPathStr = std::string(buffer);
-            auto lastSlash = fullPathStr.find_last_of("/");
-            auto appBasePath = fullPathStr.substr(0, lastSlash + 1);
-            outFile.open(appBasePath + "../html/js/wsConnString.generated.js", std::fstream::out | std::fstream::trunc);
-        }
+        auto appPath = std::string(_<AppProperties>().GetAppPath());
+        auto fullPathStr = std::string(appPath);
+        auto lastSlash = fullPathStr.find_last_of("/");
+        auto appBasePath = fullPathStr.substr(0, lastSlash + 1);
+        auto filePath = appBasePath + "../html/js/wsConnString.generated.js";
+
+        std::cout << "Try opening file for writing the WS connection string at:\n"
+                  << filePath << std::endl;
+
+        outFile.open(filePath, std::fstream::out | std::fstream::trunc);
 
         if (!outFile)
         {
@@ -85,7 +84,9 @@ namespace FW
         {
             std::cout << "Running in development mode.\n";
 
-            outFile << "export const wsConnString = 'ws://localhost:8080';";
+            outFile << "export const wsConnString = 'ws://localhost:8081';";
+            _<AppProperties>().SetHTTPPort(81);
+            _<AppProperties>().SetSocketsPort(8081);
         }
         else
         {

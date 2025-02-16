@@ -3,6 +3,5 @@
 
 # echo "Ngrok started. Client is accessible on: https://$WEB_SERVER_HOST"
 # nohup ngrok http 80 &
-echo "Develop version started. Client is accessible on: http://localhost"
+echo "Develop version started. Client is accessible on: http://localhost:81"
 sudo FW_ENV=dev ./server/build/forradia-world
-pkill ngrok

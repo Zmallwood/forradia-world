@@ -20,6 +20,7 @@
 #include "socket-server.h"
 #include "on-message.h"
 #include "on-open.h"
+#include "app-properties.h"
 
 namespace FW
 {
@@ -42,7 +43,7 @@ namespace FW
             m_server.set_open_handler(bind(&OnOpen, &m_server, _1));
             m_server.set_message_handler(bind(&OnMessage, &m_server, _1, _2));
 
-            m_server.listen(8080);
+            m_server.listen(_<AppProperties>().GetSocketsPort());
 
             // Start the server accept loop.
             m_server.start_accept();

@@ -15,3 +15,4 @@ build/
 .cache/
 .env
 ngrok.yml
+published/

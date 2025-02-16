@@ -1,1 +1,1 @@
-export const wsConnString = 'ws://localhost:8080';
+export const wsConnString = 'ws://localhost:8081';

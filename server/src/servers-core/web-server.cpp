@@ -18,6 +18,7 @@
  */
 
 #include "web-server.h"
+#include "app-properties.h"
 
 namespace FW
 {
@@ -48,22 +49,27 @@ namespace FW
     {
         using namespace httplib;
 
+        auto appPath = std::string(_<AppProperties>().GetAppPath());
+        auto fullPathStr = std::string(appPath);
+        auto lastSlash = fullPathStr.find_last_of("/");
+        auto appBasePath = fullPathStr.substr(0, lastSlash + 1);
+
         m_server.Get("/", [this](const Request& req, Response& res)
             { res.set_content(m_html, "text/html"); });
 
-        m_server.Get("/js/(.*)", [this](const Request& req, Response& res)
+        m_server.Get("/js/(.*)", [this, appBasePath](const Request& req, Response& res)
             {
                 auto filename = req.matches[1].str();
-                std::ifstream t("server/html/js/" + filename);
+                std::ifstream t(appBasePath + "../html/js/" + filename);
                 std::string str((std::istreambuf_iterator<char>(t)),
                     std::istreambuf_iterator<char>());
 
                 res.set_content(str, "application/javascript"); });
 
-        m_server.Get("/img/(.*)", [this](const Request& req, Response& res)
+        m_server.Get("/img/(.*)", [this, appBasePath](const Request& req, Response& res)
             {
                 auto filename = req.matches[1].str();
-                std::ifstream t("server/html/resources/images/" + filename);
+                std::ifstream t(appBasePath + "../html/resources/images/" + filename);
                 std::string str((std::istreambuf_iterator<char>(t)),
                     std::istreambuf_iterator<char>());
 
@@ -75,6 +81,6 @@ namespace FW
 
     void WebServer::StartListen()
     {
-        m_server.listen(k_hostName, k_port);
+        m_server.listen(k_hostName, _<AppProperties>().GetHTTPPort());
     }
 }
