@@ -19,6 +19,7 @@
 
 #include "SocketServer.hpp"
 #include "OnMessage.hpp"
+#include "OnOpen.hpp"
 
 namespace FW
 {
@@ -38,6 +39,7 @@ namespace FW
 
             m_server.init_asio();
 
+            m_server.set_open_handler(bind(&OnOpen, &m_server, _1));
             m_server.set_message_handler(bind(&OnMessage, &m_server, _1, _2));
 
             m_server.listen(8080);
