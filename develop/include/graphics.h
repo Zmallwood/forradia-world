@@ -26,6 +26,9 @@ namespace FW
       public:
         Graphics(server* server, websocketpp::connection_hdl handle);
 
+        void ClearCanvas() const;
+        void PresentCanvas() const;
+
         auto GetServer() const
         {
             return m_server;

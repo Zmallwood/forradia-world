@@ -26,4 +26,14 @@ namespace FW
         , m_handle(handle)
     {
     }
+
+    void Graphics::ClearCanvas() const
+    {
+        m_server->send(m_handle, "Clear;0;150;255;", websocketpp::frame::opcode::TEXT);
+    }
+
+    void Graphics::PresentCanvas() const
+    {
+        m_server->send(m_handle, "Present", websocketpp::frame::opcode::TEXT);
+    }
 }
