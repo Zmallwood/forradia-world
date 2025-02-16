@@ -18,6 +18,7 @@
  */
 
 #include "main_scene.h"
+#include "graphics.h"
 
 namespace FW
 {

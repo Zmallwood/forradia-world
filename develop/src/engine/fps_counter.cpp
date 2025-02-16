@@ -38,6 +38,6 @@ namespace FW
 
     void FPSCounter::Render(std::shared_ptr<Graphics> graphics) const
     {
-        graphics->DrawText("FPS: " + std::to_string(m_fps), 0.85, 0.05);
+        graphics->DrawText("Fps: " + std::to_string(m_fps), 0.85, 0.05);
     }
 }

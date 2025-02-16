@@ -38,13 +38,8 @@ namespace FW
         m_fpsCounter->Update();
 
         m_graphics->ClearCanvas();
-
-        m_graphics->DrawImage("default-scene-background", 0.0f, 0.0f, 1.0f, 1.0f);
-        m_graphics->DrawImage("forradia-world-logo", 0.3f, 0.1f, 0.4f, 0.4f);
-
         m_sceneManager->RenderCurrentScene(m_graphics);
         m_fpsCounter->Render(m_graphics);
-
         m_graphics->PresentCanvas();
     }
 }
