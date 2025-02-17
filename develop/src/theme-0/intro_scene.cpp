@@ -30,6 +30,6 @@ namespace FW
         // graphics->DrawImage("default-scene-background", 0.0f, 0.0f, 1.0f, 1.0f);
 
         graphics->DrawBackground("default-scene-background");
-        graphics->DrawImage("forradia-world-logo", 0.3f, 0.1f, 0.4f, 0.4f);
+        graphics->DrawImage("forradia-world-logo", 0.3f, 0.1f, 0.4f, -1.0f);
     }
 }

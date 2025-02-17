@@ -51,6 +51,28 @@ namespace FW
         float w,
         float h) const
     {
+        if (w < 0 || h < 0)
+        {
+            auto imageDimensions =
+                _<ImageInfoStore>().GetImageDimensions(imageName);
+            auto canvasAspectRatio = GetAspectRatio();
+            auto imageAspectRatio = static_cast<float>(imageDimensions.w)/
+                                    imageDimensions.h;
+            
+            if (w < 0)
+            {
+                y = y - (h*canvasAspectRatio - h)/2.0f;
+                h = h*canvasAspectRatio;
+                w = h*imageAspectRatio/canvasAspectRatio;
+            }
+            else if (h < 0)
+            {
+                x = x - (w/canvasAspectRatio - w)/2.0f;
+                w = w/canvasAspectRatio;
+                h = w/imageAspectRatio*canvasAspectRatio;
+            }
+        }
+        
         m_server->send(
             m_handle,
             std::format("DrawImage;{};{};{};{};{};", imageName, x, y, w, h),
@@ -98,12 +120,12 @@ namespace FW
             {
                 x = 0.0f;
                 w = 1.0f;
-
+                
                 h = 1.0f/imageAspectRatio*canvasAspectRatio;
                 y = -(1.0f/imageAspectRatio*canvasAspectRatio - 1.0f)/2.0f;
-
+                
                 auto k = (1.0f/canvasAspectRatio - 1.0f/imageAspectRatio)/2.0f;
-
+                
                 x -= k;
                 y -= k;
                 w += 2*k;
@@ -113,7 +135,7 @@ namespace FW
             {
                 x = 0.0f;
                 w = 1.0f;
-
+                
                 h = 1.0f/imageAspectRatio*canvasAspectRatio;
                 y = -(1.0f/imageAspectRatio*canvasAspectRatio - 1.0f)/2.0f;
             }
