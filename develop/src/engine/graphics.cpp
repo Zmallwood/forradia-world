@@ -124,7 +124,7 @@ namespace FW
                 h = 1.0f/imageAspectRatio*canvasAspectRatio;
                 y = -(1.0f/imageAspectRatio*canvasAspectRatio - 1.0f)/2.0f;
                 
-                auto k = (1.0f/canvasAspectRatio - 1.0f/imageAspectRatio)/2.0f;
+                auto k = (1.0f - h)/2.0f;
                 
                 x -= k;
                 y -= k;
