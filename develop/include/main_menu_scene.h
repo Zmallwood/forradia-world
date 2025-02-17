@@ -27,6 +27,7 @@ namespace FW
     {
       protected:
         void UpdateDerived() override;
+
         void RenderDerived(std::shared_ptr<Graphics> graphics) const override;
     };
 }

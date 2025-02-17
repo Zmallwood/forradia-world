@@ -27,6 +27,7 @@ namespace FW
     {
       public:
         void Update();
+
         void Render(std::shared_ptr<Graphics> graphics) const;
         
       private:

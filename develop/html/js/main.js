@@ -47,7 +47,7 @@ function Connect()
 
     ws.onopen = function()
     {
-        ws.send("canvas_size;" + ctx.canvas.width + ";" + ctx.canvas.height); // send a message
+        ws.send("CanvasSize;" + ctx.canvas.width + ";" + ctx.canvas.height); // send a message
     };
 
     ws.onmessage = function(evt)
@@ -63,13 +63,13 @@ function Connect()
     document.onkeydown = function(e)
     {
         e = e || window.event;
-        ws.send("key_press;" + e.keyCode);
+        ws.send("KeyPress;" + e.keyCode);
     };
 
     document.onkeyup = function(e)
     {
         e = e || window.event;
-        ws.send("key_release;" + e.keyCode);
+        ws.send("KeyRelease;" + e.keyCode);
     }
 
     function DrawFrame()
@@ -86,7 +86,7 @@ function Connect()
 
         if (ws.readyState === WebSocket.OPEN)
         {
-            ws.send("frame_finished");
+            ws.send("FrameFinished");
         }
     };
 

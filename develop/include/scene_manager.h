@@ -30,7 +30,9 @@ namespace FW
         SceneManager();
         
         void UpdateCurrentScene();
+
         void RenderCurrentScene(std::shared_ptr<Graphics> graphics) const;
+
         void ChangeScene(std::string_view sceneName);
         
       private:

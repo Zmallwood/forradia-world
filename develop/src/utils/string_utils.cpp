@@ -17,17 +17,19 @@
  * limitations under the License.
  */
 
-#pragma once
-
-#include "i_scene.h"
-
 namespace FW
 {
-    class WorldGenerationScene : public IScene
+    std::vector<std::string> Split(std::string_view text, char delimiter)
     {
-      protected:
-        void UpdateDerived() override;
-
-        void RenderDerived(std::shared_ptr<Graphics> graphics) const override;
-    };
+        std::vector<std::string> parts;
+        std::istringstream ss(text.data());
+        std::string part;
+        
+        while(std::getline(ss, part, delimiter))
+        {
+            parts.push_back(part);
+        }
+        
+        return parts;
+    }
 }

@@ -17,17 +17,12 @@
  * limitations under the License.
  */
 
-#pragma once
-
-#include "i_scene.h"
-
 namespace FW
 {
-    class WorldGenerationScene : public IScene
+    class Size
     {
-      protected:
-        void UpdateDerived() override;
-
-        void RenderDerived(std::shared_ptr<Graphics> graphics) const override;
+      public:
+        int w {0};
+        int h {0};
     };
 }

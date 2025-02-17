@@ -54,9 +54,20 @@ namespace FW
             m_appPath = value.data();
         }
         
+        auto GetCanvasSize() const
+        {
+            return m_canvasSize;
+        }
+        
+        void SetCanvasSize(Size value)
+        {
+            m_canvasSize = value;
+        }
+        
       private:
         int m_http_port{ 80 };
         int m_sockets_port{ 8080 };
         std::string m_appPath;
+        Size m_canvasSize {0, 0};
     };
 }

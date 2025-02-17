@@ -21,6 +21,7 @@
 
 #include "socket_client.h"
 #include "socket_clients_manager.h"
+#include "app_properties.h"
 
 namespace FW
 {
@@ -32,7 +33,7 @@ namespace FW
         
         try
         {
-            if (messageText == "frame_finished")
+            if (messageText == "FrameFinished")
             {
                 auto socketClient =
                     _<SocketClientsManager>().GetSocketClient(handle);
@@ -41,6 +42,14 @@ namespace FW
                 {
                     socketClient->ProcessFrame();
                 }
+            }
+            else if (messageText == "CanvasSize")
+            {
+                auto parts = Split(messageText, ';');
+                auto width = std::stoi(parts[1]);
+                auto height = std::stoi(parts[2]);
+                
+                _<AppProperties>().SetCanvasSize({width, height});
             }
         }
         catch (websocketpp::exception const& e)

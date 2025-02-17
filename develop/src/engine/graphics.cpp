@@ -19,6 +19,8 @@
 
 #include "graphics.h"
 
+#include "canvas_utils.h"
+
 namespace FW
 {
     Graphics::Graphics(
@@ -62,5 +64,13 @@ namespace FW
             m_handle,
             std::format("DrawText;{};{};{};", text, x, y),
             websocketpp::frame::opcode::TEXT);
+    }
+    
+    
+    void Graphics::DrawBackground(
+        std::string_view imageName
+        ) const
+    {
+        auto aspectRatio = GetAspectRatio();
     }
 }

@@ -29,17 +29,24 @@ namespace FW
             ConnectionHandle handle);
         
         void ClearCanvas() const;
+
         void PresentCanvas() const;
+
         void DrawImage(
             std::string_view imageName,
             float x,
             float y,
             float w,
             float h) const;
+
         void DrawText(
             std::string_view text,
             float x,
             float y) const;
+
+        void DrawBackground(
+            std::string_view imageName
+        ) const;
         
         auto GetServer() const
         {

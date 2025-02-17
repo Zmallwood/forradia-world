@@ -42,7 +42,11 @@ target_precompile_headers(forradia-world
         include/get_singleton.h
         include/aliases.h
         include/time_utils.h
+        include/string_utils.h
+        include/canvas_utils.h
         include/hash.h
+
+        include/math-lib/size.h
 )
 
 

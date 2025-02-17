@@ -17,17 +17,22 @@
  * limitations under the License.
  */
 
-#pragma once
+#include "canvas_utils.h"
 
-#include "i_scene.h"
+#include "app_properties.h"
 
 namespace FW
 {
-    class WorldGenerationScene : public IScene
-    {
-      protected:
-        void UpdateDerived() override;
 
-        void RenderDerived(std::shared_ptr<Graphics> graphics) const override;
-    };
+    float GetAspectRatio()
+    {
+        auto canvasSize = _<AppProperties>().GetCanvasSize();
+
+        if (canvasSize.h)
+        {
+            return static_cast<float>(canvasSize.w)/canvasSize.h;
+        }
+
+        return 0.0f;
+    }
 }

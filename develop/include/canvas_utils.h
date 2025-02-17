@@ -19,15 +19,7 @@
 
 #pragma once
 
-#include "i_scene.h"
-
 namespace FW
 {
-    class WorldGenerationScene : public IScene
-    {
-      protected:
-        void UpdateDerived() override;
-
-        void RenderDerived(std::shared_ptr<Graphics> graphics) const override;
-    };
+    float GetAspectRatio();
 }
