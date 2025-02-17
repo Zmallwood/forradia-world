@@ -2,7 +2,7 @@
 
 Forradia World is a multiplayer RPG game for browser with extraordinarily harsh game mechanics.
 
-See live version at [forradia-world.ngrok.io](https://forradia-world.ngrok.io)
+See live version at <a href="https://forradia-world.ngrok.io" target="_blank">forradia-world.ngrok.io</a>.
 
 <!-- ![Gameplay screenshot](screenshots/gameplay.png) -->
 
