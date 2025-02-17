@@ -96,10 +96,18 @@ namespace FW
             
             if (imageAspectRatio > canvasAspectRatio)
             {
-                y = 0.0f;
-                h = 1.0f;
-                w = imageAspectRatio;
-                x = -(imageAspectRatio - 1.0f)/2.0f;
+                x = 0.0f;
+                w = 1.0f;
+
+                h = 1.0f/imageAspectRatio*canvasAspectRatio;
+                y = -(1.0f/imageAspectRatio*canvasAspectRatio - 1.0f)/2.0f;
+
+                auto k = (1.0f/canvasAspectRatio - 1.0f/imageAspectRatio)/2.0f;
+
+                x -= k;
+                y -= k;
+                w += 2*k;
+                h += 2*k;
             }
             else
             {

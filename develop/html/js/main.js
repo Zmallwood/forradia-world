@@ -19,7 +19,7 @@
 
 import { imageNames } from './imageNames.js';
 import { ProcessMessage } from './ProcessMessage.js';
-import {  wsConnString } from './wsConnString.generated.js';
+import { wsConnString } from './wsConnString.generated.js';
 
 var images = {};
 
@@ -46,7 +46,7 @@ function Connect()
     
     ws.onopen = function()
     {
-        ws.send("CanvasSize;" + ctx.canvas.width + ";" + ctx.canvas.height); // send a message
+        ws.send("CanvasSize;" + ctx.canvas.width + ";" + ctx.canvas.height);     // send a message
     };
     
     ws.onmessage = function(evt)
@@ -70,6 +70,21 @@ function Connect()
         e = e || window.event;
         ws.send("KeyRelease;" + e.keyCode);
     }
+    
+    var timeout;
+    
+    window.addEventListener(
+        'resize', function() {
+        
+        clearTimeout(timeout);
+        
+        timeout = setTimeout(
+            function() {
+            ctx.canvas.width = window.innerWidth;
+            ctx.canvas.height = window.innerHeight;
+            ws.send("CanvasSize;" + ctx.canvas.width + ";" + ctx.canvas.height); // send a message
+        }, 250);
+    });
     
     function DrawFrame()
     {
