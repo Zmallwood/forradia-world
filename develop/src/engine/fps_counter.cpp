@@ -40,4 +40,4 @@ namespace FW
     {
         graphics->DrawText(std::format("Fps: {}", m_fps), 0.85, 0.05);
     }
-} // namespace FW
+}

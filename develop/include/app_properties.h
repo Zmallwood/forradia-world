@@ -55,10 +55,8 @@ namespace FW
         }
         
       private:
-        int m_http_port
-        { 80 };
-        int m_sockets_port
-        { 8080 };
+        int m_http_port{ 80 };
+        int m_sockets_port{ 8080 };
         std::string m_appPath;
     };
 }

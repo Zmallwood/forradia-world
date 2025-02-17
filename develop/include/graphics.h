@@ -52,8 +52,7 @@ namespace FW
         }
         
       private:
-        WSPPServer* m_server
-        { nullptr };
+        WSPPServer* m_server{ nullptr };
         ConnectionHandle m_handle;
     };
 }

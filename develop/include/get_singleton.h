@@ -22,7 +22,7 @@
 namespace FW
 {
     template <class T>
-    T& GetSingleton()
+    T&GetSingleton ()
     {
         static T instance;
         

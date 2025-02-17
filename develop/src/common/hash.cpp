@@ -23,12 +23,10 @@ namespace FW
 {
     int Hash(std::string_view text)
     {
-        unsigned long hash
-        { 5381 };                    // Initialize hash to a prime value.
+        unsigned long hash{ 5381 };                    // Initialize hash to a prime value.
         
         // Iterate through each character of the input string.
-        for (size_t i { 0 }; i < text.size(); ++i)
-        {
+        for (size_t i { 0 }; i < text.size(); ++i){
             // Update the hash using a common hash function (djb2).
             hash = 33 * hash + (unsigned char)text[i];
         }
