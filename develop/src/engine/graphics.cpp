@@ -20,6 +20,8 @@
 #include "graphics.h"
 
 #include "canvas_utils.h"
+#include "image_info_store.h"
+#include "app_properties.h"
 
 namespace FW
 {
@@ -71,6 +73,47 @@ namespace FW
         std::string_view imageName
         ) const
     {
-        auto aspectRatio = GetAspectRatio();
+        if (!_<ImageInfoStore>().ImageDimensionsExists(imageName))
+        {
+            m_server->send(
+                m_handle,
+                std::format("RequestImageDimensions;{};", imageName),
+                websocketpp::frame::opcode::TEXT);
+            return;
+        }
+        else
+        {
+            auto canvasSize = _<AppProperties>().GetCanvasSize();
+            auto canvasAspectRatio = GetAspectRatio();
+            
+            auto imageDimensions =
+                _<ImageInfoStore>().GetImageDimensions(imageName);
+            
+            auto imageAspectRatio = static_cast<float>(imageDimensions.w) /
+                                    imageDimensions.h;
+            
+            float x, y, w, h;
+            
+            if (imageAspectRatio > canvasAspectRatio)
+            {
+                y = 0.0f;
+                h = 1.0f;
+                w = imageAspectRatio;
+                x = -(imageAspectRatio - 1.0f)/2.0f;
+            }
+            else
+            {
+                x = 0.0f;
+                w = 1.0f;
+
+                h = 1.0f/imageAspectRatio*canvasAspectRatio;
+                y = -(1.0f/imageAspectRatio*canvasAspectRatio - 1.0f)/2.0f;
+            }
+            
+            m_server->send(
+                m_handle,
+                std::format("DrawImage;{};{};{};{};{};", imageName, x, y, w, h),
+                websocketpp::frame::opcode::TEXT);
+        }
     }
 }

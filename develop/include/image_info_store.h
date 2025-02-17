@@ -17,19 +17,20 @@
  * limitations under the License.
  */
 
-#include "intro_scene.h"
-#include "graphics.h"
+#pragma once
 
 namespace FW
 {
-    void IntroScene::UpdateDerived()
-    {}
-    
-    void IntroScene::RenderDerived(std::shared_ptr<Graphics> graphics) const
+    class ImageInfoStore
     {
-        // graphics->DrawImage("default-scene-background", 0.0f, 0.0f, 1.0f, 1.0f);
+      public:
+        void AddImageDimensions(std::string_view imageName, Size dimension);
 
-        graphics->DrawBackground("default-scene-background");
-        graphics->DrawImage("forradia-world-logo", 0.3f, 0.1f, 0.4f, 0.4f);
-    }
+        bool ImageDimensionsExists(std::string_view imageName) const;
+
+        Size GetImageDimensions(std::string_view imageName) const;
+        
+      private:
+        std::map<int, Size> m_imageDimensions;
+    };
 }

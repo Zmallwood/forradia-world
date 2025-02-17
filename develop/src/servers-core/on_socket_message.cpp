@@ -22,6 +22,7 @@
 #include "socket_client.h"
 #include "socket_clients_manager.h"
 #include "app_properties.h"
+#include "image_info_store.h"
 
 namespace FW
 {
@@ -33,7 +34,9 @@ namespace FW
         
         try
         {
-            if (messageText == "FrameFinished")
+            auto parts = Split(messageText, ';');
+
+            if (parts[0] == "FrameFinished")
             {
                 auto socketClient =
                     _<SocketClientsManager>().GetSocketClient(handle);
@@ -43,13 +46,19 @@ namespace FW
                     socketClient->ProcessFrame();
                 }
             }
-            else if (messageText == "CanvasSize")
+            else if (parts[0] == "CanvasSize")
             {
-                auto parts = Split(messageText, ';');
                 auto width = std::stoi(parts[1]);
                 auto height = std::stoi(parts[2]);
                 
                 _<AppProperties>().SetCanvasSize({width, height});
+            }
+            else if (parts[0] == "ProvideImageDimensions")
+            {
+                auto imageName = parts[1];
+                auto width = std::stoi(parts[2]);
+                auto height = std::stoi(parts[3]);
+                _<ImageInfoStore>().AddImageDimensions(imageName, {width, height});
             }
         }
         catch (websocketpp::exception const& e)
