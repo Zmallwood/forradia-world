@@ -17,16 +17,24 @@
  * limitations under the License.
  */
 
-#include "Conf/App_Properties.h"
-#include "Servers_Core/Main_Server.h"
+#pragma once
 
-int main(int arc, char** argv)
+namespace FW
 {
-    using namespace FW;
+    class Scene_Manager;
+    class FPS_Counter;
+    class Graphics;
     
-    _<App_Properties>().SetAppPath(argv[0]);
-    
-    _<Main_Server>().Start();
-    
-    return 0;
+    class Engine
+    {
+      public:
+        Engine(std::shared_ptr<Graphics> graphics);
+        
+        void ProcessFrame();
+        
+      private:
+        std::shared_ptr<Scene_Manager> m_sceneManager;
+        std::shared_ptr<FPS_Counter> m_fpsCounter;
+        std::shared_ptr<Graphics> m_graphics;
+    };
 }

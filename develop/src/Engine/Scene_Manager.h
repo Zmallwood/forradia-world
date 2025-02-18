@@ -17,16 +17,30 @@
  * limitations under the License.
  */
 
-#include "Conf/App_Properties.h"
-#include "Servers_Core/Main_Server.h"
+#pragma once
 
-int main(int arc, char** argv)
+namespace FW
 {
-    using namespace FW;
+    class I_Scene;
+    class Graphics;
     
-    _<App_Properties>().SetAppPath(argv[0]);
-    
-    _<Main_Server>().Start();
-    
-    return 0;
+    class Scene_Manager
+    {
+      public:
+        Scene_Manager();
+        
+        void UpdateCurrentScene();
+        
+        void RenderCurrentScene(std::shared_ptr<Graphics> graphics) const;
+        
+        void ChangeScene(std::string_view sceneName);
+        
+      private:
+        void AddScene(
+            std::string_view sceneName,
+            std::shared_ptr<I_Scene> scene);
+        
+        int m_currentScene{ 0 };
+        std::map<int, std::shared_ptr<I_Scene>> m_scenes;
+    };
 }

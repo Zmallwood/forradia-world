@@ -17,16 +17,28 @@
  * limitations under the License.
  */
 
-#include "Conf/App_Properties.h"
-#include "Servers_Core/Main_Server.h"
+#include "FPS_Counter.h"
 
-int main(int arc, char** argv)
+#include "Graphics.h"
+
+namespace FW
 {
-    using namespace FW;
+    void FPS_Counter::Update()
+    {
+        auto now = GetTicks();
+        
+        if (now > m_ticksLastUpdate + 1000)
+        {
+            m_fps = m_framesCount;
+            m_framesCount = 0;
+            m_ticksLastUpdate = now;
+        }
+        
+        m_framesCount++;
+    }
     
-    _<App_Properties>().SetAppPath(argv[0]);
-    
-    _<Main_Server>().Start();
-    
-    return 0;
+    void FPS_Counter::Render(std::shared_ptr<Graphics> graphics) const
+    {
+        graphics->DrawText(std::format("Fps: {}", m_fps), 0.85, 0.05);
+    }
 }

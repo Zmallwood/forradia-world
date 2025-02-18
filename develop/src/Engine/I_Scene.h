@@ -17,16 +17,35 @@
  * limitations under the License.
  */
 
-#include "Conf/App_Properties.h"
-#include "Servers_Core/Main_Server.h"
+#pragma once
 
-int main(int arc, char** argv)
+namespace FW
 {
-    using namespace FW;
+    class Graphics;
+    class GUI;
     
-    _<App_Properties>().SetAppPath(argv[0]);
-    
-    _<Main_Server>().Start();
-    
-    return 0;
+    class I_Scene
+    {
+      public:
+        I_Scene();
+        
+        void Update();
+        
+        void Render(std::shared_ptr<Graphics> graphics) const;
+        
+      protected:
+        virtual void UpdateDerived()
+        {}
+        
+        virtual void RenderDerived(std::shared_ptr<Graphics> graphics) const
+        {}
+        
+        auto GetGUI() const
+        {
+            return m_gui;
+        }
+        
+      private:
+        std::shared_ptr<GUI> m_gui;
+    };
 }

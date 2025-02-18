@@ -17,16 +17,22 @@
  * limitations under the License.
  */
 
-#include "Conf/App_Properties.h"
-#include "Servers_Core/Main_Server.h"
+#include "OnSocketOpen.h"
 
-int main(int arc, char** argv)
+#include "Socket_Clients_Manager.h"
+
+namespace FW
 {
-    using namespace FW;
-    
-    _<App_Properties>().SetAppPath(argv[0]);
-    
-    _<Main_Server>().Start();
-    
-    return 0;
+    void OnSocketOpen(
+        WSPP_Server* server,
+        Connection_Handle handle)
+    {
+        std::cout << std::format(
+            "{}: A new client has connected.\n",
+            GetCurrentTime());
+        
+        _<Socket_Clients_Manager>().AddSocketClient(
+            server,
+            handle);
+    }
 }

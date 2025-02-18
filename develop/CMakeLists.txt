@@ -39,17 +39,17 @@ target_precompile_headers(forradia-world
         <websocketpp/config/asio_no_tls.hpp>
         <websocketpp/server.hpp>
 
-        src/common/get_singleton.h
-        src/common/aliases.h
-        src/utils/time_utils.h
-        src/utils/string_utils.h
-        src/utils/canvas_utils.h
-        src/utils/hash.h
+        src/Common/Get_Singleton.h
+        src/Common/Aliases.h
+        src/Utils/Time_Utils.h
+        src/Utils/String_Utils.h
+        src/Utils/Canvas_Utils.h
+        src/Utils/Hash.h
 
-        src/math-lib/size.h
-        src/math-lib/point_f.h
-        src/math-lib/color.h
-        src/math-lib/colors.h
+        src/Math_Lib/Size.h
+        src/Math_Lib/Point_F.h
+        src/Math_Lib/Color.h
+        src/Math_Lib/Colors.h
 )
 
 

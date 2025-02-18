@@ -17,16 +17,12 @@
  * limitations under the License.
  */
 
-#include "Conf/App_Properties.h"
-#include "Servers_Core/Main_Server.h"
-
-int main(int arc, char** argv)
+namespace FW
 {
-    using namespace FW;
-    
-    _<App_Properties>().SetAppPath(argv[0]);
-    
-    _<Main_Server>().Start();
-    
-    return 0;
+    class Point_F
+    {
+      public:
+        float x {0.0f};
+        float y {0.0f};
+    };
 }

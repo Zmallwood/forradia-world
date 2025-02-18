@@ -17,16 +17,20 @@
  * limitations under the License.
  */
 
-#include "Conf/App_Properties.h"
-#include "Servers_Core/Main_Server.h"
+#pragma once
 
-int main(int arc, char** argv)
+namespace FW
 {
-    using namespace FW;
-    
-    _<App_Properties>().SetAppPath(argv[0]);
-    
-    _<Main_Server>().Start();
-    
-    return 0;
+    class Image_Info_Store
+    {
+      public:
+        void AddImageDimensions(std::string_view imageName, Size dimension);
+        
+        bool ImageDimensionsExists(std::string_view imageName) const;
+        
+        Size GetImageDimensions(std::string_view imageName) const;
+        
+      private:
+        std::map<int, Size> m_imageDimensions;
+    };
 }

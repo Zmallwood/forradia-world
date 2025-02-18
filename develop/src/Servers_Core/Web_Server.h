@@ -17,16 +17,24 @@
  * limitations under the License.
  */
 
-#include "Conf/App_Properties.h"
-#include "Servers_Core/Main_Server.h"
+#pragma once
 
-int main(int arc, char** argv)
+namespace FW
 {
-    using namespace FW;
-    
-    _<App_Properties>().SetAppPath(argv[0]);
-    
-    _<Main_Server>().Start();
-    
-    return 0;
+    class Web_Server
+    {
+      public:
+        void Start();
+
+        void Stop();
+        
+      private:
+        void SetupEndpoints();
+
+        void StartListen();
+        
+        const std::string k_hostName{ "localhost" };
+        
+        httplib::Server m_server;
+    };
 }

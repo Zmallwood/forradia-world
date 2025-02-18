@@ -17,16 +17,28 @@
  * limitations under the License.
  */
 
-#include "Conf/App_Properties.h"
-#include "Servers_Core/Main_Server.h"
+#include "Engine.h"
 
-int main(int arc, char** argv)
+#include "FPS_Counter.h"
+#include "Graphics.h"
+#include "Scene_Manager.h"
+
+namespace FW
 {
-    using namespace FW;
+    Engine::Engine(std::shared_ptr<Graphics> graphics)
+        : m_fpsCounter(std::make_shared<FPS_Counter>())
+        , m_sceneManager(std::make_shared<Scene_Manager>())
+        , m_graphics(graphics)
+    {}
     
-    _<App_Properties>().SetAppPath(argv[0]);
-    
-    _<Main_Server>().Start();
-    
-    return 0;
+    void Engine::ProcessFrame()
+    {
+        m_sceneManager->UpdateCurrentScene();
+        m_fpsCounter->Update();
+        
+        m_graphics->ClearCanvas();
+        m_sceneManager->RenderCurrentScene(m_graphics);
+        m_fpsCounter->Render(m_graphics);
+        m_graphics->PresentCanvas();
+    }
 }

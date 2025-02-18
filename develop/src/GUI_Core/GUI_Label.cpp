@@ -17,16 +17,24 @@
  * limitations under the License.
  */
 
-#include "Conf/App_Properties.h"
-#include "Servers_Core/Main_Server.h"
+#include "GUI_Label.h"
 
-int main(int arc, char** argv)
+#include "Engine/Graphics.h"
+
+namespace FW
 {
-    using namespace FW;
+    GUI_Label::GUI_Label(std::string_view text, float x, float y,
+                         bool centerAlign)
+        : GUI_Component(x, y), m_text(text), m_centerAlign(centerAlign)
+    {}
     
-    _<App_Properties>().SetAppPath(argv[0]);
-    
-    _<Main_Server>().Start();
-    
-    return 0;
+    void GUI_Label::RenderDerived(
+        std::shared_ptr<Graphics> graphics) const
+    {
+        auto position = GetPosition();
+        
+        graphics->DrawText(
+            m_text, position.x, position.y,
+            Colors::Wheat, m_centerAlign);
+    }
 }

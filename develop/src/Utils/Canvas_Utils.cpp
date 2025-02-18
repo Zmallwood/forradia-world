@@ -17,16 +17,22 @@
  * limitations under the License.
  */
 
-#include "Conf/App_Properties.h"
-#include "Servers_Core/Main_Server.h"
+#include "Canvas_Utils.h"
 
-int main(int arc, char** argv)
+#include "Conf/App_Properties.h"
+
+namespace FW
 {
-    using namespace FW;
     
-    _<App_Properties>().SetAppPath(argv[0]);
-    
-    _<Main_Server>().Start();
-    
-    return 0;
+    float GetAspectRatio()
+    {
+        auto canvasSize = _<App_Properties>().GetCanvasSize();
+        
+        if (canvasSize.h)
+        {
+            return static_cast<float>(canvasSize.w)/canvasSize.h;
+        }
+        
+        return 0.0f;
+    }
 }

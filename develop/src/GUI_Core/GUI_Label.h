@@ -17,16 +17,23 @@
  * limitations under the License.
  */
 
-#include "Conf/App_Properties.h"
-#include "Servers_Core/Main_Server.h"
+#pragma once
 
-int main(int arc, char** argv)
+#include "GUI_Component.h"
+
+namespace FW
 {
-    using namespace FW;
-    
-    _<App_Properties>().SetAppPath(argv[0]);
-    
-    _<Main_Server>().Start();
-    
-    return 0;
+    class GUI_Label : public GUI_Component
+    {
+      public:
+        GUI_Label(std::string_view text, float x, float y,
+                  bool centerAlign = false);
+        
+        virtual void RenderDerived(
+            std::shared_ptr<Graphics> graphics) const override;
+        
+      private:
+        std::string m_text;
+        bool m_centerAlign {false};
+    };
 }

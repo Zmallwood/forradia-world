@@ -17,16 +17,21 @@
  * limitations under the License.
  */
 
-#include "Conf/App_Properties.h"
-#include "Servers_Core/Main_Server.h"
+#include "String_Utils.h"
 
-int main(int arc, char** argv)
+namespace FW
 {
-    using namespace FW;
-    
-    _<App_Properties>().SetAppPath(argv[0]);
-    
-    _<Main_Server>().Start();
-    
-    return 0;
+    std::vector<std::string> Split(std::string_view text, char delimiter)
+    {
+        std::vector<std::string> parts;
+        std::istringstream ss(text.data());
+        std::string part;
+        
+        while(std::getline(ss, part, delimiter))
+        {
+            parts.push_back(part);
+        }
+        
+        return parts;
+    }
 }

@@ -17,16 +17,14 @@
  * limitations under the License.
  */
 
-#include "Conf/App_Properties.h"
-#include "Servers_Core/Main_Server.h"
-
-int main(int arc, char** argv)
+namespace FW
 {
-    using namespace FW;
+    template <class T>
+    auto _ = Get_Singleton<T>;
     
-    _<App_Properties>().SetAppPath(argv[0]);
+    using WSPP_Server = websocketpp::server<websocketpp::config::asio>;
     
-    _<Main_Server>().Start();
+    using Message_Ptr = WSPP_Server::message_ptr;
     
-    return 0;
+    using Connection_Handle = websocketpp::lib::weak_ptr<void>;
 }

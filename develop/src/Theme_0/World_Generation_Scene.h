@@ -17,16 +17,17 @@
  * limitations under the License.
  */
 
-#include "Conf/App_Properties.h"
-#include "Servers_Core/Main_Server.h"
+#pragma once
 
-int main(int arc, char** argv)
+#include "Engine/I_Scene.h"
+
+namespace FW
 {
-    using namespace FW;
-    
-    _<App_Properties>().SetAppPath(argv[0]);
-    
-    _<Main_Server>().Start();
-    
-    return 0;
+    class World_Generation_Scene : public I_Scene
+    {
+      protected:
+        void UpdateDerived() override;
+
+        void RenderDerived(std::shared_ptr<Graphics> graphics) const override;
+    };
 }

@@ -17,16 +17,29 @@
  * limitations under the License.
  */
 
-#include "Conf/App_Properties.h"
-#include "Servers_Core/Main_Server.h"
+#include "Time_Utils.h"
 
-int main(int arc, char** argv)
+namespace FW
 {
-    using namespace FW;
+    int GetTicks()
+    {
+        static auto start = std::chrono::high_resolution_clock::now();
+        
+        auto end = std::chrono::high_resolution_clock::now();
+        
+        std::chrono::duration<double, std::milli> elapsed = end - start;
+        
+        return elapsed.count();
+    }
     
-    _<App_Properties>().SetAppPath(argv[0]);
-    
-    _<Main_Server>().Start();
-    
-    return 0;
+    std::string GetCurrentTime()
+    {
+        auto now = std::chrono::system_clock::now();
+        std::time_t now_c = std::chrono::system_clock::to_time_t(now);
+        
+        std::stringstream ss;
+        ss << std::put_time(std::localtime(&now_c), "%F %T");
+        
+        return ss.str();
+    }
 }

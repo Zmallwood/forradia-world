@@ -17,16 +17,22 @@
  * limitations under the License.
  */
 
-#include "Conf/App_Properties.h"
-#include "Servers_Core/Main_Server.h"
+#pragma once
 
-int main(int arc, char** argv)
+namespace FW
 {
-    using namespace FW;
+    class Graphics;
     
-    _<App_Properties>().SetAppPath(argv[0]);
-    
-    _<Main_Server>().Start();
-    
-    return 0;
+    class FPS_Counter
+    {
+      public:
+        void Update();
+
+        void Render(std::shared_ptr<Graphics> graphics) const;
+        
+      private:
+        int m_fps{ 0 };
+        int m_framesCount{ 0 };
+        int m_ticksLastUpdate{ 0 };
+    };
 }

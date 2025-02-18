@@ -17,16 +17,14 @@
  * limitations under the License.
  */
 
-#include "Conf/App_Properties.h"
-#include "Servers_Core/Main_Server.h"
+#include "World_Generation_Scene.h"
 
-int main(int arc, char** argv)
+namespace FW
 {
-    using namespace FW;
+    void World_Generation_Scene::UpdateDerived()
+    {}
     
-    _<App_Properties>().SetAppPath(argv[0]);
-    
-    _<Main_Server>().Start();
-    
-    return 0;
+    void World_Generation_Scene::RenderDerived(
+        std::shared_ptr<Graphics> graphics) const
+    {}
 }

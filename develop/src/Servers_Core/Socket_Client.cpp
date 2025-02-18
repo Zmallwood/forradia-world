@@ -17,16 +17,24 @@
  * limitations under the License.
  */
 
-#include "Conf/App_Properties.h"
-#include "Servers_Core/Main_Server.h"
+#include "Socket_Client.h"
 
-int main(int arc, char** argv)
+#include "Engine/Engine.h"
+#include "Engine/Graphics.h"
+
+namespace FW
 {
-    using namespace FW;
+    Socket_Client::Socket_Client(
+        WSPP_Server* server,
+        Connection_Handle handle)
+        : m_engine(std::make_shared<Engine>(
+                       std::make_shared<Graphics>(
+                           server,
+                           handle)))
+    {}
     
-    _<App_Properties>().SetAppPath(argv[0]);
-    
-    _<Main_Server>().Start();
-    
-    return 0;
+    void Socket_Client::ProcessFrame()
+    {
+        m_engine->ProcessFrame();
+    }
 }

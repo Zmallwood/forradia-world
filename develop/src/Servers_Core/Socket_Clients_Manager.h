@@ -17,16 +17,23 @@
  * limitations under the License.
  */
 
-#include "Conf/App_Properties.h"
-#include "Servers_Core/Main_Server.h"
+#pragma once
 
-int main(int arc, char** argv)
+namespace FW
 {
-    using namespace FW;
+    class Socket_Client;
     
-    _<App_Properties>().SetAppPath(argv[0]);
-    
-    _<Main_Server>().Start();
-    
-    return 0;
+    class Socket_Clients_Manager
+    {
+      public:
+        void AddSocketClient(
+            WSPP_Server* server,
+            Connection_Handle handle);
+        
+        std::shared_ptr<Socket_Client> GetSocketClient(
+            Connection_Handle handle) const;
+        
+      private:
+        std::map<void*, std::shared_ptr<Socket_Client>> m_clients;
+    };
 }
