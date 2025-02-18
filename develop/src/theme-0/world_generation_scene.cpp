@@ -18,7 +18,6 @@
  */
 
 #include "world_generation_scene.h"
-#include "graphics.h"
 
 namespace FW
 {

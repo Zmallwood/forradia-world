@@ -19,9 +19,9 @@
 
 #include "graphics.h"
 
-#include "canvas_utils.h"
+#include "utils/canvas_utils.h"
 #include "image_info_store.h"
-#include "app_properties.h"
+#include "conf/app_properties.h"
 
 namespace FW
 {

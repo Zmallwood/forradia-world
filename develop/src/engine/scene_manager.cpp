@@ -19,10 +19,10 @@
 
 #include "scene_manager.h"
 
-#include "intro_scene.h"
-#include "main_menu_scene.h"
-#include "main_scene.h"
-#include "world_generation_scene.h"
+#include "theme-0/intro_scene.h"
+#include "theme-0/main_menu_scene.h"
+#include "theme-0/main_scene.h"
+#include "theme-0/world_generation_scene.h"
 
 namespace FW
 {

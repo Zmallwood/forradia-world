@@ -19,8 +19,8 @@
 
 #include "socket_client.h"
 
-#include "engine.h"
-#include "graphics.h"
+#include "engine/engine.h"
+#include "engine/graphics.h"
 
 namespace FW
 {

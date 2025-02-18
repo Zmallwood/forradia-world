@@ -18,7 +18,8 @@
  */
 
 #include "intro_scene.h"
-#include "graphics.h"
+
+#include "engine/graphics.h"
 
 namespace FW
 {

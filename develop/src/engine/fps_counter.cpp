@@ -18,6 +18,7 @@
  */
 
 #include "fps_counter.h"
+
 #include "graphics.h"
 
 namespace FW

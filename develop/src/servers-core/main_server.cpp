@@ -19,7 +19,7 @@
 
 #include "main_server.h"
 
-#include "app_properties.h"
+#include "conf/app_properties.h"
 #include "socket_server.h"
 #include "web_server.h"
 

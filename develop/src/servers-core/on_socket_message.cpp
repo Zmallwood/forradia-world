@@ -21,8 +21,8 @@
 
 #include "socket_client.h"
 #include "socket_clients_manager.h"
-#include "app_properties.h"
-#include "image_info_store.h"
+#include "conf/app_properties.h"
+#include "engine/image_info_store.h"
 
 namespace FW
 {
