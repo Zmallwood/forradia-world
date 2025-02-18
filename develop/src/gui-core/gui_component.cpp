@@ -17,25 +17,49 @@
  * limitations under the License.
  */
 
-#include "i_scene.h"
-
-#include "gui-core/gui.h"
+#include "gui_component.h"
 
 namespace FW
 {
-    IScene::IScene()
-        : m_gui(std::make_shared<GUI>())
+    GUIComponent::GUIComponent(float x, float y)
+        : m_position({x, y})
     {}
     
-    void IScene::Update()
+    void GUIComponent::Update()
     {
-        m_gui->Update();
+        if (!m_visible)
+        {
+            return;
+        }
+
         UpdateDerived();
+        
+        for (auto child : m_childComponents)
+        {
+            child->Update();
+        }
     }
     
-    void IScene::Render(std::shared_ptr<Graphics> graphics) const
+    void GUIComponent::Render(std::shared_ptr<Graphics> graphics) const
     {
+        if (!m_visible)
+        {
+            return;
+        }
+
         RenderDerived(graphics);
-        m_gui->Render(graphics);
+        
+        for (auto child : m_childComponents)
+        {
+            child->Render(graphics);
+        }
+    }
+    
+    std::shared_ptr<GUIComponent> GUIComponent::AddComponent(
+        std::shared_ptr<GUIComponent> component)
+    {
+        m_childComponents.push_back(component);
+        
+        return component;
     }
 }

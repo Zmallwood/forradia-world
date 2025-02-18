@@ -17,25 +17,21 @@
  * limitations under the License.
  */
 
-#include "i_scene.h"
+#include "gui_label.h"
 
-#include "gui-core/gui.h"
+#include "engine/graphics.h"
 
 namespace FW
 {
-    IScene::IScene()
-        : m_gui(std::make_shared<GUI>())
+    GUILabel::GUILabel(std::string_view text, float x, float y)
+        : GUIComponent(x, y), m_text(text)
     {}
     
-    void IScene::Update()
+    void GUILabel::RenderDerived(
+        std::shared_ptr<Graphics> graphics) const
     {
-        m_gui->Update();
-        UpdateDerived();
-    }
-    
-    void IScene::Render(std::shared_ptr<Graphics> graphics) const
-    {
-        RenderDerived(graphics);
-        m_gui->Render(graphics);
+        auto position = GetPosition();
+        
+        graphics->DrawText(m_text, position.x, position.y);
     }
 }

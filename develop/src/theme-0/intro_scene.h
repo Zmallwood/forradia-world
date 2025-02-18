@@ -23,11 +23,19 @@
 
 namespace FW
 {
+    class GUIComponent;
+    
     class IntroScene : public IScene
     {
+      public:
+        IntroScene();
+        
       protected:
         void UpdateDerived() override;
-
+        
         void RenderDerived(std::shared_ptr<Graphics> graphics) const override;
+        
+      private:
+        std::shared_ptr<GUIComponent> m_startTextComponent;
     };
 }

@@ -20,16 +20,28 @@
 #include "intro_scene.h"
 
 #include "engine/graphics.h"
+#include "gui-core/gui.h"
+#include "gui-core/gui_label.h"
 
 namespace FW
 {
+    IntroScene::IntroScene()
+    {
+        m_startTextComponent = GetGUI()->AddComponent(
+            std::make_shared<GUILabel>(
+                "Press to start",
+                0.5f, 0.5f));
+    }
+    
     void IntroScene::UpdateDerived()
-    {}
+    {
+        auto startTextVisible = GetTicks() % 1200 > 600;
+        
+        m_startTextComponent->SetVisible(startTextVisible);
+    }
     
     void IntroScene::RenderDerived(std::shared_ptr<Graphics> graphics) const
     {
-        // graphics->DrawImage("default-scene-background", 0.0f, 0.0f, 1.0f, 1.0f);
-
         graphics->DrawBackground("default-scene-background");
         graphics->DrawImage("forradia-world-logo", 0.3f, 0.1f, 0.4f, -1.0f);
     }

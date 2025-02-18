@@ -17,25 +17,21 @@
  * limitations under the License.
  */
 
-#include "i_scene.h"
+#pragma once
 
-#include "gui-core/gui.h"
+#include "gui_component.h"
 
 namespace FW
 {
-    IScene::IScene()
-        : m_gui(std::make_shared<GUI>())
-    {}
-    
-    void IScene::Update()
+    class GUILabel : public GUIComponent
     {
-        m_gui->Update();
-        UpdateDerived();
-    }
-    
-    void IScene::Render(std::shared_ptr<Graphics> graphics) const
-    {
-        RenderDerived(graphics);
-        m_gui->Render(graphics);
-    }
+      public:
+        GUILabel(std::string_view text, float x, float y);
+        
+        virtual void RenderDerived(
+            std::shared_ptr<Graphics> graphics) const override;
+        
+      private:
+        std::string m_text;
+    };
 }

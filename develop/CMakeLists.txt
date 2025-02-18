@@ -47,6 +47,7 @@ target_precompile_headers(forradia-world
         src/utils/hash.h
 
         src/math-lib/size.h
+        src/math-lib/point_f.h
 )
 
 

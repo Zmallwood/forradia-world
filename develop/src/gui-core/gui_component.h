@@ -22,16 +22,25 @@
 namespace FW
 {
     class Graphics;
-    class GUI;
     
-    class IScene
+    class GUIComponent
     {
       public:
-        IScene();
+        GUIComponent() = default;
+        
+        GUIComponent(float x, float y);
         
         void Update();
         
         void Render(std::shared_ptr<Graphics> graphics) const;
+        
+        std::shared_ptr<GUIComponent> AddComponent(
+            std::shared_ptr<GUIComponent> component);
+
+        void SetVisible(bool value)
+        {
+            m_visible = value;
+        }
         
       protected:
         virtual void UpdateDerived()
@@ -40,12 +49,14 @@ namespace FW
         virtual void RenderDerived(std::shared_ptr<Graphics> graphics) const
         {}
         
-        auto GetGUI() const
+        auto GetPosition() const
         {
-            return m_gui;
+            return m_position;
         }
         
       private:
-        std::shared_ptr<GUI> m_gui;
+        std::vector<std::shared_ptr<GUIComponent>> m_childComponents;
+        PointF m_position {0.0f, 0.0f};
+        bool m_visible {true};
     };
 }

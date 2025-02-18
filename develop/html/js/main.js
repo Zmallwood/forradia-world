@@ -38,7 +38,7 @@ function Connect()
     
     ctx.canvas.width = window.innerWidth;
     ctx.canvas.height = window.innerHeight;
-    ctx.font = "38px serif";
+    ctx.font = "28px serif";
     
     let drawCommands = [];
     
@@ -83,6 +83,7 @@ function Connect()
             ctx.canvas.width = window.innerWidth;
             ctx.canvas.height = window.innerHeight;
             ws.send("CanvasSize;" + ctx.canvas.width + ";" + ctx.canvas.height); // send a message
+            ctx.font = "28px serif";
         }, 250);
     });
     
