@@ -30,7 +30,7 @@ namespace FW
         m_startTextComponent = GetGUI()->AddComponent(
             std::make_shared<GUILabel>(
                 "Press to start",
-                0.5f, 0.5f));
+                0.5f, 0.5f, true));
     }
     
     void IntroScene::UpdateDerived()

@@ -17,24 +17,15 @@
  * limitations under the License.
  */
 
-#include "gui_label.h"
-
-#include "engine/graphics.h"
+#pragma once
 
 namespace FW
 {
-    GUILabel::GUILabel(std::string_view text, float x, float y,
-                       bool centerAlign)
-        : GUIComponent(x, y), m_text(text), m_centerAlign(centerAlign)
-    {}
-    
-    void GUILabel::RenderDerived(
-        std::shared_ptr<Graphics> graphics) const
+    class Color
     {
-        auto position = GetPosition();
-        
-        graphics->DrawText(
-            m_text, position.x, position.y,
-            Colors::Wheat, m_centerAlign);
-    }
+      public:
+        int r {0};
+        int g {0};
+        int b {0};
+    };
 }

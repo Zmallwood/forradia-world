@@ -112,7 +112,7 @@ export function ProcessMessage(
         {
             const centerAlign = parts[7];
             
-            if (centerAlign == true)
+            if (centerAlign == "true")
             {
                 const textWidth = ctx.measureText(text).width;
                 xOffset = -textWidth / 2;

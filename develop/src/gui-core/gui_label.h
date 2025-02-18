@@ -26,12 +26,13 @@ namespace FW
     class GUILabel : public GUIComponent
     {
       public:
-        GUILabel(std::string_view text, float x, float y);
+        GUILabel(std::string_view text, float x, float y, bool centerAlign = false);
         
         virtual void RenderDerived(
             std::shared_ptr<Graphics> graphics) const override;
         
       private:
         std::string m_text;
+        bool m_centerAlign {false};
     };
 }

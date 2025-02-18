@@ -82,11 +82,15 @@ namespace FW
     void Graphics::DrawText(
         std::string_view text,
         float x,
-        float y) const
+        float y,
+        Color color,
+        bool centerAlign) const
     {
         m_server->send(
             m_handle,
-            std::format("DrawText;{};{};{};", text, x, y),
+            std::format(
+                "DrawText;{};{};{};{};{};{};{};", text, x, y, color.r,
+                color.g, color.b, centerAlign),
             websocketpp::frame::opcode::TEXT);
     }
     
