@@ -18,13 +18,19 @@
  */
 
 #include "Main_Menu_Scene.h"
+#include "Engine/Graphics.h"
 
 namespace FW
 {
-    void Main_Menu_Scene::UpdateDerived()
+    void Main_Menu_Scene::UpdateDerived(
+        std::shared_ptr<Scene_Manager> sceneManager,
+        std::shared_ptr<Keyboard_Input>
+        keyboardInput)
     {}
     
     void Main_Menu_Scene::RenderDerived(
         std::shared_ptr<Graphics> graphics) const
-    {}
+    {
+        graphics->DrawBackground("default-scene-background");
+    }
 }

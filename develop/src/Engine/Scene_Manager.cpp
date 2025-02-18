@@ -38,11 +38,14 @@ namespace FW
         ChangeScene("intro-scene");
     }
     
-    void Scene_Manager::UpdateCurrentScene()
+    void Scene_Manager::UpdateCurrentScene(
+        std::shared_ptr<Scene_Manager> sceneManager,
+        std::shared_ptr<Keyboard_Input>
+        keyboardInput)
     {
         if (m_scenes.contains(m_currentScene))
         {
-            m_scenes.at(m_currentScene)->Update();
+            m_scenes.at(m_currentScene)->Update(sceneManager, keyboardInput);
         }
     }
     

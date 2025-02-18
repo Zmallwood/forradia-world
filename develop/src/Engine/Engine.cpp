@@ -22,18 +22,20 @@
 #include "FPS_Counter.h"
 #include "Graphics.h"
 #include "Scene_Manager.h"
+#include "Input/Keyboard_Input.h"
 
 namespace FW
 {
     Engine::Engine(std::shared_ptr<Graphics> graphics)
         : m_fpsCounter(std::make_shared<FPS_Counter>())
         , m_sceneManager(std::make_shared<Scene_Manager>())
+        , m_keyboardInput(std::make_shared<Keyboard_Input>())
         , m_graphics(graphics)
     {}
     
     void Engine::ProcessFrame()
     {
-        m_sceneManager->UpdateCurrentScene();
+        m_sceneManager->UpdateCurrentScene(m_sceneManager, m_keyboardInput);
         m_fpsCounter->Update();
         
         m_graphics->ClearCanvas();

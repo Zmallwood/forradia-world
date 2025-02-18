@@ -21,7 +21,10 @@
 
 namespace FW
 {
-    void World_Generation_Scene::UpdateDerived()
+    void World_Generation_Scene::UpdateDerived(
+        std::shared_ptr<Scene_Manager> sceneManager,
+        std::shared_ptr<Keyboard_Input>
+        keyboardInput)
     {}
     
     void World_Generation_Scene::RenderDerived(

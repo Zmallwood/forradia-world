@@ -31,7 +31,9 @@ namespace FW
         Intro_Scene();
         
       protected:
-        void UpdateDerived() override;
+        void UpdateDerived(std::shared_ptr<Scene_Manager> sceneManager,
+                           std::shared_ptr<Keyboard_Input> keyboardInput)
+        override;
         
         void RenderDerived(std::shared_ptr<Graphics> graphics) const override;
         

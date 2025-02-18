@@ -22,6 +22,8 @@
 #include "Engine/Graphics.h"
 #include "GUI_Core/GUI.h"
 #include "GUI_Core/GUI_Label.h"
+#include "Input/Keyboard_Input.h"
+#include "Engine/Scene_Manager.h"
 
 namespace FW
 {
@@ -33,8 +35,15 @@ namespace FW
                 0.5f, 0.5f, true));
     }
     
-    void Intro_Scene::UpdateDerived()
+    void Intro_Scene::UpdateDerived(std::shared_ptr<Scene_Manager> sceneManager,
+                                    std::shared_ptr<Keyboard_Input>
+                                    keyboardInput)
     {
+        if (keyboardInput->AnyKeyIsPressedPickResult())
+        {
+            sceneManager->ChangeScene("main-menu-scene");
+        }
+
         auto startTextVisible = GetTicks() % 1200 > 600;
         
         m_startTextComponent->SetVisible(startTextVisible);

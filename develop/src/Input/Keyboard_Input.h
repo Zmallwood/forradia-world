@@ -17,14 +17,20 @@
  * limitations under the License.
  */
 
-#include "Main_Scene.h"
+#pragma once
 
 namespace FW
 {
-    void Main_Scene::UpdateDerived(std::shared_ptr<Scene_Manager> sceneManager,
-                                   std::shared_ptr<Keyboard_Input> keyboardInput)
-    {}
-    
-    void Main_Scene::RenderDerived(std::shared_ptr<Graphics> graphics) const
-    {}
+    class Keyboard_Input
+    {
+      public:
+        void RegisterKeyPress(int key);
+        
+        void RegisterKeyRelease(int key);
+        
+        bool AnyKeyIsPressedPickResult();
+        
+      private:
+        std::set<int> m_pressedKeys;
+    };
 }

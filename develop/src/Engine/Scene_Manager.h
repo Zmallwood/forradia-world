@@ -23,13 +23,16 @@ namespace FW
 {
     class I_Scene;
     class Graphics;
+    class Scene_Manager;
+    class Keyboard_Input;
     
     class Scene_Manager
     {
       public:
         Scene_Manager();
         
-        void UpdateCurrentScene();
+        void UpdateCurrentScene(std::shared_ptr<Scene_Manager> sceneManager,
+                                std::shared_ptr<Keyboard_Input> keyboardInput);
         
         void RenderCurrentScene(std::shared_ptr<Graphics> graphics) const;
         

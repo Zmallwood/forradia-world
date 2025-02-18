@@ -17,14 +17,7 @@
  * limitations under the License.
  */
 
-#include "Main_Scene.h"
+#include "Mouse_Button.h"
 
 namespace FW
-{
-    void Main_Scene::UpdateDerived(std::shared_ptr<Scene_Manager> sceneManager,
-                                   std::shared_ptr<Keyboard_Input> keyboardInput)
-    {}
-    
-    void Main_Scene::RenderDerived(std::shared_ptr<Graphics> graphics) const
-    {}
-}
+{}

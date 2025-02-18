@@ -23,18 +23,22 @@ namespace FW
 {
     class Graphics;
     class GUI;
+    class Scene_Manager;
+    class Keyboard_Input;
     
     class I_Scene
     {
       public:
         I_Scene();
         
-        void Update();
+        void Update(std::shared_ptr<Scene_Manager> sceneManager,
+                    std::shared_ptr<Keyboard_Input> keyboardInput);
         
         void Render(std::shared_ptr<Graphics> graphics) const;
         
       protected:
-        virtual void UpdateDerived()
+        virtual void UpdateDerived(std::shared_ptr<Scene_Manager> sceneManager,
+                                   std::shared_ptr<Keyboard_Input> keyboardInput)
         {}
         
         virtual void RenderDerived(std::shared_ptr<Graphics> graphics) const

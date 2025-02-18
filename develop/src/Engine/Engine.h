@@ -24,6 +24,7 @@ namespace FW
     class Scene_Manager;
     class FPS_Counter;
     class Graphics;
+    class Keyboard_Input;
     
     class Engine
     {
@@ -32,9 +33,15 @@ namespace FW
         
         void ProcessFrame();
         
+        auto GetKeyboardInput() const
+        {
+            return m_keyboardInput;
+        }
+        
       private:
         std::shared_ptr<Scene_Manager> m_sceneManager;
         std::shared_ptr<FPS_Counter> m_fpsCounter;
         std::shared_ptr<Graphics> m_graphics;
+        std::shared_ptr<Keyboard_Input> m_keyboardInput;
     };
 }

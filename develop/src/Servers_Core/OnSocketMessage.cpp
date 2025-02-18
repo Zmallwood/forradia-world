@@ -23,6 +23,8 @@
 #include "Socket_Clients_Manager.h"
 #include "Conf/App_Properties.h"
 #include "Engine/Image_Info_Store.h"
+#include "Input/Keyboard_Input.h"
+#include "Engine/Engine.h"
 
 namespace FW
 {
@@ -61,6 +63,32 @@ namespace FW
                 _<Image_Info_Store>().AddImageDimensions(
                     imageName,
                     {width, height});
+            }
+            else if (parts[0] == "KeyPress")
+            {
+                auto key = std::stoi(parts[1]);
+                
+                auto socketClient =
+                    _<Socket_Clients_Manager>().GetSocketClient(handle);
+                
+                auto engine = socketClient->GetEngine();
+
+                auto keyboardInput = engine->GetKeyboardInput();
+
+                keyboardInput->RegisterKeyPress(key);
+            }
+            else if (parts[0] == "KeyRelease")
+            {
+                auto key = std::stoi(parts[1]);
+
+                auto socketClient =
+                    _<Socket_Clients_Manager>().GetSocketClient(handle);
+
+                auto engine = socketClient->GetEngine();
+
+                auto keyboardInput = engine->GetKeyboardInput();
+
+                keyboardInput->RegisterKeyRelease(key);
             }
         }
         catch (websocketpp::exception const& e)

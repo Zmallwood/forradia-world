@@ -27,10 +27,11 @@ namespace FW
         : m_gui(std::make_shared<GUI>())
     {}
     
-    void I_Scene::Update()
+    void I_Scene::Update(std::shared_ptr<Scene_Manager> sceneManager,
+                         std::shared_ptr<Keyboard_Input> keyboardInput)
     {
         m_gui->Update();
-        UpdateDerived();
+        UpdateDerived(sceneManager, keyboardInput);
     }
     
     void I_Scene::Render(std::shared_ptr<Graphics> graphics) const

@@ -32,6 +32,11 @@ namespace FW
         
         void ProcessFrame();
         
+        auto GetEngine() const
+        {
+            return m_engine;
+        }
+        
       private:
         std::shared_ptr<Engine> m_engine;
     };
