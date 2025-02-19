@@ -20,4 +20,14 @@
 #include "Mouse_Button.h"
 
 namespace FW
-{}
+{
+    void Mouse_Button::RegisterPress()
+    {
+        m_isPressed = true;
+    }
+    
+    void Mouse_Button::RegisterRelease()
+    {
+        m_isPressed = false;
+    }
+}

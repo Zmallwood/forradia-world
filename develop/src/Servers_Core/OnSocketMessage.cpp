@@ -90,6 +90,14 @@ namespace FW
 
                 keyboardInput->RegisterKeyRelease(key);
             }
+            else if (parts[0] == "MouseButtonPress")
+            {
+                auto button = std::stoi(parts[1]);
+            }
+            else if (parts[0] == "MouseButtonRelease")
+            {
+                auto button = std::stoi(parts[1]);
+            }
         }
         catch (websocketpp::exception const& e)
         {

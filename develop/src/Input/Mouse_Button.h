@@ -23,6 +23,12 @@ namespace FW
 {
     class Mouse_Button
     {
-    public:
+      public:
+        void RegisterPress();
+
+        void RegisterRelease();
+        
+      private:
+        bool m_isPressed {false};
     };
 }

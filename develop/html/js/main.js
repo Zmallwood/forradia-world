@@ -58,18 +58,30 @@ function Connect()
     {
         console.log("Connection closed.");
     };
-    
-    document.onkeydown = function(e)
-    {
-        e = e || window.event;
-        ws.send("KeyPress;" + e.keyCode);
-    };
-    
-    document.onkeyup = function(e)
-    {
-        e = e || window.event;
-        ws.send("KeyRelease;" + e.keyCode);
-    }
+
+    document.addEventListener("keydown", function(e) {
+        if (ws && ws.readyState === WebSocket.OPEN) {
+             ws.send("KeyPress;" + e.keyCode);
+        }
+    });
+
+    document.addEventListener("keyup", function(e) {
+        if (ws && ws.readyState === WebSocket.OPEN) {
+             ws.send("KeyRelease;" + e.keyCode);
+        }
+    });
+
+    document.addEventListener("mousedown", function(e) {
+        if (ws && ws.readyState === WebSocket.OPEN) {
+            ws.send("MouseButtonPress;" + e.button);
+        }
+    });
+
+    document.addEventListener("mouseup", function(e) {
+        if (ws && ws.readyState === WebSocket.OPEN) {
+            ws.send("MouseButtonRelease;" + e.button);
+        }
+    });
     
     var timeout;
     

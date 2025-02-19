@@ -19,10 +19,25 @@
 
 #pragma once
 
+#include "Mouse_Button.h"
+
 namespace FW
 {
     class Mouse_Input
     {
       public:
+        auto& GetLeftMouseButtonRef()
+        {
+            return m_leftMouseButton;
+        }
+        
+        auto& GetRightMouseButtonRef()
+        {
+            return m_leftMouseButton;
+        }
+        
+      private:
+        Mouse_Button m_leftMouseButton;
+        Mouse_Button m_rightMouseButton;
     };
 }
