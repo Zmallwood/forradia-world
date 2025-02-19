@@ -43,7 +43,7 @@ namespace FW
         {
             sceneManager->ChangeScene("main-menu-scene");
         }
-
+        
         auto startTextVisible = GetTicks() % 1200 > 600;
         
         m_startTextComponent->SetVisible(startTextVisible);
