@@ -20,12 +20,19 @@
 #pragma once
 
 #include "Mouse_Button.h"
+#include "Mouse_Buttons.h"
 
 namespace FW
 {
     class Mouse_Input
     {
       public:
+        void RegisterButtonPress(Mouse_Buttons button);
+        
+        void RegisterButtonRelease(Mouse_Buttons button);
+
+        bool AnyButtonIsPressed() const;
+        
         auto& GetLeftMouseButtonRef()
         {
             return m_leftMouseButton;

@@ -23,6 +23,7 @@
 #include "GUI_Core/GUI.h"
 #include "GUI_Core/GUI_Label.h"
 #include "Input/Keyboard_Input.h"
+#include "Input/Mouse_Input.h"
 #include "Engine/Scene_Manager.h"
 
 namespace FW
@@ -39,7 +40,8 @@ namespace FW
                                     std::shared_ptr<Keyboard_Input>
                                     keyboardInput)
     {
-        if (keyboardInput->AnyKeyIsPressedPickResult())
+        if (keyboardInput->AnyKeyIsPressedPickResult() ||
+            _<Mouse_Input>().AnyButtonIsPressed())
         {
             sceneManager->ChangeScene("main-menu-scene");
         }

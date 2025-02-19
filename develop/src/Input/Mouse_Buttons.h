@@ -21,19 +21,10 @@
 
 namespace FW
 {
-    class Mouse_Button
+    enum class Mouse_Buttons : int
     {
-      public:
-        void RegisterPress();
-        
-        void RegisterRelease();
-        
-        auto GetIsPressed() const
-        {
-            return m_isPressed;
-        }
-        
-      private:
-        bool m_isPressed {false};
+        Left = 0,
+        Middle = 1,
+        Right = 2
     };
 }

@@ -21,5 +21,45 @@
 
 namespace FW
 {
-
+    void Mouse_Input::RegisterButtonPress(Mouse_Buttons button)
+    {
+        switch (button)
+        {
+        case Mouse_Buttons::Left:
+        
+            m_leftMouseButton.RegisterPress();
+            
+            break;
+            
+        case Mouse_Buttons::Right:
+        
+            m_leftMouseButton.RegisterRelease();
+            
+            break;
+        }
+    }
+    
+    void Mouse_Input::RegisterButtonRelease(Mouse_Buttons button)
+    {
+        switch (button)
+        {
+        case Mouse_Buttons::Left:
+        
+            m_leftMouseButton.RegisterRelease();
+            
+            break;
+            
+        case Mouse_Buttons::Right:
+        
+            m_leftMouseButton.RegisterRelease();
+            
+            break;
+        }
+    }
+    
+    bool Mouse_Input::AnyButtonIsPressed() const
+    {
+        return m_leftMouseButton.GetIsPressed() ||
+               m_rightMouseButton.GetIsPressed();
+    }
 }

@@ -25,6 +25,7 @@
 #include "Engine/Image_Info_Store.h"
 #include "Input/Keyboard_Input.h"
 #include "Engine/Engine.h"
+#include "Input/Mouse_Input.h"
 
 namespace FW
 {
@@ -72,31 +73,37 @@ namespace FW
                     _<Socket_Clients_Manager>().GetSocketClient(handle);
                 
                 auto engine = socketClient->GetEngine();
-
+                
                 auto keyboardInput = engine->GetKeyboardInput();
-
+                
                 keyboardInput->RegisterKeyPress(key);
             }
             else if (parts[0] == "KeyRelease")
             {
                 auto key = std::stoi(parts[1]);
-
+                
                 auto socketClient =
                     _<Socket_Clients_Manager>().GetSocketClient(handle);
-
+                
                 auto engine = socketClient->GetEngine();
-
+                
                 auto keyboardInput = engine->GetKeyboardInput();
-
+                
                 keyboardInput->RegisterKeyRelease(key);
             }
             else if (parts[0] == "MouseButtonPress")
             {
-                auto button = std::stoi(parts[1]);
+                auto buttonCode = std::stoi(parts[1]);
+                auto button = static_cast<Mouse_Buttons>(buttonCode);
+
+                _<Mouse_Input>().RegisterButtonPress(button);
             }
             else if (parts[0] == "MouseButtonRelease")
             {
-                auto button = std::stoi(parts[1]);
+                auto buttonCode = std::stoi(parts[1]);
+                auto button = static_cast<Mouse_Buttons>(buttonCode);
+
+                _<Mouse_Input>().RegisterButtonRelease(button);
             }
         }
         catch (websocketpp::exception const& e)
