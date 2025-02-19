@@ -82,6 +82,20 @@ function Connect()
             ws.send("MouseButtonRelease;" + e.button);
         }
     });
+
+    document.addEventListener("touchstart", function(e) {
+        if (ws && ws.readyState === WebSocket.OPEN) {
+            const leftButtonCode = 0;
+            ws.send("MouseButtonPress;" + leftButtonCode);
+        }
+    });
+
+    document.addEventListener("touchend", function(e) {
+        if (ws && ws.readyState === WebSocket.OPEN) {
+            const leftButtonCode = 0;
+            ws.send("MouseButtonRelease;" + leftButtonCode);
+        }
+    });
     
     var timeout;
     
