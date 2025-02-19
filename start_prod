@@ -17,6 +17,7 @@ envsubst < ngrok.yml.template > ngrok.yml
 
 nohup ngrok start --all --config ./ngrok.yml &
 echo "Ngrok started. Client is accessible on: https://$WEB_SERVER_HOST"
+rm -rf ./published/*
 mkdir -p ./published/build/
 cp -r ./develop/build/forradia-world ./published/build/
 cp -r ./develop/html/ ./published/
