@@ -35,11 +35,23 @@ namespace FW
     {
         auto& messageText = message->get_payload();
         
+        constexpr auto k_frameFinished = Hash("FrameFinished");
+        constexpr auto k_canvasSize = Hash("CanvasSize");
+        constexpr auto k_provideImageDimensions = Hash("ProvideImageDimensions");
+        constexpr auto k_keyPress = Hash("KeyPress");
+        constexpr auto k_keyRelease = Hash("KeyRelease");
+        constexpr auto k_mouseButtonPress = Hash("MouseButtonPress");
+        constexpr auto k_mouseButtonRelease = Hash("MouseButtonRelease");
+        
         try
         {
             auto parts = Split(messageText, ';');
             
-            if (parts[0] == "FrameFinished")
+            auto messageCode = Hash(parts[0]);
+            
+            switch(messageCode)
+            {
+            case k_frameFinished:
             {
                 auto socketClient =
                     _<Socket_Clients_Manager>().GetSocketClient(handle);
@@ -49,14 +61,20 @@ namespace FW
                     socketClient->ProcessFrame();
                 }
             }
-            else if (parts[0] == "CanvasSize")
+                
+            break;
+                
+            case k_canvasSize:
             {
                 auto width = std::stoi(parts[1]);
                 auto height = std::stoi(parts[2]);
                 
                 _<App_Properties>().SetCanvasSize({width, height});
             }
-            else if (parts[0] == "ProvideImageDimensions")
+                
+            break;
+                
+            case k_provideImageDimensions:
             {
                 auto imageName = parts[1];
                 auto width = std::stoi(parts[2]);
@@ -65,7 +83,10 @@ namespace FW
                     imageName,
                     {width, height});
             }
-            else if (parts[0] == "KeyPress")
+                
+            break;
+                
+            case k_keyPress:
             {
                 auto key = std::stoi(parts[1]);
                 
@@ -78,7 +99,10 @@ namespace FW
                 
                 keyboardInput->RegisterKeyPress(key);
             }
-            else if (parts[0] == "KeyRelease")
+                
+            break;
+                
+            case k_keyRelease:
             {
                 auto key = std::stoi(parts[1]);
                 
@@ -91,19 +115,29 @@ namespace FW
                 
                 keyboardInput->RegisterKeyRelease(key);
             }
-            else if (parts[0] == "MouseButtonPress")
+                
+            break;
+                
+            case k_mouseButtonPress:
             {
                 auto buttonCode = std::stoi(parts[1]);
                 auto button = static_cast<Mouse_Buttons>(buttonCode);
-
+                
                 _<Mouse_Input>().RegisterButtonPress(button);
             }
-            else if (parts[0] == "MouseButtonRelease")
+                
+            break;
+                
+            case k_mouseButtonRelease:
             {
                 auto buttonCode = std::stoi(parts[1]);
                 auto button = static_cast<Mouse_Buttons>(buttonCode);
-
+                
                 _<Mouse_Input>().RegisterButtonRelease(button);
+            }
+                
+            break;
+                
             }
         }
         catch (websocketpp::exception const& e)
