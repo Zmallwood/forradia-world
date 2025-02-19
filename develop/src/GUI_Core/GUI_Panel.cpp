@@ -17,11 +17,9 @@
  * limitations under the License.
  */
 
-// This array currently need to list names of all images
-// (without extension) that will be used in the client.
+#include "GUI_Panel.h"
 
-export const imageNames = [
-    "ground-grass",
-    "default-scene-background",
-    "forradia-world-logo"
-];
+namespace FW
+{
+
+}

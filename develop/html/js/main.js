@@ -17,19 +17,10 @@
  * limitations under the License.
  */
 
-import { imageNames } from './imageNames.js';
 import { ProcessMessage } from './ProcessMessage.js';
 import { wsConnString } from './wsConnString.generated.js';
 
 var images = {};
-
-for (const imageName of imageNames){
-    let image = new Image();
-    
-    image.src = "./img/" + imageName + ".png";
-    images[imageName] = image;
-}
-
 
 function Connect()
 {
@@ -58,40 +49,52 @@ function Connect()
     {
         console.log("Connection closed.");
     };
-
-    document.addEventListener("keydown", function(e) {
-        if (ws && ws.readyState === WebSocket.OPEN) {
-             ws.send("KeyPress;" + e.keyCode);
+    
+    document.addEventListener(
+        "keydown", function(e) {
+        if (ws && ws.readyState === WebSocket.OPEN)
+        {
+            ws.send("KeyPress;" + e.keyCode);
         }
     });
-
-    document.addEventListener("keyup", function(e) {
-        if (ws && ws.readyState === WebSocket.OPEN) {
-             ws.send("KeyRelease;" + e.keyCode);
+    
+    document.addEventListener(
+        "keyup", function(e) {
+        if (ws && ws.readyState === WebSocket.OPEN)
+        {
+            ws.send("KeyRelease;" + e.keyCode);
         }
     });
-
-    document.addEventListener("mousedown", function(e) {
-        if (ws && ws.readyState === WebSocket.OPEN) {
+    
+    document.addEventListener(
+        "mousedown", function(e) {
+        if (ws && ws.readyState === WebSocket.OPEN)
+        {
             ws.send("MouseButtonPress;" + e.button);
         }
     });
-
-    document.addEventListener("mouseup", function(e) {
-        if (ws && ws.readyState === WebSocket.OPEN) {
+    
+    document.addEventListener(
+        "mouseup", function(e) {
+        if (ws && ws.readyState === WebSocket.OPEN)
+        {
             ws.send("MouseButtonRelease;" + e.button);
         }
     });
-
-    document.addEventListener("touchstart", function(e) {
-        if (ws && ws.readyState === WebSocket.OPEN) {
+    
+    document.addEventListener(
+        "touchstart", function(e) {
+        if (ws && ws.readyState === WebSocket.OPEN)
+        {
             const leftButtonCode = 0;
             ws.send("MouseButtonPress;" + leftButtonCode);
         }
     });
-
-    document.addEventListener("touchend", function(e) {
-        if (ws && ws.readyState === WebSocket.OPEN) {
+    
+    document.addEventListener(
+        "touchend", function(e) {
+        if (ws && ws.readyState === WebSocket.OPEN)
+        {
             const leftButtonCode = 0;
             ws.send("MouseButtonRelease;" + leftButtonCode);
         }
@@ -118,7 +121,8 @@ function Connect()
         requestAnimationFrame(DrawFrame);
         ctx.save();
         
-        for (const cmd of drawCommands){
+        for (const cmd of drawCommands)
+        {
             eval(cmd);
         }
         

@@ -29,7 +29,8 @@ export function ProcessMessage(
     const msg = evt.data;
     const parts = msg.split(";");
     
-    switch (parts[0]){
+    switch (parts[0])
+    {
     case "Clear":
     {
         const r = parts[1];
@@ -59,6 +60,15 @@ export function ProcessMessage(
         const yPx = y * ctx.canvas.height;
         const wPx = w * ctx.canvas.width;
         const hPx = h * ctx.canvas.height;
+        
+        if (!images.hasOwnProperty(imageName))
+        {
+            console.log("Create image " + imageName + " in drawimage");
+            let image = new Image();
+            
+            image.src = "./img/" + imageName + ".png";
+            images[imageName] = image;
+        }
         
         newDrawCommands.push(
             "ctx.drawImage(images['" +
@@ -118,6 +128,7 @@ export function ProcessMessage(
                 xOffset = -textWidth / 2;
             }
         }
+
         const yOffset = textHeight;
         
         newDrawCommands.push(
@@ -136,22 +147,38 @@ export function ProcessMessage(
     {
         const imageName = parts[1];
         
+        if (!images.hasOwnProperty(imageName))
+        {
+            let image = new Image();
+            
+            image.src = "./img/" + imageName + ".png";
+            images[imageName] = image;
+        }
+        
         const image = images[imageName];
+
+        if (!image.complete)
+        {
+            image.onload = function()
+            {
+                var width = image.width;
+                var height = image.height;
+
+                ws.send(
+                    "ProvideImageDimensions;" + imageName + ";" + width + ";" +
+                    height + ";");
+            };
+        }
         
-        var width = image.width;
-        var height = image.height;
-        
-        ws.send(
-            "ProvideImageDimensions;" + imageName + ";" + width + ";" +
-            height + ";");
-        
+
         break;
     }
     case "Present":
     {
         drawCommands.length = 0;
         
-        for (const entry of newDrawCommands){
+        for (const entry of newDrawCommands)
+        {
             drawCommands.push(entry);
         }
         
