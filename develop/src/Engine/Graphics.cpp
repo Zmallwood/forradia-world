@@ -49,7 +49,8 @@ namespace FW
         float x,
         float y,
         float w,
-        float h) const
+        float h,
+        bool repeat) const
     {
         if (w < 0 || h < 0)
         {
@@ -75,7 +76,9 @@ namespace FW
         
         m_server->send(
             m_handle,
-            std::format("DrawImage;{};{};{};{};{};", imageName, x, y, w, h),
+            std::format(
+                "DrawImage;{};{};{};{};{};{};", imageName, x, y, w, h,
+                repeat),
             websocketpp::frame::opcode::TEXT);
     }
     

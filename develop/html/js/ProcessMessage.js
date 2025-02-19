@@ -56,6 +56,8 @@ export function ProcessMessage(
         const w = parts[4];
         const h = parts[5];
         
+        const repeat = parts[6];
+        
         const xPx = x * ctx.canvas.width;
         const yPx = y * ctx.canvas.height;
         const wPx = w * ctx.canvas.width;
@@ -70,19 +72,32 @@ export function ProcessMessage(
             images[imageName] = image;
         }
         
-        newDrawCommands.push(
-            "ctx.drawImage(images['" +
-            imageName +
-            "'], " +
-            xPx +
-            "," +
-            yPx +
-            "," +
-            wPx +
-            "," +
-            hPx +
-            ");",
-            );
+        if (repeat == "true")
+        {
+            newDrawCommands.push(
+                "const pattern = ctx.createPattern(images['" + imageName +
+                "'], 'repeat');" +
+                "ctx.fillStyle = pattern;" +
+                "ctx.fillRect(" + xPx + ", " + yPx + ", " + wPx + ", " + hPx +
+                ");"
+                );
+        }
+        else
+        {
+            newDrawCommands.push(
+                "ctx.drawImage(images['" +
+                imageName +
+                "'], " +
+                xPx +
+                "," +
+                yPx +
+                "," +
+                wPx +
+                "," +
+                hPx +
+                ");",
+                );
+        }
         
         break;
     }
@@ -128,7 +143,7 @@ export function ProcessMessage(
                 xOffset = -textWidth / 2;
             }
         }
-
+        
         const yOffset = textHeight;
         
         newDrawCommands.push(
@@ -156,21 +171,21 @@ export function ProcessMessage(
         }
         
         const image = images[imageName];
-
+        
         if (!image.complete)
         {
             image.onload = function()
             {
                 var width = image.width;
                 var height = image.height;
-
+                
                 ws.send(
                     "ProvideImageDimensions;" + imageName + ";" + width + ";" +
                     height + ";");
             };
         }
         
-
+        
         break;
     }
     case "Present":

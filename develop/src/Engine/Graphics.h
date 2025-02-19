@@ -37,7 +37,8 @@ namespace FW
             float x,
             float y,
             float w,
-            float h) const;
+            float h,
+            bool repeat = false) const;
         
         void DrawText(
             std::string_view text,

@@ -25,6 +25,9 @@ namespace FW
 {
     class Main_Menu_Scene : public I_Scene
     {
+      public:
+        Main_Menu_Scene();
+        
       protected:
         void UpdateDerived(std::shared_ptr<Scene_Manager> sceneManager,
                            std::shared_ptr<Keyboard_Input> keyboardInput)

@@ -53,7 +53,7 @@ namespace FW
     
     void Intro_Scene::RenderDerived(std::shared_ptr<Graphics> graphics) const
     {
-        graphics->DrawBackground("default-scene-background");
-        graphics->DrawImage("forradia-world-logo", 0.3f, 0.1f, 0.4f, -1.0f);
+        graphics->DrawBackground("DefaultSceneBackground");
+        graphics->DrawImage("ForradiaWorldLogo", 0.3f, 0.1f, 0.4f, -1.0f);
     }
 }

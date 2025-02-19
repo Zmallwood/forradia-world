@@ -47,6 +47,7 @@ target_precompile_headers(forradia-world
         src/Utils/Hash.h
 
         src/Math_Lib/Size.h
+        src/Math_Lib/Size_F.h
         src/Math_Lib/Point_F.h
         src/Math_Lib/Color.h
         src/Math_Lib/Colors.h

@@ -26,5 +26,12 @@ namespace FW
     class GUI_Panel : public GUI_Component
     {
       public:
+        GUI_Panel(float x, float y, float w, float h);
+        
+        virtual void RenderDerived(
+            std::shared_ptr<Graphics> graphics) const override;
+        
+      private:
+        Size_F m_size {0.0f, 0.0f};
     };
 }

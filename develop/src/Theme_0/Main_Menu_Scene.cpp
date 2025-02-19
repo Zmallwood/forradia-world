@@ -18,10 +18,20 @@
  */
 
 #include "Main_Menu_Scene.h"
+
 #include "Engine/Graphics.h"
+#include "GUI_Core/GUI.h"
+#include "GUI_Core/GUI_Panel.h"
 
 namespace FW
 {
+    Main_Menu_Scene::Main_Menu_Scene()
+    {
+        GetGUI()->AddComponent(
+            std::make_shared<GUI_Panel>(
+                0.3f, 0.4f, 0.4f, 0.4f));
+    }
+    
     void Main_Menu_Scene::UpdateDerived(
         std::shared_ptr<Scene_Manager> sceneManager,
         std::shared_ptr<Keyboard_Input>
@@ -31,6 +41,7 @@ namespace FW
     void Main_Menu_Scene::RenderDerived(
         std::shared_ptr<Graphics> graphics) const
     {
-        graphics->DrawBackground("default-scene-background");
+        graphics->DrawBackground("DefaultSceneBackground");
+        graphics->DrawImage("ForradiaWorldLogo", 0.35f, 0.05f, 0.3f, -1.0f);
     }
 }
