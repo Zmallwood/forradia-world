@@ -24,5 +24,8 @@
 namespace FW
 {
     class GUI : public GUI_Component
-    {};
+    {
+      public:
+        using GUI_Component::GUI_Component;
+    };
 }

@@ -32,6 +32,7 @@ namespace FW
     {
         m_startTextComponent = GetGUI()->AddComponent(
             std::make_shared<GUI_Label>(
+                GetGraphicsRef(),
                 "Press to start",
                 0.5f, 0.5f, true));
     }

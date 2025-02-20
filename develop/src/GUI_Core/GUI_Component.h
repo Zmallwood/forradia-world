@@ -26,13 +26,11 @@ namespace FW
     class GUI_Component
     {
       public:
-        GUI_Component() = default;
-        
-        GUI_Component(float x, float y);
+        GUI_Component(const Graphics& graphics, float x = 0.0f, float y = 0.0f);
         
         void Update();
         
-        void Render(Graphics& graphics) const;
+        void Render() const;
         
         std::shared_ptr<GUI_Component> AddComponent(
             std::shared_ptr<GUI_Component> component);
@@ -46,7 +44,7 @@ namespace FW
         virtual void UpdateDerived()
         {}
         
-        virtual void RenderDerived(Graphics& graphics) const
+        virtual void RenderDerived() const
         {}
         
         auto GetPosition() const
@@ -54,10 +52,18 @@ namespace FW
             return m_position;
         }
         
+        const auto& GetGraphicsRef() const
+        {
+            return m_graphics;
+        }
+        
       private:
         // State
         std::vector<std::shared_ptr<GUI_Component>> m_childComponents;
         Point_F m_position {0.0f, 0.0f};
         bool m_visible {true};
+        
+        // Dependencies
+        const Graphics& m_graphics;
     };
 }

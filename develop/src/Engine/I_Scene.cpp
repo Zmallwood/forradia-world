@@ -31,7 +31,7 @@ namespace FW
         m_sceneManager(sceneManager),
         m_keyboardInput(keyboardInput),
         m_mouseInput(mouseInput),
-        m_gui(std::make_shared<GUI>())
+        m_gui(std::make_shared<GUI>(graphics))
     {}
     
     void I_Scene::Update()
@@ -43,6 +43,6 @@ namespace FW
     void I_Scene::Render() const
     {
         RenderDerived();
-        m_gui->Render(m_graphics);
+        m_gui->Render();
     }
 }

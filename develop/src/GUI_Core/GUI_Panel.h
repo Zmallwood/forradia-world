@@ -26,9 +26,9 @@ namespace FW
     class GUI_Panel : public GUI_Component
     {
       public:
-        GUI_Panel(float x, float y, float w, float h);
+        GUI_Panel(const Graphics& graphics, float x, float y, float w, float h);
         
-        virtual void RenderDerived(Graphics& graphics) const override;
+        virtual void RenderDerived() const override;
         
       private:
         // Const

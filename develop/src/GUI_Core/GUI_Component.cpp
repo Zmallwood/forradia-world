@@ -21,8 +21,8 @@
 
 namespace FW
 {
-    GUI_Component::GUI_Component(float x, float y)
-        : m_position({x, y})
+    GUI_Component::GUI_Component(const Graphics& graphics, float x, float y)
+        : m_graphics(graphics), m_position({x, y})
     {}
     
     void GUI_Component::Update()
@@ -40,18 +40,18 @@ namespace FW
         }
     }
     
-    void GUI_Component::Render(Graphics& graphics) const
+    void GUI_Component::Render() const
     {
         if (!m_visible)
         {
             return;
         }
         
-        RenderDerived(graphics);
+        RenderDerived();
         
         for (auto child : m_childComponents)
         {
-            child->Render(graphics);
+            child->Render();
         }
     }
     

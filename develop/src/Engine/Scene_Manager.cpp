@@ -57,10 +57,7 @@ namespace FW
         ChangeScene("intro-scene");
     }
     
-    void Scene_Manager::UpdateCurrentScene(
-        std::shared_ptr<Scene_Manager> sceneManager,
-        std::shared_ptr<Keyboard_Input> keyboardInput,
-        std::shared_ptr<Mouse_Input> mouseInput)
+    void Scene_Manager::UpdateCurrentScene()
     {
         if (m_scenes.contains(m_currentScene))
         {
@@ -68,8 +65,7 @@ namespace FW
         }
     }
     
-    void Scene_Manager::RenderCurrentScene(
-        std::shared_ptr<Graphics> graphics) const
+    void Scene_Manager::RenderCurrentScene() const
     {
         if (m_scenes.contains(m_currentScene))
         {

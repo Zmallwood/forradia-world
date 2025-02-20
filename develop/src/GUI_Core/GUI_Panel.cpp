@@ -23,15 +23,15 @@
 
 namespace FW
 {
-    GUI_Panel::GUI_Panel(float x, float y, float w, float h)
-        : GUI_Component(x, y), m_size({w, h})
+    GUI_Panel::GUI_Panel(const Graphics& graphics, float x, float y, float w, float h)
+        : GUI_Component(graphics, x, y), m_size({w, h})
     {}
     
-    void GUI_Panel::RenderDerived(Graphics& graphics) const
+    void GUI_Panel::RenderDerived() const
     {
         auto position = GetPosition();
         
-        graphics.DrawImage(
+        GetGraphicsRef().DrawImage(
             "GUIPanelDefaultBackground", position.x, position.y,
             m_size.w, m_size.h, true);
     }

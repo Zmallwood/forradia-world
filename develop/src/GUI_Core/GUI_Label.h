@@ -26,10 +26,10 @@ namespace FW
     class GUI_Label : public GUI_Component
     {
       public:
-        GUI_Label(std::string_view text, float x, float y,
+        GUI_Label(const Graphics& graphics, std::string_view text, float x, float y,
                   bool centerAlign = false);
         
-        virtual void RenderDerived(Graphics& graphics) const override;
+        virtual void RenderDerived() const override;
         
       private:
         // State

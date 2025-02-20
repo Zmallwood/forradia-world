@@ -29,6 +29,7 @@ namespace FW
     {
         GetGUI()->AddComponent(
             std::make_shared<GUI_Panel>(
+                GetGraphicsRef(),
                 0.3f, 0.4f, 0.4f, 0.4f));
     }
     

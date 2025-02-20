@@ -34,11 +34,9 @@ namespace FW
         
         void InitializeScenes();
         
-        void UpdateCurrentScene(std::shared_ptr<Scene_Manager> sceneManager,
-                                std::shared_ptr<Keyboard_Input> keyboardInput,
-                                std::shared_ptr<Mouse_Input> mouseInput);
+        void UpdateCurrentScene();
         
-        void RenderCurrentScene(std::shared_ptr<Graphics> graphics) const;
+        void RenderCurrentScene() const;
         
         void ChangeScene(std::string_view sceneName);
         

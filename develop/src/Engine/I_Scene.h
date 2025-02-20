@@ -77,7 +77,7 @@ namespace FW
       private:
         // State
         std::shared_ptr<GUI> m_gui;
-        
+
         // Dependencies
         Graphics& m_graphics;
         Scene_Manager& m_sceneManager;

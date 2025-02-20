@@ -48,13 +48,11 @@ namespace FW
     {
         m_cursor->Reset();
         
-        m_sceneManager->UpdateCurrentScene(
-            m_sceneManager, m_keyboardInput,
-            m_mouseInput);
+        m_sceneManager->UpdateCurrentScene();
         m_fpsCounter->Update();
         
         m_graphics->ClearCanvas();
-        m_sceneManager->RenderCurrentScene(m_graphics);
+        m_sceneManager->RenderCurrentScene();
         m_fpsCounter->Render();
         m_cursor->Render();
         m_graphics->PresentCanvas();
