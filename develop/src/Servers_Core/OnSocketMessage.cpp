@@ -24,6 +24,7 @@
 #include "Conf/App_Properties.h"
 #include "Engine/Image_Info_Store.h"
 #include "Input/Keyboard_Input.h"
+#include "Input/Mouse_Input.h"
 #include "Engine/Engine.h"
 #include "Engine/Graphics.h"
 #include "Input/Mouse_Input.h"
@@ -44,6 +45,7 @@ namespace FW
         constexpr auto k_keyRelease = Hash("KeyRelease");
         constexpr auto k_mouseButtonPress = Hash("MouseButtonPress");
         constexpr auto k_mouseButtonRelease = Hash("MouseButtonRelease");
+        constexpr auto k_mouseMove = Hash("MouseMove");
         
         try
         {
@@ -143,6 +145,28 @@ namespace FW
                 auto button = static_cast<Mouse_Buttons>(buttonCode);
                 
                 _<Mouse_Input>().RegisterButtonRelease(button);
+            }
+                
+            break;
+                
+            case k_mouseMove:
+            {
+                auto x = std::stoi(parts[1]);
+                auto y = std::stoi(parts[2]);
+                
+                auto socketClient =
+                    _<Socket_Clients_Manager>().GetSocketClient(handle);
+                
+                auto engine = socketClient->GetEngine();
+                
+                auto graphics = engine->GetGraphics();
+                
+                auto canvasSize = graphics->GetCanvasSize();
+                
+                auto xNorm = static_cast<float>(x) / canvasSize.w;
+                auto yNorm = static_cast<float>(y) / canvasSize.h;
+                
+                _<Mouse_Input>().SetMousePosition({xNorm, yNorm});
             }
                 
             break;

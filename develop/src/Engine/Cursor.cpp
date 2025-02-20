@@ -19,6 +19,9 @@
 
 #include "Cursor.h"
 
+#include "Graphics.h"
+#include "Input/Mouse_Input.h"
+
 namespace FW
 {
     void Cursor::Reset()
@@ -26,6 +29,19 @@ namespace FW
         m_currentStyle = Cursor_Styles::Default;
     }
     
-    void Cursor::Render() const
-    {}
+    void Cursor::Render(std::shared_ptr<Graphics> graphics) const
+    {
+        auto mousePosition = _<Mouse_Input>().GetMousePosition();
+        
+        if (mousePosition.x != -1.0f && mousePosition.y != -1.0)
+        {
+            auto cursorWidth = k_cursorSize;
+            auto aspectRatio = CalcAspectRatio(graphics->GetCanvasSize());
+            auto cursorHeight = cursorWidth * aspectRatio;
+            
+            graphics->DrawImage(
+                "CursorDefault", mousePosition.x - cursorWidth/2,
+                mousePosition.y - cursorHeight/2, cursorWidth, cursorHeight);
+        }
+    }
 }

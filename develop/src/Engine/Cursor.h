@@ -23,14 +23,18 @@
 
 namespace FW
 {
+    class Graphics;
+    
     class Cursor
     {
       public:
         void Reset();
-
-        void Render() const;
+        
+        void Render(std::shared_ptr<Graphics> graphics) const;
         
       private:
+        const float k_cursorSize {0.05f};
+        
         Cursor_Styles m_currentStyle {Cursor_Styles::Default};
     };
 }

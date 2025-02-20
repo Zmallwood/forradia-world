@@ -30,7 +30,7 @@ namespace FW
         void RegisterButtonPress(Mouse_Buttons button);
         
         void RegisterButtonRelease(Mouse_Buttons button);
-
+        
         bool AnyButtonIsPressed() const;
         
         auto& GetLeftMouseButtonRef()
@@ -43,8 +43,19 @@ namespace FW
             return m_leftMouseButton;
         }
         
+        auto GetMousePosition() const
+        {
+            return m_mousePosition;
+        }
+        
+        void SetMousePosition(Point_F value)
+        {
+            m_mousePosition = value;
+        }
+        
       private:
         Mouse_Button m_leftMouseButton;
         Mouse_Button m_rightMouseButton;
+        Point_F m_mousePosition {-1.0f, -1.0f};
     };
 }

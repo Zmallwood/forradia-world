@@ -17,8 +17,12 @@
  * limitations under the License.
  */
 
-import { ProcessMessage } from './ProcessMessage.js';
-import { wsConnString } from './wsConnString.generated.js';
+import {
+           ProcessMessage
+       } from './ProcessMessage.js';
+import {
+           wsConnString
+       } from './wsConnString.generated.js';
 
 var images = {};
 
@@ -97,6 +101,14 @@ function Connect()
         {
             const leftButtonCode = 0;
             ws.send("MouseButtonRelease;" + leftButtonCode);
+        }
+    });
+    
+    document.addEventListener(
+        "mousemove", function(e) {
+        if (ws && ws.readyState === WebSocket.OPEN)
+        {
+            ws.send("MouseMove;" + e.clientX + ";" + e.clientY + ";");
         }
     });
     

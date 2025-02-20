@@ -45,7 +45,7 @@ namespace FW
         m_graphics->ClearCanvas();
         m_sceneManager->RenderCurrentScene(m_graphics);
         m_fpsCounter->Render(m_graphics);
-        m_cursor->Render();
+        m_cursor->Render(m_graphics);
         m_graphics->PresentCanvas();
     }
 }
