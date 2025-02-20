@@ -25,7 +25,7 @@ namespace FW
     {
       public:
         Graphics(
-            WSPP_Server* server,
+            WSPP_Server& server,
             Connection_Handle handle);
         
         void ClearCanvas() const;
@@ -51,16 +51,6 @@ namespace FW
             std::string_view imageName
             ) const;
         
-        auto GetServer() const
-        {
-            return m_server;
-        }
-        
-        auto GetHandle() const
-        {
-            return m_handle;
-        }
-        
         auto GetCanvasSize() const
         {
             return m_canvasSize;
@@ -76,7 +66,7 @@ namespace FW
         Size m_canvasSize {0, 0};
         
         // Dependencies
-        WSPP_Server* m_server{ nullptr };
+        WSPP_Server& m_server;
         Connection_Handle m_handle;
     };
 }

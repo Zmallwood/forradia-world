@@ -29,11 +29,11 @@ namespace FW
     class Cursor
     {
       public:
-        Cursor(Mouse_Input& mouseInput);
+        Cursor(Mouse_Input& mouseInput, Graphics& graphics);
         
         void Reset();
         
-        void Render(std::shared_ptr<Graphics> graphics) const;
+        void Render() const;
         
       private:
         // Const
@@ -44,5 +44,6 @@ namespace FW
         
         // Dependencies
         Mouse_Input& m_mouseInput;
+        Graphics& m_graphics;
     };
 }

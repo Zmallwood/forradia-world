@@ -25,7 +25,7 @@
 namespace FW
 {
     Graphics::Graphics(
-        WSPP_Server* server,
+        WSPP_Server& server,
         Connection_Handle handle)
         : m_server(server)
         , m_handle(handle)
@@ -33,14 +33,14 @@ namespace FW
     
     void Graphics::ClearCanvas() const
     {
-        m_server->send(
+        m_server.send(
             m_handle, "Clear;0;150;255;",
             websocketpp::frame::opcode::TEXT);
     }
     
     void Graphics::PresentCanvas() const
     {
-        m_server->send(m_handle, "Present", websocketpp::frame::opcode::TEXT);
+        m_server.send(m_handle, "Present", websocketpp::frame::opcode::TEXT);
     }
     
     void Graphics::DrawImage(
@@ -73,7 +73,7 @@ namespace FW
             }
         }
         
-        m_server->send(
+        m_server.send(
             m_handle,
             std::format(
                 "DrawImage;{};{};{};{};{};{};", imageName, x, y, w, h,
@@ -88,7 +88,7 @@ namespace FW
         Color color,
         bool centerAlign) const
     {
-        m_server->send(
+        m_server.send(
             m_handle,
             std::format(
                 "DrawText;{};{};{};{};{};{};{};", text, x, y, color.r,
@@ -103,7 +103,7 @@ namespace FW
     {
         if (!Image_Info_Store::GetInstance().ImageDimensionsExists(imageName))
         {
-            m_server->send(
+            m_server.send(
                 m_handle,
                 std::format("RequestImageDimensions;{};", imageName),
                 websocketpp::frame::opcode::TEXT);
@@ -145,7 +145,7 @@ namespace FW
                 y = -(1.0f/imageAspectRatio*canvasAspectRatio - 1.0f)/2.0f;
             }
             
-            m_server->send(
+            m_server.send(
                 m_handle,
                 std::format("DrawImage;{};{};{};{};{};", imageName, x, y, w, h),
                 websocketpp::frame::opcode::TEXT);

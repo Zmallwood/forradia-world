@@ -26,14 +26,19 @@ namespace FW
     class FPS_Counter
     {
       public:
+        FPS_Counter(Graphics& graphics);
+
         void Update();
 
-        void Render(std::shared_ptr<Graphics> graphics) const;
+        void Render() const;
         
       private:
         // State
         int m_fps{ 0 };
         int m_framesCount{ 0 };
         int m_ticksLastUpdate{ 0 };
+
+        // Dependencies
+        Graphics& m_graphics;
     };
 }

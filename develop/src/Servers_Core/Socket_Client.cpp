@@ -29,7 +29,7 @@ namespace FW
         Connection_Handle handle)
         : m_engine(std::make_shared<Engine>(
                        std::make_shared<Graphics>(
-                           server,
+                           *server,
                            handle)))
     {}
     

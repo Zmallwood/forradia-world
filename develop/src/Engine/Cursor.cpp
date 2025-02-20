@@ -24,8 +24,8 @@
 
 namespace FW
 {
-    Cursor::Cursor(Mouse_Input& mouseInput)
-        : m_mouseInput(mouseInput)
+    Cursor::Cursor(Mouse_Input& mouseInput, Graphics& graphics)
+        : m_mouseInput(mouseInput), m_graphics(graphics)
     {}
     
     void Cursor::Reset()
@@ -33,17 +33,17 @@ namespace FW
         m_currentStyle = Cursor_Styles::Default;
     }
     
-    void Cursor::Render(std::shared_ptr<Graphics> graphics) const
+    void Cursor::Render() const
     {
         auto mousePosition = m_mouseInput.GetMousePosition();
         
         if (mousePosition.x != -1.0f && mousePosition.y != -1.0)
         {
             auto cursorWidth = k_cursorSize;
-            auto aspectRatio = CalcAspectRatio(graphics->GetCanvasSize());
+            auto aspectRatio = CalcAspectRatio(m_graphics.GetCanvasSize());
             auto cursorHeight = cursorWidth * aspectRatio;
             
-            graphics->DrawImage(
+            m_graphics.DrawImage(
                 "CursorDefault", mousePosition.x - cursorWidth/2,
                 mousePosition.y - cursorHeight/2, cursorWidth, cursorHeight);
         }
