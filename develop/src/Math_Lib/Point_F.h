@@ -19,9 +19,8 @@
 
 namespace FW
 {
-    class Point_F
+    struct Point_F
     {
-      public:
         float x {0.0f};
         float y {0.0f};
     };

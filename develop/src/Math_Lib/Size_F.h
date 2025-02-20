@@ -19,9 +19,8 @@
 
 namespace FW
 {
-    class Size_F
+    struct Size_F
     {
-      public:
         float w {0.0f};
         float h {0.0f};
     };
