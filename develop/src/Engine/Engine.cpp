@@ -23,6 +23,7 @@
 #include "Graphics.h"
 #include "Scene_Manager.h"
 #include "Input/Keyboard_Input.h"
+#include "Input/Mouse_Input.h"
 #include "Cursor.h"
 
 namespace FW
@@ -31,15 +32,18 @@ namespace FW
         : m_fpsCounter(std::make_shared<FPS_Counter>())
         , m_sceneManager(std::make_shared<Scene_Manager>())
         , m_keyboardInput(std::make_shared<Keyboard_Input>())
-        , m_cursor(std::make_shared<Cursor>())
+        , m_mouseInput(std::make_shared<Mouse_Input>())
+        , m_cursor(std::make_shared<Cursor>(*m_mouseInput))
         , m_graphics(graphics)
     {}
     
     void Engine::ProcessFrame()
     {
         m_cursor->Reset();
-
-        m_sceneManager->UpdateCurrentScene(m_sceneManager, m_keyboardInput);
+        
+        m_sceneManager->UpdateCurrentScene(
+            m_sceneManager, m_keyboardInput,
+            m_mouseInput);
         m_fpsCounter->Update();
         
         m_graphics->ClearCanvas();

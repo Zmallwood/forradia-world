@@ -37,11 +37,11 @@ namespace FW
         GenerateWSConnString();
         
         std::thread tWebServer([]{
-                                   _<Web_Server>().Start();
+                                   Web_Server::GetInstance().Start();
                                });
         
         std::thread tSocketServer([]{
-                                      _<Socket_Server>().Start();
+                                      Socket_Server::GetInstance().Start();
                                   });
         
         signal(SIGINT, SigIntHandler);
@@ -52,8 +52,8 @@ namespace FW
             pause();
         }
         
-        _<Web_Server>().Stop();
-        _<Socket_Server>().Stop();
+        Web_Server::GetInstance().Stop();
+        Socket_Server::GetInstance().Stop();
         
         tSocketServer.join();
         tWebServer.join();
@@ -65,7 +65,7 @@ namespace FW
     {
         std::fstream outFile;
         
-        auto appPath = std::string(_<App_Properties>().GetAppPath());
+        auto appPath = std::string(App_Properties::GetInstance().GetAppPath());
         auto fullPathStr = std::string(appPath);
         auto lastSlash = fullPathStr.find_last_of("/");
         auto appBasePath = fullPathStr.substr(0, lastSlash + 1);
@@ -90,8 +90,8 @@ namespace FW
             std::cout << "Running in development mode.\n";
             
             outFile << "export const wsConnString = 'ws://localhost:8081';";
-            _<App_Properties>().SetHTTPPort(81);
-            _<App_Properties>().SetSocketsPort(8081);
+            App_Properties::GetInstance().SetHTTPPort(81);
+            App_Properties::GetInstance().SetSocketsPort(8081);
         }
         else
         {

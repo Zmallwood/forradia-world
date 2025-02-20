@@ -21,14 +21,18 @@
 
 namespace FW
 {
-    class Socket_Server
+    class Socket_Server : public Singleton<Socket_Server>
     {
+        friend class Singleton<Socket_Server>;
+        
       public:
         void Start();
-
+        
         void Stop();
         
       private:
+        Socket_Server() = default;
+        
         WSPP_Server m_server;
     };
 }

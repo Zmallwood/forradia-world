@@ -21,8 +21,10 @@
 
 namespace FW
 {
-    class App_Properties
+    class App_Properties : public Singleton<App_Properties>
     {
+        friend class Singleton<App_Properties>;
+        
       public:
         auto GetHTTPPort() const
         {
@@ -55,6 +57,8 @@ namespace FW
         }
         
       private:
+        App_Properties() = default;
+        
         int m_http_port{ 80 };
         int m_sockets_port{ 8080 };
         std::string m_appPath;

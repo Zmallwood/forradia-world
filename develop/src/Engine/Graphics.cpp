@@ -21,7 +21,6 @@
 
 #include "Utils/Canvas_Utils.h"
 #include "Image_Info_Store.h"
-#include "Conf/App_Properties.h"
 
 namespace FW
 {
@@ -55,7 +54,7 @@ namespace FW
         if (w < 0 || h < 0)
         {
             auto imageDimensions =
-                _<Image_Info_Store>().GetImageDimensions(imageName);
+                Image_Info_Store::GetInstance().GetImageDimensions(imageName);
             auto canvasAspectRatio = CalcAspectRatio(m_canvasSize);
             auto imageAspectRatio = static_cast<float>(imageDimensions.w)/
                                     imageDimensions.h;
@@ -102,7 +101,7 @@ namespace FW
         std::string_view imageName
         ) const
     {
-        if (!_<Image_Info_Store>().ImageDimensionsExists(imageName))
+        if (!Image_Info_Store::GetInstance().ImageDimensionsExists(imageName))
         {
             m_server->send(
                 m_handle,
@@ -115,7 +114,7 @@ namespace FW
             auto canvasAspectRatio = CalcAspectRatio(m_canvasSize);
             
             auto imageDimensions =
-                _<Image_Info_Store>().GetImageDimensions(imageName);
+                Image_Info_Store::GetInstance().GetImageDimensions(imageName);
             
             auto imageAspectRatio = static_cast<float>(imageDimensions.w) /
                                     imageDimensions.h;

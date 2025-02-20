@@ -24,6 +24,10 @@
 
 namespace FW
 {
+    Cursor::Cursor(Mouse_Input& mouseInput)
+        : m_mouseInput(mouseInput)
+    {}
+    
     void Cursor::Reset()
     {
         m_currentStyle = Cursor_Styles::Default;
@@ -31,7 +35,7 @@ namespace FW
     
     void Cursor::Render(std::shared_ptr<Graphics> graphics) const
     {
-        auto mousePosition = _<Mouse_Input>().GetMousePosition();
+        auto mousePosition = m_mouseInput.GetMousePosition();
         
         if (mousePosition.x != -1.0f && mousePosition.y != -1.0)
         {

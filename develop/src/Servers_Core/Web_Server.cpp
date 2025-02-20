@@ -41,7 +41,7 @@ namespace FW
     {
         using namespace httplib;
         
-        auto appPath = std::string(_<App_Properties>().GetAppPath());
+        auto appPath = std::string(App_Properties::GetInstance().GetAppPath());
         auto fullPathStr = std::string(appPath);
         auto lastSlash = fullPathStr.find_last_of("/");
         auto appBasePath = fullPathStr.substr(0, lastSlash + 1);
@@ -88,6 +88,6 @@ namespace FW
     
     void Web_Server::StartListen()
     {
-        m_server.listen(k_hostName, _<App_Properties>().GetHTTPPort());
+        m_server.listen(k_hostName, App_Properties::GetInstance().GetHTTPPort());
     }
 }

@@ -40,12 +40,12 @@ namespace FW
     
     void Scene_Manager::UpdateCurrentScene(
         std::shared_ptr<Scene_Manager> sceneManager,
-        std::shared_ptr<Keyboard_Input>
-        keyboardInput)
+        std::shared_ptr<Keyboard_Input> keyboardInput,
+        std::shared_ptr<Mouse_Input> mouseInput)
     {
         if (m_scenes.contains(m_currentScene))
         {
-            m_scenes.at(m_currentScene)->Update(sceneManager, keyboardInput);
+            m_scenes.at(m_currentScene)->Update(sceneManager, keyboardInput, mouseInput);
         }
     }
     

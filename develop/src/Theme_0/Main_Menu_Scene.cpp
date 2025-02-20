@@ -35,7 +35,8 @@ namespace FW
     void Main_Menu_Scene::UpdateDerived(
         std::shared_ptr<Scene_Manager> sceneManager,
         std::shared_ptr<Keyboard_Input>
-        keyboardInput)
+        keyboardInput,
+                           std::shared_ptr<Mouse_Input> mouseInput)
     {}
     
     void Main_Menu_Scene::RenderDerived(

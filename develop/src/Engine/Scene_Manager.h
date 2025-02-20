@@ -25,6 +25,7 @@ namespace FW
     class Graphics;
     class Scene_Manager;
     class Keyboard_Input;
+    class Mouse_Input;
     
     class Scene_Manager
     {
@@ -32,7 +33,8 @@ namespace FW
         Scene_Manager();
         
         void UpdateCurrentScene(std::shared_ptr<Scene_Manager> sceneManager,
-                                std::shared_ptr<Keyboard_Input> keyboardInput);
+                                std::shared_ptr<Keyboard_Input> keyboardInput,
+                                std::shared_ptr<Mouse_Input> mouseInput);
         
         void RenderCurrentScene(std::shared_ptr<Graphics> graphics) const;
         

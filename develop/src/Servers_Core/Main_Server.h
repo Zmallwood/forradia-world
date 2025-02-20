@@ -21,12 +21,16 @@
 
 namespace FW
 {
-    class Main_Server
+    class Main_Server : public Singleton<Main_Server>
     {
+        friend class Singleton<Main_Server>;
+
       public:
         void Start() const;
         
       private:
+        Main_Server() = default;
+
         void GenerateWSConnString() const;
     };
 }

@@ -30,7 +30,8 @@ namespace FW
         
       protected:
         void UpdateDerived(std::shared_ptr<Scene_Manager> sceneManager,
-                           std::shared_ptr<Keyboard_Input> keyboardInput)
+                           std::shared_ptr<Keyboard_Input> keyboardInput,
+                           std::shared_ptr<Mouse_Input> mouseInput)
         override;
         
         void RenderDerived(std::shared_ptr<Graphics> graphics) const override;

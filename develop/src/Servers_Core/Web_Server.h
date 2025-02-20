@@ -21,16 +21,20 @@
 
 namespace FW
 {
-    class Web_Server
+    class Web_Server : public Singleton<Web_Server>
     {
+        friend class Singleton<Web_Server>;
+        
       public:
         void Start();
-
+        
         void Stop();
         
       private:
+        Web_Server() = default;
+        
         void SetupEndpoints();
-
+        
         void StartListen();
         
         const std::string k_hostName{ "localhost" };

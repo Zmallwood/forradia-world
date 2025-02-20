@@ -38,10 +38,11 @@ namespace FW
     
     void Intro_Scene::UpdateDerived(std::shared_ptr<Scene_Manager> sceneManager,
                                     std::shared_ptr<Keyboard_Input>
-                                    keyboardInput)
+                                    keyboardInput,
+                                    std::shared_ptr<Mouse_Input> mouseInput)
     {
         if (keyboardInput->AnyKeyIsPressedPickResult() ||
-            _<Mouse_Input>().AnyButtonIsPressed())
+            mouseInput->AnyButtonIsPressed())
         {
             sceneManager->ChangeScene("main-menu-scene");
         }

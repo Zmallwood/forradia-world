@@ -58,23 +58,23 @@ namespace FW
             case k_frameFinished:
             {
                 auto socketClient =
-                    _<Socket_Clients_Manager>().GetSocketClient(handle);
-                
+                    Socket_Clients_Manager::GetInstance().GetSocketClient(handle);
+
                 if (socketClient)
                 {
                     socketClient->ProcessFrame();
                 }
             }
-                
+
             break;
-                
+
             case k_canvasSize:
             {
                 auto width = std::stoi(parts[1]);
                 auto height = std::stoi(parts[2]);
-                
+
                 auto socketClient =
-                    _<Socket_Clients_Manager>().GetSocketClient(handle);
+                    Socket_Clients_Manager::GetInstance().GetSocketClient(handle);
                 
                 auto engine = socketClient->GetEngine();
                 
@@ -90,7 +90,7 @@ namespace FW
                 auto imageName = parts[1];
                 auto width = std::stoi(parts[2]);
                 auto height = std::stoi(parts[3]);
-                _<Image_Info_Store>().AddImageDimensions(
+                Image_Info_Store::GetInstance().AddImageDimensions(
                     imageName,
                     {width, height});
             }
@@ -102,7 +102,7 @@ namespace FW
                 auto key = std::stoi(parts[1]);
                 
                 auto socketClient =
-                    _<Socket_Clients_Manager>().GetSocketClient(handle);
+                    Socket_Clients_Manager::GetInstance().GetSocketClient(handle);
                 
                 auto engine = socketClient->GetEngine();
                 
@@ -118,7 +118,7 @@ namespace FW
                 auto key = std::stoi(parts[1]);
                 
                 auto socketClient =
-                    _<Socket_Clients_Manager>().GetSocketClient(handle);
+                    Socket_Clients_Manager::GetInstance().GetSocketClient(handle);
                 
                 auto engine = socketClient->GetEngine();
                 
@@ -133,8 +133,15 @@ namespace FW
             {
                 auto buttonCode = std::stoi(parts[1]);
                 auto button = static_cast<Mouse_Buttons>(buttonCode);
+
+                auto socketClient =
+                    Socket_Clients_Manager::GetInstance().GetSocketClient(handle);
+
+                auto engine = socketClient->GetEngine();
+
+                auto mouseInput = engine->GetMouseInput();
                 
-                _<Mouse_Input>().RegisterButtonPress(button);
+                mouseInput->RegisterButtonPress(button);
             }
                 
             break;
@@ -143,8 +150,15 @@ namespace FW
             {
                 auto buttonCode = std::stoi(parts[1]);
                 auto button = static_cast<Mouse_Buttons>(buttonCode);
+
+                auto socketClient =
+                    Socket_Clients_Manager::GetInstance().GetSocketClient(handle);
+
+                auto engine = socketClient->GetEngine();
+
+                auto mouseInput = engine->GetMouseInput();
                 
-                _<Mouse_Input>().RegisterButtonRelease(button);
+                mouseInput->RegisterButtonRelease(button);
             }
                 
             break;
@@ -155,7 +169,7 @@ namespace FW
                 auto y = std::stoi(parts[2]);
                 
                 auto socketClient =
-                    _<Socket_Clients_Manager>().GetSocketClient(handle);
+                    Socket_Clients_Manager::GetInstance().GetSocketClient(handle);
                 
                 auto engine = socketClient->GetEngine();
                 
@@ -165,8 +179,10 @@ namespace FW
                 
                 auto xNorm = static_cast<float>(x) / canvasSize.w;
                 auto yNorm = static_cast<float>(y) / canvasSize.h;
+
+                auto mouseInput = engine->GetMouseInput();
                 
-                _<Mouse_Input>().SetMousePosition({xNorm, yNorm});
+                mouseInput->SetMousePosition({xNorm, yNorm});
             }
                 
             break;

@@ -36,6 +36,7 @@
 #include <cstdlib>
 #include <sstream>
 #include <format>
+#include <mutex>
 
 #include <httplib.h>
 #include <websocketpp/config/asio_no_tls.hpp>
@@ -48,7 +49,7 @@
 #include "Math_Lib/Color.h"
 #include "Math_Lib/Colors.h"
 
-#include "Common/Get_Singleton.h"
+#include "Common/Singleton.h"
 #include "Common/Aliases.h"
 #include "Utils/Time_Utils.h"
 #include "Utils/String_Utils.h"

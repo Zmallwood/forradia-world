@@ -31,7 +31,7 @@ namespace FW
             "{}: A new client has connected.\n",
             GetCurrentTime());
         
-        _<Socket_Clients_Manager>().AddSocketClient(
+        Socket_Clients_Manager::GetInstance().AddSocketClient(
             server,
             handle);
     }

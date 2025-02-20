@@ -48,7 +48,7 @@ namespace FW
                     &OnSocketMessage, &m_server, _1,
                     _2));
             
-            m_server.listen(_<App_Properties>().GetSocketsPort());
+            m_server.listen(App_Properties::GetInstance().GetSocketsPort());
             
             // Start the server accept loop.
             m_server.start_accept();

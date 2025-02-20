@@ -25,6 +25,7 @@ namespace FW
     class FPS_Counter;
     class Graphics;
     class Keyboard_Input;
+    class Mouse_Input;
     class Cursor;
     
     class Engine
@@ -44,11 +45,17 @@ namespace FW
             return m_graphics;
         }
         
+        auto GetMouseInput() const
+        {
+            return m_mouseInput;
+        }
+        
       private:
         std::shared_ptr<Scene_Manager> m_sceneManager;
         std::shared_ptr<FPS_Counter> m_fpsCounter;
         std::shared_ptr<Graphics> m_graphics;
         std::shared_ptr<Keyboard_Input> m_keyboardInput;
+        std::shared_ptr<Mouse_Input> m_mouseInput;
         std::shared_ptr<Cursor> m_cursor;
     };
 }

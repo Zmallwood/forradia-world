@@ -25,6 +25,7 @@ namespace FW
     class GUI;
     class Scene_Manager;
     class Keyboard_Input;
+    class Mouse_Input;
     
     class I_Scene
     {
@@ -32,13 +33,15 @@ namespace FW
         I_Scene();
         
         void Update(std::shared_ptr<Scene_Manager> sceneManager,
-                    std::shared_ptr<Keyboard_Input> keyboardInput);
+                    std::shared_ptr<Keyboard_Input> keyboardInput,
+                    std::shared_ptr<Mouse_Input> mouseInput);
         
         void Render(std::shared_ptr<Graphics> graphics) const;
         
       protected:
         virtual void UpdateDerived(std::shared_ptr<Scene_Manager> sceneManager,
-                                   std::shared_ptr<Keyboard_Input> keyboardInput)
+                                   std::shared_ptr<Keyboard_Input> keyboardInput,
+                                   std::shared_ptr<Mouse_Input> mouseInput)
         {}
         
         virtual void RenderDerived(std::shared_ptr<Graphics> graphics) const

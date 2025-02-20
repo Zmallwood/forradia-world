@@ -19,26 +19,34 @@
 
 #pragma once
 
-#include "Engine/I_Scene.h"
-
 namespace FW
 {
-    class GUI_Component;
-    
-    class Intro_Scene : public I_Scene
+    template <typename T>
+    class Singleton
     {
       public:
-        Intro_Scene();
+        // Delete copy and move constructors/operators
+        Singleton(const Singleton&) = delete;
+        Singleton& operator=(const Singleton&) = delete;
+        Singleton(Singleton&&) = delete;
+        Singleton& operator=(Singleton&&) = delete;
+        
+        // Access the singleton instance
+        static T& GetInstance()
+        {
+            static std::once_flag flag;
+            std::call_once(
+                flag, []() {
+                    instance_.reset(new T());
+                });
+            return *instance_;
+        }
         
       protected:
-        void UpdateDerived(std::shared_ptr<Scene_Manager> sceneManager,
-                           std::shared_ptr<Keyboard_Input> keyboardInput,
-                           std::shared_ptr<Mouse_Input> mouseInput)
-        override;
-        
-        void RenderDerived(std::shared_ptr<Graphics> graphics) const override;
+        Singleton() = default;
+        virtual ~Singleton() = default;
         
       private:
-        std::shared_ptr<GUI_Component> m_startTextComponent;
+        static inline std::unique_ptr<T> instance_; // Unique instance
     };
 }
