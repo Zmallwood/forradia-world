@@ -21,11 +21,9 @@
 
 namespace FW
 {
-    void Main_Scene::UpdateDerived(std::shared_ptr<Scene_Manager> sceneManager,
-                                   std::shared_ptr<Keyboard_Input> keyboardInput,
-                           std::shared_ptr<Mouse_Input> mouseInput)
+    void Main_Scene::UpdateDerived()
     {}
     
-    void Main_Scene::RenderDerived(std::shared_ptr<Graphics> graphics) const
+    void Main_Scene::RenderDerived() const
     {}
 }

@@ -40,7 +40,7 @@ namespace FW
         }
     }
     
-    void GUI_Component::Render(std::shared_ptr<Graphics> graphics) const
+    void GUI_Component::Render(Graphics& graphics) const
     {
         if (!m_visible)
         {

@@ -28,7 +28,7 @@
 
 namespace FW
 {
-    Intro_Scene::Intro_Scene()
+    void Intro_Scene::Initialize()
     {
         m_startTextComponent = GetGUI()->AddComponent(
             std::make_shared<GUI_Label>(
@@ -36,15 +36,12 @@ namespace FW
                 0.5f, 0.5f, true));
     }
     
-    void Intro_Scene::UpdateDerived(std::shared_ptr<Scene_Manager> sceneManager,
-                                    std::shared_ptr<Keyboard_Input>
-                                    keyboardInput,
-                                    std::shared_ptr<Mouse_Input> mouseInput)
+    void Intro_Scene::UpdateDerived()
     {
-        if (keyboardInput->AnyKeyIsPressedPickResult() ||
-            mouseInput->AnyButtonIsPressed())
+        if (GetKeyboardInputRef().AnyKeyIsPressedPickResult() ||
+            GetMouseInputRef().AnyButtonIsPressed())
         {
-            sceneManager->ChangeScene("main-menu-scene");
+            GetSceneManagerRef().ChangeScene("main-menu-scene");
         }
         
         auto startTextVisible = GetTicks() % 1200 > 600;
@@ -52,9 +49,11 @@ namespace FW
         m_startTextComponent->SetVisible(startTextVisible);
     }
     
-    void Intro_Scene::RenderDerived(std::shared_ptr<Graphics> graphics) const
+    void Intro_Scene::RenderDerived() const
     {
-        graphics->DrawBackground("DefaultSceneBackground");
-        graphics->DrawImage("ForradiaWorldLogo", 0.3f, 0.1f, 0.4f, -1.0f);
+        GetGraphicsRef().DrawBackground("DefaultSceneBackground");
+        GetGraphicsRef().DrawImage(
+            "ForradiaWorldLogo", 0.3f, 0.1f, 0.4f,
+            -1.0f);
     }
 }

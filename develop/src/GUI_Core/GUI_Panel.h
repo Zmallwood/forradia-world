@@ -28,8 +28,7 @@ namespace FW
       public:
         GUI_Panel(float x, float y, float w, float h);
         
-        virtual void RenderDerived(
-            std::shared_ptr<Graphics> graphics) const override;
+        virtual void RenderDerived(Graphics& graphics) const override;
         
       private:
         // Const

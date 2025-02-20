@@ -28,12 +28,11 @@ namespace FW
         : GUI_Component(x, y), m_text(text), m_centerAlign(centerAlign)
     {}
     
-    void GUI_Label::RenderDerived(
-        std::shared_ptr<Graphics> graphics) const
+    void GUI_Label::RenderDerived(Graphics& graphics) const
     {
         auto position = GetPosition();
         
-        graphics->DrawText(
+        graphics.DrawText(
             m_text, position.x, position.y,
             Colors::Wheat, m_centerAlign);
     }

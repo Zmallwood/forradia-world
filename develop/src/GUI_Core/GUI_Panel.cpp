@@ -27,12 +27,11 @@ namespace FW
         : GUI_Component(x, y), m_size({w, h})
     {}
     
-    void GUI_Panel::RenderDerived(
-        std::shared_ptr<Graphics> graphics) const
+    void GUI_Panel::RenderDerived(Graphics& graphics) const
     {
         auto position = GetPosition();
         
-        graphics->DrawImage(
+        graphics.DrawImage(
             "GUIPanelDefaultBackground", position.x, position.y,
             m_size.w, m_size.h, true);
     }

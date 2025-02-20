@@ -25,24 +25,21 @@
 
 namespace FW
 {
-    Main_Menu_Scene::Main_Menu_Scene()
+    void Main_Menu_Scene::Initialize()
     {
         GetGUI()->AddComponent(
             std::make_shared<GUI_Panel>(
                 0.3f, 0.4f, 0.4f, 0.4f));
     }
     
-    void Main_Menu_Scene::UpdateDerived(
-        std::shared_ptr<Scene_Manager> sceneManager,
-        std::shared_ptr<Keyboard_Input>
-        keyboardInput,
-                           std::shared_ptr<Mouse_Input> mouseInput)
+    void Main_Menu_Scene::UpdateDerived()
     {}
     
-    void Main_Menu_Scene::RenderDerived(
-        std::shared_ptr<Graphics> graphics) const
+    void Main_Menu_Scene::RenderDerived() const
     {
-        graphics->DrawBackground("DefaultSceneBackground");
-        graphics->DrawImage("ForradiaWorldLogo", 0.35f, 0.05f, 0.3f, -1.0f);
+        GetGraphicsRef().DrawBackground("DefaultSceneBackground");
+        GetGraphicsRef().DrawImage(
+            "ForradiaWorldLogo", 0.35f, 0.05f, 0.3f,
+            -1.0f);
     }
 }

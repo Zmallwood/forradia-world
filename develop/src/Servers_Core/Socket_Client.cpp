@@ -31,7 +31,9 @@ namespace FW
                        std::make_shared<Graphics>(
                            *server,
                            handle)))
-    {}
+    {
+        m_engine->Initialize();
+    }
     
     void Socket_Client::ProcessFrame()
     {

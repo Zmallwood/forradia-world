@@ -28,15 +28,15 @@ namespace FW
     class Intro_Scene : public I_Scene
     {
       public:
-        Intro_Scene();
-        
+        using I_Scene::I_Scene;
+
+        void Initialize() override;
+
       protected:
-        void UpdateDerived(std::shared_ptr<Scene_Manager> sceneManager,
-                           std::shared_ptr<Keyboard_Input> keyboardInput,
-                           std::shared_ptr<Mouse_Input> mouseInput)
+        void UpdateDerived()
         override;
         
-        void RenderDerived(std::shared_ptr<Graphics> graphics) const override;
+        void RenderDerived() const override;
         
       private:
         // State

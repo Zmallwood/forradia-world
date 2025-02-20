@@ -29,8 +29,7 @@ namespace FW
         GUI_Label(std::string_view text, float x, float y,
                   bool centerAlign = false);
         
-        virtual void RenderDerived(
-            std::shared_ptr<Graphics> graphics) const override;
+        virtual void RenderDerived(Graphics& graphics) const override;
         
       private:
         // State

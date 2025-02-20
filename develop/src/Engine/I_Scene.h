@@ -30,21 +30,23 @@ namespace FW
     class I_Scene
     {
       public:
-        I_Scene();
+        I_Scene(Graphics& graphics,
+                Scene_Manager& sceneManager,
+                Keyboard_Input& keyboardInput,
+                Mouse_Input& mouseInput);
         
-        void Update(std::shared_ptr<Scene_Manager> sceneManager,
-                    std::shared_ptr<Keyboard_Input> keyboardInput,
-                    std::shared_ptr<Mouse_Input> mouseInput);
-        
-        void Render(std::shared_ptr<Graphics> graphics) const;
-        
-      protected:
-        virtual void UpdateDerived(std::shared_ptr<Scene_Manager> sceneManager,
-                                   std::shared_ptr<Keyboard_Input> keyboardInput,
-                                   std::shared_ptr<Mouse_Input> mouseInput)
+        virtual void Initialize()
         {}
         
-        virtual void RenderDerived(std::shared_ptr<Graphics> graphics) const
+        void Update();
+        
+        void Render() const;
+        
+      protected:
+        virtual void UpdateDerived()
+        {}
+        
+        virtual void RenderDerived() const
         {}
         
         auto GetGUI() const
@@ -52,8 +54,34 @@ namespace FW
             return m_gui;
         }
         
+        const auto& GetGraphicsRef() const
+        {
+            return m_graphics;
+        }
+        
+        auto& GetSceneManagerRef()
+        {
+            return m_sceneManager;
+        }
+        
+        auto& GetKeyboardInputRef()
+        {
+            return m_keyboardInput;
+        }
+        
+        auto& GetMouseInputRef()
+        {
+            return m_mouseInput;
+        }
+        
       private:
         // State
         std::shared_ptr<GUI> m_gui;
+        
+        // Dependencies
+        Graphics& m_graphics;
+        Scene_Manager& m_sceneManager;
+        Keyboard_Input& m_keyboardInput;
+        Mouse_Input& m_mouseInput;
     };
 }

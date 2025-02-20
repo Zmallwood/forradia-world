@@ -23,21 +23,26 @@
 
 namespace FW
 {
-    I_Scene::I_Scene()
-        : m_gui(std::make_shared<GUI>())
+    I_Scene::I_Scene(Graphics& graphics,
+                     Scene_Manager& sceneManager,
+                     Keyboard_Input& keyboardInput,
+                     Mouse_Input& mouseInput)
+        : m_graphics(graphics),
+        m_sceneManager(sceneManager),
+        m_keyboardInput(keyboardInput),
+        m_mouseInput(mouseInput),
+        m_gui(std::make_shared<GUI>())
     {}
     
-    void I_Scene::Update(std::shared_ptr<Scene_Manager> sceneManager,
-                         std::shared_ptr<Keyboard_Input> keyboardInput,
-                         std::shared_ptr<Mouse_Input> mouseInput)
+    void I_Scene::Update()
     {
         m_gui->Update();
-        UpdateDerived(sceneManager, keyboardInput, mouseInput);
+        UpdateDerived();
     }
     
-    void I_Scene::Render(std::shared_ptr<Graphics> graphics) const
+    void I_Scene::Render() const
     {
-        RenderDerived(graphics);
-        m_gui->Render(graphics);
+        RenderDerived();
+        m_gui->Render(m_graphics);
     }
 }

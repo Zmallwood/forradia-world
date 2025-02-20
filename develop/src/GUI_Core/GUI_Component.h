@@ -32,7 +32,7 @@ namespace FW
         
         void Update();
         
-        void Render(std::shared_ptr<Graphics> graphics) const;
+        void Render(Graphics& graphics) const;
         
         std::shared_ptr<GUI_Component> AddComponent(
             std::shared_ptr<GUI_Component> component);
@@ -46,7 +46,7 @@ namespace FW
         virtual void UpdateDerived()
         {}
         
-        virtual void RenderDerived(std::shared_ptr<Graphics> graphics) const
+        virtual void RenderDerived(Graphics& graphics) const
         {}
         
         auto GetPosition() const

@@ -33,6 +33,8 @@ namespace FW
       public:
         Engine(std::shared_ptr<Graphics> graphics);
         
+        void Initialize();
+        
         void ProcessFrame();
         
         auto GetKeyboardInput() const
@@ -52,11 +54,11 @@ namespace FW
         
       private:
         // State
-        std::shared_ptr<Scene_Manager> m_sceneManager;
-        std::shared_ptr<FPS_Counter> m_fpsCounter;
-        std::shared_ptr<Graphics> m_graphics;
         std::shared_ptr<Keyboard_Input> m_keyboardInput;
         std::shared_ptr<Mouse_Input> m_mouseInput;
+        std::shared_ptr<Graphics> m_graphics;
+        std::shared_ptr<Scene_Manager> m_sceneManager;
+        std::shared_ptr<FPS_Counter> m_fpsCounter;
         std::shared_ptr<Cursor> m_cursor;
     };
 }

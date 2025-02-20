@@ -23,14 +23,16 @@ namespace FW
 {
     class I_Scene;
     class Graphics;
-    class Scene_Manager;
     class Keyboard_Input;
     class Mouse_Input;
     
     class Scene_Manager
     {
       public:
-        Scene_Manager();
+        Scene_Manager(Graphics& graphics, Keyboard_Input& keyboardInput,
+                      Mouse_Input& mouseInput);
+        
+        void InitializeScenes();
         
         void UpdateCurrentScene(std::shared_ptr<Scene_Manager> sceneManager,
                                 std::shared_ptr<Keyboard_Input> keyboardInput,
@@ -48,5 +50,10 @@ namespace FW
         // State
         int m_currentScene{ 0 };
         std::map<int, std::shared_ptr<I_Scene>> m_scenes;
+
+        // Dependencies
+        Graphics& m_graphics;
+        Keyboard_Input& m_keyboardInput;
+        Mouse_Input& m_mouseInput;
     };
 }
