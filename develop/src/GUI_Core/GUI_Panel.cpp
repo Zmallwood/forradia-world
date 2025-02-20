@@ -47,8 +47,10 @@ namespace FW
     {
         auto p = GetPosition();
         auto s = m_size;
-        auto bX = k_borderWidth;
-        auto bY = ConvertWidthToHeight(GetGraphicsRef().GetCanvasSize(), k_borderWidth);
+        auto bX = static_cast<float>(k_borderWidthPx) /
+                  GetGraphicsRef().GetCanvasSize().w;
+        auto bY =  static_cast<float>(k_borderWidthPx) /
+                  GetGraphicsRef().GetCanvasSize().h;
         
         // Sides
         auto topBorderRect = Rect_F {p.x, p.y - bY, s.w, bY};
@@ -67,21 +69,25 @@ namespace FW
         
         GetGraphicsRef().DrawImage(
             "GUIPanelDefaultBorderVertical", leftBorderRect);
-
+        
         // Corners
         auto topBorderCornerTopRightRect = Rect_F {p.x + s.w, p.y - bY, bX, bY};
-        auto topBorderCornerBottomRightRect = Rect_F {p.x + s.w, p.y + s.h, bX, bY};
-        auto topBorderCornerBottomLeftRect = Rect_F {p.x - bX, p.y  + s.h, bX, bY};
+        auto topBorderCornerBottomRightRect = Rect_F {p.x + s.w, p.y + s.h, bX,
+                                                      bY};
+        auto topBorderCornerBottomLeftRect = Rect_F {p.x - bX, p.y  + s.h, bX,
+                                                     bY};
         auto topBorderCornerTopLeftRect = Rect_F {p.x - bX, p.y - bY, bX, bY};
-
+        
         GetGraphicsRef().DrawImage(
             "GUIPanelDefaultBorderCornerTopRight", topBorderCornerTopRightRect);
         GetGraphicsRef().DrawImage(
-            "GUIPanelDefaultBorderCornerBottomRight", topBorderCornerBottomRightRect);
+            "GUIPanelDefaultBorderCornerBottomRight",
+            topBorderCornerBottomRightRect);
         GetGraphicsRef().DrawImage(
-            "GUIPanelDefaultBorderCornerBottomLeft", topBorderCornerBottomLeftRect);
+            "GUIPanelDefaultBorderCornerBottomLeft",
+            topBorderCornerBottomLeftRect);
         GetGraphicsRef().DrawImage(
             "GUIPanelDefaultBorderCornerTopLeft", topBorderCornerTopLeftRect);
-
+        
     }
 }

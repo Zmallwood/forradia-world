@@ -43,6 +43,6 @@ namespace FW
     
     void FPS_Counter::Render() const
     {
-        m_graphics.DrawText(std::format("Fps: {}", m_fps), 0.85, 0.05);
+        m_graphics.DrawText(std::format("Fps: {}", m_fps), 0.85, 0.05, Colors::Black);
     }
 }

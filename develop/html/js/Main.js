@@ -33,7 +33,7 @@ function Connect()
     
     ctx.canvas.width = window.innerWidth;
     ctx.canvas.height = window.innerHeight;
-    ctx.font = "100% sans-serif";
+    ctx.font = "bold 100% sans-serif";
     
     let drawCommands = [];
     
@@ -124,7 +124,7 @@ function Connect()
             ctx.canvas.width = window.innerWidth;
             ctx.canvas.height = window.innerHeight;
             ws.send("CanvasSize;" + ctx.canvas.width + ";" + ctx.canvas.height); // send a message
-            ctx.font = "100% serif";
+            ctx.font = "bold 100% sans-serif";
         }, 250);
     });
     

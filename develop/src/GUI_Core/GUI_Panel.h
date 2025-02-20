@@ -36,7 +36,7 @@ namespace FW
         void RenderBorders() const;
 
         // Const
-        const float k_borderWidth {0.03f};
+        const int k_borderWidthPx {15};
         
         // State
         Size_F m_size {0.0f, 0.0f};
