@@ -31,13 +31,18 @@ namespace FW
         void ClearCanvas() const;
         
         void PresentCanvas() const;
-        
+
         void DrawImage(
             std::string_view imageName,
             float x,
             float y,
             float w,
             float h,
+            bool repeat = false) const;
+
+        void DrawImage(
+            std::string_view imageName,
+            Rect_F rect,
             bool repeat = false) const;
         
         void DrawText(

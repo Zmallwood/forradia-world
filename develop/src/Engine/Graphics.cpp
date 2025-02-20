@@ -81,6 +81,14 @@ namespace FW
             websocketpp::frame::opcode::TEXT);
     }
     
+    void Graphics::DrawImage(
+        std::string_view imageName,
+        Rect_F rect,
+        bool repeat) const
+    {
+        DrawImage(imageName, rect.x, rect.y, rect.w, rect.h, repeat);
+    }
+    
     void Graphics::DrawText(
         std::string_view text,
         float x,

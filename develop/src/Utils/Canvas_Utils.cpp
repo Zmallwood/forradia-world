@@ -31,4 +31,18 @@ namespace FW
         
         return 0.0f;
     }
+    
+    float ConvertWidthToHeight(Size canvasSize, float width)
+    {
+        auto aspectRatio = CalcAspectRatio(canvasSize);
+        
+        return width * aspectRatio;
+    }
+    
+    float ConvertHeightToWidth(Size canvasSize, float height)
+    {
+        auto aspectRatio = CalcAspectRatio(canvasSize);
+        
+        return height / aspectRatio;
+    }
 }

@@ -40,8 +40,9 @@ namespace FW
         if (mousePosition.x != -1.0f && mousePosition.y != -1.0)
         {
             auto cursorWidth = k_cursorSize;
-            auto aspectRatio = CalcAspectRatio(m_graphics.GetCanvasSize());
-            auto cursorHeight = cursorWidth * aspectRatio;
+            auto cursorHeight = ConvertWidthToHeight(
+                m_graphics.GetCanvasSize(),
+                cursorWidth);
             
             m_graphics.DrawImage(
                 "CursorDefault", mousePosition.x - cursorWidth/2,

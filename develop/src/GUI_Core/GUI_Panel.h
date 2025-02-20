@@ -31,6 +31,10 @@ namespace FW
         virtual void RenderDerived() const override;
         
       private:
+        void RenderBackground() const;
+
+        void RenderBorders() const;
+
         // Const
         const float k_borderWidth {0.03f};
         

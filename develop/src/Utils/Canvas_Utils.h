@@ -22,4 +22,8 @@
 namespace FW
 {
     float CalcAspectRatio(Size canvasSize);
+
+    float ConvertWidthToHeight(Size canvasSize, float width);
+
+    float ConvertHeightToWidth(Size canvasSize, float height);
 }
