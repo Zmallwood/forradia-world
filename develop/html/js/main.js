@@ -17,14 +17,14 @@
  * limitations under the License.
  */
 
-import {
-           ProcessMessage
-       } from './ProcessMessage.js';
-import {
-           wsConnString
-       } from './wsConnString.generated.js';
+import { ProcessMessage } from './ProcessMessage.js';
+import { wsConnString } from './wsConnString.generated.js';
 
 var images = {};
+
+function IsTouchDevice() {
+    return window.matchMedia("(pointer: coarse)").matches;
+}
 
 function Connect()
 {
@@ -106,7 +106,7 @@ function Connect()
     
     document.addEventListener(
         "mousemove", function(e) {
-        if (ws && ws.readyState === WebSocket.OPEN)
+        if (ws && ws.readyState === WebSocket.OPEN && !IsTouchDevice())
         {
             ws.send("MouseMove;" + e.clientX + ";" + e.clientY + ";");
         }
