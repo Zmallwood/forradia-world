@@ -45,6 +45,7 @@ namespace FW
             std::string_view sceneName,
             std::shared_ptr<I_Scene> scene);
         
+        // State
         int m_currentScene{ 0 };
         std::map<int, std::shared_ptr<I_Scene>> m_scenes;
     };

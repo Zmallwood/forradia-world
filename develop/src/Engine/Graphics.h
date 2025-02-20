@@ -72,8 +72,11 @@ namespace FW
         }
         
       private:
+        // State
+        Size m_canvasSize {0, 0};
+        
+        // Dependencies
         WSPP_Server* m_server{ nullptr };
         Connection_Handle m_handle;
-        Size m_canvasSize {0, 0};
     };
 }

@@ -30,17 +30,18 @@ namespace FW
     {
       public:
         Cursor(Mouse_Input& mouseInput);
-
+        
         void Reset();
         
         void Render(std::shared_ptr<Graphics> graphics) const;
         
       private:
+        // Const
         const float k_cursorSize {0.05f};
         
         // State
         Cursor_Styles m_currentStyle {Cursor_Styles::Default};
-
+        
         // Dependencies
         Mouse_Input& m_mouseInput;
     };

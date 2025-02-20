@@ -31,6 +31,7 @@ namespace FW
         bool AnyKeyIsPressedPickResult();
         
       private:
+        // State
         std::set<int> m_pressedKeys;
     };
 }

@@ -33,6 +33,7 @@ namespace FW
       private:
         Socket_Server() = default;
         
+        // State
         WSPP_Server m_server;
     };
 }

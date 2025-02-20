@@ -38,6 +38,7 @@ namespace FW
       private:
         Socket_Clients_Manager() = default;
         
+        // State
         std::map<void*, std::shared_ptr<Socket_Client>> m_clients;
     };
 }

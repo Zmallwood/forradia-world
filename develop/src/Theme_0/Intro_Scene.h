@@ -39,6 +39,7 @@ namespace FW
         void RenderDerived(std::shared_ptr<Graphics> graphics) const override;
         
       private:
+        // State
         std::shared_ptr<GUI_Component> m_startTextComponent;
     };
 }

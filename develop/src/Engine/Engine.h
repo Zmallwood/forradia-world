@@ -51,6 +51,7 @@ namespace FW
         }
         
       private:
+        // State
         std::shared_ptr<Scene_Manager> m_sceneManager;
         std::shared_ptr<FPS_Counter> m_fpsCounter;
         std::shared_ptr<Graphics> m_graphics;

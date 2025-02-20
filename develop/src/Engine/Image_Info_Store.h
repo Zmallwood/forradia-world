@@ -35,6 +35,7 @@ namespace FW
       private:
         Image_Info_Store() = default;
         
+        // State
         std::map<int, Size> m_imageDimensions;
     };
 }

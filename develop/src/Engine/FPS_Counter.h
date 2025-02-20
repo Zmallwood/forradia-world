@@ -31,6 +31,7 @@ namespace FW
         void Render(std::shared_ptr<Graphics> graphics) const;
         
       private:
+        // State
         int m_fps{ 0 };
         int m_framesCount{ 0 };
         int m_ticksLastUpdate{ 0 };

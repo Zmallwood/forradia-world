@@ -55,6 +55,7 @@ namespace FW
         }
         
       private:
+        // State
         std::vector<std::shared_ptr<GUI_Component>> m_childComponents;
         Point_F m_position {0.0f, 0.0f};
         bool m_visible {true};

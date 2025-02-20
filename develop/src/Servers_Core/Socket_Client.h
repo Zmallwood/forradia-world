@@ -38,6 +38,7 @@ namespace FW
         }
         
       private:
+        // State
         std::shared_ptr<Engine> m_engine;
     };
 }

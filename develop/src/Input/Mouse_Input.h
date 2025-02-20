@@ -54,6 +54,7 @@ namespace FW
         }
         
       private:
+        // State
         Mouse_Button m_leftMouseButton;
         Mouse_Button m_rightMouseButton;
         Point_F m_mousePosition {-1.0f, -1.0f};

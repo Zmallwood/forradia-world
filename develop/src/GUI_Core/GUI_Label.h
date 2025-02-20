@@ -33,6 +33,7 @@ namespace FW
             std::shared_ptr<Graphics> graphics) const override;
         
       private:
+        // State
         std::string m_text;
         bool m_centerAlign {false};
     };

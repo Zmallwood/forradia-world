@@ -37,8 +37,10 @@ namespace FW
         
         void StartListen();
         
+        // Const
         const std::string k_hostName{ "localhost" };
         
+        // State
         httplib::Server m_server;
     };
 }

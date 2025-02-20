@@ -34,6 +34,7 @@ namespace FW
         }
         
       private:
+        // State
         bool m_isPressed {false};
     };
 }
