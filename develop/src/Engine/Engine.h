@@ -25,6 +25,7 @@ namespace FW
     class FPS_Counter;
     class Graphics;
     class Keyboard_Input;
+    class Cursor;
     
     class Engine
     {
@@ -38,10 +39,16 @@ namespace FW
             return m_keyboardInput;
         }
         
+        auto GetGraphics() const
+        {
+            return m_graphics;
+        }
+        
       private:
         std::shared_ptr<Scene_Manager> m_sceneManager;
         std::shared_ptr<FPS_Counter> m_fpsCounter;
         std::shared_ptr<Graphics> m_graphics;
         std::shared_ptr<Keyboard_Input> m_keyboardInput;
+        std::shared_ptr<Cursor> m_cursor;
     };
 }

@@ -19,7 +19,18 @@
 
 #pragma once
 
+#include "Cursor_Styles.h"
+
 namespace FW
 {
-    float CalcAspectRatio(Size canvasSize);
+    class Cursor
+    {
+      public:
+        void Reset();
+
+        void Render() const;
+        
+      private:
+        Cursor_Styles m_currentStyle {Cursor_Styles::Default};
+    };
 }

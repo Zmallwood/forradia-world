@@ -25,6 +25,7 @@
 #include "Engine/Image_Info_Store.h"
 #include "Input/Keyboard_Input.h"
 #include "Engine/Engine.h"
+#include "Engine/Graphics.h"
 #include "Input/Mouse_Input.h"
 
 namespace FW
@@ -37,7 +38,8 @@ namespace FW
         
         constexpr auto k_frameFinished = Hash("FrameFinished");
         constexpr auto k_canvasSize = Hash("CanvasSize");
-        constexpr auto k_provideImageDimensions = Hash("ProvideImageDimensions");
+        constexpr auto k_provideImageDimensions =
+            Hash("ProvideImageDimensions");
         constexpr auto k_keyPress = Hash("KeyPress");
         constexpr auto k_keyRelease = Hash("KeyRelease");
         constexpr auto k_mouseButtonPress = Hash("MouseButtonPress");
@@ -69,7 +71,14 @@ namespace FW
                 auto width = std::stoi(parts[1]);
                 auto height = std::stoi(parts[2]);
                 
-                _<App_Properties>().SetCanvasSize({width, height});
+                auto socketClient =
+                    _<Socket_Clients_Manager>().GetSocketClient(handle);
+                
+                auto engine = socketClient->GetEngine();
+                
+                auto graphics = engine->GetGraphics();
+                
+                graphics->SetCanvasSize({width, height});
             }
                 
             break;

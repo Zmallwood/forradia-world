@@ -21,5 +21,11 @@
 
 namespace FW
 {
-    float CalcAspectRatio(Size canvasSize);
+    enum class Cursor_Styles
+    {
+        Default,
+        Hovering,
+        TextInput,
+        Attackable
+    };
 }

@@ -32,6 +32,8 @@ namespace FW
             std::shared_ptr<Graphics> graphics) const override;
         
       private:
+        const float k_borderWidth {0.03f};
+        
         Size_F m_size {0.0f, 0.0f};
     };
 }

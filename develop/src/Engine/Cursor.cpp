@@ -17,9 +17,15 @@
  * limitations under the License.
  */
 
-#pragma once
+#include "Cursor.h"
 
 namespace FW
 {
-    float CalcAspectRatio(Size canvasSize);
+    void Cursor::Reset()
+    {
+        m_currentStyle = Cursor_Styles::Default;
+    }
+    
+    void Cursor::Render() const
+    {}
 }

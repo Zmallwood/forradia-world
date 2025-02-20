@@ -19,18 +19,14 @@
 
 #include "Canvas_Utils.h"
 
-#include "Conf/App_Properties.h"
-
 namespace FW
 {
     
-    float GetAspectRatio()
+    float CalcAspectRatio(Size canvasSize)
     {
-        auto canvasSize = _<App_Properties>().GetCanvasSize();
-        
         if (canvasSize.h)
         {
-            return static_cast<float>(canvasSize.w)/canvasSize.h;
+            return static_cast<float>(canvasSize.w) / canvasSize.h;
         }
         
         return 0.0f;

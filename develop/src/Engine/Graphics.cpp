@@ -56,7 +56,7 @@ namespace FW
         {
             auto imageDimensions =
                 _<Image_Info_Store>().GetImageDimensions(imageName);
-            auto canvasAspectRatio = GetAspectRatio();
+            auto canvasAspectRatio = CalcAspectRatio(m_canvasSize);
             auto imageAspectRatio = static_cast<float>(imageDimensions.w)/
                                     imageDimensions.h;
             
@@ -112,8 +112,7 @@ namespace FW
         }
         else
         {
-            auto canvasSize = _<App_Properties>().GetCanvasSize();
-            auto canvasAspectRatio = GetAspectRatio();
+            auto canvasAspectRatio = CalcAspectRatio(m_canvasSize);
             
             auto imageDimensions =
                 _<Image_Info_Store>().GetImageDimensions(imageName);

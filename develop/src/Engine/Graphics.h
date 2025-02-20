@@ -61,8 +61,19 @@ namespace FW
             return m_handle;
         }
         
+        auto GetCanvasSize() const
+        {
+            return m_canvasSize;
+        }
+        
+        void SetCanvasSize(Size value)
+        {
+            m_canvasSize = value;
+        }
+        
       private:
         WSPP_Server* m_server{ nullptr };
         Connection_Handle m_handle;
+        Size m_canvasSize {0, 0};
     };
 }
