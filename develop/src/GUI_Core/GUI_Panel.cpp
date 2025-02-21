@@ -47,10 +47,8 @@ namespace FW
     {
         auto p = GetPosition();
         auto s = m_size;
-        auto bX = static_cast<float>(k_borderWidthPx) /
-                  GetGraphicsRef().GetCanvasSize().w;
-        auto bY =  static_cast<float>(k_borderWidthPx) /
-                  GetGraphicsRef().GetCanvasSize().h;
+        auto bX = k_borderWidthPx/CalcAspectRatio(GetGraphicsRef().GetCanvasSize());
+        auto bY =  ConvertWidthToHeight(GetGraphicsRef().GetCanvasSize(), bX);
         
         // Sides
         auto topBorderRect = Rect_F {p.x, p.y - bY, s.w, bY};
