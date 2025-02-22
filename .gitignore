@@ -16,3 +16,4 @@ build/
 .env
 ngrok.yml
 published/
+tags
