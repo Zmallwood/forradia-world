@@ -11,20 +11,25 @@ namespace FW
     }
 
     void GUI_Button::UpdateDerived() {
-        if (m_mouseInput.GetLeftMouseButtonRef().GetIsPressed())
+        auto bounds = GetBounds();
+        auto mousePosition = m_mouseInput.GetMousePosition();
+
+        if (bounds.Contains(mousePosition))
         {
-            m_action();
+            if (m_mouseInput.GetLeftMouseButtonRef().GetIsPressed())
+            {
+                m_action();
+            }
         }
     }
 
     void GUI_Button::RenderDerived() const {
 
-        auto p = GetPosition();
-        auto s = m_size;
+        auto bounds = GetBounds();
 
         GetGraphicsRef().DrawImage(
-            "GUIButtonDefaultBackground", p.x, p.y, s.w,
-            s.h);
+            "GUIButtonDefaultBackground", bounds.x, bounds.y, bounds.w,
+            bounds.h);
         }
 
     Rect_F GUI_Button::GetBounds() const {
