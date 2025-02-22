@@ -32,16 +32,16 @@ namespace FW
         flag = 1;
     }
     
-    void Main_Server::Start() const
+    void MainServer::Start() const
     {
         GenerateWSConnString();
         
         std::thread tWebServer([]{
-                                   Web_Server::GetInstance().Start();
+                                   WebServer::GetInstance().Start();
                                });
         
         std::thread tSocketServer([]{
-                                      Socket_Server::GetInstance().Start();
+                                      SocketServer::GetInstance().Start();
                                   });
         
         signal(SIGINT, SigIntHandler);
@@ -52,8 +52,8 @@ namespace FW
             pause();
         }
         
-        Web_Server::GetInstance().Stop();
-        Socket_Server::GetInstance().Stop();
+        WebServer::GetInstance().Stop();
+        SocketServer::GetInstance().Stop();
         
         tSocketServer.join();
         tWebServer.join();
@@ -61,11 +61,11 @@ namespace FW
         std::cout << "Game server exited gracefully.\n";
     }
     
-    void Main_Server::GenerateWSConnString() const
+    void MainServer::GenerateWSConnString() const
     {
         std::fstream outFile;
         
-        auto appPath = std::string(App_Properties::GetInstance().GetAppPath());
+        auto appPath = std::string(AppProperties::GetInstance().GetAppPath());
         auto fullPathStr = std::string(appPath);
         auto lastSlash = fullPathStr.find_last_of("/");
         auto appBasePath = fullPathStr.substr(0, lastSlash + 1);
@@ -90,8 +90,8 @@ namespace FW
             std::cout << "Running in development mode.\n";
             
             outFile << "export const wsConnString = 'ws://localhost:8081';";
-            App_Properties::GetInstance().SetHTTPPort(81);
-            App_Properties::GetInstance().SetSocketsPort(8081);
+            AppProperties::GetInstance().SetHTTPPort(81);
+            AppProperties::GetInstance().SetSocketsPort(8081);
         }
         else
         {

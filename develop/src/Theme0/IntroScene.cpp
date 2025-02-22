@@ -28,16 +28,16 @@
 
 namespace FW
 {
-    void Intro_Scene::Initialize()
+    void IntroScene::Initialize()
     {
         m_startTextComponent = GetGUI()->AddComponent(
-            std::make_shared<GUI_Label>(
+            std::make_shared<GUILabel>(
                 GetGraphicsRef(),
                 "Press to start",
                 0.5f, 0.5f, true));
     }
     
-    void Intro_Scene::UpdateDerived()
+    void IntroScene::UpdateDerived()
     {
         if (GetKeyboardInputRef().AnyKeyIsPressedPickResult() ||
             GetMouseInputRef().AnyButtonIsPressed())
@@ -50,7 +50,7 @@ namespace FW
         m_startTextComponent->SetVisible(startTextVisible);
     }
     
-    void Intro_Scene::RenderDerived() const
+    void IntroScene::RenderDerived() const
     {
         GetGraphicsRef().DrawBackground("DefaultSceneBackground");
         GetGraphicsRef().DrawImage(

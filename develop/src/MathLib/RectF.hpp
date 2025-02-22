@@ -21,10 +21,10 @@
 
 namespace FW
 {
-    class Rect_F
+    class RectF
     {
         public:
-            bool Contains(Point_F point) const;
+            bool Contains(PointF point) const;
 
             float x {0.0f};
             float y {0.0f};

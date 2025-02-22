@@ -21,17 +21,17 @@
 
 namespace FW
 {
-    void Keyboard_Input::RegisterKeyPress(int key)
+    void KeyboardInput::RegisterKeyPress(int key)
     {
         m_pressedKeys.insert(key);
     }
     
-    void Keyboard_Input::RegisterKeyRelease(int key)
+    void KeyboardInput::RegisterKeyRelease(int key)
     {
         m_pressedKeys.erase(key);
     }
     
-    bool Keyboard_Input::AnyKeyIsPressedPickResult()
+    bool KeyboardInput::AnyKeyIsPressedPickResult()
     {
         auto result = m_pressedKeys.size() > 0;
         m_pressedKeys.clear();

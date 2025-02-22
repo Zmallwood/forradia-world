@@ -24,14 +24,14 @@
 namespace FW
 {
     void OnSocketOpen(
-        WSPP_Server* server,
-        Connection_Handle handle)
+        WSPPServer* server,
+        ConnectionHandle handle)
     {
         std::cout << std::format(
             "{}: A new client has connected.\n",
             GetCurrentTime());
         
-        Socket_Clients_Manager::GetInstance().AddSocketClient(
+        SocketClientsManager::GetInstance().AddSocketClient(
             server,
             handle);
     }

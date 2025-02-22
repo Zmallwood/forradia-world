@@ -26,38 +26,38 @@
 
 namespace FW
 {
-    Scene_Manager::Scene_Manager(Graphics& graphics,
-                                 Keyboard_Input& keyboardInput,
-                                 Mouse_Input& mouseInput)
+    SceneManager::SceneManager(Graphics& graphics,
+                                 KeyboardInput& keyboardInput,
+                                 MouseInput& mouseInput)
         : m_graphics(graphics), m_keyboardInput(keyboardInput),
         m_mouseInput(mouseInput)
     {}
     
-    void Scene_Manager::InitializeScenes()
+    void SceneManager::InitializeScenes()
     {
         AddScene(
             "intro-scene",
-            std::make_shared<Intro_Scene>(
+            std::make_shared<IntroScene>(
                 m_graphics, *this, m_keyboardInput,
                 m_mouseInput));
         AddScene(
-            "main-menu-scene", std::make_shared<Main_Menu_Scene>(
+            "main-menu-scene", std::make_shared<MainMenuScene>(
                 m_graphics, *this, m_keyboardInput,
                 m_mouseInput));
         AddScene(
             "world-generation-scene",
-            std::make_shared<World_Generation_Scene>(
+            std::make_shared<WorldGenerationScene>(
                 m_graphics, *this, m_keyboardInput,
                 m_mouseInput));
         AddScene(
-            "main-scene", std::make_shared<Main_Scene>(
+            "main-scene", std::make_shared<MainScene>(
                 m_graphics, *this, m_keyboardInput,
                 m_mouseInput));
         
         ChangeScene("intro-scene");
     }
     
-    void Scene_Manager::UpdateCurrentScene()
+    void SceneManager::UpdateCurrentScene()
     {
         if (m_scenes.contains(m_currentScene))
         {
@@ -65,7 +65,7 @@ namespace FW
         }
     }
     
-    void Scene_Manager::RenderCurrentScene() const
+    void SceneManager::RenderCurrentScene() const
     {
         if (m_scenes.contains(m_currentScene))
         {
@@ -73,14 +73,14 @@ namespace FW
         }
     }
     
-    void Scene_Manager::ChangeScene(std::string_view sceneName)
+    void SceneManager::ChangeScene(std::string_view sceneName)
     {
         m_currentScene = Hash(sceneName);
     }
     
-    void Scene_Manager::AddScene(
+    void SceneManager::AddScene(
         std::string_view sceneName,
-        std::shared_ptr<I_Scene> scene)
+        std::shared_ptr<IScene> scene)
     {
         scene->Initialize();
         

@@ -21,7 +21,7 @@
 
 namespace FW
 {
-    struct Point_F
+    struct PointF
     {
         float x {0.0f};
         float y {0.0f};

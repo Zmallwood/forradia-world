@@ -23,11 +23,11 @@
 
 namespace FW
 {
-    FPS_Counter::FPS_Counter(Graphics& graphics)
+    FPSCounter::FPSCounter(Graphics& graphics)
         : m_graphics(graphics)
     {}
     
-    void FPS_Counter::Update()
+    void FPSCounter::Update()
     {
         auto now = GetTicks();
         
@@ -41,7 +41,7 @@ namespace FW
         m_framesCount++;
     }
     
-    void FPS_Counter::Render() const
+    void FPSCounter::Render() const
     {
         m_graphics.DrawText(std::format("Fps: {}", m_fps), 0.85, 0.05, Colors::Black);
     }

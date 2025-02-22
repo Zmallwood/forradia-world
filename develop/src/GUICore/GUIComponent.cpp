@@ -21,11 +21,11 @@
 
 namespace FW
 {
-    GUI_Component::GUI_Component(const Graphics& graphics, float x, float y)
+    GUIComponent::GUIComponent(const Graphics& graphics, float x, float y)
         : m_graphics(graphics), m_position({x, y})
     {}
     
-    void GUI_Component::Update()
+    void GUIComponent::Update()
     {
         if (!m_visible)
         {
@@ -40,7 +40,7 @@ namespace FW
         }
     }
     
-    void GUI_Component::Render() const
+    void GUIComponent::Render() const
     {
         if (!m_visible)
         {
@@ -55,8 +55,8 @@ namespace FW
         }
     }
     
-    std::shared_ptr<GUI_Component> GUI_Component::AddComponent(
-        std::shared_ptr<GUI_Component> component)
+    std::shared_ptr<GUIComponent> GUIComponent::AddComponent(
+        std::shared_ptr<GUIComponent> component)
     {
         m_childComponents.push_back(component);
         

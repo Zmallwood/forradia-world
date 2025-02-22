@@ -29,7 +29,7 @@ namespace FW
     using websocketpp::lib::placeholders::_1;
     using websocketpp::lib::placeholders::_2;
     
-    void Socket_Server::Start()
+    void SocketServer::Start()
     {
         std::cout << "Starting socket server.\n";
         
@@ -48,7 +48,7 @@ namespace FW
                     &OnSocketMessage, &m_server, _1,
                     _2));
             
-            m_server.listen(App_Properties::GetInstance().GetSocketsPort());
+            m_server.listen(AppProperties::GetInstance().GetSocketsPort());
             
             // Start the server accept loop.
             m_server.start_accept();
@@ -66,7 +66,7 @@ namespace FW
         }
     }
     
-    void Socket_Server::Stop()
+    void SocketServer::Stop()
     {
         m_server.stop();
     }

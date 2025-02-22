@@ -21,9 +21,9 @@
 
 namespace FW
 {
-    class Web_Server : public Singleton<Web_Server>
+    class WebServer : public Singleton<WebServer>
     {
-        friend class Singleton<Web_Server>;
+        friend class Singleton<WebServer>;
         
       public:
         void Start();
@@ -31,7 +31,7 @@ namespace FW
         void Stop();
         
       private:
-        Web_Server() = default;
+        WebServer() = default;
         
         void SetupEndpoints();
         

@@ -23,12 +23,12 @@ namespace FW
 {
     class Engine;
     
-    class Socket_Client
+    class SocketClient
     {
       public:
-        Socket_Client(
-            WSPP_Server* server,
-            Connection_Handle handle);
+        SocketClient(
+            WSPPServer* server,
+            ConnectionHandle handle);
         
         void ProcessFrame();
         

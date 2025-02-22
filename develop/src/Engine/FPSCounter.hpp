@@ -23,10 +23,10 @@ namespace FW
 {
     class Graphics;
     
-    class FPS_Counter
+    class FPSCounter
     {
       public:
-        FPS_Counter(Graphics& graphics);
+        FPSCounter(Graphics& graphics);
 
         void Update();
 

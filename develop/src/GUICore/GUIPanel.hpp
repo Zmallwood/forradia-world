@@ -23,10 +23,10 @@
 
 namespace FW
 {
-    class GUI_Panel : public GUI_Component
+    class GUIPanel : public GUIComponent
     {
       public:
-        GUI_Panel(const Graphics& graphics, float x, float y, float w, float h);
+        GUIPanel(const Graphics& graphics, float x, float y, float w, float h);
         
         virtual void RenderDerived() const override;
         
@@ -39,6 +39,6 @@ namespace FW
         const float k_borderWidthPx {0.015f};
         
         // State
-        Size_F m_size {0.0f, 0.0f};
+        SizeF m_size {0.0f, 0.0f};
     };
 }

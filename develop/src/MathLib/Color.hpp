@@ -21,8 +21,9 @@
 
 namespace FW
 {
-    struct Color
+    class Color
     {
+        public:
         int r {0};
         int g {0};
         int b {0};

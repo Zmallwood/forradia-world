@@ -21,7 +21,7 @@
 
 namespace FW
 {
-    enum class Cursor_Styles
+    enum class CursorStyles
     {
         Default,
         Hovering,

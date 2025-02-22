@@ -32,8 +32,8 @@
 namespace FW
 {
     void OnSocketMessage(
-        WSPP_Server* server, Connection_Handle handle,
-        Message_Ptr message)
+        WSPPServer* server, ConnectionHandle handle,
+        MessagePtr message)
     {
         auto& messageText = message->get_payload();
         
@@ -58,7 +58,7 @@ namespace FW
             case k_frameFinished:
             {
                 auto socketClient =
-                    Socket_Clients_Manager::GetInstance().GetSocketClient(handle);
+                    SocketClientsManager::GetInstance().GetSocketClient(handle);
 
                 if (socketClient)
                 {
@@ -74,7 +74,7 @@ namespace FW
                 auto height = std::stoi(parts[2]);
 
                 auto socketClient =
-                    Socket_Clients_Manager::GetInstance().GetSocketClient(handle);
+                    SocketClientsManager::GetInstance().GetSocketClient(handle);
                 
                 auto engine = socketClient->GetEngine();
                 
@@ -90,7 +90,7 @@ namespace FW
                 auto imageName = parts[1];
                 auto width = std::stoi(parts[2]);
                 auto height = std::stoi(parts[3]);
-                Image_Info_Store::GetInstance().AddImageDimensions(
+                ImageInfoStore::GetInstance().AddImageDimensions(
                     imageName,
                     {width, height});
             }
@@ -102,7 +102,7 @@ namespace FW
                 auto key = std::stoi(parts[1]);
                 
                 auto socketClient =
-                    Socket_Clients_Manager::GetInstance().GetSocketClient(handle);
+                    SocketClientsManager::GetInstance().GetSocketClient(handle);
                 
                 auto engine = socketClient->GetEngine();
                 
@@ -118,7 +118,7 @@ namespace FW
                 auto key = std::stoi(parts[1]);
                 
                 auto socketClient =
-                    Socket_Clients_Manager::GetInstance().GetSocketClient(handle);
+                    SocketClientsManager::GetInstance().GetSocketClient(handle);
                 
                 auto engine = socketClient->GetEngine();
                 
@@ -132,10 +132,10 @@ namespace FW
             case k_mouseButtonPress:
             {
                 auto buttonCode = std::stoi(parts[1]);
-                auto button = static_cast<Mouse_Buttons>(buttonCode);
+                auto button = static_cast<MouseButtons>(buttonCode);
 
                 auto socketClient =
-                    Socket_Clients_Manager::GetInstance().GetSocketClient(handle);
+                    SocketClientsManager::GetInstance().GetSocketClient(handle);
 
                 auto engine = socketClient->GetEngine();
 
@@ -149,10 +149,10 @@ namespace FW
             case k_mouseButtonRelease:
             {
                 auto buttonCode = std::stoi(parts[1]);
-                auto button = static_cast<Mouse_Buttons>(buttonCode);
+                auto button = static_cast<MouseButtons>(buttonCode);
 
                 auto socketClient =
-                    Socket_Clients_Manager::GetInstance().GetSocketClient(handle);
+                    SocketClientsManager::GetInstance().GetSocketClient(handle);
 
                 auto engine = socketClient->GetEngine();
 
@@ -169,7 +169,7 @@ namespace FW
                 auto y = std::stoi(parts[2]);
                 
                 auto socketClient =
-                    Socket_Clients_Manager::GetInstance().GetSocketClient(handle);
+                    SocketClientsManager::GetInstance().GetSocketClient(handle);
                 
                 auto engine = socketClient->GetEngine();
                 

@@ -24,12 +24,12 @@
 
 namespace FW
 {
-    GUI_Button::GUI_Button(const Graphics& graphics, Mouse_Input& mouseInput, std::string_view text, std::function<void()> action, float x, float y, float w, float h)
-        : GUI_Component(graphics, x, y), m_mouseInput(mouseInput), m_text(text), m_action(action), m_size({w, h})
+    GUIButton::GUIButton(const Graphics& graphics, MouseInput& mouseInput, std::string_view text, std::function<void()> action, float x, float y, float w, float h)
+        : GUIComponent(graphics, x, y), m_mouseInput(mouseInput), m_text(text), m_action(action), m_size({w, h})
     {
     }
 
-    void GUI_Button::UpdateDerived() {
+    void GUIButton::UpdateDerived() {
         auto bounds = GetBounds();
         auto mousePosition = m_mouseInput.GetMousePosition();
 
@@ -42,7 +42,7 @@ namespace FW
         }
     }
 
-    void GUI_Button::RenderDerived() const {
+    void GUIButton::RenderDerived() const {
 
         auto bounds = GetBounds();
 
@@ -51,7 +51,7 @@ namespace FW
             bounds.h);
         }
 
-    Rect_F GUI_Button::GetBounds() const {
+    RectF GUIButton::GetBounds() const {
         auto position = GetPosition();
 
         return {position.x, position.y, m_size.w, m_size.h};

@@ -25,8 +25,8 @@ namespace FW
     {
       public:
         Graphics(
-            WSPP_Server& server,
-            Connection_Handle handle);
+            WSPPServer& server,
+            ConnectionHandle handle);
         
         void ClearCanvas() const;
         
@@ -42,7 +42,7 @@ namespace FW
 
         void DrawImage(
             std::string_view imageName,
-            Rect_F rect,
+            RectF rect,
             bool repeat = false) const;
         
         void DrawText(
@@ -71,7 +71,7 @@ namespace FW
         Size m_canvasSize {0, 0};
         
         // Dependencies
-        WSPP_Server& m_server;
-        Connection_Handle m_handle;
+        WSPPServer& m_server;
+        ConnectionHandle m_handle;
     };
 }

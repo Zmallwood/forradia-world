@@ -23,17 +23,17 @@ namespace FW
 {
     class Graphics;
     class GUI;
-    class Scene_Manager;
-    class Keyboard_Input;
-    class Mouse_Input;
+    class SceneManager;
+    class KeyboardInput;
+    class MouseInput;
     
-    class I_Scene
+    class IScene
     {
       public:
-        I_Scene(Graphics& graphics,
-                Scene_Manager& sceneManager,
-                Keyboard_Input& keyboardInput,
-                Mouse_Input& mouseInput);
+        IScene(Graphics& graphics,
+                SceneManager& sceneManager,
+                KeyboardInput& keyboardInput,
+                MouseInput& mouseInput);
         
         virtual void Initialize()
         {}
@@ -80,8 +80,8 @@ namespace FW
 
         // Dependencies
         Graphics& m_graphics;
-        Scene_Manager& m_sceneManager;
-        Keyboard_Input& m_keyboardInput;
-        Mouse_Input& m_mouseInput;
+        SceneManager& m_sceneManager;
+        KeyboardInput& m_keyboardInput;
+        MouseInput& m_mouseInput;
     };
 }

@@ -24,12 +24,12 @@
 
 namespace FW
 {
-    class Mouse_Input
+    class MouseInput
     {
       public:
-        void RegisterButtonPress(Mouse_Buttons button);
+        void RegisterButtonPress(MouseButtons button);
         
-        void RegisterButtonRelease(Mouse_Buttons button);
+        void RegisterButtonRelease(MouseButtons button);
         
         bool AnyButtonIsPressed() const;
         
@@ -48,15 +48,15 @@ namespace FW
             return m_mousePosition;
         }
         
-        void SetMousePosition(Point_F value)
+        void SetMousePosition(PointF value)
         {
             m_mousePosition = value;
         }
         
       private:
         // State
-        Mouse_Button m_leftMouseButton;
-        Mouse_Button m_rightMouseButton;
-        Point_F m_mousePosition {-1.0f, -1.0f};
+        MouseButton m_leftMouseButton;
+        MouseButton m_rightMouseButton;
+        PointF m_mousePosition {-1.0f, -1.0f};
     };
 }

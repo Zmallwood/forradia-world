@@ -21,20 +21,20 @@
 
 namespace FW
 {
-    void Image_Info_Store::AddImageDimensions(std::string_view imageName,
+    void ImageInfoStore::AddImageDimensions(std::string_view imageName,
                                               Size dimension)
     {
         m_imageDimensions[Hash(imageName)] = dimension;
     }
     
     
-    bool Image_Info_Store::ImageDimensionsExists(
+    bool ImageInfoStore::ImageDimensionsExists(
         std::string_view imageName) const
     {
         return m_imageDimensions.contains(Hash(imageName));
     }
     
-    Size Image_Info_Store::GetImageDimensions(std::string_view imageName) const
+    Size ImageInfoStore::GetImageDimensions(std::string_view imageName) const
     {
         auto imageNameHash = Hash(imageName);
         

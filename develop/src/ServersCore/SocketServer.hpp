@@ -21,9 +21,9 @@
 
 namespace FW
 {
-    class Socket_Server : public Singleton<Socket_Server>
+    class SocketServer : public Singleton<SocketServer>
     {
-        friend class Singleton<Socket_Server>;
+        friend class Singleton<SocketServer>;
         
       public:
         void Start();
@@ -31,9 +31,9 @@ namespace FW
         void Stop();
         
       private:
-        Socket_Server() = default;
+        SocketServer() = default;
         
         // State
-        WSPP_Server m_server;
+        WSPPServer m_server;
     };
 }

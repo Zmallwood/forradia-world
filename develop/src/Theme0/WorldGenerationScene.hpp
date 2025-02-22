@@ -23,10 +23,10 @@
 
 namespace FW
 {
-    class World_Generation_Scene : public I_Scene
+    class WorldGenerationScene : public IScene
     {
       public:
-        using I_Scene::I_Scene;
+        using IScene::IScene;
         
       protected:
         void UpdateDerived() override;

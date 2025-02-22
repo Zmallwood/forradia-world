@@ -29,13 +29,13 @@
 namespace FW
 {
     Engine::Engine(std::shared_ptr<Graphics> graphics)
-        : m_keyboardInput(std::make_shared<Keyboard_Input>())
-        , m_mouseInput(std::make_shared<Mouse_Input>())
+        : m_keyboardInput(std::make_shared<KeyboardInput>())
+        , m_mouseInput(std::make_shared<MouseInput>())
         , m_graphics(graphics)
-        , m_sceneManager(std::make_shared<Scene_Manager>(
+        , m_sceneManager(std::make_shared<SceneManager>(
                              *graphics,
                              *m_keyboardInput, *m_mouseInput))
-        , m_fpsCounter(std::make_shared<FPS_Counter>(*graphics))
+        , m_fpsCounter(std::make_shared<FPSCounter>(*graphics))
         , m_cursor(std::make_shared<Cursor>(*m_mouseInput, *graphics))
     {}
     

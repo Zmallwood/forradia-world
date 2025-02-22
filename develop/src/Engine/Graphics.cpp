@@ -24,8 +24,8 @@
 namespace FW
 {
     Graphics::Graphics(
-        WSPP_Server& server,
-        Connection_Handle handle)
+        WSPPServer& server,
+        ConnectionHandle handle)
         : m_server(server)
         , m_handle(handle)
     {}
@@ -53,7 +53,7 @@ namespace FW
         if (w < 0 || h < 0)
         {
             auto imageDimensions =
-                Image_Info_Store::GetInstance().GetImageDimensions(imageName);
+                ImageInfoStore::GetInstance().GetImageDimensions(imageName);
             auto canvasAspectRatio = CalcAspectRatio(m_canvasSize);
             auto imageAspectRatio = static_cast<float>(imageDimensions.w)/
                                     imageDimensions.h;
@@ -82,7 +82,7 @@ namespace FW
     
     void Graphics::DrawImage(
         std::string_view imageName,
-        Rect_F rect,
+        RectF rect,
         bool repeat) const
     {
         DrawImage(imageName, rect.x, rect.y, rect.w, rect.h, repeat);
@@ -108,7 +108,7 @@ namespace FW
         std::string_view imageName
         ) const
     {
-        if (!Image_Info_Store::GetInstance().ImageDimensionsExists(imageName))
+        if (!ImageInfoStore::GetInstance().ImageDimensionsExists(imageName))
         {
             m_server.send(
                 m_handle,
@@ -121,7 +121,7 @@ namespace FW
             auto canvasAspectRatio = CalcAspectRatio(m_canvasSize);
             
             auto imageDimensions =
-                Image_Info_Store::GetInstance().GetImageDimensions(imageName);
+                ImageInfoStore::GetInstance().GetImageDimensions(imageName);
             
             auto imageAspectRatio = static_cast<float>(imageDimensions.w) /
                                     imageDimensions.h;

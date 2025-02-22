@@ -24,12 +24,12 @@
 namespace FW
 {
     class Graphics;
-    class Mouse_Input;
+    class MouseInput;
     
     class Cursor
     {
       public:
-        Cursor(Mouse_Input& mouseInput, Graphics& graphics);
+        Cursor(MouseInput& mouseInput, Graphics& graphics);
         
         void Reset();
         
@@ -40,10 +40,10 @@ namespace FW
         const float k_cursorSize {0.05f};
         
         // State
-        Cursor_Styles m_currentStyle {Cursor_Styles::Default};
+        CursorStyles m_currentStyle {CursorStyles::Default};
         
         // Dependencies
-        Mouse_Input& m_mouseInput;
+        MouseInput& m_mouseInput;
         Graphics& m_graphics;
     };
 }

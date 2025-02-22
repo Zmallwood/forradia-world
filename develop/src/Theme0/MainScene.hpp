@@ -23,10 +23,10 @@
 
 namespace FW
 {
-    class Main_Scene : public I_Scene
+    class MainScene : public IScene
     {
       public:
-        using I_Scene::I_Scene;
+        using IScene::IScene;
         
       protected:
         void UpdateDerived()

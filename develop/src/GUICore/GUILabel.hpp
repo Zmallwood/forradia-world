@@ -23,10 +23,10 @@
 
 namespace FW
 {
-    class GUI_Label : public GUI_Component
+    class GUILabel : public GUIComponent
     {
       public:
-        GUI_Label(const Graphics& graphics, std::string_view text, float x, float y,
+        GUILabel(const Graphics& graphics, std::string_view text, float x, float y,
                   bool centerAlign = false);
         
         virtual void RenderDerived() const override;

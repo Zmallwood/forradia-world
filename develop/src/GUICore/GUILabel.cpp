@@ -23,14 +23,14 @@
 
 namespace FW
 {
-    GUI_Label::GUI_Label(const Graphics& graphics, std::string_view text, float x,
+    GUILabel::GUILabel(const Graphics& graphics, std::string_view text, float x,
                          float y,
                          bool centerAlign)
-        : GUI_Component(graphics, x, y), m_text(text),
+        : GUIComponent(graphics, x, y), m_text(text),
         m_centerAlign(centerAlign)
     {}
     
-    void GUI_Label::RenderDerived() const
+    void GUILabel::RenderDerived() const
     {
         auto position = GetPosition();
         

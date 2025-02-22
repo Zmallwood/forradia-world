@@ -23,12 +23,12 @@
 
 namespace FW
 {
-    class GUI_Component;
+    class GUIComponent;
     
-    class Intro_Scene : public I_Scene
+    class IntroScene : public IScene
     {
       public:
-        using I_Scene::I_Scene;
+        using IScene::IScene;
 
         void Initialize() override;
 
@@ -40,6 +40,6 @@ namespace FW
         
       private:
         // State
-        std::shared_ptr<GUI_Component> m_startTextComponent;
+        std::shared_ptr<GUIComponent> m_startTextComponent;
     };
 }

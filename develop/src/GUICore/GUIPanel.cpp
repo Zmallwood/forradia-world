@@ -23,18 +23,18 @@
 
 namespace FW
 {
-    GUI_Panel::GUI_Panel(const Graphics& graphics, float x, float y, float w,
+    GUIPanel::GUIPanel(const Graphics& graphics, float x, float y, float w,
                          float h)
-        : GUI_Component(graphics, x, y), m_size({w, h})
+        : GUIComponent(graphics, x, y), m_size({w, h})
     {}
     
-    void GUI_Panel::RenderDerived() const
+    void GUIPanel::RenderDerived() const
     {
         RenderBackground();
         RenderBorders();
     }
     
-    void GUI_Panel::RenderBackground() const
+    void GUIPanel::RenderBackground() const
     {
         auto position = GetPosition();
         
@@ -43,7 +43,7 @@ namespace FW
             m_size.w, m_size.h, true);
     }
     
-    void GUI_Panel::RenderBorders() const
+    void GUIPanel::RenderBorders() const
     {
         auto p = GetPosition();
         auto s = m_size;
@@ -51,10 +51,10 @@ namespace FW
         auto bY =  ConvertWidthToHeight(GetGraphicsRef().GetCanvasSize(), bX);
         
         // Sides
-        auto topBorderRect = Rect_F {p.x, p.y - bY, s.w, bY};
-        auto rightBorderRect = Rect_F {p.x + s.w, p.y, bX, s.h};
-        auto bottomBorderRect = Rect_F {p.x, p.y + s.h, s.w, bY};
-        auto leftBorderRect = Rect_F {p.x - bX, p.y, bX, s.h};
+        auto topBorderRect = RectF {p.x, p.y - bY, s.w, bY};
+        auto rightBorderRect = RectF {p.x + s.w, p.y, bX, s.h};
+        auto bottomBorderRect = RectF {p.x, p.y + s.h, s.w, bY};
+        auto leftBorderRect = RectF {p.x - bX, p.y, bX, s.h};
         
         GetGraphicsRef().DrawImage(
             "GUIPanelDefaultBorderHorizontal", topBorderRect);
@@ -69,12 +69,12 @@ namespace FW
             "GUIPanelDefaultBorderVertical", leftBorderRect);
         
         // Corners
-        auto topBorderCornerTopRightRect = Rect_F {p.x + s.w, p.y - bY, bX, bY};
-        auto topBorderCornerBottomRightRect = Rect_F {p.x + s.w, p.y + s.h, bX,
+        auto topBorderCornerTopRightRect = RectF {p.x + s.w, p.y - bY, bX, bY};
+        auto topBorderCornerBottomRightRect = RectF {p.x + s.w, p.y + s.h, bX,
                                                       bY};
-        auto topBorderCornerBottomLeftRect = Rect_F {p.x - bX, p.y  + s.h, bX,
+        auto topBorderCornerBottomLeftRect = RectF {p.x - bX, p.y  + s.h, bX,
                                                      bY};
-        auto topBorderCornerTopLeftRect = Rect_F {p.x - bX, p.y - bY, bX, bY};
+        auto topBorderCornerTopLeftRect = RectF {p.x - bX, p.y - bY, bX, bY};
         
         GetGraphicsRef().DrawImage(
             "GUIPanelDefaultBorderCornerTopRight", topBorderCornerTopRightRect);

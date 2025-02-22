@@ -24,9 +24,9 @@ int main(int arc, char** argv)
 {
     using namespace FW;
     
-    App_Properties::GetInstance().SetAppPath(argv[0]);
+    AppProperties::GetInstance().SetAppPath(argv[0]);
 
-    Main_Server::GetInstance().Start();
+    MainServer::GetInstance().Start();
     
     return 0;
 }

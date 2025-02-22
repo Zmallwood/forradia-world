@@ -27,15 +27,15 @@
 
 namespace FW
 {
-    void Main_Menu_Scene::Initialize()
+    void MainMenuScene::Initialize()
     {
         auto panel = GetGUI()->AddComponent(
-            std::make_shared<GUI_Panel>(
+            std::make_shared<GUIPanel>(
                 GetGraphicsRef(),
                 0.3f, 0.4f, 0.4f, 0.4f));
 
         panel->AddComponent(
-                std::make_shared<GUI_Button>(
+                std::make_shared<GUIButton>(
                     GetGraphicsRef(),
                     GetMouseInputRef(),
                     "Login",
@@ -47,10 +47,10 @@ GetSceneManagerRef().ChangeScene("main-scene");
                 );
     }
     
-    void Main_Menu_Scene::UpdateDerived()
+    void MainMenuScene::UpdateDerived()
     {}
     
-    void Main_Menu_Scene::RenderDerived() const
+    void MainMenuScene::RenderDerived() const
     {
         GetGraphicsRef().DrawBackground("DefaultSceneBackground");
         GetGraphicsRef().DrawImage(

@@ -24,13 +24,13 @@
 
 namespace FW
 {
-    Cursor::Cursor(Mouse_Input& mouseInput, Graphics& graphics)
+    Cursor::Cursor(MouseInput& mouseInput, Graphics& graphics)
         : m_mouseInput(mouseInput), m_graphics(graphics)
     {}
     
     void Cursor::Reset()
     {
-        m_currentStyle = Cursor_Styles::Default;
+        m_currentStyle = CursorStyles::Default;
     }
     
     void Cursor::Render() const

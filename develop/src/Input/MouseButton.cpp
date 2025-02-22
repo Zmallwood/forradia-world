@@ -21,12 +21,12 @@
 
 namespace FW
 {
-    void Mouse_Button::RegisterPress()
+    void MouseButton::RegisterPress()
     {
         m_isPressed = true;
     }
     
-    void Mouse_Button::RegisterRelease()
+    void MouseButton::RegisterRelease()
     {
         m_isPressed = false;
     }

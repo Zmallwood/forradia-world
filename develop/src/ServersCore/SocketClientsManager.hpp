@@ -21,24 +21,24 @@
 
 namespace FW
 {
-    class Socket_Client;
+    class SocketClient;
     
-    class Socket_Clients_Manager : public Singleton<Socket_Clients_Manager>
+    class SocketClientsManager : public Singleton<SocketClientsManager>
     {
-        friend class Singleton<Socket_Clients_Manager>;
+        friend class Singleton<SocketClientsManager>;
         
       public:
         void AddSocketClient(
-            WSPP_Server* server,
-            Connection_Handle handle);
+            WSPPServer* server,
+            ConnectionHandle handle);
         
-        std::shared_ptr<Socket_Client> GetSocketClient(
-            Connection_Handle handle) const;
+        std::shared_ptr<SocketClient> GetSocketClient(
+            ConnectionHandle handle) const;
         
       private:
-        Socket_Clients_Manager() = default;
+        SocketClientsManager() = default;
         
         // State
-        std::map<void*, std::shared_ptr<Socket_Client>> m_clients;
+        std::map<void*, std::shared_ptr<SocketClient>> m_clients;
     };
 }

@@ -21,8 +21,9 @@
 
 namespace FW
 {
-    struct Size
+    class Size
     {
+        public:
         int w {0};
         int h {0};
     };

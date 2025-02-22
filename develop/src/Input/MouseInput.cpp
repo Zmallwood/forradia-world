@@ -21,17 +21,17 @@
 
 namespace FW
 {
-    void Mouse_Input::RegisterButtonPress(Mouse_Buttons button)
+    void MouseInput::RegisterButtonPress(MouseButtons button)
     {
         switch (button)
         {
-        case Mouse_Buttons::Left:
+        case MouseButtons::Left:
         
             m_leftMouseButton.RegisterPress();
             
             break;
             
-        case Mouse_Buttons::Right:
+        case MouseButtons::Right:
         
             m_leftMouseButton.RegisterRelease();
             
@@ -39,17 +39,17 @@ namespace FW
         }
     }
     
-    void Mouse_Input::RegisterButtonRelease(Mouse_Buttons button)
+    void MouseInput::RegisterButtonRelease(MouseButtons button)
     {
         switch (button)
         {
-        case Mouse_Buttons::Left:
+        case MouseButtons::Left:
         
             m_leftMouseButton.RegisterRelease();
             
             break;
             
-        case Mouse_Buttons::Right:
+        case MouseButtons::Right:
         
             m_leftMouseButton.RegisterRelease();
             
@@ -57,7 +57,7 @@ namespace FW
         }
     }
     
-    bool Mouse_Input::AnyButtonIsPressed() const
+    bool MouseInput::AnyButtonIsPressed() const
     {
         return m_leftMouseButton.GetIsPressed() ||
                m_rightMouseButton.GetIsPressed();

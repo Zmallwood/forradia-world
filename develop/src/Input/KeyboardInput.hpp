@@ -21,7 +21,7 @@
 
 namespace FW
 {
-    class Keyboard_Input
+    class KeyboardInput
     {
       public:
         void RegisterKeyPress(int key);

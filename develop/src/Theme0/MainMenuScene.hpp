@@ -23,10 +23,10 @@
 
 namespace FW
 {
-    class Main_Menu_Scene : public I_Scene
+    class MainMenuScene : public IScene
     {
       public:
-        using I_Scene::I_Scene;
+        using IScene::IScene;
 
         void Initialize() override;
         

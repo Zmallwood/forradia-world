@@ -21,9 +21,9 @@
 
 namespace FW
 {
-    void Main_Scene::UpdateDerived()
+    void MainScene::UpdateDerived()
     {}
     
-    void Main_Scene::RenderDerived() const
+    void MainScene::RenderDerived() const
     {}
 }

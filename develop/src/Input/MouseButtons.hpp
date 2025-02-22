@@ -21,7 +21,7 @@
 
 namespace FW
 {
-    enum class Mouse_Buttons : int
+    enum class MouseButtons : int
     {
         Left = 0,
         Middle = 1,

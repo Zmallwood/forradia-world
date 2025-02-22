@@ -21,9 +21,9 @@
 
 namespace FW
 {
-    class Image_Info_Store : public Singleton<Image_Info_Store>
+    class ImageInfoStore : public Singleton<ImageInfoStore>
     {
-        friend class Singleton<Image_Info_Store>;
+        friend class Singleton<ImageInfoStore>;
         
       public:
         void AddImageDimensions(std::string_view imageName, Size dimension);
@@ -33,7 +33,7 @@ namespace FW
         Size GetImageDimensions(std::string_view imageName) const;
         
       private:
-        Image_Info_Store() = default;
+        ImageInfoStore() = default;
         
         // State
         std::map<int, Size> m_imageDimensions;

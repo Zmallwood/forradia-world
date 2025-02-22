@@ -21,9 +21,9 @@
 
 namespace FW
 {
-    class App_Properties : public Singleton<App_Properties>
+    class AppProperties : public Singleton<AppProperties>
     {
-        friend class Singleton<App_Properties>;
+        friend class Singleton<AppProperties>;
         
       public:
         auto GetHTTPPort() const
@@ -57,7 +57,7 @@ namespace FW
         }
         
       private:
-        App_Properties() = default;
+        AppProperties() = default;
         
         // State
         int m_http_port{ 80 };

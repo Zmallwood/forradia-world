@@ -23,7 +23,7 @@
 
 namespace FW
 {
-    void Web_Server::Start()
+    void WebServer::Start()
     {
         std::cout << "Starting web server.\n";
         
@@ -32,16 +32,16 @@ namespace FW
         StartListen();
     }
     
-    void Web_Server::Stop()
+    void WebServer::Stop()
     {
         m_server.stop();
     }
     
-    void Web_Server::SetupEndpoints()
+    void WebServer::SetupEndpoints()
     {
         using namespace httplib;
         
-        auto appPath = std::string(App_Properties::GetInstance().GetAppPath());
+        auto appPath = std::string(AppProperties::GetInstance().GetAppPath());
         auto fullPathStr = std::string(appPath);
         auto lastSlash = fullPathStr.find_last_of("/");
         auto appBasePath = fullPathStr.substr(0, lastSlash + 1);
@@ -86,8 +86,8 @@ namespace FW
             });
     }
     
-    void Web_Server::StartListen()
+    void WebServer::StartListen()
     {
-        m_server.listen(k_hostName, App_Properties::GetInstance().GetHTTPPort());
+        m_server.listen(k_hostName, AppProperties::GetInstance().GetHTTPPort());
     }
 }

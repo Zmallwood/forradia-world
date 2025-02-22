@@ -21,7 +21,7 @@
 
 namespace FW
 {
-    class Mouse_Button
+    class MouseButton
     {
       public:
         void RegisterPress();

@@ -22,7 +22,7 @@
 namespace FW
 {
     void OnSocketMessage(
-        WSPP_Server* server,
-        Connection_Handle handle,
-        Message_Ptr message);
+        WSPPServer* server,
+        ConnectionHandle handle,
+        MessagePtr message);
 }
