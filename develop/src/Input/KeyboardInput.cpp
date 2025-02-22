@@ -17,8 +17,25 @@
  * limitations under the License.
  */
 
-namespace FW {
-    using WSPP_Server = websocketpp::server<websocketpp::config::asio>;
-    using Message_Ptr = WSPP_Server::message_ptr;
-    using Connection_Handle = websocketpp::lib::weak_ptr<void>;
+#include "KeyboardInput.hpp"
+
+namespace FW
+{
+    void Keyboard_Input::RegisterKeyPress(int key)
+    {
+        m_pressedKeys.insert(key);
+    }
+    
+    void Keyboard_Input::RegisterKeyRelease(int key)
+    {
+        m_pressedKeys.erase(key);
+    }
+    
+    bool Keyboard_Input::AnyKeyIsPressedPickResult()
+    {
+        auto result = m_pressedKeys.size() > 0;
+        m_pressedKeys.clear();
+        
+        return result;
+    }
 }

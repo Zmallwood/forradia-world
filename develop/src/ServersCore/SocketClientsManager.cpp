@@ -17,22 +17,41 @@
  * limitations under the License.
  */
 
-#include "OnSocketOpen.hpp"
-
 #include "SocketClientsManager.hpp"
+
+#include "SocketClient.hpp"
 
 namespace FW
 {
-    void OnSocketOpen(
+    void Socket_Clients_Manager::AddSocketClient(
         WSPP_Server* server,
         Connection_Handle handle)
     {
-        std::cout << std::format(
-            "{}: A new client has connected.\n",
-            GetCurrentTime());
-        
-        Socket_Clients_Manager::GetInstance().AddSocketClient(
+        auto newSocketClient = std::make_shared<Socket_Client>(
             server,
             handle);
+        
+        if (auto sharedPtr = handle.lock())
+        {
+            auto rawPtr = sharedPtr.get();
+            
+            m_clients.insert({ rawPtr, newSocketClient });
+        }
+    }
+    
+    std::shared_ptr<Socket_Client> Socket_Clients_Manager::GetSocketClient(
+        Connection_Handle handle) const
+    {
+        if (auto sharedPtr = handle.lock())
+        {
+            auto rawPtr = sharedPtr.get();
+            
+            if (m_clients.contains(rawPtr))
+            {
+                return m_clients.at(rawPtr);
+            }
+        }
+        
+        return nullptr;
     }
 }

@@ -17,8 +17,32 @@
  * limitations under the License.
  */
 
-namespace FW {
-    using WSPP_Server = websocketpp::server<websocketpp::config::asio>;
-    using Message_Ptr = WSPP_Server::message_ptr;
-    using Connection_Handle = websocketpp::lib::weak_ptr<void>;
+#include "IScene.hpp"
+
+#include "GUICore/GUI.hpp"
+
+namespace FW
+{
+    I_Scene::I_Scene(Graphics& graphics,
+                     Scene_Manager& sceneManager,
+                     Keyboard_Input& keyboardInput,
+                     Mouse_Input& mouseInput)
+        : m_graphics(graphics),
+        m_sceneManager(sceneManager),
+        m_keyboardInput(keyboardInput),
+        m_mouseInput(mouseInput),
+        m_gui(std::make_shared<GUI>(graphics))
+    {}
+    
+    void I_Scene::Update()
+    {
+        m_gui->Update();
+        UpdateDerived();
+    }
+    
+    void I_Scene::Render() const
+    {
+        RenderDerived();
+        m_gui->Render();
+    }
 }

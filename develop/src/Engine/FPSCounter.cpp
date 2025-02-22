@@ -17,8 +17,32 @@
  * limitations under the License.
  */
 
-namespace FW {
-    using WSPP_Server = websocketpp::server<websocketpp::config::asio>;
-    using Message_Ptr = WSPP_Server::message_ptr;
-    using Connection_Handle = websocketpp::lib::weak_ptr<void>;
+#include "FPSCounter.hpp"
+
+#include "Graphics.hpp"
+
+namespace FW
+{
+    FPS_Counter::FPS_Counter(Graphics& graphics)
+        : m_graphics(graphics)
+    {}
+    
+    void FPS_Counter::Update()
+    {
+        auto now = GetTicks();
+        
+        if (now > m_ticksLastUpdate + 1000)
+        {
+            m_fps = m_framesCount;
+            m_framesCount = 0;
+            m_ticksLastUpdate = now;
+        }
+        
+        m_framesCount++;
+    }
+    
+    void FPS_Counter::Render() const
+    {
+        m_graphics.DrawText(std::format("Fps: {}", m_fps), 0.85, 0.05, Colors::Black);
+    }
 }

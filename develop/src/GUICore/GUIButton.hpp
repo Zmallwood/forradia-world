@@ -19,31 +19,30 @@
 
 #pragma once
 
-#include "CursorStyles.hpp"
+#include "GUIComponent.hpp"
 
 namespace FW
 {
-    class Graphics;
     class Mouse_Input;
-    
-    class Cursor
+
+    class GUI_Button : public GUI_Component
     {
-      public:
-        Cursor(Mouse_Input& mouseInput, Graphics& graphics);
-        
-        void Reset();
-        
-        void Render() const;
-        
-      private:
-        // Const
-        const float k_cursorSize {0.05f};
-        
-        // State
-        Cursor_Styles m_currentStyle {Cursor_Styles::Default};
-        
-        // Dependencies
-        Mouse_Input& m_mouseInput;
-        Graphics& m_graphics;
+        public:
+            GUI_Button(const Graphics& graphics, Mouse_Input& mouseInput, std::string_view text, std::function<void()> action, float x, float y, float w, float h);
+
+            void UpdateDerived() override;
+
+            void RenderDerived() const override;
+
+        private:
+            Rect_F GetBounds() const;
+
+            // State
+            Size_F m_size {0.0f, 0.0f};
+            std::string m_text;
+            std::function<void()> m_action;
+
+            // Dependencies
+            Mouse_Input& m_mouseInput;
     };
 }

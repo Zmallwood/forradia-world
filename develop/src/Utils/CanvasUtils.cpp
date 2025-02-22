@@ -17,8 +17,32 @@
  * limitations under the License.
  */
 
-namespace FW {
-    using WSPP_Server = websocketpp::server<websocketpp::config::asio>;
-    using Message_Ptr = WSPP_Server::message_ptr;
-    using Connection_Handle = websocketpp::lib::weak_ptr<void>;
+#include "CanvasUtils.hpp"
+
+namespace FW
+{
+    
+    float CalcAspectRatio(Size canvasSize)
+    {
+        if (canvasSize.h)
+        {
+            return static_cast<float>(canvasSize.w) / canvasSize.h;
+        }
+        
+        return 0.0f;
+    }
+    
+    float ConvertWidthToHeight(Size canvasSize, float width)
+    {
+        auto aspectRatio = CalcAspectRatio(canvasSize);
+        
+        return width * aspectRatio;
+    }
+    
+    float ConvertHeightToWidth(Size canvasSize, float height)
+    {
+        auto aspectRatio = CalcAspectRatio(canvasSize);
+        
+        return height / aspectRatio;
+    }
 }

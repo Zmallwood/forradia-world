@@ -17,8 +17,21 @@
  * limitations under the License.
  */
 
-namespace FW {
-    using WSPP_Server = websocketpp::server<websocketpp::config::asio>;
-    using Message_Ptr = WSPP_Server::message_ptr;
-    using Connection_Handle = websocketpp::lib::weak_ptr<void>;
+#include "StringUtils.hpp"
+
+namespace FW
+{
+    std::vector<std::string> Split(std::string_view text, char delimiter)
+    {
+        std::vector<std::string> parts;
+        std::istringstream ss(text.data());
+        std::string part;
+        
+        while(std::getline(ss, part, delimiter))
+        {
+            parts.push_back(part);
+        }
+        
+        return parts;
+    }
 }

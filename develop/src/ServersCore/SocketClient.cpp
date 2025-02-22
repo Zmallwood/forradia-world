@@ -17,8 +17,26 @@
  * limitations under the License.
  */
 
-namespace FW {
-    using WSPP_Server = websocketpp::server<websocketpp::config::asio>;
-    using Message_Ptr = WSPP_Server::message_ptr;
-    using Connection_Handle = websocketpp::lib::weak_ptr<void>;
+#include "SocketClient.hpp"
+
+#include "Engine/Engine.hpp"
+#include "Engine/Graphics.hpp"
+
+namespace FW
+{
+    Socket_Client::Socket_Client(
+        WSPP_Server* server,
+        Connection_Handle handle)
+        : m_engine(std::make_shared<Engine>(
+                       std::make_shared<Graphics>(
+                           *server,
+                           handle)))
+    {
+        m_engine->Initialize();
+    }
+    
+    void Socket_Client::ProcessFrame()
+    {
+        m_engine->ProcessFrame();
+    }
 }

@@ -17,8 +17,13 @@
  * limitations under the License.
  */
 
-namespace FW {
-    using WSPP_Server = websocketpp::server<websocketpp::config::asio>;
-    using Message_Ptr = WSPP_Server::message_ptr;
-    using Connection_Handle = websocketpp::lib::weak_ptr<void>;
+#include "WorldGenerationScene.hpp"
+
+namespace FW
+{
+    void World_Generation_Scene::UpdateDerived()
+    {}
+    
+    void World_Generation_Scene::RenderDerived() const
+    {}
 }

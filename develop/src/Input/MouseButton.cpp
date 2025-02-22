@@ -17,8 +17,17 @@
  * limitations under the License.
  */
 
-namespace FW {
-    using WSPP_Server = websocketpp::server<websocketpp::config::asio>;
-    using Message_Ptr = WSPP_Server::message_ptr;
-    using Connection_Handle = websocketpp::lib::weak_ptr<void>;
+#include "MouseButton.hpp"
+
+namespace FW
+{
+    void Mouse_Button::RegisterPress()
+    {
+        m_isPressed = true;
+    }
+    
+    void Mouse_Button::RegisterRelease()
+    {
+        m_isPressed = false;
+    }
 }

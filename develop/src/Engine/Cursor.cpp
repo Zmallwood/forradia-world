@@ -20,7 +20,7 @@
 #include "Cursor.hpp"
 
 #include "Graphics.hpp"
-#include "Input/Mouse_Input.hpp"
+#include "Input/MouseInput.hpp"
 
 namespace FW
 {

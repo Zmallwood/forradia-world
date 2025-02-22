@@ -17,8 +17,23 @@
  * limitations under the License.
  */
 
-namespace FW {
-    using WSPP_Server = websocketpp::server<websocketpp::config::asio>;
-    using Message_Ptr = WSPP_Server::message_ptr;
-    using Connection_Handle = websocketpp::lib::weak_ptr<void>;
+#pragma once
+
+#include "GUIComponent.hpp"
+
+namespace FW
+{
+    class GUI_Label : public GUI_Component
+    {
+      public:
+        GUI_Label(const Graphics& graphics, std::string_view text, float x, float y,
+                  bool centerAlign = false);
+        
+        virtual void RenderDerived() const override;
+        
+      private:
+        // State
+        std::string m_text;
+        bool m_centerAlign {false};
+    };
 }

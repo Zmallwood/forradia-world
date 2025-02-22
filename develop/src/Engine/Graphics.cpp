@@ -19,8 +19,7 @@
 
 #include "Graphics.hpp"
 
-#include "Utils/Canvas_Utils.hpp"
-#include "Image_Info_Store.hpp"
+#include "ImageInfoStore.hpp"
 
 namespace FW
 {

@@ -43,15 +43,15 @@
 #include <websocketpp/server.hpp>
 
 #include "MathLib/Size.hpp"
-#include "MathLib/Size_F.hpp"
-#include "MathLib/Point_F.hpp"
-#include "MathLib/Rect_F.hpp"
+#include "MathLib/SizeF.hpp"
+#include "MathLib/PointF.hpp"
+#include "MathLib/RectF.hpp"
 #include "MathLib/Color.hpp"
 #include "MathLib/Colors.hpp"
 
 #include "Common/Singleton.hpp"
 #include "Common/Aliases.hpp"
-#include "Utils/Time_Utils.hpp"
-#include "Utils/String_Utils.hpp"
-#include "Utils/Canvas_Utils.hpp"
+#include "Utils/TimeUtils.hpp"
+#include "Utils/StringUtils.hpp"
+#include "Utils/CanvasUtils.hpp"
 #include "Utils/Hash.hpp"

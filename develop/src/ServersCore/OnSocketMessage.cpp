@@ -19,15 +19,15 @@
 
 #include "OnSocketMessage.hpp"
 
-#include "Socket_Client.hpp"
-#include "Socket_Clients_Manager.hpp"
-#include "Conf/App_Properties.hpp"
-#include "Engine/Image_Info_Store.hpp"
-#include "Input/Keyboard_Input.hpp"
-#include "Input/Mouse_Input.hpp"
+#include "SocketClient.hpp"
+#include "SocketClientsManager.hpp"
+#include "Conf/AppProperties.hpp"
+#include "Engine/ImageInfoStore.hpp"
+#include "Input/KeyboardInput.hpp"
+#include "Input/MouseInput.hpp"
 #include "Engine/Engine.hpp"
 #include "Engine/Graphics.hpp"
-#include "Input/Mouse_Input.hpp"
+#include "Input/MouseInput.hpp"
 
 namespace FW
 {
