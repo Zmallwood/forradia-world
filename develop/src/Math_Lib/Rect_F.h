@@ -17,13 +17,18 @@
  * limitations under the License.
  */
 
+#pragma once
+
 namespace FW
 {
-    struct Rect_F
+    class Rect_F
     {
-        float x {0.0f};
-        float y {0.0f};
-        float w {0.0f};
-        float h {0.0f};
+        public:
+            bool Contains(Point_F point) const;
+
+            float x {0.0f};
+            float y {0.0f};
+            float w {0.0f};
+            float h {0.0f};
     };
 }

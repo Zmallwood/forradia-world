@@ -22,15 +22,29 @@
 #include "Engine/Graphics.h"
 #include "GUI_Core/GUI.h"
 #include "GUI_Core/GUI_Panel.h"
+#include "GUI_Core/GUI_Button.h"
+#include "Engine/Scene_Manager.h"
 
 namespace FW
 {
     void Main_Menu_Scene::Initialize()
     {
-        GetGUI()->AddComponent(
+        auto panel = GetGUI()->AddComponent(
             std::make_shared<GUI_Panel>(
                 GetGraphicsRef(),
                 0.3f, 0.4f, 0.4f, 0.4f));
+
+        panel->AddComponent(
+                std::make_shared<GUI_Button>(
+                    GetGraphicsRef(),
+                    GetMouseInputRef(),
+                    "Login",
+                    [this] {
+GetSceneManagerRef().ChangeScene("main-scene");
+                    },
+                    0.5f, 0.5f, 0.1f, 0.05f
+                    )
+                );
     }
     
     void Main_Menu_Scene::UpdateDerived()
