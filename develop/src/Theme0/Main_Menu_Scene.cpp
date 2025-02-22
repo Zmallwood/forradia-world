@@ -17,13 +17,13 @@
  * limitations under the License.
  */
 
-#include "Main_Menu_Scene.h"
+#include "Main_Menu_Scene.hpp"
 
-#include "Engine/Graphics.h"
-#include "GUI_Core/GUI.h"
-#include "GUI_Core/GUI_Panel.h"
-#include "GUI_Core/GUI_Button.h"
-#include "Engine/Scene_Manager.h"
+#include "Engine/Graphics.hpp"
+#include "GUICore/GUI.hpp"
+#include "GUICore/GUI_Panel.hpp"
+#include "GUICore/GUI_Button.hpp"
+#include "Engine/Scene_Manager.hpp"
 
 namespace FW
 {

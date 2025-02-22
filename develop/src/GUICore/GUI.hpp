@@ -17,13 +17,15 @@
  * limitations under the License.
  */
 
-#include "Main_Scene.h"
+#pragma once
+
+#include "GUI_Component.hpp"
 
 namespace FW
 {
-    void Main_Scene::UpdateDerived()
-    {}
-    
-    void Main_Scene::RenderDerived() const
-    {}
+    class GUI : public GUI_Component
+    {
+      public:
+        using GUI_Component::GUI_Component;
+    };
 }

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-#include "Keyboard_Input.h"
+#include "Keyboard_Input.hpp"
 
 namespace FW
 {

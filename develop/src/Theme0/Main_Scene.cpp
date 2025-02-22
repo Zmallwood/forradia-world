@@ -17,13 +17,13 @@
  * limitations under the License.
  */
 
-#include "World_Generation_Scene.h"
+#include "Main_Scene.hpp"
 
 namespace FW
 {
-    void World_Generation_Scene::UpdateDerived()
+    void Main_Scene::UpdateDerived()
     {}
     
-    void World_Generation_Scene::RenderDerived() const
+    void Main_Scene::RenderDerived() const
     {}
 }

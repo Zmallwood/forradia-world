@@ -17,29 +17,13 @@
  * limitations under the License.
  */
 
-#pragma once
-
-#include "Engine/I_Scene.h"
+#include "World_Generation_Scene.hpp"
 
 namespace FW
 {
-    class GUI_Component;
+    void World_Generation_Scene::UpdateDerived()
+    {}
     
-    class Intro_Scene : public I_Scene
-    {
-      public:
-        using I_Scene::I_Scene;
-
-        void Initialize() override;
-
-      protected:
-        void UpdateDerived()
-        override;
-        
-        void RenderDerived() const override;
-        
-      private:
-        // State
-        std::shared_ptr<GUI_Component> m_startTextComponent;
-    };
+    void World_Generation_Scene::RenderDerived() const
+    {}
 }

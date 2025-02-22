@@ -17,22 +17,21 @@
  * limitations under the License.
  */
 
-#include "OnSocketOpen.h"
+#pragma once
 
-#include "Socket_Clients_Manager.h"
+#include "Engine/I_Scene.hpp"
 
 namespace FW
 {
-    void OnSocketOpen(
-        WSPP_Server* server,
-        Connection_Handle handle)
+    class Main_Scene : public I_Scene
     {
-        std::cout << std::format(
-            "{}: A new client has connected.\n",
-            GetCurrentTime());
+      public:
+        using I_Scene::I_Scene;
         
-        Socket_Clients_Manager::GetInstance().AddSocketClient(
-            server,
-            handle);
-    }
+      protected:
+        void UpdateDerived()
+        override;
+        
+        void RenderDerived() const override;
+    };
 }

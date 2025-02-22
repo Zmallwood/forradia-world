@@ -17,9 +17,9 @@
  * limitations under the License.
  */
 
-#include "I_Scene.h"
+#include "I_Scene.hpp"
 
-#include "GUI_Core/GUI.h"
+#include "GUICore/GUI.hpp"
 
 namespace FW
 {

@@ -19,7 +19,7 @@
 
 #pragma once
 
-#include "Engine/I_Scene.h"
+#include "Engine/I_Scene.hpp"
 
 namespace FW
 {

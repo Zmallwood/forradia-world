@@ -19,19 +19,21 @@
 
 #pragma once
 
-#include "Engine/I_Scene.h"
+#include "GUI_Component.hpp"
 
 namespace FW
 {
-    class Main_Scene : public I_Scene
+    class GUI_Label : public GUI_Component
     {
       public:
-        using I_Scene::I_Scene;
+        GUI_Label(const Graphics& graphics, std::string_view text, float x, float y,
+                  bool centerAlign = false);
         
-      protected:
-        void UpdateDerived()
-        override;
+        virtual void RenderDerived() const override;
         
-        void RenderDerived() const override;
+      private:
+        // State
+        std::string m_text;
+        bool m_centerAlign {false};
     };
 }

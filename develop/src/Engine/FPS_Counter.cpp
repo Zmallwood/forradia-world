@@ -17,9 +17,9 @@
  * limitations under the License.
  */
 
-#include "FPS_Counter.h"
+#include "FPS_Counter.hpp"
 
-#include "Graphics.h"
+#include "Graphics.hpp"
 
 namespace FW
 {

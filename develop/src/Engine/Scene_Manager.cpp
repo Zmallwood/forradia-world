@@ -17,12 +17,12 @@
  * limitations under the License.
  */
 
-#include "Scene_Manager.h"
+#include "Scene_Manager.hpp"
 
-#include "Theme_0/Intro_Scene.h"
-#include "Theme_0/Main_Menu_Scene.h"
-#include "Theme_0/Main_Scene.h"
-#include "Theme_0/World_Generation_Scene.h"
+#include "Theme0/Intro_Scene.hpp"
+#include "Theme0/Main_Menu_Scene.hpp"
+#include "Theme0/Main_Scene.hpp"
+#include "Theme0/World_Generation_Scene.hpp"
 
 namespace FW
 {

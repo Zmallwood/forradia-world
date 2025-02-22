@@ -17,9 +17,9 @@
  * limitations under the License.
  */
 
-#include "GUI_Label.h"
+#include "GUI_Label.hpp"
 
-#include "Engine/Graphics.h"
+#include "Engine/Graphics.hpp"
 
 namespace FW
 {

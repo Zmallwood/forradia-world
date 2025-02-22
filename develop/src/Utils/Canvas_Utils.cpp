@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-#include "Canvas_Utils.h"
+#include "Canvas_Utils.hpp"
 
 namespace FW
 {

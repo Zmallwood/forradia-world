@@ -19,7 +19,7 @@
 
 #pragma once
 
-#include "GUI_Component.h"
+#include "GUI_Component.hpp"
 
 namespace FW
 {

@@ -17,9 +17,9 @@
  * limitations under the License.
  */
 
-#include "GUI_Panel.h"
+#include "GUI_Panel.hpp"
 
-#include "Engine/Graphics.h"
+#include "Engine/Graphics.hpp"
 
 namespace FW
 {

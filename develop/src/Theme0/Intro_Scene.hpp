@@ -19,13 +19,27 @@
 
 #pragma once
 
-#include "GUI_Component.h"
+#include "Engine/I_Scene.hpp"
 
 namespace FW
 {
-    class GUI : public GUI_Component
+    class GUI_Component;
+    
+    class Intro_Scene : public I_Scene
     {
       public:
-        using GUI_Component::GUI_Component;
+        using I_Scene::I_Scene;
+
+        void Initialize() override;
+
+      protected:
+        void UpdateDerived()
+        override;
+        
+        void RenderDerived() const override;
+        
+      private:
+        // State
+        std::shared_ptr<GUI_Component> m_startTextComponent;
     };
 }

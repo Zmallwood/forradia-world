@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-#include "Image_Info_Store.h"
+#include "Image_Info_Store.hpp"
 
 namespace FW
 {

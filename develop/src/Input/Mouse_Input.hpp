@@ -19,8 +19,8 @@
 
 #pragma once
 
-#include "Mouse_Button.h"
-#include "Mouse_Buttons.h"
+#include "Mouse_Button.hpp"
+#include "Mouse_Buttons.hpp"
 
 namespace FW
 {

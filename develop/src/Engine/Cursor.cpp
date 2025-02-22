@@ -17,10 +17,10 @@
  * limitations under the License.
  */
 
-#include "Cursor.h"
+#include "Cursor.hpp"
 
-#include "Graphics.h"
-#include "Input/Mouse_Input.h"
+#include "Graphics.hpp"
+#include "Input/Mouse_Input.hpp"
 
 namespace FW
 {

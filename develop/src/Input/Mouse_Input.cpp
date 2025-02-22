@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-#include "Mouse_Input.h"
+#include "Mouse_Input.hpp"
 
 namespace FW
 {

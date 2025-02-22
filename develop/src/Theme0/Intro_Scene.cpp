@@ -17,14 +17,14 @@
  * limitations under the License.
  */
 
-#include "Intro_Scene.h"
+#include "Intro_Scene.hpp"
 
-#include "Engine/Graphics.h"
-#include "GUI_Core/GUI.h"
-#include "GUI_Core/GUI_Label.h"
-#include "Input/Keyboard_Input.h"
-#include "Input/Mouse_Input.h"
-#include "Engine/Scene_Manager.h"
+#include "Engine/Graphics.hpp"
+#include "GUICore/GUI.hpp"
+#include "GUICore/GUI_Label.hpp"
+#include "Input/Keyboard_Input.hpp"
+#include "Input/Mouse_Input.hpp"
+#include "Engine/Scene_Manager.hpp"
 
 namespace FW
 {

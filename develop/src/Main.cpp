@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-#include "Conf/App_Properties.h"
-#include "Servers_Core/Main_Server.h"
+#include "Conf/App_Properties.hpp"
+#include "ServersCore/Main_Server.hpp"
 
 int main(int arc, char** argv)
 {

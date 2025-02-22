@@ -17,23 +17,22 @@
  * limitations under the License.
  */
 
-#pragma once
+#include "OnSocketOpen.hpp"
 
-#include "GUI_Component.h"
+#include "Socket_Clients_Manager.hpp"
 
 namespace FW
 {
-    class GUI_Label : public GUI_Component
+    void OnSocketOpen(
+        WSPP_Server* server,
+        Connection_Handle handle)
     {
-      public:
-        GUI_Label(const Graphics& graphics, std::string_view text, float x, float y,
-                  bool centerAlign = false);
+        std::cout << std::format(
+            "{}: A new client has connected.\n",
+            GetCurrentTime());
         
-        virtual void RenderDerived() const override;
-        
-      private:
-        // State
-        std::string m_text;
-        bool m_centerAlign {false};
-    };
+        Socket_Clients_Manager::GetInstance().AddSocketClient(
+            server,
+            handle);
+    }
 }

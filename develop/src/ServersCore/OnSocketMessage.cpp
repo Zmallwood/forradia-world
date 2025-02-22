@@ -17,17 +17,17 @@
  * limitations under the License.
  */
 
-#include "OnSocketMessage.h"
+#include "OnSocketMessage.hpp"
 
-#include "Socket_Client.h"
-#include "Socket_Clients_Manager.h"
-#include "Conf/App_Properties.h"
-#include "Engine/Image_Info_Store.h"
-#include "Input/Keyboard_Input.h"
-#include "Input/Mouse_Input.h"
-#include "Engine/Engine.h"
-#include "Engine/Graphics.h"
-#include "Input/Mouse_Input.h"
+#include "Socket_Client.hpp"
+#include "Socket_Clients_Manager.hpp"
+#include "Conf/App_Properties.hpp"
+#include "Engine/Image_Info_Store.hpp"
+#include "Input/Keyboard_Input.hpp"
+#include "Input/Mouse_Input.hpp"
+#include "Engine/Engine.hpp"
+#include "Engine/Graphics.hpp"
+#include "Input/Mouse_Input.hpp"
 
 namespace FW
 {

@@ -17,10 +17,10 @@
  * limitations under the License.
  */
 
-#include "Graphics.h"
+#include "Graphics.hpp"
 
-#include "Utils/Canvas_Utils.h"
-#include "Image_Info_Store.h"
+#include "Utils/Canvas_Utils.hpp"
+#include "Image_Info_Store.hpp"
 
 namespace FW
 {

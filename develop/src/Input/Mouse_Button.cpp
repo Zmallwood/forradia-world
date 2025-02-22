@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-#include "Mouse_Button.h"
+#include "Mouse_Button.hpp"
 
 namespace FW
 {

@@ -19,21 +19,31 @@
 
 #pragma once
 
-#include "Engine/I_Scene.h"
+#include "Cursor_Styles.hpp"
 
 namespace FW
 {
-    class Main_Menu_Scene : public I_Scene
+    class Graphics;
+    class Mouse_Input;
+    
+    class Cursor
     {
       public:
-        using I_Scene::I_Scene;
-
-        void Initialize() override;
+        Cursor(Mouse_Input& mouseInput, Graphics& graphics);
         
-      protected:
-        void UpdateDerived()
-        override;
+        void Reset();
         
-        void RenderDerived() const override;
+        void Render() const;
+        
+      private:
+        // Const
+        const float k_cursorSize {0.05f};
+        
+        // State
+        Cursor_Styles m_currentStyle {Cursor_Styles::Default};
+        
+        // Dependencies
+        Mouse_Input& m_mouseInput;
+        Graphics& m_graphics;
     };
 }

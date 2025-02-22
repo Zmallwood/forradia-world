@@ -17,11 +17,11 @@
  * limitations under the License.
  */
 
-#include "Socket_Server.h"
+#include "Socket_Server.hpp"
 
-#include "Conf/App_Properties.h"
-#include "OnSocketMessage.h"
-#include "OnSocketOpen.h"
+#include "Conf/App_Properties.hpp"
+#include "OnSocketMessage.hpp"
+#include "OnSocketOpen.hpp"
 
 namespace FW
 {

@@ -42,16 +42,16 @@
 #include <websocketpp/config/asio_no_tls.hpp>
 #include <websocketpp/server.hpp>
 
-#include "Math_Lib/Size.h"
-#include "Math_Lib/Size_F.h"
-#include "Math_Lib/Point_F.h"
-#include "Math_Lib/Rect_F.h"
-#include "Math_Lib/Color.h"
-#include "Math_Lib/Colors.h"
+#include "MathLib/Size.hpp"
+#include "MathLib/Size_F.hpp"
+#include "MathLib/Point_F.hpp"
+#include "MathLib/Rect_F.hpp"
+#include "MathLib/Color.hpp"
+#include "MathLib/Colors.hpp"
 
-#include "Common/Singleton.h"
-#include "Common/Aliases.h"
-#include "Utils/Time_Utils.h"
-#include "Utils/String_Utils.h"
-#include "Utils/Canvas_Utils.h"
-#include "Utils/Hash.h"
+#include "Common/Singleton.hpp"
+#include "Common/Aliases.hpp"
+#include "Utils/Time_Utils.hpp"
+#include "Utils/String_Utils.hpp"
+#include "Utils/Canvas_Utils.hpp"
+#include "Utils/Hash.hpp"

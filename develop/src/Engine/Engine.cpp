@@ -17,14 +17,14 @@
  * limitations under the License.
  */
 
-#include "Engine.h"
+#include "Engine.hpp"
 
-#include "FPS_Counter.h"
-#include "Graphics.h"
-#include "Scene_Manager.h"
-#include "Input/Keyboard_Input.h"
-#include "Input/Mouse_Input.h"
-#include "Cursor.h"
+#include "FPS_Counter.hpp"
+#include "Graphics.hpp"
+#include "Scene_Manager.hpp"
+#include "Input/Keyboard_Input.hpp"
+#include "Input/Mouse_Input.hpp"
+#include "Cursor.hpp"
 
 namespace FW
 {

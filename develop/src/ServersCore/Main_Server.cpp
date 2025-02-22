@@ -17,11 +17,11 @@
  * limitations under the License.
  */
 
-#include "Main_Server.h"
+#include "Main_Server.hpp"
 
-#include "Conf/App_Properties.h"
-#include "Socket_Server.h"
-#include "Web_Server.h"
+#include "Conf/App_Properties.hpp"
+#include "Socket_Server.hpp"
+#include "Web_Server.hpp"
 
 namespace FW
 {

@@ -1,7 +1,7 @@
-#include "GUI_Button.h"
+#include "GUI_Button.hpp"
 
-#include "Engine/Graphics.h"
-#include "Input/Mouse_Input.h"
+#include "Engine/Graphics.hpp"
+#include "Input/Mouse_Input.hpp"
 
 namespace FW
 {

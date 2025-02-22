@@ -17,10 +17,10 @@
  * limitations under the License.
  */
 
-#include "Socket_Client.h"
+#include "Socket_Client.hpp"
 
-#include "Engine/Engine.h"
-#include "Engine/Graphics.h"
+#include "Engine/Engine.hpp"
+#include "Engine/Graphics.hpp"
 
 namespace FW
 {

@@ -17,9 +17,9 @@
  * limitations under the License.
  */
 
-#include "Socket_Clients_Manager.h"
+#include "Socket_Clients_Manager.hpp"
 
-#include "Socket_Client.h"
+#include "Socket_Client.hpp"
 
 namespace FW
 {
