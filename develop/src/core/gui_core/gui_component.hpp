@@ -23,6 +23,7 @@ namespace fw {
   class graphics;
   
   class gui_component
+    : public std::enable_shared_from_this<gui_component>
   {
    public:
     gui_component(
@@ -37,18 +38,24 @@ namespace fw {
     std::shared_ptr<gui_component> add_component(
         std::shared_ptr<gui_component> component);
     
+    void set_parent(std::shared_ptr<gui_component> value) {
+      m_parent = value;
+    }
+    
     void set_visible(bool value) {
         m_visible = value;
+    }
+
+    auto get_position() const {
+        return m_position;
     }
     
    protected:
     virtual void update_derived() {}
     
     virtual void render_derived() const {}
-    
-    auto get_position() const {
-        return m_position;
-    }
+
+    point_f get_absolute_position() const;
     
     const auto& get_graphics_ref() const {
         return m_graphics;
@@ -61,6 +68,7 @@ namespace fw {
     bool m_visible {true};
     
     // Dependencies
+    std::shared_ptr<gui_component> m_parent;
     const graphics& m_graphics;
   };
 }

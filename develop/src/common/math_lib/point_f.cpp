@@ -17,12 +17,11 @@
  * limitations under the License.
  */
 
-#pragma once
-#include "gui_component.hpp"
+#include "point_f.hpp"
 
 namespace fw {
-  class gui : public gui_component {
-   public:
-     using gui_component::gui_component;
-  };
+  void point_f::operator+=(const point_f& other) {
+    x += other.x;
+    y += other.y;
+  }
 }

@@ -52,8 +52,21 @@ namespace fw {
   std::shared_ptr<gui_component>
   gui_component::add_component(
       std::shared_ptr<gui_component> component) {
+    component->set_parent(shared_from_this());
     m_child_components.push_back(component);
     
     return component;
+  }
+
+  point_f gui_component::get_absolute_position() const {
+    point_f p {0.0f, 0.0f};
+
+    if (m_parent) {
+      p = m_parent->get_position();
+    }
+
+    p += get_position();
+
+    return p;
   }
 }

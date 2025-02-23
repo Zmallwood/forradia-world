@@ -55,7 +55,7 @@ namespace fw {
   }
 
   rect_f gui_button::get_bounds() const {
-      auto position = get_position();
+      auto position = get_absolute_position();
 
       return {position.x, position.y, m_size.w, m_size.h};
   }
