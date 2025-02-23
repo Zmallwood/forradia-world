@@ -40,8 +40,6 @@ namespace fw {
     void render_derived() const override;
  
    private:
-    rect_f get_bounds() const;
-
     // State
     std::string m_text;
     std::function<void()> m_action;

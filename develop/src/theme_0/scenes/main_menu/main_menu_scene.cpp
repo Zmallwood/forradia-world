@@ -40,7 +40,7 @@ namespace fw {
           [this] {
             get_scene_manager_ref().change_scene("main-scene");
           },
-          0.05f, 0.05f, 0.1f, 0.05f
+          0.3f, 0.3f, 0.1f, 0.05f
           )
       );
   }

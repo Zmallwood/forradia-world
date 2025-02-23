@@ -9,4 +9,8 @@ namespace fw {
            point.x < x + w &&
            point.y < y + h;
   }
+
+  point_f rect_f::get_center() const {
+    return {x + w/2.0f, y + h/2.0f};
+  }
 }

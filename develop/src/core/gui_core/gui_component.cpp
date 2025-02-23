@@ -72,4 +72,11 @@ namespace fw {
 
     return p;
   }
+
+  rect_f gui_component::get_absolute_bounds() const {
+    auto position = get_absolute_position();
+    auto size = get_size();
+
+    return {position.x, position.y, size.w, size.h};
+  }
 }

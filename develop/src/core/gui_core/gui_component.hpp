@@ -59,6 +59,8 @@ namespace fw {
 
     point_f get_absolute_position() const;
 
+    rect_f get_absolute_bounds() const;
+
     auto get_size() const {
       return m_size;
     }

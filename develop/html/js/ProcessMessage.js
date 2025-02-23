@@ -127,11 +127,10 @@ export function ProcessMessage(
         }
         
         const metrics = ctx.measureText(text);
-        
-        const textHeight =
-            metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
-        
+        const textHeight = metrics.actualBoundingBoxAscent;
+
         let xOffset = 0;
+        let yOffset = 0;
         
         if (parts.length >= 8)
         {
@@ -141,10 +140,9 @@ export function ProcessMessage(
             {
                 const textWidth = ctx.measureText(text).width;
                 xOffset = -textWidth / 2;
+                yOffset += textHeight / 2;
             }
         }
-        
-        const yOffset = textHeight;
         
         newDrawCommands.push(
             "ctx.fillText('" +

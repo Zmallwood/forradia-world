@@ -37,7 +37,7 @@ namespace fw {
   m_action(action) {}
 
   void gui_button::update_derived() {
-    auto bounds = get_bounds();
+    auto bounds = get_absolute_bounds();
     auto mouse_position = m_mouse_input.get_mouse_position();
 
     if (bounds.contains(mouse_position))
@@ -46,7 +46,8 @@ namespace fw {
   }
 
   void gui_button::render_derived() const {
-    auto bounds = get_bounds();
+    auto bounds = get_absolute_bounds();
+    auto center = bounds.get_center();
 
     get_graphics_ref().draw_image(
         "GUIButtonDefaultBackground", bounds.x, bounds.y,
@@ -54,14 +55,9 @@ namespace fw {
 
     get_graphics_ref().draw_text(
         m_text,
-        bounds.x,
-        bounds.y);
-  }
-
-  rect_f gui_button::get_bounds() const {
-      auto position = get_absolute_position();
-      auto size = get_size();
-
-      return {position.x, position.y, size.w, size.h};
+        center.x,
+        center.y,
+        colors::wheat,
+        true);
   }
 }

@@ -24,6 +24,8 @@ namespace fw  {
    public:
     bool contains(
         point_f point) const;
+    
+    point_f get_center() const;
 
     float x {0.0f};
     float y {0.0f};
