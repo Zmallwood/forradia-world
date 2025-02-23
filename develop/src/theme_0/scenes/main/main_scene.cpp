@@ -18,11 +18,20 @@
  */
 
 #include "main_scene.hpp"
+#include "core/graphics/graphics.hpp"
 
 namespace fw {
   void
   main_scene::update_derived() {}
   
   void
-  main_scene::render_derived() const {}
+  main_scene::render_derived() const {
+    auto tile_width = 0.05f;
+    auto tile_height = convert_width_to_height(get_graphics_ref().get_canvas_size(), tile_width);
+    for(auto y = 0; y < 11; y++) {
+      for (auto x = 0; x < 11; x++) {
+        get_graphics_ref().draw_image("GroundGrass", x*tile_width, y*tile_height, tile_width, tile_height);
+      }
+    }
+  }
 }
