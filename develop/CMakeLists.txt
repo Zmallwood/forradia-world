@@ -16,7 +16,7 @@ target_link_libraries(forradia-world httplib::httplib websocketpp::websocketpp
 target_include_directories(forradia-world PUBLIC "src" ${httplib_INCLUDE_DIR})
 
 target_precompile_headers(forradia-world
-    PRIVATE src/Precomp/Precomp.hpp
+    PRIVATE src/precomp/precomp.hpp
 )
 
 
