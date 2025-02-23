@@ -90,6 +90,8 @@ function Connect()
         "touchstart", function(e) {
         if (ws && ws.readyState === WebSocket.OPEN)
         {
+            let touch = e.touches[0];
+            ws.send("MouseMove;" + touch.clientX + ";" + touch.clientY + ";");
             const leftButtonCode = 0;
             ws.send("MouseButtonPress;" + leftButtonCode);
         }
