@@ -23,9 +23,12 @@ namespace fw {
   gui_component::gui_component(
       const graphics& graphics,
       float x,
-      float y) :
+      float y,
+      float w,
+      float h) :
   m_graphics(graphics),
-  m_position({x, y}) {}
+  m_position({x, y}),
+  m_size({w, h}) {}
   
   void
   gui_component::update() {

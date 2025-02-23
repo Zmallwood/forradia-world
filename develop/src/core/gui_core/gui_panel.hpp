@@ -40,8 +40,5 @@ namespace fw {
 
     // Const
     const float k_border_width_px {0.015f};
-    
-    // State
-    size_f m_size {0.0f, 0.0f};
   };
 }

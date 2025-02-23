@@ -43,7 +43,6 @@ namespace fw {
     rect_f get_bounds() const;
 
     // State
-    size_f m_size {0.0f, 0.0f};
     std::string m_text;
     std::function<void()> m_action;
 

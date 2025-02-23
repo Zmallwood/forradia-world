@@ -29,7 +29,9 @@ namespace fw {
     gui_component(
         const graphics& graphics,
         float x = 0.0f,
-        float y = 0.0f);
+        float y = 0.0f,
+        float w = -1.0f,
+        float h = -1.0f);
     
     void update();
     
@@ -56,6 +58,10 @@ namespace fw {
     virtual void render_derived() const {}
 
     point_f get_absolute_position() const;
+
+    auto get_size() const {
+      return m_size;
+    }
     
     const auto& get_graphics_ref() const {
         return m_graphics;
@@ -66,6 +72,7 @@ namespace fw {
     std::vector<std::shared_ptr<gui_component>> m_child_components;
     point_f m_position {0.0f, 0.0f};
     bool m_visible {true};
+    size_f m_size {-1, -1};
     
     // Dependencies
     std::shared_ptr<gui_component> m_parent;

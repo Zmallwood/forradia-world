@@ -27,8 +27,7 @@ namespace fw {
       float y,
       float w,
       float h) : 
-      gui_component(graphics, x, y),
-      m_size({w, h}) {}
+      gui_component(graphics, x, y, w, h) {}
   
   void
   gui_panel::render_derived() const {
@@ -39,16 +38,17 @@ namespace fw {
   void
   gui_panel::render_background() const {
     auto position = get_position();
+    auto size = get_size();
     
     get_graphics_ref().draw_image(
         "GUIPanelDefaultBackground", position.x, position.y,
-        m_size.w, m_size.h, true);
+        size.w, size.h, true);
   }
   
   void
   gui_panel::render_borders() const {
     auto p = get_position();
-    auto s = m_size;
+    auto s = get_size();
     auto b_x = k_border_width_px/calc_aspect_ratio(get_graphics_ref().get_canvas_size());
     auto b_y =  convert_width_to_height(get_graphics_ref().get_canvas_size(), b_x);
     

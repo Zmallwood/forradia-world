@@ -31,11 +31,10 @@ namespace fw {
       float y,
       float w,
       float h) :
-  gui_component(graphics, x, y), 
+  gui_component(graphics, x, y, w, h), 
   m_mouse_input(mouse_input),
   m_text(text),
-  m_action(action),
-  m_size({w, h}) {}
+  m_action(action) {}
 
   void gui_button::update_derived() {
     auto bounds = get_bounds();
@@ -52,11 +51,17 @@ namespace fw {
     get_graphics_ref().draw_image(
         "GUIButtonDefaultBackground", bounds.x, bounds.y,
         bounds.w, bounds.h);
+
+    get_graphics_ref().draw_text(
+        m_text,
+        bounds.x,
+        bounds.y);
   }
 
   rect_f gui_button::get_bounds() const {
       auto position = get_absolute_position();
+      auto size = get_size();
 
-      return {position.x, position.y, m_size.w, m_size.h};
+      return {position.x, position.y, size.w, size.h};
   }
 }
