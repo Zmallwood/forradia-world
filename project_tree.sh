@@ -2,5 +2,5 @@
 
 eval $(dircolors -b)
 
-viddy "TREE_COLORS='di=1;32:*.cpp=1;34:*.hpp=1;36' tree -C -F --dirsfirst ./develop/src | less +F"
+viddy "TREE_COLORS='di=1;32:*.cpp=1;34:*.hpp=1;36' tree -C -F -I 'build|CMakeFiles' --dirsfirst ./develop | less +F"
 
