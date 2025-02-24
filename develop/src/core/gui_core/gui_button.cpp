@@ -47,6 +47,11 @@ namespace fw {
 
   void gui_button::render_derived() const {
     auto bounds = get_absolute_bounds();
+    auto aspect_ratio = calc_aspect_ratio(get_graphics_ref().get_canvas_size());
+
+    if (aspect_ratio < 1.0f)
+      bounds.h *= aspect_ratio;
+
     auto center = bounds.get_center();
 
     get_graphics_ref().draw_image(
