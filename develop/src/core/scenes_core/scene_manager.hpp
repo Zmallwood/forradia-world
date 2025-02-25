@@ -20,36 +20,36 @@
 #pragma once
 
 namespace fw {
-  class i_scene;
-  class graphics;
-  class keyboard_input;
-  class mouse_input;
-  
-  class scene_manager {
-   public:
-    scene_manager(graphics& graphics, keyboard_input& keyboard_input,
-                  mouse_input& mouse_input);
-    
-    void initialize_scenes();
-    
-    void update_current_scene();
-    
-    void render_current_scene() const;
-    
-    void change_scene(std::string_view scene_name);
-    
-   private:
-    void add_scene(
-        std::string_view scene_name,
-        std::shared_ptr<i_scene> scene);
-    
-    // State
-    int m_current_scene {0};
-    std::map<int, std::shared_ptr<i_scene>> m_scenes;
+class i_scene;
+class graphics;
+class keyboard_input;
+class mouse_input;
 
-    // Dependencies
-    graphics& m_graphics;
-    keyboard_input& m_keyboard_input;
-    mouse_input& m_mouse_input;
-  };
+class scene_manager {
+ public:
+  scene_manager(graphics& graphics, keyboard_input& keyboard_input,
+                mouse_input& mouse_input);
+  
+  void initialize_scenes();
+  
+  void update_current_scene();
+  
+  void render_current_scene() const;
+  
+  void change_scene(std::string_view scene_name);
+  
+ private:
+  void add_scene(
+      std::string_view scene_name,
+      std::shared_ptr<i_scene> scene);
+  
+  // State
+  int m_current_scene {0};
+  std::map<int, std::shared_ptr<i_scene>> m_scenes;
+
+  // Dependencies
+  graphics& m_graphics;
+  keyboard_input& m_keyboard_input;
+  mouse_input& m_mouse_input;
+};
 }

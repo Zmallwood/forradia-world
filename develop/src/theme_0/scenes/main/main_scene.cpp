@@ -22,20 +22,21 @@
 #include "sub_process/world_view/world_view.hpp"
 
 namespace fw {
-  void
-  main_scene::update_derived() {}
-  
-  void
-  main_scene::render_derived() const {
-    auto tile_height= 0.09f;
-    auto tile_width= convert_height_to_width(get_graphics_ref().get_canvas_size(), tile_height);
-    for(auto y = 0; y < 11; y++) {
-      for (auto x = 0; x < 11; x++) {
-        get_graphics_ref().draw_image("GroundGrass", x*tile_width, y*tile_height, tile_width, tile_height);
+void
+main_scene::update_derived() {}
 
-        if (x == 5 && y == 5)
-          get_graphics_ref().draw_image("Player", x*tile_width, y*tile_height, tile_width, tile_height);
-      }
+void
+main_scene::render_derived() const  {
+  auto tile_height = 0.09f;
+  auto tile_width = convert_height_to_width(get_graphics_ref().get_canvas_size(), tile_height);
+
+  for(auto y = 0; y < 11; y++) {
+    for (auto x = 0; x < 11; x++) {
+      get_graphics_ref().draw_image("GroundGrass", x*tile_width, y*tile_height, tile_width, tile_height);
+
+      if (x == 5 && y == 5)
+        get_graphics_ref().draw_image("Player", x*tile_width, y*tile_height, tile_width, tile_height);
     }
   }
+}
 }

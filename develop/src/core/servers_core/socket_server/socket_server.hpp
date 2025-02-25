@@ -20,19 +20,19 @@
 #pragma once
 
 namespace fw {
-  class socket_server
-  : public singleton<socket_server> {
-    friend class singleton<socket_server>;
-    
-   public:
-    void start();
-    
-    void stop();
-    
-   private:
-    socket_server() = default;
-    
-    // State
-    wspp_server m_server;
-  };
+class socket_server
+: public singleton<socket_server> {
+  friend class singleton<socket_server>;
+  
+ public:
+  void start();
+  
+  void stop();
+  
+ private:
+  socket_server() = default;
+  
+  // State
+  wspp_server m_server;
+};
 }

@@ -21,29 +21,29 @@
 #include "core/graphics/graphics.hpp"
 
 namespace fw {
-  fps_counter::fps_counter(
-      graphics& graphics)
-      : m_graphics(graphics) {}
+fps_counter::fps_counter(
+    graphics& graphics)
+    : m_graphics(graphics) {}
+
+void
+fps_counter::update() {
+  auto now = get_ticks();
   
-  void
-  fps_counter::update() {
-    auto now = get_ticks();
-    
-    if (now > m_ticks_last_update + 1000) {
-      m_fps = m_frames_count;
-      m_frames_count = 0;
-      m_ticks_last_update = now;
-    }
-    
-    m_frames_count++;
+  if (now > m_ticks_last_update + 1000) {
+    m_fps = m_frames_count;
+    m_frames_count = 0;
+    m_ticks_last_update = now;
   }
   
-  void
-  fps_counter::render() const {
-    m_graphics.draw_text(
-        std::format("Fps: {}", m_fps),
-        0.85,
-        0.05,
-        colors::black);
-  }
+  m_frames_count++;
+}
+
+void
+fps_counter::render() const {
+  m_graphics.draw_text(
+      std::format("Fps: {}", m_fps),
+      0.85,
+      0.05,
+      colors::black);
+}
 }

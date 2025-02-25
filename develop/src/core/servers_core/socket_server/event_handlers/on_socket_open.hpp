@@ -20,7 +20,7 @@
 #pragma once
 
 namespace fw {
-  void on_socket_open(
-      wspp_server* server,
-      connection_handle handle);
+void on_socket_open(
+    wspp_server* server,
+    connection_handle handle);
 }

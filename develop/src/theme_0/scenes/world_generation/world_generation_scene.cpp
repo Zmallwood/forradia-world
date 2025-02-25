@@ -20,9 +20,9 @@
 #include "world_generation_scene.hpp"
 
 namespace fw {
-    void
-    world_generation_scene::update_derived() {}
-    
-    void
-    world_generation_scene::render_derived() const {}
+void
+world_generation_scene::update_derived() {}
+
+void
+world_generation_scene::render_derived() const {}
 }

@@ -20,10 +20,10 @@
 #pragma once
 
 namespace fw {
-  enum class mouse_buttons 
-  : int {
-    left = 0,
-    middle = 1,
-    right = 2
-  };
+enum class mouse_buttons 
+: int {
+  left = 0,
+  middle = 1,
+  right = 2
+};
 }

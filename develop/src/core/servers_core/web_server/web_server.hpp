@@ -20,26 +20,26 @@
 #pragma once
 
 namespace fw {
-  class web_server 
-  : public singleton<web_server> {
-    friend class singleton<web_server>;
-    
-   public:
-    void start();
-    
-    void stop();
-    
-   private:
-    web_server() = default;
-    
-    void setup_endpoints();
-    
-    void start_listen();
-    
-    // Const
-    const std::string k_host_name {"localhost"};
-    
-    // State
-    httplib::Server m_server;
-  };
+class web_server 
+: public singleton<web_server> {
+  friend class singleton<web_server>;
+  
+ public:
+  void start();
+  
+  void stop();
+  
+ private:
+  web_server() = default;
+  
+  void setup_endpoints();
+  
+  void start_listen();
+  
+  // Const
+  const std::string k_host_name {"localhost"};
+  
+  // State
+  httplib::Server m_server;
+};
 }

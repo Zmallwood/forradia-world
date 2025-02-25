@@ -20,8 +20,8 @@
 #pragma once
 
 namespace fw {
-  void on_socket_message(
-      wspp_server* server,
-      connection_handle handle,
-      message_ptr message);
+void on_socket_message(
+    wspp_server* server,
+    connection_handle handle,
+    message_ptr message);
 }

@@ -20,8 +20,8 @@
 #pragma once
 
 namespace fw {
-  class world_view {
-    public:
-      void render() const;
-  };
+class world_view {
+  public:
+    void render() const;
+};
 }

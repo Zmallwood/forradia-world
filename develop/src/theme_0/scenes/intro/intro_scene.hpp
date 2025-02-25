@@ -21,22 +21,22 @@
 #include "core/scenes_core/i_scene.hpp"
 
 namespace fw {
-  class gui_component;
+class gui_component;
+
+class intro_scene
+: public i_scene {
+ public:
+  using i_scene::i_scene;
+
+  void initialize() override;
+
+ protected:
+  void update_derived() override;
   
-  class intro_scene
-  : public i_scene {
-   public:
-    using i_scene::i_scene;
-
-    void initialize() override;
-
-   protected:
-    void update_derived() override;
-    
-    void render_derived() const override;
-    
-   private:
-    // State
-    std::shared_ptr<gui_component> m_start_text_component;
-  };
+  void render_derived() const override;
+  
+ private:
+  // State
+  std::shared_ptr<gui_component> m_start_text_component;
+};
 }

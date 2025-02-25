@@ -20,8 +20,9 @@
 #include "point_f.hpp"
 
 namespace fw {
-  void point_f::operator+=(const point_f& other) {
-    x += other.x;
-    y += other.y;
-  }
+void
+point_f::operator+=(const point_f& other) {
+  x += other.x;
+  y += other.y;
+}
 }

@@ -20,16 +20,16 @@
 #pragma once
 
 namespace fw  {
-  class rect_f {
-   public:
-    bool contains(
-        point_f point) const;
-    
-    point_f get_center() const;
+class rect_f {
+ public:
+  bool contains(
+      point_f point) const;
+  
+  point_f get_center() const;
 
-    float x {0.0f};
-    float y {0.0f};
-    float w {0.0f};
-    float h {0.0f};
-  };
+  float x {0.0f};
+  float y {0.0f};
+  float w {0.0f};
+  float h {0.0f};
+};
 }

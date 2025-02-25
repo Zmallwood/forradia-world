@@ -20,9 +20,9 @@
 #pragma once
 
 namespace fw {
-  class size_f {
-   public:
-    float w {0.0f};
-    float h {0.0f};
-  };
+class size_f {
+ public:
+  float w {0.0f};
+  float h {0.0f};
+};
 }

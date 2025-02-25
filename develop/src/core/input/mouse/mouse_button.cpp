@@ -20,11 +20,13 @@
 #include "mouse_button.hpp"
 
 namespace fw {
-  void mouse_button::register_press() {
-    m_is_pressed = true;
-  }
-  
-  void mouse_button::register_release() {
-    m_is_pressed = false;
-  }
+void
+mouse_button::register_press() {
+  m_is_pressed = true;
+}
+
+void
+mouse_button::register_release() {
+  m_is_pressed = false;
+}
 }

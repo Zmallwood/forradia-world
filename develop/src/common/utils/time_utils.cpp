@@ -20,23 +20,23 @@
 #include "time_utils.hpp"
 
 namespace fw {
-  int
-  get_ticks() {
-    static auto start = std::chrono::high_resolution_clock::now();
-    auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::milli> elapsed = end - start;
+int
+get_ticks() {
+  static auto start = std::chrono::high_resolution_clock::now();
+  auto end = std::chrono::high_resolution_clock::now();
+  std::chrono::duration<double, std::milli> elapsed = end - start;
 
-    return elapsed.count();
-  }
-  
-  std::string
-  get_current_time() {
-    auto now = std::chrono::system_clock::now();
-    std::time_t now_c = std::chrono::system_clock::to_time_t(now);
-    std::stringstream ss;
+  return elapsed.count();
+}
 
-    ss << std::put_time(std::localtime(&now_c), "%F %T");
+std::string
+get_current_time() {
+  auto now = std::chrono::system_clock::now();
+  std::time_t now_c = std::chrono::system_clock::to_time_t(now);
+  std::stringstream ss;
 
-    return ss.str();
-  }
+  ss << std::put_time(std::localtime(&now_c), "%F %T");
+
+  return ss.str();
+}
 }

@@ -20,9 +20,9 @@
 #pragma once
 
 namespace fw {
-  class size {
-   public:
-    int w {0};
-    int h {0};
-  };
+class size {
+ public:
+  int w {0};
+  int h {0};
+};
 }

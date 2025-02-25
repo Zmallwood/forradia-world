@@ -20,24 +20,24 @@
 #pragma once
 
 namespace fw {
-  class graphics;
+class graphics;
+
+class fps_counter {
+ public:
+  fps_counter(
+      graphics& graphics);
+
+  void update();
+
+  void render() const;
   
-  class fps_counter {
-   public:
-    fps_counter(
-        graphics& graphics);
+ private:
+  // State
+  int m_fps {0};
+  int m_frames_count {0};
+  int m_ticks_last_update {0};
 
-    void update();
-
-    void render() const;
-    
-   private:
-    // State
-    int m_fps {0};
-    int m_frames_count {0};
-    int m_ticks_last_update {0};
-
-    // Dependencies
-    graphics& m_graphics;
-  };
+  // Dependencies
+  graphics& m_graphics;
+};
 }

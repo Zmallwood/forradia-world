@@ -20,16 +20,16 @@
 #pragma once
 
 namespace fw {
-  class main_server
-  : public singleton<main_server> {
-    friend class singleton<main_server>;
+class main_server
+: public singleton<main_server> {
+  friend class singleton<main_server>;
 
-   public:
-    void start() const;
-    
-   private:
-    main_server() = default;
+ public:
+  void start() const;
+  
+ private:
+  main_server() = default;
 
-    void generate_ws_conn_string() const;
-  };
+  void generate_ws_conn_string() const;
+};
 }

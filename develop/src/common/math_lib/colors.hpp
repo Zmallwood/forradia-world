@@ -20,9 +20,9 @@
 #pragma once
 
 namespace fw {
-  namespace colors {
-    inline static const color black {0, 0, 0};
-    inline static const color white {255, 255, 255};
-    inline static const color wheat {255, 255, 150};
-  }
+namespace colors {
+  inline static const color black {0, 0, 0};
+  inline static const color white {255, 255, 255};
+  inline static const color wheat {255, 255, 150};
+}
 }

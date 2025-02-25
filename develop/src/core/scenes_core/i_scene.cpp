@@ -21,26 +21,26 @@
 #include "core/gui_core/gui.hpp"
 
 namespace fw {
-  i_scene::i_scene(
-      graphics& graphics,
-      scene_manager& scene_manager,
-      keyboard_input& keyboard_input,
-      mouse_input& mouse_input) :
-  m_graphics(graphics),
-  m_scene_manager(scene_manager),
-  m_keyboard_input(keyboard_input),
-  m_mouse_input(mouse_input),
-  m_gui(std::make_shared<gui>(graphics)) {}
-  
-  void
-  i_scene::update() {
-    m_gui->update();
-    update_derived();
-  }
-  
-  void
-  i_scene::render() const {
-    render_derived();
-    m_gui->render();
-  }
+i_scene::i_scene(
+    graphics& graphics,
+    scene_manager& scene_manager,
+    keyboard_input& keyboard_input,
+    mouse_input& mouse_input) :
+m_graphics(graphics),
+m_scene_manager(scene_manager),
+m_keyboard_input(keyboard_input),
+m_mouse_input(mouse_input),
+m_gui(std::make_shared<gui>(graphics)) {}
+
+void
+i_scene::update() {
+  m_gui->update();
+  update_derived();
+}
+
+void
+i_scene::render() const {
+  render_derived();
+  m_gui->render();
+}
 }

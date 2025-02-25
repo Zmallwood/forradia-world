@@ -21,16 +21,16 @@
 #include "core/scenes_core/i_scene.hpp"
 
 namespace fw {
-  class main_menu_scene 
-  : public i_scene {
-   public:
-    using i_scene::i_scene;
+class main_menu_scene 
+: public i_scene {
+ public:
+  using i_scene::i_scene;
 
-    void initialize() override;
-    
-   protected:
-    void update_derived() override;
-    
-    void render_derived() const override;
-  };
+  void initialize() override;
+  
+ protected:
+  void update_derived() override;
+  
+  void render_derived() const override;
+};
 }

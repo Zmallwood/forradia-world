@@ -20,14 +20,14 @@
 #pragma once
 
 namespace fw {
-  float calc_aspect_ratio(
-      size canvas_size);
+float calc_aspect_ratio(
+    size canvas_size);
 
-  float convert_width_to_height(
-      size canvas_size,
-      float width);
+float convert_width_to_height(
+    size canvas_size,
+    float width);
 
-  float convert_height_to_width(
-      size canvas_size,
-      float height);
+float convert_height_to_width(
+    size canvas_size,
+    float height);
 }

@@ -20,33 +20,33 @@
 #pragma once
 
 namespace fw {
-  template <typename T>
-  class singleton {
-   public:
-    // Delete copy and move constructors/operators
-    singleton(const singleton&) = delete;
-    singleton& operator=(const singleton&) = delete;
-    singleton(singleton&&) = delete;
-    singleton& operator=(singleton&&) = delete;
-    
-    // Access the singleton instance
-    static T&
-    get_instance() {
-      static std::once_flag flag;
+template <typename T>
+class singleton {
+ public:
+  // Delete copy and move constructors/operators
+  singleton(const singleton&) = delete;
+  singleton& operator=(const singleton&) = delete;
+  singleton(singleton&&) = delete;
+  singleton& operator=(singleton&&) = delete;
+  
+  // Access the singleton instance
+  static T&
+  get_instance() {
+    static std::once_flag flag;
 
-      std::call_once(
-        flag, []() {
-          instance_.reset(new T());
-        });
+    std::call_once(
+      flag, []() {
+        instance_.reset(new T());
+      });
 
-      return *instance_;
-    }
-    
-  protected:
-    singleton() = default;
-    virtual ~singleton() = default;
-    
-  private:
-    static inline std::unique_ptr<T> instance_; // Unique instance
-  };
+    return *instance_;
+  }
+  
+protected:
+  singleton() = default;
+  virtual ~singleton() = default;
+  
+private:
+  static inline std::unique_ptr<T> instance_; // Unique instance
+};
 }

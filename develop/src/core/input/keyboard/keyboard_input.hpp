@@ -20,16 +20,16 @@
 #pragma once
 
 namespace fw {
-  class keyboard_input {
-   public:
-    void register_key_press(int key);
-    
-    void register_key_release(int key);
-    
-    bool any_key_is_pressed_pick_result();
-    
-   private:
-    // State
-    std::set<int> m_pressed_keys;
-  };
+class keyboard_input {
+ public:
+  void register_key_press(int key);
+  
+  void register_key_release(int key);
+  
+  bool any_key_is_pressed_pick_result();
+  
+ private:
+  // State
+  std::set<int> m_pressed_keys;
+};
 }

@@ -20,17 +20,17 @@
 #pragma once
 
 namespace fw {
-  constexpr int
-  hash(
-      std::string_view text) {
-    unsigned long hash{ 5381 }; // Initialize hash to a prime value.
-                                //
-    // Iterate through each character of the input string.
-    for (size_t i { 0 }; i < text.size(); ++i)
-        // Update the hash using a common hash function (djb2).
-        hash = 33 * hash + (unsigned char)text[i];
+constexpr int
+hash(
+    std::string_view text) {
+  unsigned long hash{ 5381 }; // Initialize hash to a prime value.
+                              //
+  // Iterate through each character of the input string.
+  for (size_t i { 0 }; i < text.size(); ++i)
+      // Update the hash using a common hash function (djb2).
+      hash = 33 * hash + (unsigned char)text[i];
 
-    // Return the computed hash as an integer.
-    return static_cast<int>(hash);
-  }
+  // Return the computed hash as an integer.
+  return static_cast<int>(hash);
+}
 }

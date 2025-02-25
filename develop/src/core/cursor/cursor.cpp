@@ -23,29 +23,29 @@
 
 namespace fw
 {
-  cursor::cursor(
-      mouse_input& mouse_input,
-      graphics& graphics)
-      : m_mouse_input(mouse_input), m_graphics(graphics) {}
-  
-  void
-  cursor::reset() {
-    m_current_style = cursor_styles::normal;
-  }
-  
-  void
-  cursor::render() const {
-    auto mouse_position = m_mouse_input.get_mouse_position();
+cursor::cursor(
+    mouse_input& mouse_input,
+    graphics& graphics)
+    : m_mouse_input(mouse_input), m_graphics(graphics) {}
 
-    if (mouse_position.x != -1.0f && mouse_position.y != -1.0) {
-      auto cursor_width = k_cursor_size;
-      auto cursor_height = convert_width_to_height(
-          m_graphics.get_canvas_size(),
-          cursor_width);
-      
-      m_graphics.draw_image(
-          "CursorDefault", mouse_position.x - cursor_width/2,
-          mouse_position.y - cursor_height/2, cursor_width, cursor_height);
-    }
+void
+cursor::reset() {
+  m_current_style = cursor_styles::normal;
+}
+
+void
+cursor::render() const {
+  auto mouse_position = m_mouse_input.get_mouse_position();
+
+  if (mouse_position.x != -1.0f && mouse_position.y != -1.0) {
+    auto cursor_width = k_cursor_size;
+    auto cursor_height = convert_width_to_height(
+        m_graphics.get_canvas_size(),
+        cursor_width);
+    
+    m_graphics.draw_image(
+        "CursorDefault", mouse_position.x - cursor_width/2,
+        mouse_position.y - cursor_height/2, cursor_width, cursor_height);
   }
+}
 }

@@ -21,30 +21,30 @@
 #include "gui_component.hpp"
 
 namespace fw {
-  class mouse_input;
+class mouse_input;
 
-  class gui_button : public gui_component  {
-   public:
-    gui_button(
-        const graphics& graphics,
-        mouse_input& mouse_input,
-        std::string_view text,
-        std::function<void()> action,
-        float x,
-        float y,
-        float w,
-        float h);
+class gui_button : public gui_component  {
+ public:
+  gui_button(
+      const graphics& graphics,
+      mouse_input& mouse_input,
+      std::string_view text,
+      std::function<void()> action,
+      float x,
+      float y,
+      float w,
+      float h);
 
-    void update_derived() override;
+  void update_derived() override;
 
-    void render_derived() const override;
- 
-   private:
-    // State
-    std::string m_text;
-    std::function<void()> m_action;
+  void render_derived() const override;
 
-    // Dependencies
-    mouse_input& m_mouse_input;
-  };
+ private:
+  // State
+  std::string m_text;
+  std::function<void()> m_action;
+
+  // Dependencies
+  mouse_input& m_mouse_input;
+};
 }

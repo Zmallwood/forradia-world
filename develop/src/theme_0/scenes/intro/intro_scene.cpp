@@ -26,32 +26,31 @@
 #include "core/scenes_core/scene_manager.hpp"
 
 namespace fw {
-  void
-  intro_scene::initialize()
-  {
-    m_start_text_component = get_gui()->add_component(
-        std::make_shared<gui_label>(
-            get_graphics_ref(),
-            "Press to start",
-            0.5f, 0.5f, true));
-  }
+void
+intro_scene::initialize() {
+  m_start_text_component = get_gui()->add_component(
+      std::make_shared<gui_label>(
+          get_graphics_ref(),
+          "Press to start",
+          0.5f, 0.5f, true));
+}
+
+void
+intro_scene::update_derived() {
+  if (get_keyboard_input_ref().any_key_is_pressed_pick_result() ||
+      get_mouse_input_ref().any_button_is_pressed())
+    get_scene_manager_ref().change_scene("main-menu-scene");
   
-  void
-  intro_scene::update_derived() {
-    if (get_keyboard_input_ref().any_key_is_pressed_pick_result() ||
-        get_mouse_input_ref().any_button_is_pressed())
-      get_scene_manager_ref().change_scene("main-menu-scene");
-    
-    auto start_text_visible = get_ticks() % 1200 > 600;
-    
-    m_start_text_component->set_visible(start_text_visible);
-  }
+  auto start_text_visible = get_ticks() % 1200 > 600;
   
-  void
-  intro_scene::render_derived() const {
-    get_graphics_ref().draw_background("DefaultSceneBackground");
-    get_graphics_ref().draw_image(
-        "ForradiaWorldLogo", 0.3f, 0.1f, 0.4f,
-        -1.0f);
-  }
+  m_start_text_component->set_visible(start_text_visible);
+}
+
+void
+intro_scene::render_derived() const {
+  get_graphics_ref().draw_background("DefaultSceneBackground");
+  get_graphics_ref().draw_image(
+      "ForradiaWorldLogo", 0.3f, 0.1f, 0.4f,
+      -1.0f);
+}
 }

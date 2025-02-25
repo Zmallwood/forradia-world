@@ -21,31 +21,31 @@
 #include "socket_client.hpp"
 
 namespace fw {
-  void
-  socket_clients_manager::add_socket_client(
-      wspp_server* server,
-      connection_handle handle) {
-    auto new_socket_client = std::make_shared<socket_client>(
-        server,
-        handle);
+void
+socket_clients_manager::add_socket_client(
+    wspp_server* server,
+    connection_handle handle) {
+  auto new_socket_client = std::make_shared<socket_client>(
+      server,
+      handle);
+  
+  if (auto shared_ptr = handle.lock()) {
+    auto raw_ptr = shared_ptr.get();
     
-    if (auto shared_ptr = handle.lock()) {
-      auto raw_ptr = shared_ptr.get();
-      
-      m_clients.insert({ raw_ptr, new_socket_client});
-    }
+    m_clients.insert({ raw_ptr, new_socket_client});
+  }
+}
+
+std::shared_ptr<socket_client>
+socket_clients_manager::get_socket_client(
+    connection_handle handle) const {
+  if (auto shared_ptr = handle.lock()) {
+    auto raw_ptr = shared_ptr.get();
+    
+    if (m_clients.contains(raw_ptr))
+      return m_clients.at(raw_ptr);
   }
   
-  std::shared_ptr<socket_client>
-  socket_clients_manager::get_socket_client(
-      connection_handle handle) const {
-    if (auto shared_ptr = handle.lock()) {
-      auto raw_ptr = shared_ptr.get();
-      
-      if (m_clients.contains(raw_ptr))
-        return m_clients.at(raw_ptr);
-    }
-    
-    return nullptr;
-  }
+  return nullptr;
+}
 }

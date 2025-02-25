@@ -21,14 +21,14 @@
 #include "core/scenes_core/i_scene.hpp"
 
 namespace fw {
-  class world_generation_scene 
-  : public i_scene {
-   public:
-    using i_scene::i_scene;
-    
-   protected:
-    void update_derived() override;
-    
-    void render_derived() const override;
-  };
+class world_generation_scene 
+: public i_scene {
+ public:
+  using i_scene::i_scene;
+  
+ protected:
+  void update_derived() override;
+  
+  void render_derived() const override;
+};
 }

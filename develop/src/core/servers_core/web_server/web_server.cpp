@@ -21,71 +21,71 @@
 #include "core/conf/app_properties.hpp"
 
 namespace fw {
-  void
-  web_server::start() {
-    std::cout << "Starting web server.\n";
-    
-    setup_endpoints();
-    
-    start_listen();
-  }
+void
+web_server::start() {
+  std::cout << "Starting web server.\n";
   
-  void
-  web_server::stop() {
-    m_server.stop();
-  }
+  setup_endpoints();
   
-  void
-  web_server::setup_endpoints() {
-    using namespace httplib;
-    
-    auto app_path = std::string(app_properties::get_instance().get_app_path());
-    auto full_path_str = std::string(app_path);
-    auto last_slash = full_path_str.find_last_of("/");
-    auto app_base_path = full_path_str.substr(0, last_slash + 1);
-    
-    m_server.Get(
-      "/", [this, app_base_path](const Request& req, Response& res){
-          std::ifstream t(app_base_path + "../html/index.html");
-          std::string str(
-              (std::istreambuf_iterator<char>(t)),
-              std::istreambuf_iterator<char>());
-          
-          res.set_content(str, "text/html");
-      });
-    
-    m_server.Get(
-      "/js/(.*)", [this, app_base_path](const Request& req, Response& res){
-          auto filename = req.matches[1].str();
-          std::ifstream t(app_base_path + "../html/js/" + filename);
-          std::string str(
-              (std::istreambuf_iterator<char>(t)),
-              std::istreambuf_iterator<char>());
-          
-          res.set_content(str, "application/javascript");
-      });
-    
-    m_server.Get(
-      "/img/(.*)", [this, app_base_path](const Request& req, Response& res){
-          auto filename = req.matches[1].str();
-          std::ifstream t(
-              app_base_path + "../html/resources/images/" +
-              filename);
-          std::string str(
-              (std::istreambuf_iterator<char>(t)),
-              std::istreambuf_iterator<char>());
-          
-          res.set_content(str, "image/png");
-      });
-    
-    m_server.Get(
-      "/stop", [&](const Request& req, Response& res){
-          m_server.stop();
-      });
-  }
+  start_listen();
+}
+
+void
+web_server::stop() {
+  m_server.stop();
+}
+
+void
+web_server::setup_endpoints() {
+  using namespace httplib;
   
-  void
-  web_server::start_listen() {
-    m_server.listen(k_host_name, app_properties::get_instance().get_http_port());
-  }
+  auto app_path = std::string(app_properties::get_instance().get_app_path());
+  auto full_path_str = std::string(app_path);
+  auto last_slash = full_path_str.find_last_of("/");
+  auto app_base_path = full_path_str.substr(0, last_slash + 1);
+  
+  m_server.Get(
+    "/", [this, app_base_path](const Request& req, Response& res){
+        std::ifstream t(app_base_path + "../html/index.html");
+        std::string str(
+            (std::istreambuf_iterator<char>(t)),
+            std::istreambuf_iterator<char>());
+        
+        res.set_content(str, "text/html");
+    });
+  
+  m_server.Get(
+    "/js/(.*)", [this, app_base_path](const Request& req, Response& res){
+        auto filename = req.matches[1].str();
+        std::ifstream t(app_base_path + "../html/js/" + filename);
+        std::string str(
+            (std::istreambuf_iterator<char>(t)),
+            std::istreambuf_iterator<char>());
+        
+        res.set_content(str, "application/javascript");
+    });
+  
+  m_server.Get(
+    "/img/(.*)", [this, app_base_path](const Request& req, Response& res){
+        auto filename = req.matches[1].str();
+        std::ifstream t(
+            app_base_path + "../html/resources/images/" +
+            filename);
+        std::string str(
+            (std::istreambuf_iterator<char>(t)),
+            std::istreambuf_iterator<char>());
+        
+        res.set_content(str, "image/png");
+    });
+  
+  m_server.Get(
+    "/stop", [&](const Request& req, Response& res){
+        m_server.stop();
+    });
+}
+
+void
+web_server::start_listen() {
+  m_server.listen(k_host_name, app_properties::get_instance().get_http_port());
+}
 }

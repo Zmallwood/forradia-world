@@ -20,10 +20,10 @@
 #pragma once
 
 namespace fw {
-  enum class cursor_styles {
-    normal,
-    hovering,
-    text_input,
-    attackable
-  };
+enum class cursor_styles {
+  normal,
+  hovering,
+  text_input,
+  attackable
+};
 }

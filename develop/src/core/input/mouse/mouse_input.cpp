@@ -20,35 +20,35 @@
 #include "mouse_input.hpp"
 
 namespace fw {
-  void
-  mouse_input::register_button_press(
-      mouse_buttons button) {
-    switch (button) {
-    case mouse_buttons::left:
-      m_left_mouse_button.register_press();
-      break;
-    case mouse_buttons::right:
-      m_right_mouse_button.register_press();
-      break;
-    }
+void
+mouse_input::register_button_press(
+    mouse_buttons button) {
+  switch (button) {
+  case mouse_buttons::left:
+    m_left_mouse_button.register_press();
+    break;
+  case mouse_buttons::right:
+    m_right_mouse_button.register_press();
+    break;
   }
-  
-  void
-  mouse_input::register_button_release(
-      mouse_buttons button) {
-    switch (button) {
-    case mouse_buttons::left:
-      m_left_mouse_button.register_release();
-      break;
-    case mouse_buttons::right:
-      m_right_mouse_button.register_release();
-      break;
-    }
+}
+
+void
+mouse_input::register_button_release(
+    mouse_buttons button) {
+  switch (button) {
+  case mouse_buttons::left:
+    m_left_mouse_button.register_release();
+    break;
+  case mouse_buttons::right:
+    m_right_mouse_button.register_release();
+    break;
   }
-  
-  bool
-  mouse_input::any_button_is_pressed() const {
-    return m_left_mouse_button.get_is_pressed() ||
-           m_right_mouse_button.get_is_pressed();
-  }
+}
+
+bool
+mouse_input::any_button_is_pressed() const {
+  return m_left_mouse_button.get_is_pressed() ||
+         m_right_mouse_button.get_is_pressed();
+}
 }

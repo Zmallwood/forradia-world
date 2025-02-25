@@ -22,34 +22,34 @@
 #include "mouse_buttons.hpp"
 
 namespace fw {
-  class mouse_input {
-   public:
-    void register_button_press(mouse_buttons button);
-    
-    void register_button_release(mouse_buttons button);
-    
-    bool any_button_is_pressed() const;
-    
-    auto& get_left_mouse_button_ref() {
-        return m_left_mouse_button;
-    }
-    
-    auto& get_right_mouse_button_ref() {
-        return m_right_mouse_button;
-    }
-    
-    auto get_mouse_position() const {
-        return m_mouse_position;
-    }
-    
-    void set_mouse_position(point_f value) {
-        m_mouse_position = value;
-    }
-    
-   private:
-    // State
-    mouse_button m_left_mouse_button;
-    mouse_button m_right_mouse_button;
-    point_f m_mouse_position {-1.0f, -1.0f};
-  };
+class mouse_input {
+ public:
+  void register_button_press(mouse_buttons button);
+  
+  void register_button_release(mouse_buttons button);
+  
+  bool any_button_is_pressed() const;
+  
+  auto& get_left_mouse_button_ref() {
+      return m_left_mouse_button;
+  }
+  
+  auto& get_right_mouse_button_ref() {
+      return m_right_mouse_button;
+  }
+  
+  auto get_mouse_position() const {
+      return m_mouse_position;
+  }
+  
+  void set_mouse_position(point_f value) {
+      m_mouse_position = value;
+  }
+  
+ private:
+  // State
+  mouse_button m_left_mouse_button;
+  mouse_button m_right_mouse_button;
+  point_f m_mouse_position {-1.0f, -1.0f};
+};
 }

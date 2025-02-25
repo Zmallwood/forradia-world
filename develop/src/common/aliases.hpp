@@ -18,7 +18,7 @@
  */
 
 namespace fw {
-    using wspp_server = websocketpp::server<websocketpp::config::asio>;
-    using message_ptr = wspp_server::message_ptr;
-    using connection_handle = websocketpp::lib::weak_ptr<void>;
+using wspp_server = websocketpp::server<websocketpp::config::asio>;
+using message_ptr = wspp_server::message_ptr;
+using connection_handle = websocketpp::lib::weak_ptr<void>;
 }

@@ -20,27 +20,27 @@
 #include "image_info_store.hpp"
 
 namespace fw {
-  void
-  image_info_store::add_image_dimensions(
-      std::string_view image_name,
-      size dimension) {
-    m_image_dimensions[fw::hash(image_name)] = dimension;
-  }
-  
-  bool
-  image_info_store::image_dimensions_exist(
-      std::string_view image_name) const {
-    return m_image_dimensions.contains(fw::hash(image_name));
-  }
-  
-  size
-  image_info_store::get_image_dimensions(
-      std::string_view image_name) const {
-    auto image_name_hash = fw::hash(image_name);
+void
+image_info_store::add_image_dimensions(
+    std::string_view image_name,
+    size dimension) {
+  m_image_dimensions[fw::hash(image_name)] = dimension;
+}
 
-    if (m_image_dimensions.contains(image_name_hash))
-        return m_image_dimensions.at(image_name_hash);
+bool
+image_info_store::image_dimensions_exist(
+    std::string_view image_name) const {
+  return m_image_dimensions.contains(fw::hash(image_name));
+}
 
-    return {-1, -1};
-  }
+size
+image_info_store::get_image_dimensions(
+    std::string_view image_name) const {
+  auto image_name_hash = fw::hash(image_name);
+
+  if (m_image_dimensions.contains(image_name_hash))
+      return m_image_dimensions.at(image_name_hash);
+
+  return {-1, -1};
+}
 }

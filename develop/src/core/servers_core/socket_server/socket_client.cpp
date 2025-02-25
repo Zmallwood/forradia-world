@@ -22,18 +22,18 @@
 #include "core/graphics/graphics.hpp"
 
 namespace fw {
-  socket_client::socket_client(
-      wspp_server* server,
-      connection_handle handle) :
-  m_engine(std::make_shared<engine>(
-               std::make_shared<graphics>(
-                   *server,
-                   handle))) {
-    m_engine->initialize();
-  }
-  
-  void
-  socket_client::process_frame() {
-    m_engine->process_frame();
-  }
+socket_client::socket_client(
+    wspp_server* server,
+    connection_handle handle) :
+m_engine(std::make_shared<engine>(
+             std::make_shared<graphics>(
+                 *server,
+                 handle))) {
+  m_engine->initialize();
+}
+
+void
+socket_client::process_frame() {
+  m_engine->process_frame();
+}
 }

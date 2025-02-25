@@ -21,28 +21,28 @@
 #include "cursor_styles.hpp"
 
 namespace fw {
-  class graphics;
-  class mouse_input;
+class graphics;
+class mouse_input;
+
+class cursor {
+ public:
+  cursor(
+      mouse_input& mouse_input,
+      graphics& graphics);
   
-  class cursor {
-   public:
-    cursor(
-        mouse_input& mouse_input,
-        graphics& graphics);
-    
-    void reset();
-    
-    void render() const;
-    
-   private:
-    // Const
-    const float k_cursor_size {0.05f};
-    
-    // State
-    cursor_styles m_current_style {cursor_styles::normal};
-    
-    // Dependencies
-    mouse_input& m_mouse_input;
-    graphics& m_graphics;
-  };
+  void reset();
+  
+  void render() const;
+  
+ private:
+  // Const
+  const float k_cursor_size {0.05f};
+  
+  // State
+  cursor_styles m_current_style {cursor_styles::normal};
+  
+  // Dependencies
+  mouse_input& m_mouse_input;
+  graphics& m_graphics;
+};
 }

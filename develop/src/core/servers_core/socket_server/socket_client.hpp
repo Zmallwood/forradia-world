@@ -20,22 +20,22 @@
 #pragma once
 
 namespace fw {
-  class engine;
+class engine;
+
+class socket_client {
+ public:
+  socket_client(
+      wspp_server* server,
+      connection_handle handle);
   
-  class socket_client {
-   public:
-    socket_client(
-        wspp_server* server,
-        connection_handle handle);
-    
-    void process_frame();
-    
-    auto get_engine() const {
-        return m_engine;
-    }
-    
-   private:
-    // State
-    std::shared_ptr<engine> m_engine;
-  };
+  void process_frame();
+  
+  auto get_engine() const {
+      return m_engine;
+  }
+  
+ private:
+  // State
+  std::shared_ptr<engine> m_engine;
+};
 }

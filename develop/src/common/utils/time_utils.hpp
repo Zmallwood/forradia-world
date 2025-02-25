@@ -20,7 +20,7 @@
 #pragma once
 
 namespace fw {
-  int get_ticks();
-  
-  std::string get_current_time();
+int get_ticks();
+
+std::string get_current_time();
 }

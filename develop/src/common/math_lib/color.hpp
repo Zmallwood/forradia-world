@@ -20,10 +20,10 @@
 #pragma once
 
 namespace fw {
-  class color {
-   public:
-    int r {0};
-    int g {0};
-    int b {0};
-  };
+class color {
+ public:
+  int r {0};
+  int g {0};
+  int b {0};
+};
 }

@@ -20,18 +20,21 @@
 #include "keyboard_input.hpp"
 
 namespace fw {
-  void keyboard_input::register_key_press(int key) {
-    m_pressed_keys.insert(key);
-  }
+void
+keyboard_input::register_key_press(int key) {
+  m_pressed_keys.insert(key);
+}
+
+void
+keyboard_input::register_key_release(int key) {
+  m_pressed_keys.erase(key);
+}
+
+bool
+keyboard_input::any_key_is_pressed_pick_result() {
+  auto result = m_pressed_keys.size() > 0;
+  m_pressed_keys.clear();
   
-  void keyboard_input::register_key_release(int key) {
-    m_pressed_keys.erase(key);
-  }
-  
-  bool keyboard_input::any_key_is_pressed_pick_result() {
-    auto result = m_pressed_keys.size() > 0;
-    m_pressed_keys.clear();
-    
-    return result;
-  }
+  return result;
+}
 }

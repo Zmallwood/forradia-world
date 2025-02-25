@@ -26,43 +26,43 @@
 #include "core/cursor/cursor.hpp"
 
 namespace fw {
-  engine::engine(
-      std::shared_ptr<graphics> graphics)
-  : m_keyboard_input(
-      std::make_shared<keyboard_input>())
-  , m_mouse_input (
-      std::make_shared<mouse_input>())
-  , m_graphics(
-      graphics)
-  , m_scene_manager(
-      std::make_shared<scene_manager>(
-      *graphics,
-      *m_keyboard_input, 
-      *m_mouse_input))
-  , m_fps_counter(
-      std::make_shared<fps_counter>(
-        *graphics))
-  , m_cursor(
-      std::make_shared<cursor>(
-        *m_mouse_input,
-        *graphics)) {}
+engine::engine(
+    std::shared_ptr<graphics> graphics)
+: m_keyboard_input(
+    std::make_shared<keyboard_input>())
+, m_mouse_input (
+    std::make_shared<mouse_input>())
+, m_graphics(
+    graphics)
+, m_scene_manager(
+    std::make_shared<scene_manager>(
+    *graphics,
+    *m_keyboard_input, 
+    *m_mouse_input))
+, m_fps_counter(
+    std::make_shared<fps_counter>(
+      *graphics))
+, m_cursor(
+    std::make_shared<cursor>(
+      *m_mouse_input,
+      *graphics)) {}
+
+void
+engine::initialize() {
+  m_scene_manager->initialize_scenes();
+}
+
+void
+engine::process_frame() {
+  m_cursor->reset();
   
-  void
-  engine::initialize() {
-    m_scene_manager->initialize_scenes();
-  }
+  m_scene_manager->update_current_scene();
+  m_fps_counter->update();
   
-  void
-  engine::process_frame() {
-    m_cursor->reset();
-    
-    m_scene_manager->update_current_scene();
-    m_fps_counter->update();
-    
-    m_graphics->clear_canvas();
-    m_scene_manager->render_current_scene();
-    m_fps_counter->render();
-    m_cursor->render();
-    m_graphics->present_canvas();
-  }
+  m_graphics->clear_canvas();
+  m_scene_manager->render_current_scene();
+  m_fps_counter->render();
+  m_cursor->render();
+  m_graphics->present_canvas();
+}
 }

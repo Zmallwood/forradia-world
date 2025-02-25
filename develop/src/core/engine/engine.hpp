@@ -20,41 +20,41 @@
 #pragma once
 
 namespace fw {
-  class scene_manager;
-  class fps_counter;
-  class graphics;
-  class keyboard_input;
-  class mouse_input;
-  class cursor;
+class scene_manager;
+class fps_counter;
+class graphics;
+class keyboard_input;
+class mouse_input;
+class cursor;
+
+class engine {
+ public:
+  engine(
+      std::shared_ptr<graphics> graphics);
   
-  class engine {
-   public:
-    engine(
-        std::shared_ptr<graphics> graphics);
-    
-    void initialize();
-    
-    void process_frame();
-    
-    auto get_keyboard_input() const {
-        return m_keyboard_input;
-    }
-    
-    auto get_graphics() const {
-        return m_graphics;
-    }
-    
-    auto get_mouse_input() const {
-        return m_mouse_input;
-    }
-    
-   private:
-    // State
-    std::shared_ptr<keyboard_input> m_keyboard_input;
-    std::shared_ptr<mouse_input> m_mouse_input;
-    std::shared_ptr<graphics> m_graphics;
-    std::shared_ptr<scene_manager> m_scene_manager;
-    std::shared_ptr<fps_counter> m_fps_counter;
-    std::shared_ptr<cursor> m_cursor;
-  };
+  void initialize();
+  
+  void process_frame();
+  
+  auto get_keyboard_input() const {
+      return m_keyboard_input;
+  }
+  
+  auto get_graphics() const {
+      return m_graphics;
+  }
+  
+  auto get_mouse_input() const {
+      return m_mouse_input;
+  }
+  
+ private:
+  // State
+  std::shared_ptr<keyboard_input> m_keyboard_input;
+  std::shared_ptr<mouse_input> m_mouse_input;
+  std::shared_ptr<graphics> m_graphics;
+  std::shared_ptr<scene_manager> m_scene_manager;
+  std::shared_ptr<fps_counter> m_fps_counter;
+  std::shared_ptr<cursor> m_cursor;
+};
 }

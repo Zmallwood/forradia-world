@@ -21,15 +21,15 @@
 #include "core/servers_core/socket_server/socket_clients_manager.hpp"
 
 namespace fw {
-  void on_socket_open(
-      wspp_server* server,
-      connection_handle handle) {
-    std::cout << std::format(
-        "{}: A new client has connected.\n",
-        get_current_time());
-    
-    socket_clients_manager::get_instance().add_socket_client(
-        server,
-        handle);
-  }
+void on_socket_open(
+    wspp_server* server,
+    connection_handle handle) {
+  std::cout << std::format(
+      "{}: A new client has connected.\n",
+      get_current_time());
+  
+  socket_clients_manager::get_instance().add_socket_client(
+      server,
+      handle);
+}
 }

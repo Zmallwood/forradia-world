@@ -20,24 +20,24 @@
 #pragma once
 
 namespace fw {
-  class socket_client;
+class socket_client;
+
+class socket_clients_manager
+: public singleton<socket_clients_manager> {
+  friend class singleton<socket_clients_manager>;
   
-  class socket_clients_manager
-  : public singleton<socket_clients_manager> {
-    friend class singleton<socket_clients_manager>;
-    
-   public:
-    void add_socket_client(
-        wspp_server* server,
-        connection_handle handle);
-    
-    std::shared_ptr<socket_client> get_socket_client(
-        connection_handle handle) const;
-    
-   private:
-    socket_clients_manager() = default;
-    
-    // State
-    std::map<void*, std::shared_ptr<socket_client>> m_clients;
-  };
+ public:
+  void add_socket_client(
+      wspp_server* server,
+      connection_handle handle);
+  
+  std::shared_ptr<socket_client> get_socket_client(
+      connection_handle handle) const;
+  
+ private:
+  socket_clients_manager() = default;
+  
+  // State
+  std::map<void*, std::shared_ptr<socket_client>> m_clients;
+};
 }

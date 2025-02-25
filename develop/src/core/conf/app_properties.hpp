@@ -20,44 +20,44 @@
 #pragma once
 
 namespace fw {
-  class app_properties
-  : public singleton<app_properties> {
-    friend class singleton<app_properties>;
-      
-    public:
-      auto get_http_port() const {
-        return m_http_port;
-      }
-      
-      void set_http_port(
-          int value) {
-        m_http_port = value;
-      }
-      
-      void set_sockets_port(
-          int value) {
-        m_sockets_port = value;
-      }
-      
-      auto get_sockets_port() const {
-        return m_sockets_port;
-      }
-      
-      std::string_view get_app_path() const {
-        return m_appPath;
-      }
-      
-      void set_app_path(
-          std::string_view value) {
-        m_appPath = value.data();
-      }
-      
-    private:
-      app_properties() = default;
-      
-      // State
-      int m_http_port{ 80 };
-      int m_sockets_port{ 8080 };
-      std::string m_appPath;
-  };
+class app_properties
+: public singleton<app_properties> {
+  friend class singleton<app_properties>;
+    
+  public:
+    auto get_http_port() const {
+      return m_http_port;
+    }
+    
+    void set_http_port(
+        int value) {
+      m_http_port = value;
+    }
+    
+    void set_sockets_port(
+        int value) {
+      m_sockets_port = value;
+    }
+    
+    auto get_sockets_port() const {
+      return m_sockets_port;
+    }
+    
+    std::string_view get_app_path() const {
+      return m_appPath;
+    }
+    
+    void set_app_path(
+        std::string_view value) {
+      m_appPath = value.data();
+    }
+    
+  private:
+    app_properties() = default;
+    
+    // State
+    int m_http_port{ 80 };
+    int m_sockets_port{ 8080 };
+    std::string m_appPath;
+};
 }
