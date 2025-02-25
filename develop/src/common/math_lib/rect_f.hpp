@@ -21,10 +21,9 @@
 
 namespace fw  {
 class rect_f {
- public:
+public:
   bool contains(
-      point_f point) const;
-  
+  point_f point) const;
   point_f get_center() const;
 
   float x {0.0f};

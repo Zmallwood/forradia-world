@@ -21,7 +21,7 @@
 
 namespace fw {
 class size_f {
- public:
+public:
   float w {0.0f};
   float h {0.0f};
 };

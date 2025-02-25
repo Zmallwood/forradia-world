@@ -21,7 +21,7 @@
 
 namespace fw {
 class size {
- public:
+public:
   int w {0};
   int h {0};
 };

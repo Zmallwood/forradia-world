@@ -19,17 +19,19 @@
 
 #include "string_utils.hpp"
 
-namespace fw {
+namespace fw
+{
 std::vector<std::string>
 split(
-    std::string_view text,
-    char delimiter) {
+std::string_view text,
+char delimiter)
+{
   std::vector<std::string> parts;
   std::istringstream ss(text.data());
   std::string part;
 
   while(std::getline(ss, part, delimiter))
-      parts.push_back(part);
+    parts.push_back(part);
 
   return parts;
 }

@@ -3,7 +3,8 @@
 namespace fw {
 bool
 rect_f::contains(
-    point_f point) const {
+point_f point) const
+{
   return point.x >= x &&
          point.y >= y &&
          point.x < x + w &&
@@ -11,7 +12,8 @@ rect_f::contains(
 }
 
 point_f
-rect_f::get_center() const {
+rect_f::get_center() const
+{
   return {x + w/2.0f, y + h/2.0f};
 }
 }

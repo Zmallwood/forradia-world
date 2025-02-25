@@ -22,28 +22,28 @@
 namespace fw {
 float
 calc_aspect_ratio(
-    size canvas_size) {
+size canvas_size)
+{
   if (canvas_size.h)
-      return static_cast<float>(canvas_size.w) / canvas_size.h;
-
+    return static_cast<float>(canvas_size.w) / canvas_size.h;
   return 0.0f;
 }
 
 float
 convert_width_to_height(
-    size canvas_size,
-    float width) {
+size canvas_size,
+float width)
+{
   auto aspect_ratio = calc_aspect_ratio(canvas_size);
-
   return width * aspect_ratio;
 }
 
 float
 convert_height_to_width(
-    size canvas_size,
-    float height) {
+size canvas_size,
+float height)
+{
   auto aspect_ratio = calc_aspect_ratio(canvas_size);
-
   return height / aspect_ratio;
 }
 }

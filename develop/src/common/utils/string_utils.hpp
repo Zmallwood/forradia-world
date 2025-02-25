@@ -20,7 +20,8 @@
 #pragma once
 
 namespace fw {
-std::vector<std::string> split(
-    std::string_view text,
-    char delimiter);
+std::vector<std::string>
+split(
+std::string_view text,
+char delimiter);
 }

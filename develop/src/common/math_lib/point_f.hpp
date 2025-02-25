@@ -21,8 +21,10 @@
 
 namespace fw {
 class point_f {
- public:
-  void operator+=(const point_f& other);
+public:
+  void
+  operator+=(
+  const point_f& other);
 
   float x {0.0f};
   float y {0.0f};

@@ -21,7 +21,9 @@
 
 namespace fw {
 void
-point_f::operator+=(const point_f& other) {
+point_f::operator+=(
+const point_f& other)
+{
   x += other.x;
   y += other.y;
 }
