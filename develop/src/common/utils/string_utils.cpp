@@ -19,8 +19,7 @@
 
 #include "string_utils.hpp"
 
-namespace fw
-{
+namespace fw {
 std::vector<std::string>
 split(
 std::string_view text,

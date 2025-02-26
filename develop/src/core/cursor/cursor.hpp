@@ -25,16 +25,16 @@ class graphics;
 class mouse_input;
 
 class cursor {
- public:
+public:
   cursor(
-      mouse_input& mouse_input,
-      graphics& graphics);
+  mouse_input& mouse_input,
+  graphics& graphics);
   
   void reset();
   
   void render() const;
   
- private:
+private:
   // Const
   const float k_cursor_size {0.05f};
   

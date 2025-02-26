@@ -9,6 +9,6 @@ CLICKED_ROW=$(echo "$FULL_TREE" | tac | fzf --ansi --bind 'ctrl-w:page-up,ctrl-s
 ROW_IDX=$(tree -I 'build|CMakeFiles' --dirsfirst ./develop | grep -n "$(echo "$CLICKED_ROW")" | cut -d: -f1)
 FILE_PATH="$(tree -fi -I 'build|CMakeFiles' --dirsfirst ./develop | sed -n "${ROW_IDX}p")"
 tmux send-keys -t 1 "nvim $FILE_PATH" C-m
-
+tmux send-keys -t 2 "echo 'Opening:\n$CLICKED_ROW'" C-m
 ./project_tree.sh
 

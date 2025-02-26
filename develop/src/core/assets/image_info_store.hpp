@@ -23,17 +23,17 @@ namespace fw {
 class image_info_store 
 : public singleton<image_info_store> {
   friend class singleton<image_info_store>;
-  
+    
  public:
   void add_image_dimensions(
-      std::string_view image_name,
-      size dimension);
+  std::string_view image_name,
+  size dimension);
   
   bool image_dimensions_exist(
-      std::string_view image_name) const;
+  std::string_view image_name) const;
   
   size get_image_dimensions(
-      std::string_view image_name) const;
+  std::string_view image_name) const;
   
  private:
   image_info_store() = default;

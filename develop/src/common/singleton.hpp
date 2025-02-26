@@ -31,7 +31,8 @@ class singleton {
   
   // Access the singleton instance
   static T&
-  get_instance() {
+  get_instance()
+  {
     static std::once_flag flag;
 
     std::call_once(
